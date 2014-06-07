@@ -17,3 +17,6 @@
 
 # Ignore application configuration
 /config/application.yml
+
+#ignore images uploaded to localhost
+/public/system
