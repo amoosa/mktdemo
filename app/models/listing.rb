@@ -2,7 +2,7 @@ class Listing < ActiveRecord::Base
 	if rails.env.development?
 		has_attached_file :image, 
 						  :styles => { :medium => "200x>", :thumb => "100x100>" }, 
-						  :default_url => "missing.jpg",
+						  :default_url => "missing.jpg"
 		validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 	else
 		has_attached_file :image, 
