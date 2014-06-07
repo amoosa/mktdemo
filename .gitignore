@@ -19,4 +19,4 @@
 /config/application.yml
 
 # ignore images uploaded to localhost
-# /public/system
+/public/system
