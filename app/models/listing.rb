@@ -17,4 +17,7 @@ class Listing < ActiveRecord::Base
 		#validates_attachment_content_type :image, content_type: /^image\/(jpg|jpeg|pjpeg|png|x-png|gif)/
 		#do_not_validate_attachment_file_type :image
 	end
+	validates :name, :description, :price, presence: true
+	validates :price, numericality: {greater_than: 0}
+	#validates_attachment_presence :image
 end
