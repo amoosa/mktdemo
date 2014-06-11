@@ -13,11 +13,10 @@ class Listing < ActiveRecord::Base
 	    				  :path => ":style/:id_:filename"
 	    	             # :dropbox_options => {...}
 		validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
-		#validates_attachment_content_type :image, :content_type => %w(image/jpeg image/jpg image/png) 
-		#validates_attachment_content_type :image, content_type: /^image\/(jpg|jpeg|pjpeg|png|x-png|gif)/
-		#do_not_validate_attachment_file_type :image
 	end
 	validates :name, :description, :price, presence: true
 	validates :price, numericality: {greater_than: 0}
 	#validates_attachment_presence :image
+
+	belongs_to :user
 end

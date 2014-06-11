@@ -6,10 +6,13 @@
   </div>
   <div class="col-md-3"> 
   	<h3><%= @listing.name %></h3>
-  	<p><%= number_to_currency(@listing.price) %></p>
+    <p><%= number_to_currency(@listing.price) %></p>
   	<p><%= @listing.description %></p>
   </div>
 </div>
 
-<%= link_to 'Edit', edit_listing_path(@listing), class:"btn btn-link" %> |
+<% if current_user == @listing.user %>
+  <%= link_to 'Edit', edit_listing_path(@listing), class:"btn btn-link" %> |
+<% end %>
+
 <%= link_to 'Back', listings_path, class:"btn btn-link" %>
