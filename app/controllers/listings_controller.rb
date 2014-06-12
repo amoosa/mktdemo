@@ -81,8 +81,9 @@ class ListingsController < ApplicationController
     end
 
     def check_user
-      if (current_user != @listing.user)
-        redirect_to root_url, alert: "Sorry, this listing belongs to someone else."
+      if current_user != @listing.userid
+        redirect_to root_url, alert: "Sorry, this listing belongs to someone else"
       end
     end
 end
+
