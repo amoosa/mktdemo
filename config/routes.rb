@@ -6,6 +6,7 @@ Mktdemo::Application.routes.draw do
   get "pages/test"
   get "pages/about"
   get "pages/contact"
+  get 'seller' => "listings#seller"
 
   root 'listings#index'
   # The priority is based upon order of creation: first created -> highest priority.
