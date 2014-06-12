@@ -7,7 +7,7 @@ class ListingsController < ApplicationController
   # GET /listings.json
 
   def seller
-    @listings = Listing.where(user: current_user).order("created_at DESC")
+    @listings = Listing.where(userid: current_user).order("created_at DESC")
   end
 
   def index
