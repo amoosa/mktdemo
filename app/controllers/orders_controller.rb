@@ -45,6 +45,12 @@ class OrdersController < ApplicationController
       flash[:danger] = e.message
     end
 
+  transfer = Stripe::Transfer.create(
+      :amount => (@listing.price * 80).floor, #converting to cents per stripe requirement. 80 percent in cents goes to seller.
+      :currency => "usd",
+      :recipient => @order.seller.recipient
+      )
+
     respond_to do |format|
       if @order.save
         format.html { redirect_to root_url }
@@ -56,7 +62,7 @@ class OrdersController < ApplicationController
     end
   end
 
-  private
+private
     # Use callbacks to share common setup or constraints between actions.
     def set_order
       @order = Order.find(params[:id])
