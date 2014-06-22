@@ -4,4 +4,13 @@ class PagesController < ApplicationController
 
   def contact
   end
+
+  def privacy_policy
+  end
+
+  def terms_conditions
+  end
+
+  def blogger_partnerships
+  end
 end

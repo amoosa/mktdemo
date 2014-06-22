@@ -7,6 +7,11 @@ Mktdemo::Application.routes.draw do
 
   get "pages/about"
   get "pages/contact"
+  get "pages/terms_conditions"
+  get "pages/privacy_policy"
+  get "pages/blogger_partnerships"
+
+
   get 'seller' => "listings#seller"
   get 'sales' => "orders#sales"
   get 'purchases' => "orders#purchases"
