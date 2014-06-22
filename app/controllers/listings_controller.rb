@@ -78,7 +78,7 @@ class ListingsController < ApplicationController
   def destroy
     @listing.destroy
     respond_to do |format|
-      format.html { redirect_to listings_url }
+      format.html { redirect_to listings_url, notice: 'Listing was successfully deleted.' }
       format.json { head :no_content }
     end
   end
@@ -95,9 +95,11 @@ class ListingsController < ApplicationController
     end
 
     def check_user
-      if current_user != @listing.userid
+      if current_user.id != @listing.userid
         redirect_to root_url, alert: "Sorry, this listing belongs to someone else"
       end
     end
 end
 
+
+   
