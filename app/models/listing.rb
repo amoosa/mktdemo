@@ -1,4 +1,5 @@
 class Listing < ActiveRecord::Base
+
 	if Rails.env.development?
 		has_attached_file :image, 
 						  :styles => { :medium => "200x>", :thumb => "100x100>" }, 
@@ -50,7 +51,7 @@ class Listing < ActiveRecord::Base
 	    	             # :dropbox_options => {...}
 		validates_attachment_content_type :image4, :content_type => /\Aimage\/.*\Z/
 	end
-	validates :name, :description, :price, presence: true
+	validates :name, :description, :price, :image, presence: true
 	validates :price, numericality: {greater_than: 0}
 
 	belongs_to :user

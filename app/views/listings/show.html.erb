@@ -3,9 +3,15 @@
   <div class="col-md-6"> 
   	<div class="thumbnail">
   	<%= image_tag @listing.image.url %>
-    <%= image_tag @listing.image2.url %>
+    <% if !@listing.image2.url == "missing.jpg" %>
+      <%= image_tag @listing.image2.url %>
+    <% end %>
+    <% if !@listing.image2.url == "missing.jpg" %>
     <%= image_tag @listing.image3.url %>
+    <% end %>
+    <% if !@listing.image2.url == "missing.jpg" %>
     <%= image_tag @listing.image4.url %>
+    <% end %>
     </div>
   </div>
   <div class="col-md-3"> 
