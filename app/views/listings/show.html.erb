@@ -2,25 +2,30 @@
 <div class="row">
   <div class="col-md-6"> 
   	<div class="thumbnail">
-
-       
+    
       	<%= link_to image_tag(@listing.image.url), @listing.image.url, rel: 'group1', :data => { :colorbox_static => true, :colorbox_height => '600px', :colorbox_width => '600px' } %>
 
-        <% if !@listing.image2.url.include? "missing.jpg" %>
-          <%= link_to image_tag(@listing.image2.url, size: "90x90"), @listing.image2.url, rel: 'group1', :data => { :colorbox_static => true, :colorbox_height => '600px', :colorbox_width => '600px' } %>
-        <% end %>
-
+      <div class="row">
+        <div class="col-md-2">
+            <% if !@listing.image2.url.include? "missing.jpg" %>
+              <%= link_to image_tag(@listing.image2.url, size: "110x100"), @listing.image2.url, rel: 'group1', :data => { :colorbox_static => true, :colorbox_height => '600px', :colorbox_width => '600px' } %>
+            <% end %>
+        </div>
+       <div class="col-md-2">
         <% if !@listing.image3.url.include? "missing.jpg" %>
-          <%= link_to image_tag(@listing.image3.url, size: "90x90"), @listing.image3.url, rel: 'group1', :data => { :colorbox_static => true, :colorbox_height => '600px', :colorbox_width => '600px' } %>
+          <%= link_to image_tag(@listing.image3.url, size: "110x110"), @listing.image3.url, rel: 'group1', :data => { :colorbox_static => true, :colorbox_height => '600px', :colorbox_width => '600px' } %>
         <% end %>
-
+        </div>
+       <div class="col-md-2">
         <% if !@listing.image4.url.include? "missing.jpg" %>
-          <%= link_to image_tag(@listing.image4.url, size: "90x90"), @listing.image4.url, rel: 'group1', :data => { :colorbox_static => true, :colorbox_height => '600px', :colorbox_width => '600px' } %>
+          <%= link_to image_tag(@listing.image4.url, size: "110x110"), @listing.image4.url, rel: 'group1', :data => { :colorbox_static => true, :colorbox_height => '600px', :colorbox_width => '600px' } %>
         <% end %>
+        </div>
+      </div>
 
      </div> 
   </div>
-  <div class="col-md-3"> 
+  <div class="col-md-6"> 
   	<h3><%= @listing.name %></h3>
     <p><%= number_to_currency(@listing.price) %></p>
   	<p><%= @listing.description %></p>
