@@ -6,19 +6,19 @@
       	<%= link_to image_tag(@listing.image.url), @listing.image.url, rel: 'group1', :data => { :colorbox_static => true, :colorbox_height => '600px', :colorbox_width => '600px' } %>
 
       <div class="row">
-        <div class="col-md-2">
+        <div class="col-md-4">
             <% if !@listing.image2.url.include? "missing.jpg" %>
-              <%= link_to image_tag(@listing.image2.url, size: "110x100"), @listing.image2.url, rel: 'group1', :data => { :colorbox_static => true, :colorbox_height => '600px', :colorbox_width => '600px' } %>
+              <%= link_to image_tag(@listing.image2.url, size: "125x125"), @listing.image2.url, rel: 'group1', :data => { :colorbox_static => true, :colorbox_height => '600px', :colorbox_width => '600px' } %>
             <% end %>
         </div>
-       <div class="col-md-2">
+       <div class="col-md-4">
         <% if !@listing.image3.url.include? "missing.jpg" %>
-          <%= link_to image_tag(@listing.image3.url, size: "110x110"), @listing.image3.url, rel: 'group1', :data => { :colorbox_static => true, :colorbox_height => '600px', :colorbox_width => '600px' } %>
+          <%= link_to image_tag(@listing.image3.url, size: "125x125"), @listing.image3.url, rel: 'group1', :data => { :colorbox_static => true, :colorbox_height => '600px', :colorbox_width => '600px' } %>
         <% end %>
         </div>
-       <div class="col-md-2">
+       <div class="col-md-4">
         <% if !@listing.image4.url.include? "missing.jpg" %>
-          <%= link_to image_tag(@listing.image4.url, size: "110x110"), @listing.image4.url, rel: 'group1', :data => { :colorbox_static => true, :colorbox_height => '600px', :colorbox_width => '600px' } %>
+          <%= link_to image_tag(@listing.image4.url, size: "125x125"), @listing.image4.url, rel: 'group1', :data => { :colorbox_static => true, :colorbox_height => '600px', :colorbox_width => '600px' } %>
         <% end %>
         </div>
       </div>
