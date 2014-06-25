@@ -4,18 +4,18 @@
   	<div class="thumbnail"> 
 
        
-      	<%= link_to image_tag(@listing.image.url), @listing.image.url, rel: 'group1', :data => { :colorbox => true, :colorbox_height => '600px', :colorbox_width => '600px' } %>
+      	<%= link_to image_tag(@listing.image.url), @listing.image.url, rel: 'group1', :data => { :colorbox_static => true, :colorbox_height => '600px', :colorbox_width => '600px' } %>
 
         <% if !@listing.image2.url.include? "missing.jpg" %>
-          <%= link_to image_tag(@listing.image2.url), @listing.image2.url, rel: 'group1', :data => { :colorbox => true, :colorbox_height => '600px', :colorbox_width => '600px' } %>
+          <%= link_to image_tag(@listing.image2.url), @listing.image2.url, rel: 'group1', :data => { :colorbox_static => true, :colorbox_height => '600px', :colorbox_width => '600px' } %>
         <% end %>
 
         <% if !@listing.image3.url.include? "missing.jpg" %>
-          <%= link_to image_tag(@listing.image3.url), @listing.image3.url, rel: 'group1', :data => { :colorbox => true, :colorbox_height => '600px', :colorbox_width => '600px' } %>
+          <%= link_to image_tag(@listing.image3.url), @listing.image3.url, rel: 'group1', :data => { :colorbox_static => true, :colorbox_height => '600px', :colorbox_width => '600px' } %>
         <% end %>
 
         <% if !@listing.image4.url.include? "missing.jpg" %>
-          <%= link_to image_tag(@listing.image4.url), @listing.image4.url, rel: 'group1', :data => { :colorbox => true, :colorbox_height => '600px', :colorbox_width => '600px' } %>
+          <%= link_to image_tag(@listing.image4.url), @listing.image4.url, rel: 'group1', :data => { :colorbox_static => true, :colorbox_height => '600px', :colorbox_width => '600px' } %>
         <% end %>
 
     </div>
