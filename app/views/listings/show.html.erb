@@ -1,23 +1,31 @@
 <% provide(:title, @listing.name) %>
 <div class="row">
   <div class="col-md-6"> 
-  	<div class="thumbnail">
-  	<%= image_tag @listing.image.url %>
-    <% if !@listing.image2.url.include? "missing.jpg" %>
-      <%= image_tag @listing.image2.url %>
-    <% end %>
-    <% if !@listing.image3.url.include? "missing.jpg" %>
-      <%= image_tag @listing.image3.url %>
-    <% end %>
-    <% if !@listing.image4.url.include? "missing.jpg" %>
-      <%= image_tag @listing.image4.url %>
-    <% end %>
+  	<div class="thumbnail"> 
+
+       
+      	<%= link_to image_tag(@listing.image.url), "#", :data => { :colorbox => true } %>
+
+        <% if !@listing.image2.url.include? "missing.jpg" %>
+          <%= link_to image_tag(@listing.image2.url), "#", :data => { :colorbox => true } %>
+        <% end %>
+
+        <% if !@listing.image3.url.include? "missing.jpg" %>
+          <%= link_to image_tag(@listing.image3.url), "#", :data => { :colorbox => true } %>
+        <% end %>
+
+        <% if !@listing.image4.url.include? "missing.jpg" %>
+          <%= link_to image_tag(@listing.image4.url), "#", :data => { :colorbox => true } %>
+        <% end %>
+
     </div>
   </div>
   <div class="col-md-3"> 
   	<h3><%= @listing.name %></h3>
     <p><%= number_to_currency(@listing.price) %></p>
   	<p><%= @listing.description %></p>
+    <p><%= link_to "My superb link", "http://cdn1.bigcommerce.com/server1200/f8ce1/products/1063/images/1986/claw-necklace-2__04391.1376940782.1280.1280.jpg?c=2", :data => { :colorbox => true, rel: true, :colorbox_height => '600px', :colorbox_width => '600px' } %></p>
+    <p><%= link_to "My superb link--2", "http://cdn1.bigcommerce.com/server1200/f8ce1/products/1063/images/2055/necklace-length__23959.1384385135.1280.1280.jpg?c=2", :data => { :colorbox => true, rel: true, :colorbox_height => '600px', :colorbox_width => '600px' } %></p>
     <br>
     <%= link_to "Buy this item", new_listing_order_path(@listing), class: "btn btn-primary", data: { no_turbolink: true } %>
   </div>
