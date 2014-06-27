@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-md-4">
     <h3><%= @listing.name %></h3>
-    <h5><%= number_to_currency(@listing.price) %></h4>
+    <h4><%= number_to_currency(@listing.price) %></h4>
     <div class="thumbnail">
       <%= image_tag @listing.image.url %>
     </div>
@@ -27,6 +27,11 @@
       </div>
 
   <h3>Place Order</h3>
+  <h5>Billing Details</h5>
+  <div class="form-group">
+    <%= f.label :name %><i> (as shown on credit card)</i>
+    <%= f.text_field :cardname, class:"form-control" %>
+  </div>
   <div class="form-group">
     <%= f.label :address %>
     <%= f.text_field :address, class:"form-control" %>
@@ -66,8 +71,8 @@
             <%= select_year nil, { start_year: Date.today.year, end_year: Date.today.year+10 }, { :name => nil, :'data-stripe' => "exp-year", class: "form-control" } %>
           </div>
         </div>
+        <br><p><b><font color="green">You will be charged: <%= number_to_currency(@listing.price) %></font></b></p>
       </div>
-
 
   <div class="actions">
     <%= f.submit "Confirm Order", class:"btn btn-success" %>

@@ -70,6 +70,6 @@ private
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:address, :city, :state, :zip)
+      params.require(:order).permit(:cardname, :address, :city, :state, :zip)
     end
 end
