@@ -22,6 +22,7 @@
       <td><%= number_to_currency(order.listing.price) %></td>
       <td><%= order.buyer.name %></td>
       <td><%= order.created_at.strftime("%B %-d, %Y") %></td>
+
     </tr>
   <% end %>
 </table>

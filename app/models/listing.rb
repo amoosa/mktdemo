@@ -51,8 +51,8 @@ class Listing < ActiveRecord::Base
 	    	             # :dropbox_options => {...}
 		validates_attachment_content_type :image4, :content_type => /\Aimage\/.*\Z/
 	end
-	validates :name, :description, :price, :image, presence: true
-	validates :price, numericality: {greater_than: 0}
+	validates :name, :description, :price, :image, :inventory, presence: true
+	validates :price, :inventory, numericality: {greater_than: 0}
 
 	belongs_to :user
 	has_many :orders

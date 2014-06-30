@@ -30,7 +30,13 @@
     <p><%= number_to_currency(@listing.price) %></p>
   	<p><%= @listing.description %></p>
     <br>
-    <%= link_to "Buy this item", new_listing_order_path(@listing), class: "btn btn-primary", data: { no_turbolink: true } %>
+
+        <% if @listing.inventory > 0 %>
+            <%= link_to "Buy this item", new_listing_order_path(@listing), class: "btn btn-primary", data: { no_turbolink: true } %>
+        <% else %>
+          <br><p><b><font color="red">Sorry, we're sold out of this item. </font></b></p>
+        <% end %>
+
   </div>
 </div>
 

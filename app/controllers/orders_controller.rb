@@ -1,6 +1,8 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user! 
+  
+
 
   # GET /orders
   # GET /orders.json
@@ -38,9 +40,10 @@ class OrdersController < ApplicationController
       charge = Stripe::Charge.create(
         :amount => (@listing.price * 100).floor,
         :currency => "usd",
-        :card => token
+        :card => token,
+        :description => "Charge from OutfitAdditions"
         )
-      flash[:notice] = "Thanks for ordering!"
+      flash[:notice] = "Thank you for your order!"
     rescue Stripe::CardError => e
       flash[:danger] = e.message
     end
@@ -48,7 +51,8 @@ class OrdersController < ApplicationController
   transfer = Stripe::Transfer.create(
       :amount => (@listing.price * 80).floor, #converting to cents per stripe requirement. 80 percent in cents goes to seller.
       :currency => "usd",
-      :recipient => @order.seller.recipient
+      :recipient => @order.seller.recipient,
+      :description => "Transfer from OutfitAdditions"
       )
 
     respond_to do |format|
@@ -59,8 +63,12 @@ class OrdersController < ApplicationController
         format.html { render action: 'new' }
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end
-    end
   end
+
+end
+
+
+ 
 
 private
     # Use callbacks to share common setup or constraints between actions.
