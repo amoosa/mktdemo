@@ -15,12 +15,16 @@ class OrdersController < ApplicationController
     @orders = Order.all.where(buyer: current_user).order("created_at DESC")
   end
 
+  def thankyou
+  end
+
 
     # GET /orders/new
   def new
     @order = Order.new
     @listing = Listing.find(params[:listing_id])
   end
+
 
    # POST /orders
   # POST /orders.json
@@ -43,7 +47,7 @@ class OrdersController < ApplicationController
         :card => token,
         :description => "Charge from OutfitAdditions"
         )
-      flash[:notice] = "Thank you for your order!"
+      #flash[:notice] = "Thank you for your order!"
     rescue Stripe::CardError => e
       flash[:danger] = e.message
     end
@@ -57,7 +61,7 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       if @order.save
-        format.html { redirect_to root_url }
+        format.html { redirect_to thankyou_url }
         format.json { render action: 'show', status: :created, location: @order }
       else
         format.html { render action: 'new' }
@@ -78,6 +82,7 @@ private
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:cardname, :address, :city, :state, :zip)
+      params.require(:order).permit(:shipname, :shipaddress, :shipcity, :shipstate, :shipzip,
+                                    :cardname, :address, :city, :state, :zip)
     end
 end

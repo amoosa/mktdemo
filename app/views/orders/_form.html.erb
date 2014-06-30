@@ -27,7 +27,29 @@
       </div>
 
   <h3>Place Order</h3>
-  <h5>Billing Details</h5>
+  <h4><b>Shipping Details</b></h4>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :shipname, class:"form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :address %>
+    <%= f.text_field :shipaddress, class:"form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :city %>
+    <%= f.text_field :shipcity, class:"form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :state %>
+    <%= f.text_field :shipstate, class:"form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :zip %>
+    <%= f.text_field :shipzip, class:"form-control" %>
+  </div>
+
+  <h4><b>Billing Details</b></h4>
   <div class="form-group">
     <%= f.label :name %><i> (as shown on credit card)</i>
     <%= f.text_field :cardname, class:"form-control" %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140628134433) do
+ActiveRecord::Schema.define(version: 20140630221454) do
 
   create_table "listings", force: true do |t|
     t.string   "name"
@@ -50,6 +50,11 @@ ActiveRecord::Schema.define(version: 20140628134433) do
     t.integer  "buyer_id"
     t.integer  "seller_id"
     t.string   "cardname"
+    t.string   "shipname"
+    t.string   "shipaddress"
+    t.string   "shipcity"
+    t.string   "shipstate"
+    t.string   "shipzip"
   end
 
   create_table "users", force: true do |t|

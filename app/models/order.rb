@@ -1,5 +1,6 @@
 class Order < ActiveRecord::Base
-	validates :cardname, :address, :city, :state, :zip, presence: true
+	validates :cardname, :address, :city, :state, :zip, 
+	          :shipname, :shipaddress, :shipcity, :shipstate, :shipzip, presence: true
 
 	belongs_to :listing
 	belongs_to :buyer, class_name: "User"
