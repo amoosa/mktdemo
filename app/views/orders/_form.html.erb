@@ -36,18 +36,26 @@
     <%= f.label :address %>
     <%= f.text_field :shipaddress, class:"form-control" %>
   </div>
-  <div class="form-group">
-    <%= f.label :city %>
-    <%= f.text_field :shipcity, class:"form-control" %>
+<div class="row">
+  <div class = "col-md-4">
+      <div class="form-group">
+        <%= f.label :city %>
+        <%= f.text_field :shipcity, class:"form-control" %>
+      </div>
   </div>
-  <div class="form-group">
-    <%= f.label :state %>
-    <%= f.text_field :shipstate, class:"form-control" %>
+  <div class = "col-md-4">
+    <div class="form-group">
+        <%= f.label :state %>
+        <%= f.select(:shipstate, options_for_select(us_states), {prompt: "Select"}, {class: "form-control"}) %>
+    </div>  
   </div>
-  <div class="form-group">
-    <%= f.label :zip %>
-    <%= f.text_field :shipzip, class:"form-control" %>
+  <div class = "col-md-4">
+      <div class="form-group">
+        <%= f.label :zip %>
+        <%= f.text_field :shipzip, class:"form-control" %>
+      </div>
   </div>
+</div>
 
   <h4><b>Billing Details</b></h4>
   <div class="form-group">
@@ -58,18 +66,27 @@
     <%= f.label :address %>
     <%= f.text_field :address, class:"form-control" %>
   </div>
-  <div class="form-group">
-    <%= f.label :city %>
-    <%= f.text_field :city, class:"form-control" %>
+
+<div class="row">
+  <div class = "col-md-4">
+      <div class="form-group">
+        <%= f.label :city %>
+        <%= f.text_field :city, class:"form-control" %>
+      </div>
   </div>
-  <div class="form-group">
-    <%= f.label :state %>
-    <%= f.text_field :state, class:"form-control" %>
+  <div class = "col-md-4">
+      <div class="form-group">
+        <%= f.label :state %>
+        <%= f.select(:state, options_for_select(us_states), {prompt: "Select"}, {class: "form-control"}) %>
+      </div>
   </div>
-  <div class="form-group">
-    <%= f.label :zip %>
-    <%= f.text_field :zip, class:"form-control" %>
+  <div class = "col-md-4">
+      <div class="form-group">
+        <%= f.label :zip %>
+        <%= f.text_field :zip, class:"form-control" %>
+      </div>
   </div>
+</div>
 
   <div class="form-group">
         <div class="row">
@@ -96,9 +113,12 @@
         <br><p><b><font color="green">You will be charged: <%= number_to_currency(@listing.price) %></font></b></p>
       </div>
 
-
   <div class="actions">
     <%= f.submit "Confirm Order", class:"btn btn-success" %>
   </div>
 
 <% end %>
+
+<br>
+<%= link_to 'Back', listing_path(@listing) %>
+</div>

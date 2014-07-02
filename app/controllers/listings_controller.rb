@@ -83,6 +83,7 @@ class ListingsController < ApplicationController
     end
   end
 
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_listing
