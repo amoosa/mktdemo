@@ -63,6 +63,7 @@ class OrdersController < ApplicationController
       if @order.save
         format.html { redirect_to thankyou_url }
         format.json { render action: 'show', status: :created, location: @order }
+        AutoNotifier.orderconf_email(current_user).deliver
       else
         format.html { render action: 'new' }
         format.json { render json: @order.errors, status: :unprocessable_entity }
