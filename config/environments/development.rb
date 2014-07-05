@@ -13,8 +13,8 @@ Mktdemo::Application.configure do
     address:              'smtp.gmail.com',
     port:                 587,
     #domain:               'outfitadditions.com',
-    user_name:            'ashfaaqmoosa@gmail.com',
-    password:             '1dashing',
+    user_name:            ENV['GMAIL_USERNAME'],
+    password:             ENV['GMAIL_PWD'],
     authentication:       'plain',
     enable_starttls_auto: true  }
 
