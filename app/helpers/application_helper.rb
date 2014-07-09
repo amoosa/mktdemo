@@ -68,4 +68,14 @@ module ApplicationHelper
     ]
  end
 
+ def categories
+    [
+      ['Necklaces'],
+      ['Earrings'],
+      ['Bracelets'],
+      ['Rings'],
+      ['Other'],
+    ]
+ end
+
 end

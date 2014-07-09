@@ -54,7 +54,7 @@ class Listing < ActiveRecord::Base
 
 
 
-	validates :name, :description, :price, :inventory, presence: true
+	validates :name, :description, :price, :inventory, :category, presence: true
 	validates :price, :inventory, numericality: {greater_than: 0}
 
 	belongs_to :user

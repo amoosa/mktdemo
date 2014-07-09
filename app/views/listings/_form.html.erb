@@ -24,13 +24,25 @@
     <%= f.label :description %>
     <%= f.text_area :description, class:"form-control" %>
   </div>
-  <div class="form-group">
-    <%= f.label :price %>
-    <%= f.text_field :price, class:"form-control" %>
-  </div>
-  <div class="form-group">
-    <%= f.label :inventory %><i> (number of pieces in stock)</i>
-    <%= f.text_field :inventory, class:"form-control" %>
+  <div class="row">
+      <div class = "col-md-4">
+        <div class="form-group">
+          <%= f.label :price %>
+          <%= f.text_field :price, class:"form-control" %>
+        </div>
+      </div>
+      <div class = "col-md-4">
+        <div class="form-group">
+          <%= f.label :category %>
+          <%= f.select(:category, options_for_select(categories), {prompt: "Select"}, {class: "form-control"}) %>
+        </div>  
+      </div>
+    <div class = "col-md-4">
+        <div class="form-group">
+          <%= f.label :inventory %><i> (number of pieces in stock)</i>
+          <%= f.text_field :inventory, class:"form-control" %>
+        </div>
+    </div>
   </div>
   <div class="form-group">
     <%= f.label :image %><i> (required)</i>
