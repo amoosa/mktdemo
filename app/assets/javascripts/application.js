@@ -24,5 +24,6 @@ $(document).ready(function() {
 jQuery ->
   $("a.group1").fancybox({
       'width'  :   700,
-      'height'  :   700
+      'height'  :   700,
+      'cyclic'  : 'true'
   });
