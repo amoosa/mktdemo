@@ -20,3 +20,9 @@
 $(document).ready(function() {
   $("a.fancybox").fancybox();
 });
+
+jQuery ->
+  $("a.group1").fancybox({
+      'width'  :   700,
+      'height'  :   700
+  });
