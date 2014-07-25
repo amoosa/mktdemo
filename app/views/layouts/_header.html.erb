@@ -23,9 +23,10 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.name %><b class="caret"></b></a>
           <ul class="dropdown-menu">
             <li><%= link_to "Your Purchases", purchases_path  %></li>
+            <li><%= link_to "List Items for Sale", new_listing_path  %></li>
             <li><%= link_to "Manage Listings", seller_path  %></li>
             <li><%= link_to "Sold Listings", sales_path  %></li>
-            <li><%= link_to "Edit Profile", edit_user_registration_path  %></li>
+            <li><%= link_to "Profile Info", edit_user_registration_path  %></li>
           </ul>
           </li>
           <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete  %></li>

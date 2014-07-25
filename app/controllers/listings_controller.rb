@@ -83,6 +83,15 @@ class ListingsController < ApplicationController
     end
   end
 
+    def import
+    begin
+      Listing.import(params[:file])
+      redirect_to root_url, notice: "Products imported."
+    rescue
+      redirect_to root_url, notice: "Invalid CSV file format."
+    end
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

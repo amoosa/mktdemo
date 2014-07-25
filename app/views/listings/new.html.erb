@@ -1,4 +1,16 @@
-<h2>New listing</h2>
+<h3>Option 1: Import a CSV File</h3>
+  <%= form_tag import_listings_path, multipart: true do %>
+    <div class="row">
+      <div class = "col-md-4">
+        <div class="form-group"> <%= file_field_tag :file, class:"form-control" %> </div>
+      </div>
+      <div class = "col-md-3">
+          <div class="form-group"> <%= submit_tag "Import CSV", class:"btn btn-primary" %> </div>
+      </div>
+    </div>
+  <% end %>
+
+<h3>Option 2: List New Items Manually</h3>
 
 <%= render 'form' %>
 

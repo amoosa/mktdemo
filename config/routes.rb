@@ -6,6 +6,10 @@ Mktdemo::Application.routes.draw do
     resources :orders, only: [:new, :create]
   end
 
+  resources :listings do
+    collection { post :import }
+  end
+
   get "pages/about"
   get "pages/contact"
   get "pages/terms_conditions"
