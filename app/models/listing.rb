@@ -61,11 +61,11 @@ class Listing < ActiveRecord::Base
       #listing_hash = row.to_hash
       listing_hash = {:name => row['Name'], :description => row['Description'], :price => row['Price'],
       					:inventory => row['Inventory'], :category => row['Category'], 
-      					:image => URI.parse(row['Image']), :image2 => row['Image2'],
-      					:image3 => row['Image3'],:image4 => row['Image4'] } 
-      listing = Listing.where(id: listing_hash["id"])
+      					:image => URI.parse(row['Image']), :image2 => URI.parse(row['Image2']),
+      					:image3 => URI.parse(row['Image3']),:image4 => URI.parse(row['Image4']) } 
+      listing = Listing.where(name: listing_hash["name"])
 
-      if listing.count == 1
+      if listing.count == 1 && listing.userid = current_user.id
         listing.first.update_attributes(listing_hash)
       else
         Listing.create!(listing_hash)
