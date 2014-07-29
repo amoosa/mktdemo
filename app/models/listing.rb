@@ -68,8 +68,8 @@ class Listing < ActiveRecord::Base
 		  :image3 => URI.parse(row['Image3']), :image4 => URI.parse(row['Image4']),
 		  :userid => userid}
 
-		  #listing = Listing.find_or_create_by!(name)
-		  listing = Listing.find_or_create_by!(name => listing_hash["name"])
+		  listing = Listing.find_or_create_by!(name)
+		  #listing = Listing.find_or_create_by!(name => listing_hash["name"])
           listing.update_attributes(listing_hash)
 
 		 
