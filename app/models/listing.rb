@@ -69,7 +69,7 @@ class Listing < ActiveRecord::Base
 		  :userid => userid}
 
 		  #listing = Listing.find_or_create_by!(name)
-		  listing = Listing.find_or_create_by!(name: listing_hash["name"])
+		  listing = Listing.find_or_create_by!(name => listing_hash["name"])
           listing.update_attributes(listing_hash)
 
 		 
