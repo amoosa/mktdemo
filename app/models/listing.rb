@@ -52,26 +52,32 @@ class Listing < ActiveRecord::Base
 		validates_attachment_content_type :image4, :content_type => /\Aimage\/.*\Z/
 	end
 
+	def self.search(query)
+	  where("description like ? or name like ?", "%#{query}%", "%#{query}%")
+	end
+
   require 'csv'
   require 'open-uri'
 
-  def self.import(file)
-    CSV.foreach(file.path, headers: true) do |row|
+	def self.import(file, userid)
+		CSV.foreach(file.path, headers: true) do |row|
 
-      #listing_hash = row.to_hash
-      listing_hash = {:name => row['Name'], :description => row['Description'], :price => row['Price'],
-      					:inventory => row['Inventory'], :category => row['Category'], 
-      					:image => URI.parse(row['Image']), :image2 => URI.parse(row['Image2']),
-      					:image3 => URI.parse(row['Image3']),:image4 => URI.parse(row['Image4']) } 
-      listing = Listing.where(name: listing_hash["name"])
 
-      if listing.count == 1 && listing.userid = current_user.id
-        listing.first.update_attributes(listing_hash)
-      else
-        Listing.create!(listing_hash)
-      end # end if !product.nil?
-    end # end CSV.foreach
-  end # end self.import(file)
+          listing_hash = {:name => row['Name'], :description => row['Description'], 
+		  :price => row['Price'], :category => row['Category'], :inventory => row['Inventory'],
+		  :image => URI.parse(row['Image']), :image2 => URI.parse(row['Image2']),
+		  :image3 => URI.parse(row['Image3']), :image4 => URI.parse(row['Image4']),
+		  :userid => userid}
+
+		  listing = Listing.where(name: listing_hash["name"]) #is name the right unique value. should i add sku?
+
+		  if listing.count == 1 #this doesn't update. need to fix.
+		    listing.first.update_attributes(listing_hash)
+		  else
+		    Listing.create!(listing_hash)
+		   end # end if !product.nil?
+		end # end CSV.foreach
+	end # end self.import(file)
 
 	validates :name, :description, :price, :inventory, :category, presence: true
 	validates :price, :inventory, numericality: {greater_than: 0}

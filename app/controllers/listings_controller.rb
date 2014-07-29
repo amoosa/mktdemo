@@ -11,7 +11,11 @@ class ListingsController < ApplicationController
   end
 
   def index
-    @listings = Listing.all.order("created_at DESC")
+      @listings = Listing.all.order("created_at DESC")
+  end
+
+  def search
+    @listings = Listing.search(params[:search]).order("created_at DESC")
   end
 
   # GET /listings/1
@@ -85,7 +89,7 @@ class ListingsController < ApplicationController
 
     def import
     begin
-      Listing.import(params[:file])
+      Listing.import(params[:file], params[:userid])
       redirect_to root_url, notice: "Products imported."
     rescue
       redirect_to root_url, notice: "Invalid CSV file format."

@@ -21,6 +21,7 @@ Mktdemo::Application.routes.draw do
   get 'sales' => "orders#sales"
   get 'purchases' => "orders#purchases"
   get 'thankyou' => "orders#thankyou"
+  get 'search' => "listings#search"
 
   root 'listings#index'
   # The priority is based upon order of creation: first created -> highest priority.

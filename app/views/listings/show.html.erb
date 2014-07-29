@@ -33,6 +33,10 @@
   	<p><%= @listing.description %></p>
     <br>
 
+    <% if @listing.inventory = 1 %>
+        <br><p><b><font color="red">Only 1 piece left. </font></b></p>
+    <% end %>
+
         <% if @listing.inventory > 0 %>
             <%= link_to "Buy this item", new_listing_order_path(@listing), class: "btn btn-primary", data: { no_turbolink: true } %>
         <% else %>
