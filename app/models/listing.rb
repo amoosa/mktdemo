@@ -62,20 +62,16 @@ class Listing < ActiveRecord::Base
 	def self.import(file, userid)
 		CSV.foreach(file.path, headers: true) do |row|
 
-
           listing_hash = {:name => row['Name'], :description => row['Description'], 
 		  :price => row['Price'], :category => row['Category'], :inventory => row['Inventory'],
 		  :image => URI.parse(row['Image']), :image2 => URI.parse(row['Image2']),
 		  :image3 => URI.parse(row['Image3']), :image4 => URI.parse(row['Image4']),
 		  :userid => userid}
 
-		  listing = Listing.where(name: listing_hash["name"]) #is name the right unique value. should i add sku?
+		  listing = Listing.find_or_create_by_name(name)
+          listing.update_attributes(listing_hash)
 
-		  if listing.count == 1 #this doesn't update. need to fix.
-		    listing.first.update_attributes(listing_hash)
-		  else
-		    Listing.create!(listing_hash)
-		   end # end if !product.nil?
+		 
 		end # end CSV.foreach
 	end # end self.import(file)
 
