@@ -68,9 +68,17 @@ class Listing < ActiveRecord::Base
 		  :image3 => URI.parse(row['Image3']), :image4 => URI.parse(row['Image4']),
 		  :userid => userid}
 
-		  listing = Listing.find_or_create_by(name)
+		  #isting = Listing.find_or_create_by(name)
 		  #listing = Listing.find_or_create_by!(name => listing_hash["name"])
-          listing.update_attributes(listing_hash)
+          #listing.update_attributes(listing_hash)
+
+          listing = Listing.where(name: listing_hash["name"]) #is name the right unique value. should i add sku?
+
+          if listing.count == 1 #this doesn't update. need to fix.
+            listing.first.update_attributes(listing_hash)
+          else
+            Listing.create!(listing_hash)
+          end # end if !product.nil?
 
 		 
 		end # end CSV.foreach
