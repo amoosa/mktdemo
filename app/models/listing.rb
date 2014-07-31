@@ -60,7 +60,7 @@ class Listing < ActiveRecord::Base
   require 'open-uri'
 
 	def self.import(file, userid)
-		CSV.foreach(file.path, headers: true) do |row|
+		CSV.foreach(file.path, headers: true, skip_blanks: true) do |row|
 
           listing_hash = {:name => row['Name'], :description => row['Description'], 
 		  :price => row['Price'], :category => row['Category'], :inventory => row['Inventory'],

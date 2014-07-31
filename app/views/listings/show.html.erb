@@ -8,17 +8,17 @@
      </div> 
 
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-4 col-xs-4">
             <% if !@listing.image2.url.include? "missing.jpg" %>
               <%= link_to image_tag(@listing.image2.url, size: "125x125"), @listing.image2.url %>
             <% end %>
         </div>
-       <div class="col-md-4">
+       <div class="col-md-4 col-xs-4">
         <% if !@listing.image3.url.include? "missing.jpg" %>
           <%= link_to image_tag(@listing.image3.url, size: "125x125"), @listing.image3.url %>
         <% end %>
         </div>
-       <div class="col-md-4">
+       <div class="col-md-4 col-xs-4">
         <% if !@listing.image4.url.include? "missing.jpg" %>
           <%= link_to image_tag(@listing.image4.url, size: "125x125"), @listing.image4.url %>
         <% end %>
@@ -33,15 +33,17 @@
   	<p><%= @listing.description %></p>
     <br>
 
-    <% if @listing.inventory = 1 %>
-        <br><p><b><font color="red">Only 1 piece left. </font></b></p>
-    <% end %>
+         <% if @listing.inventory == 1 %>
+             <br><p><b><font color="red">Only 1 piece left. </font></b></p>
+         <% end %>
 
         <% if @listing.inventory > 0 %>
             <%= link_to "Buy this item", new_listing_order_path(@listing), class: "btn btn-primary", data: { no_turbolink: true } %>
         <% else %>
           <br><p><b><font color="red">Sorry, we're sold out of this item. </font></b></p>
         <% end %>
+
+         
 
   </div>
 </div>
