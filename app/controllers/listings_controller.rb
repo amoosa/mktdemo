@@ -90,9 +90,9 @@ class ListingsController < ApplicationController
     def import
     begin
       Listing.import(params[:file], params[:userid])
-      redirect_to seller_url, notice: "Products imported."
+      redirect_to root_url, notice: "Products imported."
     rescue
-      redirect_to seller_url, notice: "Invalid CSV file format."
+      redirect_to root_url, notice: "Invalid CSV file format."
     end
   end
 

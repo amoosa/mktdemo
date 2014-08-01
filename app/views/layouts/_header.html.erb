@@ -38,8 +38,8 @@
 
           <%= form_tag(search_path, :method => "get", id: "search-form", class:"navbar-form navbar-left") do %>
             <%= text_field_tag :search, params[:search], placeholder: "Search by color or style...", :size => "30", class:"form-control" %>
-            <%= submit_tag "Search", :name => nil, class:"btn btn-default" %>
-          <% end %>
+                <%= submit_tag "Search", :name => nil, class:"btn btn-default" %>
+              <% end %>
 
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

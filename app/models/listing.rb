@@ -63,10 +63,13 @@ class Listing < ActiveRecord::Base
 		CSV.foreach(file.path, headers: true, skip_blanks: true) do |row|
 
           listing_hash = {:name => row['Name'], :description => row['Description'], 
-		  :price => row['Price'], :category => row['Category'], :inventory => row['Inventory'],
-		  :image => URI.parse(row['Image']), :image2 => URI.parse(row['Image2']),
-		  :image3 => URI.parse(row['Image3']), :image4 => URI.parse(row['Image4']),
-		  :userid => userid}
+  						  :price => row['Price'], :category => row['Category'], :inventory => row['Inventory'],
+  						  :userid => userid}.tap do |list_hash|
+						    list_hash[:image] = URI.parse(row['Image']) if row['Image']
+						    list_hash[:image2] = URI.parse(row['Image2']) if row['Image2'] 
+						    list_hash[:image3] = URI.parse(row['Image3']) if row['Image3'] 
+						    list_hash[:image4] = URI.parse(row['Image4']) if row['Image4'] 
+  								end
 
 		  #isting = Listing.find_or_create_by(name)
 		  #listing = Listing.find_or_create_by!(name => listing_hash["name"])
