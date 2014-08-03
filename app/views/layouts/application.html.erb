@@ -14,7 +14,10 @@
 
         <script>
             jQuery(document).ready(function () {
-               $('a.gallery').colorbox({
+
+            	 jQuery('a.gallery').colorbox({opacity: ".8", transition:"none", width:"70%", height:"95%"});
+            	 
+                  $('a.gallery').colorbox({  
     			 'onComplete': function(){ 
         		  $('#cboxLoadedContent img').wrap('<span style="display:inline-block"></span>')
 	                .css('display', 'block')
