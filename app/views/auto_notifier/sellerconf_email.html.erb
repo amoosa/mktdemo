@@ -4,7 +4,7 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-       <!-- <p><%= link_to image_tag("/assets/images/logo2014.jpg"), "http://www.outfitadditions.com" %></p> -->
+       <p><%= link_to image_tag("logo2014.jpg"), "http://www.outfitadditions.com" %></p>
        <p>
          Dear <%= @order.seller.name %>, <br><br>You have a new order at Outfit Additions. <br><br>
          <b>Item ordered:</b> <%= @order.listing.name %><br>

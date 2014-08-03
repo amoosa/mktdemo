@@ -11,6 +11,12 @@
   <%= csrf_meta_tags %>
   <%= tag :meta, :name => "stripe-key", :content => ENV["STRIPE_PUBLIC_KEY"] %>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <script>
+            jQuery(document).ready(function () {
+                jQuery('a.gallery').colorbox( {opacity: ".8", transition:"none", width:"70%", height:"95%"} );
+            });
+        </script>
 </head>
 <body>
 	<%= render 'layouts/header' %>

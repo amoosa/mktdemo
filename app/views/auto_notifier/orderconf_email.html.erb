@@ -4,19 +4,19 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-       <!-- <p><%= link_to image_tag("/assets/images/logo2014.jpg"), "http://www.outfitadditions.com" %></p> -->
+       <p><%= link_to image_tag("logo2014.jpg"), "http://www.outfitadditions.com" %></p>
        <p>
          Dear <%= @buyer.name %>, <br><br>Thank you for your order at Outfit Additions. <br><br>
          <b>Item ordered:</b> <%= @order.listing.name %><br>
          <b>Total:</b> <%= number_to_currency(@order.listing.price) %>
        </p>
 
-         <b>Billed to: </b>
+         <b>Billed to: </b><br>
            <%= @order.cardname %><br>
            <%= @order.address %><br>
            <%= "#{@order.state}, #{@order.zip}" %><br><br>
 
-          <b>Shipped to: </b>
+          <b>Shipped to: </b><br>
            <%= @order.shipname %><br>
            <%= @order.shipaddress %><br>
            <%= "#{@order.shipstate}, #{@order.shipzip}" %><br>
