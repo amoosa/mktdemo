@@ -6,22 +6,21 @@
   <body>
        <!-- <p><%= link_to image_tag("/assets/images/logo2014.jpg"), "http://www.outfitadditions.com" %></p> -->
        <p>
-         Dear <%= @buyer.name %>, <br><br>Thank you for your order at Outfit Additions. <br><br>
+         Dear <%= @order.seller.name %>, <br><br>You have a new order at Outfit Additions. <br><br>
          <b>Item ordered:</b> <%= @order.listing.name %><br>
-         <b>Total:</b> <%= number_to_currency(@order.listing.price) %>
+         <b>Sold for:</b> <%= number_to_currency(@order.listing.price) %>
        </p>
 
-         <b>Billed to: </b>
-           <%= @order.cardname %><br>
-           <%= @order.address %><br>
-           <%= "#{@order.state}, #{@order.zip}" %><br><br>
-
-          <b>Shipped to: </b>
+          <b>Ship the item to: </b><br>
            <%= @order.shipname %><br>
            <%= @order.shipaddress %><br>
            <%= "#{@order.shipstate}, #{@order.shipzip}" %><br>
+           customer email: <%= @buyer.email %><br>
 
-       <p>Your order will ship in 1-2 business days. To check your order details, please login at <%= @url %>.</p>
+       <p><b>Please ship this order within 1-2 business days. After the item is shipped, please email the customer at the above email address with the tracking number.</b></p>
+
+       <p>To check sales details and manage your account, please login at <%= @url %>.</p>
+
        <p>--The Outfit Additions team</p>
     
   </body>

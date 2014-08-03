@@ -1,10 +1,21 @@
-Thank you for your order, <%= @user %>
-===============================================
- 
-You have successfully signed up to outfitadditions.com,
+Dear <%= @buyer.name %>, 
 
-Add some text here to list the item ordered and price. You will recieve another email when your item ships.
- 
-To login to the site or reset your password, please follow this link: <%= @url %>.
- 
-Thanks again and have a great day!
+Thank you for your order at Outfit Additions. 
+
+Item ordered: <%= @order.listing.name %>.
+Total: <%= number_to_currency(@order.listing.price) %>.
+
+
+ Billed to:
+ <%= @order.cardname %>.
+ <%= @order.address %>.
+ <%= "#{@order.state}, #{@order.zip}" %>.
+
+ Shipped to: 
+ <%= @order.shipname %>.
+ <%= @order.shipaddress %>.
+ <%= "#{@order.shipstate}, #{@order.shipzip}" %>.
+
+Your order will ship in 1-2 business days. To check your order details, please login at <%= @url %>.
+
+--The Outfit Additions team

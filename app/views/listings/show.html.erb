@@ -3,27 +3,31 @@
   <div class="col-md-6"> 
   	<div class="thumbnail">
     
-      	<%= link_to image_tag(@listing.image.url), @listing.image.url %>
+      	<%= link_to image_tag(@listing.image.url), @listing.image.url, rel:'gallery' %>
 
      </div> 
 
       <div class="row">
         <div class="col-md-4 col-xs-4">
             <% if !@listing.image2.url.include? "missing.jpg" %>
-              <%= link_to image_tag(@listing.image2.url, size: "125x125"), @listing.image2.url %>
+              <%= link_to image_tag(@listing.image2.url, size: "125x125"), @listing.image2.url, rel:'gallery' %>
             <% end %>
         </div>
        <div class="col-md-4 col-xs-4">
         <% if !@listing.image3.url.include? "missing.jpg" %>
-          <%= link_to image_tag(@listing.image3.url, size: "125x125"), @listing.image3.url %>
+          <%= link_to image_tag(@listing.image3.url, size: "125x125"), @listing.image3.url, rel:'gallery' %>
         <% end %>
         </div>
        <div class="col-md-4 col-xs-4">
         <% if !@listing.image4.url.include? "missing.jpg" %>
-          <%= link_to image_tag(@listing.image4.url, size: "125x125"), @listing.image4.url %>
+          <%= link_to image_tag(@listing.image4.url, size: "125x125"), @listing.image4.url, rel:'gallery' %>
         <% end %>
         </div>
       </div>
+
+        <script>
+            jQuery('a.gallery').colorbox();
+        </script>
 
   </div>
   <div class="col-md-6"> 

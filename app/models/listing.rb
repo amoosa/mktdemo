@@ -74,8 +74,8 @@ class Listing < ActiveRecord::Base
 		  #isting = Listing.find_or_create_by(name)
 		  #listing = Listing.find_or_create_by!(name => listing_hash["name"])
           #listing.update_attributes(listing_hash)
-
-          listing = Listing.where(name: listing_hash["name"]) #is name the right unique value. should i add sku?
+         
+          listing = Listing.where(name: listing_hash[:name], userid: listing_hash[:userid]) 
 
           if listing.count == 1 #this doesn't update. need to fix.
             listing.first.update_attributes(listing_hash)

@@ -1,0 +1,17 @@
+Dear <%= @order.seller.name %>, You have a new order at Outfit Additions. 
+Item ordered: <%= @order.listing.name %>
+Sold for: <%= number_to_currency(@order.listing.price) %>
+
+
+Ship the item to: 
+<%= @order.shipname %>
+<%= @order.shipaddress %>
+<%= "#{@order.shipstate}, #{@order.shipzip}" %>
+customer email: <%= @buyer.email %>
+
+Please ship this order within 1-2 business days. After the item is shipped, please email the customer at the above email address with the tracking number.
+
+To check sales details and manage your account, please login at <%= @url %>.</p>
+
+--The Outfit Additions team
+    
