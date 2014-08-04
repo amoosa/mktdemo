@@ -13,19 +13,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <script>
-            jQuery(document).ready(function () {
-
-            	 jQuery('a.gallery').colorbox({opacity: ".8", transition:"none", width:"70%", height:"95%"});
-            	 
-                  $('a.gallery').colorbox({  
-    			 'onComplete': function(){ 
-        		  $('#cboxLoadedContent img').wrap('<span style="display:inline-block"></span>')
-	                .css('display', 'block')
-	                .parent()
-	                .zoom();
-   					 }
-					});
-                   });
+			$(document).ready(function(){
+			  $('a.gallery').zoom();
+			});
         </script>
 </head>
 <body>
