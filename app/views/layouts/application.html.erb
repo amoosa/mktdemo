@@ -13,9 +13,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <script>
-			$(document).ready(function(){
-			  $('a.gallery').zoom();
-			});
+            jQuery(document).ready(function () {
+			    $('a.gallery')
+			    .wrap('<span align="center" style="display:inline-block"></span>')
+			    .css('display', 'block')
+			    .parent()
+			    .zoom();
+                   });
         </script>
 </head>
 <body>
