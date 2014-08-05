@@ -44,5 +44,15 @@ Mktdemo::Application.configure do
 # required for devise install
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
 
+Paperclip.options[:command_path] = 'C:\Program Files\ImageMagick-6.8.9-Q16'
+
+          require 'paperclip/media_type_spoof_detector'
+          module Paperclip
+            class MediaTypeSpoofDetector
+              def spoofed?
+                false
+              end
+            end
+          end
 
 end
