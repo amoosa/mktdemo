@@ -1,13 +1,13 @@
 <% provide(:title, @listing.name) %>
 <div class="row">
   <div class="col-md-6"> 
-  	<div class="thumbnail">
+  	<div class="thumbnail" id="mainimg">
     
       	<%= link_to image_tag(@listing.image.url), @listing.image.url %>
 
      </div> 
 
-      <div class="row">
+      <div class="row" id="thumbnail">
         <div class="col-md-2 col-xs-4">
             <% if !@listing.image2.url.include? "missing.jpg" %>
               <%= link_to image_tag(@listing.image2.url, size: "90x90"), @listing.image2.url %>
@@ -24,7 +24,11 @@
         <% end %>
         </div>
       </div>
-
+          <script> 
+              $(".thumbnail").click(function() {
+                  $("#mainimg").attr("src", $(this).attr("src"));
+              });
+          </script>
       
 
   </div>
