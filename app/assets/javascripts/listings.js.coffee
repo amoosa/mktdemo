@@ -5,7 +5,7 @@ jQuery ->
 listing =
   setupForm: ->
     $('#new_listing').submit ->
-     if $('input').length > 11
+     if $('input').length > 19
         $('input[type=submit]').attr('disabled', true)
         Stripe.bankAccount.createToken($('#new_listing'), listing.handleStripeResponse)
         false
