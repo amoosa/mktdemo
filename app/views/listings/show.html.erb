@@ -3,36 +3,36 @@
   <div class="col-md-6"> 
   	<div class="thumbnail">
     
-      	<%= link_to image_tag(@listing.image.url, id: "mainImage", class: "zoom"), @listing.image.url %>
+      	<%= link_to image_tag(@listing.image.url, id: "mainImage", class: "zoom img-responsive"), @listing.image.url %>
 
      </div> 
     
       <div class="row">
           <div class="col-md-2 col-xs-3">
             <% if !@listing.image.url.include? "missing.jpg" %>
-              <%= link_to image_tag(@listing.image.url, size: "90x90"), @listing.image.url, class: "tnail" %>
+              <%= link_to image_tag(@listing.image.url, size: "90x90"), @listing.image.url, class: "tnail img-responsive" %>
             <% end %>
         </div>
         <div class="col-md-2 col-xs-3">
             <% if !@listing.image2.url.include? "missing.jpg" %>
-              <%= link_to image_tag(@listing.image2.url, size: "90x90"), @listing.image2.url, class: "tnail" %>
+              <%= link_to image_tag(@listing.image2.url, size: "90x90"), @listing.image2.url, class: "tnail img-responsive" %>
             <% end %>
         </div>
        <div class="col-md-2 col-xs-3">
         <% if !@listing.image3.url.include? "missing.jpg" %>
-          <%= link_to image_tag(@listing.image3.url, size: "90x90"), @listing.image3.url, class: "tnail" %>
+          <%= link_to image_tag(@listing.image3.url, size: "90x90"), @listing.image3.url, class: "tnail img-responsive" %>
         <% end %>
         </div>
        <div class="col-md-2 col-xs-3">
         <% if !@listing.image4.url.include? "missing.jpg" %>
-          <%= link_to image_tag(@listing.image4.url, size: "90x90"), @listing.image4.url, class: "tnail" %>
+          <%= link_to image_tag(@listing.image4.url, size: "90x90"), @listing.image4.url, class: "tnail img-responsive" %>
         <% end %>
         </div>
       </div>
     
                 <script>
                   /* zooms main img */
-                    $(".thumbnail").zoom(); 
+                  $(".thumbnail").zoom(); 
 
                   /*when you hover on thumbnail it beocmes the main img */
                     $(".tnail img").hover(function(){ 

@@ -38,7 +38,7 @@ class ListingsController < ApplicationController
     @listing = Listing.new(listing_params)
     @listing.userid = current_user.id
 
-    if current_user.recipient.blank?
+    
       Stripe.api_key = ENV["STRIPE_API_KEY"]
       token = params[:stripeToken]
 
@@ -47,10 +47,10 @@ class ListingsController < ApplicationController
         :type => "individual",
         :bank_account => token
         )
-    
+
       current_user.recipient = recipient.id
       current_user.save
-    end
+    
 
     respond_to do |format|
       if @listing.save
@@ -60,6 +60,15 @@ class ListingsController < ApplicationController
         format.html { render action: 'new' }
         format.json { render json: @listing.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def import
+    begin
+      Listing.import(params[:file], params[:userid])
+      redirect_to root_url, notice: "Products imported."
+    rescue
+      redirect_to root_url, notice: "Invalid CSV file format."
     end
   end
 
@@ -84,15 +93,6 @@ class ListingsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to listings_url, notice: 'Listing was successfully deleted.' }
       format.json { head :no_content }
-    end
-  end
-
-    def import
-    begin
-      Listing.import(params[:file], params[:userid])
-      redirect_to root_url, notice: "Products imported."
-    rescue
-      redirect_to root_url, notice: "Invalid CSV file format."
     end
   end
 

@@ -8,11 +8,11 @@
 
 <table class="table table-striped table-bordered">
   <tr>
-    <th class="center">Image</th>
-    <th class="center">Name</th>
-    <th class="center">Description</th>
-    <th class="center">Price</th>
-    <th class="center">Action</th>
+    <th>Image</th>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Price</th>
+    <th>Action</th>
   </tr>
 
   <% @listings.each do |listing| %>
@@ -25,7 +25,7 @@
       <td><%= number_to_currency(listing.price) %></td>
       <td>
         <div class="btn-group">
-          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+          <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown">
             Action <span class="caret"></span>
           </button>
           <ul class="dropdown-menu" role="menu">

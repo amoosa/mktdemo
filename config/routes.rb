@@ -4,9 +4,6 @@ Mktdemo::Application.routes.draw do
   
   resources :listings do
     resources :orders, only: [:new, :create]
-  end
-
-  resources :listings do
     collection { post :import }
   end
 

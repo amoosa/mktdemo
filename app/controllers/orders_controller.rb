@@ -52,12 +52,12 @@ class OrdersController < ApplicationController
       flash[:danger] = e.message
     end
 
-  #transfer = Stripe::Transfer.create(
-      #:amount => (@listing.price * 80).floor, #converting to cents per stripe requirement. 80 percent in cents goes to seller.
-      #:currency => "usd",
-      #:recipient => @order.seller.recipient,
-      #:description => "Transfer from OutfitAdditions"
-      #)
+  transfer = Stripe::Transfer.create(
+      :amount => (@listing.price * 80).floor, #converting to cents per stripe requirement. 80 percent in cents goes to seller.
+      :currency => "usd",
+      :recipient => @order.seller.recipient,
+      :description => "Transfer from OutfitAdditions"
+      )
 
     respond_to do |format|
       if @order.save
