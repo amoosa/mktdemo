@@ -7,7 +7,10 @@ Ship the item to:
 <%= @order.shipname %>
 <%= @order.shipaddress %>
 <%= "#{@order.shipstate}, #{@order.shipzip}" %>
-customer email: <%= @buyer.email %>
+Customer email: <%= @buyer.email %>
+<% if !@order.comments.blank? %>
+Customer comments: <%= @order.comments %>
+<% end %>
 
 Please ship this order within 1-2 business days. After the item is shipped, please email the customer at the above email address with the tracking number.
 

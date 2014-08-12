@@ -56,7 +56,6 @@
       </div>
   </div>
 </div>
-
   <h4><b>Billing Details</b></h4>
   <div class="form-group">
     <%= f.label :name %><i> (as shown on credit card)</i>
@@ -87,6 +86,11 @@
       </div>
   </div>
 </div>
+
+      <div class="form-group">
+        <%= f.label :Order_Comments %><i> (if any)</i>
+        <%= f.text_area :comments, class:"form-control" %>
+      </div>
 
   <div class="form-group">
         <div class="row">

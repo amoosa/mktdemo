@@ -62,20 +62,16 @@ class Listing < ActiveRecord::Base
 	def self.import(file, userid)
 		CSV.foreach(file.path, headers: true, skip_blanks: true) do |row|
 
-          listing_hash = {:name => row['Name'], :description => row['Description'], 
-  						  :price => row['Price'], :category => row['Category'], :inventory => row['Inventory'],
+          listing_hash = {:name => row['Product title'], :description => row['Description'], :sku => row['Product_id'],
+  						  :price => row['Price'], :category => row['Category'], :inventory => row['Quantity in stock'],
   						  :userid => userid}.tap do |list_hash|
 						    list_hash[:image] = URI.parse(row['Image']) if row['Image']
 						    list_hash[:image2] = URI.parse(row['Image2']) if row['Image2'] 
 						    list_hash[:image3] = URI.parse(row['Image3']) if row['Image3'] 
 						    list_hash[:image4] = URI.parse(row['Image4']) if row['Image4'] 
   								end
-
-		  #isting = Listing.find_or_create_by(name)
-		  #listing = Listing.find_or_create_by!(name => listing_hash["name"])
-          #listing.update_attributes(listing_hash)
-         
-          listing = Listing.where(name: listing_hash[:name], userid: listing_hash[:userid]) 
+ 
+          listing = Listing.where(sku: listing_hash[:sku], userid: listing_hash[:userid]) 
 
           if listing.count == 1 #this doesn't update. need to fix.
             listing.first.update_attributes(listing_hash)
@@ -87,7 +83,7 @@ class Listing < ActiveRecord::Base
 		end # end CSV.foreach
 	end # end self.import(file)
 
-	validates :name, :description, :price, :inventory, :category, presence: true
+	validates :name, :description, :price, :inventory, :category, :sku, presence: true
 	validates :price, :inventory, numericality: {greater_than: 0}
 	validates_attachment_presence :image
 

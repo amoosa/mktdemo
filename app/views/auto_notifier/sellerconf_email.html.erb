@@ -7,7 +7,8 @@
        <p><%= link_to image_tag("logo2014.jpg"), "http://www.outfitadditions.com" %></p>
        <p>
          Dear <%= @order.seller.name %>, <br><br>You have a new order at Outfit Additions. <br><br>
-         <b>Item ordered:</b> <%= @order.listing.name %><br>
+         <b>Product ID:</b> <%= @order.listing.sku %><br>
+         <b>Product name:</b> <%= @order.listing.name %><br>
          <b>Sold for:</b> <%= number_to_currency(@order.listing.price) %>
        </p>
 
@@ -15,7 +16,10 @@
            <%= @order.shipname %><br>
            <%= @order.shipaddress %><br>
            <%= "#{@order.shipstate}, #{@order.shipzip}" %><br>
-           customer email: <%= @buyer.email %><br>
+           Customer email: <%= @buyer.email %><br>
+           <% if !@order.comments.blank? %>
+              <b>Customer comments:</b> <%= @order.comments %><br>
+          <% end %>
 
        <p><b>Please ship this order within 1-2 business days. After the item is shipped, please email the customer at the above email address with the tracking number.</b></p>
 

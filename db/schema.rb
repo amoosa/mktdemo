@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140709090203) do
+ActiveRecord::Schema.define(version: 20140811162345) do
 
   create_table "listings", force: true do |t|
     t.string   "name"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20140709090203) do
     t.datetime "image4_updated_at"
     t.integer  "inventory"
     t.string   "category"
+    t.string   "sku"
   end
 
   create_table "orders", force: true do |t|
@@ -56,6 +57,7 @@ ActiveRecord::Schema.define(version: 20140709090203) do
     t.string   "shipcity"
     t.string   "shipstate"
     t.string   "shipzip"
+    t.text     "comments"
   end
 
   create_table "users", force: true do |t|

@@ -14,8 +14,11 @@
          <b>Billed to: </b><br>
            <%= @order.cardname %><br>
            <%= @order.address %><br>
-           <%= "#{@order.state}, #{@order.zip}" %><br><br>
-
+           <%= "#{@order.state}, #{@order.zip}" %><br>
+           <% if !@order.comments.blank? %>
+          <b>Comments:</b> <%= @order.comments %><br>
+          <% end %>
+          <br>
           <b>Shipped to: </b><br>
            <%= @order.shipname %><br>
            <%= @order.shipaddress %><br>

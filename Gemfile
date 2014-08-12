@@ -22,7 +22,6 @@ gem 'jquery-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks', '~>2.2.2'
-gem 'jquery-turbolinks', '~> 2.0.2'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
@@ -33,6 +32,7 @@ gem "paperclip-dropbox", ">= 1.1.7"
 gem "figaro", '~>1.0.0.rc1'
 gem 'devise', '~>3.2.4'
 gem 'stripe', '~>1.14.0'
+gem 'social-share-button', '~> 0.1.6'
 
 group :production do
 	gem 'pg'

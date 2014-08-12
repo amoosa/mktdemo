@@ -10,6 +10,9 @@ Total: <%= number_to_currency(@order.listing.price) %>.
  <%= @order.cardname %>.
  <%= @order.address %>.
  <%= "#{@order.state}, #{@order.zip}" %>.
+ <% if !@order.comments.blank? %>
+ Comments: <%= @order.comments %>
+ <% end %>
 
  Shipped to: 
  <%= @order.shipname %>.
