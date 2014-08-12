@@ -38,7 +38,7 @@
   	<h3><%= @listing.name %></h3>
     <p><%= "Sold by #{@listing.name}. Ships in 1-2 business days." %></p>
     <p><%= number_to_currency(@listing.price) %></p>
-    <p><%= social_share_button_tag(@listing.name, :'data-source' => "@listing.image.url", :'data-type' => 'photo') %></p>
+    <p><%= social_share_button_tag(@listing.name, :'data-img' => "@listing.image.url", :'data-source' => "@listing.image.url", :'data-type' => 'photo') %></p>
   	<p><%= @listing.description %></p>
     <br>
 
