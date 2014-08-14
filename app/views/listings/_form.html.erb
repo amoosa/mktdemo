@@ -15,7 +15,6 @@
   <div id="stripe_error" class="alert alert-danger" style="display:none">
       <noscript>JavaScript is not enabled and is required for this form. Please enable it in your web browser settings.</noscript>
   </div>
-
   <div class="form-group">
     <%= f.label :product_title %><i> (required)</i>
     <%= f.text_field :name, class:"form-control" %>
@@ -49,6 +48,7 @@
           <%= f.text_field :inventory, class:"form-control" %>
         </div>
     </div>
+
   </div>
   <div class="form-group">
     <%= f.label :image %><i> (required)</i>
@@ -66,7 +66,7 @@
     <%= f.label :image_4 %><i> (optional)</i>
     <%= f.file_field :image4, class:"form-control" %>
   </div>
-
+   
 
     <br>
     <h3>Bank Account Information</h3>
@@ -82,9 +82,6 @@
       <%= label_tag :account_number %>
       <%= text_field_tag :account_number, nil, { :name => nil, :'data-stripe' => "accountNumber", class: "form-control" } %>
     </div>
-
-
-
 
       <div class="form-group">
         <%= f.submit class:"btn btn-primary" %>

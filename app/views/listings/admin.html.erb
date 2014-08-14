@@ -1,26 +1,25 @@
 <div class="center">
-  <h2>Manage your Listings</h2>
+  <h2>Admin area: All Listings</h2>
 </div>
-
-<% if user_signed_in? %>
-  <%= link_to 'Add New Listing', new_listing_path, class: "btn btn-link", data: { no_turbolink: true } %>
-<% end %>
 
 <table class="table table-striped table-bordered">
   <tr>
-    <th class="col-md-3">Image</th>
-    <th class="col-md-3">Name</th>
-    <th class="col-md-3">Price</th>
-    <th class="col-md-3">Action</th>
+    <th class="col-md-2">Featured</th>
+    <th class="col-md-2">Image</th>
+    <th class="col-md-2">Seller</th>
+    <th class="col-md-2">Name</th>
+    <th class="col-md-2">Price</th>
+    <th class="col-md-2">Action</th>
   </tr>
 
-  <% @listings.each do |listing| %>
+  <% @listings.each do |listing| %> 
     <tr>
-      <td>
-        <%= image_tag listing.image.url(:thumb) %>
-      </td>
+      <td><%= best_in_place listing, :featured, :type => :checkbox, :collection => ["true", "false"] %></td>
+      <td><%= image_tag listing.image.url(:thumb) %></td>
+      <td><%= listing.userid %></td>
       <td><%= listing.name %></td>
       <td><%= number_to_currency(listing.price) %></td>
+
       <td>
         <div class="btn-group">
           <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown">

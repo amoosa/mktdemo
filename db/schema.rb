@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140811162345) do
+ActiveRecord::Schema.define(version: 20140812225623) do
 
   create_table "listings", force: true do |t|
     t.string   "name"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20140811162345) do
     t.integer  "inventory"
     t.string   "category"
     t.string   "sku"
+    t.boolean  "featured"
   end
 
   create_table "orders", force: true do |t|

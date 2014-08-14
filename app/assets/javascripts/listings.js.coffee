@@ -17,3 +17,4 @@ listing =
       $('#stripe_error').text(response.error.message).show()
       $('input[type=submit]').attr('disabled', false)
 
+$('.best_in_place').best_in_place()

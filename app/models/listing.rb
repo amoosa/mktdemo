@@ -62,10 +62,12 @@ class Listing < ActiveRecord::Base
 	def self.import(file, userid)
 		CSV.foreach(file.path, headers: true, skip_blanks: true) do |row|
 
-          listing_hash = {:name => row['Product title'], :description => row['Description'], :sku => row['Product_id'],
+          listing_hash = {:name => row['Product title'], 
+          	              :description => row['Description'],
+          				  :sku => row['Product_id'],
   						  :price => row['Price'], :category => row['Category'], :inventory => row['Quantity in stock'],
+  						  :image => URI.parse(row['Image']),
   						  :userid => userid}.tap do |list_hash|
-						    list_hash[:image] = URI.parse(row['Image']) if row['Image']
 						    list_hash[:image2] = URI.parse(row['Image2']) if row['Image2'] 
 						    list_hash[:image3] = URI.parse(row['Image3']) if row['Image3'] 
 						    list_hash[:image4] = URI.parse(row['Image4']) if row['Image4'] 
@@ -73,11 +75,11 @@ class Listing < ActiveRecord::Base
  
           listing = Listing.where(sku: listing_hash[:sku], userid: listing_hash[:userid]) 
 
-          if listing.count == 1 #this doesn't update. need to fix.
+          if listing.count == 1 
             listing.first.update_attributes(listing_hash)
           else
             Listing.create!(listing_hash)
-          end # end if !product.nil?
+          end 
 
 		 
 		end # end CSV.foreach

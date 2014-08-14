@@ -14,6 +14,14 @@ class ListingsController < ApplicationController
       @listings = Listing.all.order("created_at DESC")
   end
 
+  def admin
+     if current_user.name == "admin admin"
+        @listings = Listing.all.order("created_at DESC")
+     else
+        redirect_to root_url, notice: "Sorry, you are not authorized to view the admin page."
+     end
+  end
+
   def search
     @listings = Listing.search(params[:search]).order("created_at DESC")
   end
@@ -66,9 +74,9 @@ class ListingsController < ApplicationController
   def import
     begin
       Listing.import(params[:file], params[:userid])
-      redirect_to root_url, notice: "Products imported."
+      redirect_to seller_url, notice: "Products imported."
     rescue
-      redirect_to root_url, notice: "Invalid CSV file format."
+      redirect_to seller_url, notice: "Invalid CSV file format."
     end
   end
 
@@ -106,11 +114,11 @@ class ListingsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def listing_params
       params.require(:listing).permit(:name, :description, :price, :inventory, :category, :sku, :image, :image2, 
-                                      :image3, :image4)
+                                      :image3, :image4, :featured)
     end
 
     def check_user
-      if current_user.id != @listing.userid
+      if current_user.id != @listing.userid and current_user.id != 68
         redirect_to root_url, alert: "Sorry, this listing belongs to someone else"
       end
     end
