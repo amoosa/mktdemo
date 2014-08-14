@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 20140812225623) do
     t.integer  "inventory"
     t.string   "category"
     t.string   "sku"
-    t.boolean  "featured"
+    t.boolean  "featured",            default: false
   end
 
   create_table "orders", force: true do |t|
