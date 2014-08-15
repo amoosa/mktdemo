@@ -1,6 +1,16 @@
 @import "bootstrap";
 
+footer {
+  background: #eee;
+  color: #333;
+  font-size: 11px;
+  padding: 10px;
+}
 
+ul.unstyled {
+  list-style: none;
+  padding: 0;
+}
 
 .caption {
 	h3 {
@@ -66,6 +76,10 @@ body {
 
 .dropdown-menu > li > a {
   text-align: left;
+}
+
+.thumbnail {
+  position: relative;
 }
 
 
