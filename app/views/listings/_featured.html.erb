@@ -2,7 +2,7 @@
 
 <div class="center">
   <div class="row">
-    <% @listings.reject(&:featured).each do |listing| %>
+    <% @listings.where(:featured => true).each do |listing| %>
     <div class="col-md-3">
       <div class="thumbnail">
         <%= link_to image_tag(listing.image.url), listing %>
@@ -12,6 +12,6 @@
         </div>
       </div>
     </div>
-    <% end %>
-  </div>
+  <% end %>
+ </div>
 </div>
