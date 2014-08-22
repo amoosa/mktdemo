@@ -1,8 +1,8 @@
 /* v1.0.5 */
 /* Core RS CSS file. 95% of time you shouldn't change anything here. */
 .royalSlider {
-	width: 640px;
-	height: 450px;
+	width: 640px; /* in application.html i have some <style> code. that overrides this */
+	height: 450px; /* the slider size just fits in the width now */
 	position: relative;
 	direction: ltr;
 }
