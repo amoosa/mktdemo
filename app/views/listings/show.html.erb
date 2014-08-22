@@ -1,7 +1,7 @@
 <% provide(:title, @listing.name) %>
 <div class="row">
   <div class="col-md-7"> 
-
+    <div class="thumbnail"> 
       <div id="gallery-1" class="royalSlider rsDefault">
 
           	<%= link_to image_tag(@listing.image.url, class: "rsTmb"), @listing.image.url, class: "rsImg" %> 
@@ -19,7 +19,7 @@
             <% end %>
        
       </div>
-
+     </div>
   </div>
 
     <script>
@@ -33,7 +33,6 @@
     autoScaleSlider: true, 
     autoScaleSliderWidth: 960,     
     autoScaleSliderHeight: 850,
-    loop: false,
     imageScaleMode: 'fit-if-smaller',
     navigateByClick: true,
     numImagesToPreload:2,
