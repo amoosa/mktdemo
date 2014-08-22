@@ -2,7 +2,7 @@
 <html>
 <head>
   <title><%= full_title(yield(:title)) %></title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
   
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 
@@ -12,7 +12,16 @@
   <%= tag :meta, :name => "stripe-key", :content => ENV["STRIPE_PUBLIC_KEY"] %>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-          
+    <!-- this is for the royalslider plugin -->
+		 <style>
+		      #gallery-1 {
+		  width: 100%;
+		  -webkit-user-select: none;
+		  -moz-user-select: none;  
+		  user-select: none;
+		}
+		    </style>   
+    <!-- end code for royalslider plugin --> 
 
 </head>
 <body>

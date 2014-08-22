@@ -480,15 +480,3 @@
 	font-size: 12px;
 	border-radius: 2px;
 }
-
-/* add ashfaaq from plugin example page */
-
- <style>
-      #gallery-1 {
-  width: 100%;
-  -webkit-user-select: none;
-  -moz-user-select: none;  
-  user-select: none;
-}
-
-    </style>

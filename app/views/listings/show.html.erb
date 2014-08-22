@@ -1,25 +1,26 @@
 <% provide(:title, @listing.name) %>
 <div class="row">
   <div class="col-md-7"> 
-    <div class="thumbnail"> 
+     <div class="thumbnail">
       <div id="gallery-1" class="royalSlider rsDefault">
-
-          	<%= link_to image_tag(@listing.image.url, class: "rsTmb"), @listing.image.url, class: "rsImg" %> 
-                              
+         
+          	<%= link_to image_tag(@listing.image.url, class: "rsTmb img-responsive"), @listing.image.url, class: "rsImg" %> 
+                   
             <% if !@listing.image2.url.include? "missing.jpg" %>
-              <%= link_to image_tag(@listing.image2.url, class: "rsTmb"), @listing.image2.url, class: "rsImg" %>
+              <%= link_to image_tag(@listing.image2.url, class: "rsTmb img-responsive"), @listing.image2.url, class: "rsImg" %>
             <% end %>
                
             <% if !@listing.image3.url.include? "missing.jpg" %>
-              <%= link_to image_tag(@listing.image3.url, class: "rsTmb"), @listing.image3.url, class: "rsImg" %>
+              <%= link_to image_tag(@listing.image3.url, class: "rsTmb img-responsive"), @listing.image3.url, class: "rsImg" %>
             <% end %>
              
             <% if !@listing.image4.url.include? "missing.jpg" %>
-              <%= link_to image_tag(@listing.image4.url, class: "rsTmb"), @listing.image4.url, class: "rsImg" %>
+              <%= link_to image_tag(@listing.image4.url, class: "rsTmb img-responsive"), @listing.image4.url, class: "rsImg" %>
             <% end %>
        
-      </div>
+      
     </div>
+    </div> 
   </div>
 
     <script>
