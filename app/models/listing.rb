@@ -59,7 +59,7 @@ class Listing < ActiveRecord::Base
   require 'csv'
   require 'open-uri'
 
-	def self.import(file, userid)
+	def self.import(file, user_id)
 		CSV.foreach(file.path, headers: true, skip_blanks: true) do |row|
 
           listing_hash = {:name => row['Product title'], 
@@ -67,13 +67,13 @@ class Listing < ActiveRecord::Base
           				  :sku => row['Product_id'],
   						  :price => row['Price'], :category => row['Category'], :inventory => row['Quantity in stock'],
   						  :image => URI.parse(row['Image']),
-  						  :userid => userid}.tap do |list_hash|
+  						  :user_id => user_id}.tap do |list_hash|
 						    list_hash[:image2] = URI.parse(row['Image2']) if row['Image2'] 
 						    list_hash[:image3] = URI.parse(row['Image3']) if row['Image3'] 
 						    list_hash[:image4] = URI.parse(row['Image4']) if row['Image4'] 
   								end
  
-          listing = Listing.where(sku: listing_hash[:sku], userid: listing_hash[:userid]) 
+          listing = Listing.where(sku: listing_hash[:sku], user_id: listing_hash[:user_id]) 
 
           if listing.count == 1 
             listing.first.update_attributes(listing_hash)

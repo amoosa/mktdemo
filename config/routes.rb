@@ -1,9 +1,10 @@
 Mktdemo::Application.routes.draw do
   
+
   devise_for :users
-  
+
   resources :listings do
-    resources :orders, only: [:new, :create]
+    resources :orders, only: [:new, :create, :update]
     collection { post :import }
   end
 
@@ -20,8 +21,13 @@ Mktdemo::Application.routes.draw do
   get 'thankyou' => "orders#thankyou"
   get 'search' => "listings#search"
   get 'admin' => "listings#admin"
+  
+  #get 'orderupdate' => "orders#update"
+  #patch 'orderupdate' => "orders#update" 
+  #put 'orderupdate' => "orders#update"
 
   root 'listings#index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

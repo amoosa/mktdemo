@@ -12,7 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.purr
 //= require best_in_place
 //= require bootstrap
 //= require turbolinks
+//= require jquery.royalslider.min
 //= require_tree .
+
+$('.best_in_place').best_in_place()

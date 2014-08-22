@@ -1,6 +1,7 @@
 class Order < ActiveRecord::Base
 	validates :cardname, :address, :city, :state, :zip, 
-	          :shipname, :shipaddress, :shipcity, :shipstate, :shipzip, presence: true
+	          :shipname, :shipaddress, :shipcity, :shipstate, :shipzip, 
+	          :tracking, :carrier, presence: true
 	validates :zip, :shipzip, length: { is: 5 }
 
 	belongs_to :listing

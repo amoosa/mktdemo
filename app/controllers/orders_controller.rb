@@ -1,18 +1,18 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user! 
+  before_action :check_user, only: [:edit, :update]
+ 
   
-
-
   # GET /orders
   # GET /orders.json
 
   def sales
-    @orders = Order.all.where(seller: current_user).order("created_at DESC")
+    @orders = Order.where(seller: current_user).order("created_at DESC")
   end
 
   def purchases
-    @orders = Order.all.where(buyer: current_user).order("created_at DESC")
+    @orders = Order.where(buyer: current_user).order("created_at DESC")
   end
 
   def thankyou
@@ -31,7 +31,7 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @listing = Listing.find(params[:listing_id])
-    @seller = @listing.userid
+    @seller = @listing.user_id
 
     @order.listing_id = @listing.id
     @order.buyer_id = current_user.id
@@ -65,17 +65,26 @@ class OrdersController < ApplicationController
         format.json { render action: 'show', status: :created, location: @order }
         #AutoNotifier.orderconf_email(current_user, @order).deliver #activate after paid sub to heroku
         #AutoNotifier.sellerconf_email(current_user, @seller, @order).deliver #activate after paid sub to heroku
-        #and adding sendgrip app to send email on heroku
+        #and adding sendgrid app to send email on heroku
       else
         format.html { render action: 'new' }
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end
   end
-
 end
 
-
- 
+  def update
+    respond_to do |format|
+    if @order.update(order_params)
+      format.html { redirect_to(sales_url, :notice => 'Order was successfully updated.') }
+      format.json { respond_with_bip(@order) }
+    else
+      format.html { render :action => "edit" }
+      format.json { respond_with_bip(@order) }
+    end
+  end
+end
+   
 
 private
     # Use callbacks to share common setup or constraints between actions.
@@ -86,6 +95,14 @@ private
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
       params.require(:order).permit(:shipname, :shipaddress, :shipcity, :shipstate, :shipzip,
-                                    :cardname, :address, :city, :state, :zip, :comments)
+                                    :cardname, :address, :city, :state, :zip, :comments,
+                                     :tracking, :carrier)
     end
+
+    def check_user
+      if current_user.id != @order.seller_id && current_user.name != "admin admin"
+        redirect_to root_url, alert: "Sorry, you are not the seller of this listing"
+      end
+    end
+
 end

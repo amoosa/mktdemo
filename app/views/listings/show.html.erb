@@ -1,42 +1,62 @@
 <% provide(:title, @listing.name) %>
 <div class="row">
-  <div class="col-md-6"> 
-  	<div class="thumbnail">
-    
-      	<%= link_to image_tag(@listing.image.url, id: "mainImage", class: "zoom img-responsive"), @listing.image.url %>
+  <div class="col-md-7"> 
 
-     </div> 
-    
-      <div class="row">
-          <div class="col-md-2 col-xs-3">
-            <% if !@listing.image.url.include? "missing.jpg" %>
-              <%= link_to image_tag(@listing.image.url, size: "90x90"), @listing.image.url, class: "tnail img-responsive" %>
-            <% end %>
-        </div>
-        <div class="col-md-2 col-xs-3">
+      <div id="gallery-1" class="royalSlider rsDefault">
+
+          	<%= link_to image_tag(@listing.image.url, class: "rsTmb"), @listing.image.url, class: "rsImg" %> 
+                              
             <% if !@listing.image2.url.include? "missing.jpg" %>
-              <%= link_to image_tag(@listing.image2.url, size: "90x90"), @listing.image2.url, class: "tnail img-responsive" %>
+              <%= link_to image_tag(@listing.image2.url, class: "rsTmb"), @listing.image2.url, class: "rsImg" %>
             <% end %>
-        </div>
-       <div class="col-md-2 col-xs-3">
-        <% if !@listing.image3.url.include? "missing.jpg" %>
-          <%= link_to image_tag(@listing.image3.url, size: "90x90"), @listing.image3.url, class: "tnail img-responsive" %>
-        <% end %>
-        </div>
-       <div class="col-md-2 col-xs-3">
-        <% if !@listing.image4.url.include? "missing.jpg" %>
-          <%= link_to image_tag(@listing.image4.url, size: "90x90"), @listing.image4.url, class: "tnail img-responsive" %>
-        <% end %>
-        </div>
+               
+            <% if !@listing.image3.url.include? "missing.jpg" %>
+              <%= link_to image_tag(@listing.image3.url, class: "rsTmb"), @listing.image3.url, class: "rsImg" %>
+            <% end %>
+             
+            <% if !@listing.image4.url.include? "missing.jpg" %>
+              <%= link_to image_tag(@listing.image4.url, class: "rsTmb"), @listing.image4.url, class: "rsImg" %>
+            <% end %>
+       
       </div>
 
-
-
-
   </div>
-  <div class="col-md-6"> 
+
+    <script>
+      jQuery(document).ready(function($) {
+  $('#gallery-1').royalSlider({
+    fullscreen: {
+      enabled: true,
+      nativeFS: true
+    },
+    controlNavigation: 'thumbnails',
+    autoScaleSlider: true, 
+    autoScaleSliderWidth: 960,     
+    autoScaleSliderHeight: 850,
+    loop: false,
+    imageScaleMode: 'fit-if-smaller',
+    navigateByClick: true,
+    numImagesToPreload:2,
+    arrowsNav:true,
+    arrowsNavAutoHide: true,
+    /* arrowsNavHideOnTouch: true, */
+    keyboardNavEnabled: true,
+    fadeinLoadedSlide: true,
+    globalCaption: true,
+    globalCaptionInside: false,
+    loop: true,
+    thumbs: {
+      appendSpan: true,
+      firstMargin: true,
+      paddingBottom: 4
+    } 
+  });
+});
+    </script>
+
+  <div class="col-md-5"> 
   	<h3><%= @listing.name %></h3>
-    <p><%= "Sold by #{@listing.name}. Ships in 1-2 business days." %></p>
+    <p><%= "Sold by #{@listing.user.name}. Ships in 1-2 business days." %></p>
     <p><%= number_to_currency(@listing.price) %></p>
   	<p><%= sanitize @listing.description, tags: %w(b p ul li) %></p>
     <br>
@@ -55,10 +75,4 @@
 
   </div>
 </div>
-
-
-<% if (user_signed_in?) && (current_user == @listing.user) %>
-    <%= link_to 'Edit', edit_listing_path(@listing), class:"btn btn-link" %> |
-<% end %>
-
-<p><%= link_to 'Back', listings_path, class:"btn btn-link" %></p>
+<br>

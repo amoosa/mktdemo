@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140812225623) do
+ActiveRecord::Schema.define(version: 20140822124337) do
 
   create_table "listings", force: true do |t|
     t.string   "name"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20140812225623) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
-    t.integer  "userid"
+    t.integer  "user_id"
     t.string   "image2_file_name"
     t.string   "image2_content_type"
     t.integer  "image2_file_size"
@@ -59,6 +59,8 @@ ActiveRecord::Schema.define(version: 20140812225623) do
     t.string   "shipstate"
     t.string   "shipzip"
     t.text     "comments"
+    t.string   "tracking",    default: "None yet"
+    t.string   "carrier",     default: "None yet"
   end
 
   create_table "users", force: true do |t|
@@ -76,6 +78,7 @@ ActiveRecord::Schema.define(version: 20140812225623) do
     t.datetime "updated_at"
     t.string   "name"
     t.string   "recipient"
+    t.string   "bankaccname"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

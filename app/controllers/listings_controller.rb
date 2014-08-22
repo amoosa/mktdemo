@@ -7,7 +7,7 @@ class ListingsController < ApplicationController
   # GET /listings.json
 
   def seller
-    @listings = Listing.where(userid: current_user).order("created_at DESC")
+    @listings = Listing.where(user: current_user).order("created_at DESC")
   end
 
   def index
@@ -44,7 +44,7 @@ class ListingsController < ApplicationController
   # POST /listings.json
   def create
     @listing = Listing.new(listing_params)
-    @listing.userid = current_user.id
+    @listing.user_id = current_user.id
 
     
       Stripe.api_key = ENV["STRIPE_API_KEY"]
@@ -73,7 +73,7 @@ class ListingsController < ApplicationController
 
   def import
     begin
-      Listing.import(params[:file], params[:userid])
+      Listing.import(params[:file], params[:user_id])
       redirect_to seller_url, notice: "Products imported."
     rescue
       redirect_to seller_url, notice: "Invalid CSV file format."
@@ -118,7 +118,7 @@ class ListingsController < ApplicationController
     end
 
     def check_user
-      if current_user.id != @listing.userid && current_user.name != "admin admin"
+      if current_user.id != @listing.user_id && current_user.name != "admin admin"
         redirect_to root_url, alert: "Sorry, this listing belongs to someone else"
       end
     end
