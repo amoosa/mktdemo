@@ -31,11 +31,11 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @listing = Listing.find(params[:listing_id])
-    @seller = @listing.user_id
+    @seller = @listing.user
 
     @order.listing_id = @listing.id
     @order.buyer_id = current_user.id
-    @order.seller_id = @seller
+    @order.seller_id = @seller.id
 
     Stripe.api_key = ENV["STRIPE_API_KEY"]
     token = params[:stripeToken]
@@ -55,7 +55,7 @@ class OrdersController < ApplicationController
   transfer = Stripe::Transfer.create(
       :amount => (@listing.price * 80).floor, #converting to cents per stripe requirement. 80 percent in cents goes to seller.
       :currency => "usd",
-      :recipient => @order.seller.recipient,
+      :recipient => @seller.recipient,
       :description => "Transfer from OutfitAdditions"
       )
 
