@@ -16,7 +16,7 @@
     <tr>
       <td><%= best_in_place listing, :featured, :type => :checkbox, :collection => ["true", "false"] %></td>
       <td><%= image_tag listing.image.url(:thumb) %></td>
-      <td><%= listing.userid %></td>
+      <td><%= listing.user_id %></td>
       <td><%= listing.name %></td>
       <td><%= number_to_currency(listing.price) %></td>
 
