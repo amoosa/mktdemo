@@ -12,19 +12,6 @@ ul.unstyled {
   padding: 0;
 }
 
-.caption {
-	h3 {
-	font-size: 17px;
-	margin: 2px;
-	}
-
-	p {
-	font-size: 15px;
-	margin: 0px;
-	}
-
-}
-
 .jumbotron {
   /* background-image: url('https://dl.dropboxusercontent.com/s/odxszene0zw2j3q/belts640.jpg'); */
   h1, h2 {
@@ -78,5 +65,31 @@ body {
   text-align: left;
 }
 
+.thumbnail {
+width: 260px;
+height: 290px;
+}
+
+.thumbnail > img {
+width: 200px;
+height: 200px;
+}
+
+.caption {
+width: 240px;
+height: 90px;
+position: absolute; bottom: 5px;
+
+  h3 {
+  font-size: 17px;
+  margin: 2px;
+  }
+
+  p {
+  font-size: 15px;
+  margin: 0px;
+  }
+
+}
 
 

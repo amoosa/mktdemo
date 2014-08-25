@@ -24,13 +24,15 @@
   </div>
 
     <script>
+     
+
       jQuery(document).ready(function($) {
   $('#gallery-1').royalSlider({
     fullscreen: {
       enabled: true,
       nativeFS: true
     },
-    controlNavigation: 'thumbnails',
+    controlNavigation: 'none',
     autoScaleSlider: true, 
     autoScaleSliderWidth: 960,     
     autoScaleSliderHeight: 850,
@@ -42,7 +44,7 @@
     /* arrowsNavHideOnTouch: true, */
     keyboardNavEnabled: true,
     fadeinLoadedSlide: true,
-    globalCaption: true,
+    globalCaption: false,
     globalCaptionInside: false,
     loop: true,
     thumbs: {
@@ -52,6 +54,7 @@
     } 
   });
 });
+
     </script>
 
   <div class="col-md-5"> 
