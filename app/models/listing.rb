@@ -6,20 +6,20 @@ class Listing < ActiveRecord::Base
 						 						  :default_url => "missing.jpg"
 		validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 		has_attached_file :image2, 
-						  :styles => { :medium => "200x", :thumb => "100x100>" },
+						  :styles => { :medium => "200x200", :thumb => "100x100>" },
 						  :default_url => "missing.jpg"
 		validates_attachment_content_type :image2, :content_type => /\Aimage\/.*\Z/
 		has_attached_file :image3, 
-						  :styles => { :medium => "200x", :thumb => "100x100>" },
+						  :styles => { :medium => "200x200", :thumb => "100x100>" },
 						  :default_url => "missing.jpg"
 		validates_attachment_content_type :image3, :content_type => /\Aimage\/.*\Z/
 		has_attached_file :image4, 
-						  :styles => { :medium => "200x", :thumb => "100x100>" },
+						  :styles => { :medium => "200x200", :thumb => "100x100>" },
 						  :default_url => "missing.jpg"
 		validates_attachment_content_type :image4, :content_type => /\Aimage\/.*\Z/
 	else
 		has_attached_file :image, 
-						  :styles => { :medium => "200x", :thumb => "100x100>" }, 
+						  :styles => { :medium => "200x200", :thumb => "100x100>" }, 
 						  :default_url => "missing.jpg",
 					      :storage => :dropbox,
 	    				  :dropbox_credentials => Rails.root.join("config/dropbox.yml"),
@@ -27,7 +27,7 @@ class Listing < ActiveRecord::Base
 	    	             # :dropbox_options => {...}
 		validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 		has_attached_file :image2, 
-						  :styles => { :medium => "200x", :thumb => "100x100>" }, 
+						  :styles => { :medium => "200x200", :thumb => "100x100>" }, 
 						  :default_url => "missing.jpg",					     
 						  :storage => :dropbox,
 	    				  :dropbox_credentials => Rails.root.join("config/dropbox.yml"),
@@ -35,7 +35,7 @@ class Listing < ActiveRecord::Base
 	    	             # :dropbox_options => {...}
 		validates_attachment_content_type :image2, :content_type => /\Aimage\/.*\Z/
 		has_attached_file :image3, 
-						  :styles => { :medium => "200x", :thumb => "100x100>" }, 
+						  :styles => { :medium => "200x200", :thumb => "100x100>" }, 
 						  :default_url => "missing.jpg",
 					      :storage => :dropbox,
 	    				  :dropbox_credentials => Rails.root.join("config/dropbox.yml"),
@@ -43,7 +43,7 @@ class Listing < ActiveRecord::Base
 	    	             # :dropbox_options => {...}
 		validates_attachment_content_type :image3, :content_type => /\Aimage\/.*\Z/
 		has_attached_file :image4, 
-						  :styles => { :medium => "200x", :thumb => "100x100>" }, 
+						  :styles => { :medium => "200x200", :thumb => "100x100>" }, 
 						  :default_url => "missing.jpg",
 					      :storage => :dropbox,
 	    				  :dropbox_credentials => Rails.root.join("config/dropbox.yml"),
