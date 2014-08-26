@@ -1,4 +1,9 @@
 <% provide(:title, @listing.name) %>
+
+<% if @listing.expired? %>
+ <br><p><font color="red">Sorry, this listing has expired. </font></p>
+ <% else %>
+
 <div class="row">
   <div class="col-md-7"> 
   
@@ -23,10 +28,9 @@
  
   </div>
 
-    <script>
-     
+  <script>
 
-      jQuery(document).ready(function($) {
+    jQuery(document).ready(function($) {
   $('#gallery-1').royalSlider({
     fullscreen: {
       enabled: true,
@@ -76,4 +80,5 @@
 
   </div>
 </div>
+<% end %>
 <br>

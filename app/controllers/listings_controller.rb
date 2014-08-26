@@ -11,7 +11,7 @@ class ListingsController < ApplicationController
   end
 
   def index
-      @listings = Listing.all.order("created_at DESC")
+      @listings = Listing.not_expired.order("created_at DESC")     
   end
 
   def admin
@@ -23,7 +23,7 @@ class ListingsController < ApplicationController
   end
 
   def search
-    @listings = Listing.search(params[:search]).order("created_at DESC")
+    @listings = Listing.not_expired.search(params[:search]).order("created_at DESC")
   end
 
   # GET /listings/1
