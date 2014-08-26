@@ -3,15 +3,21 @@
 <div class="center">
   <div class="row">
     <% @listings.where(:featured => true).each do |listing| %>
-    <div class="col-md-3 col-xs-6">
-      <div class="thumbnail">
-        <%= link_to image_tag(listing.image.url), listing %>
-        <div class="caption">
-          <h3><%= listing.name %></h3>
-          <p><%= number_to_currency(listing.price) %></p>
+        <div class="col-md-3 col-xs-6">
+        <div class="thumbnail" > 
+           <%= link_to image_tag(listing.image.url(:medium), class: "img-responsive"), listing %> 
         </div>
-      </div>
-    </div>
-  <% end %>
- </div>
+        <div class="caption">
+            <h3><%= listing.name.titleize %></h3>
+            <p><%= number_to_currency(listing.price) %></p>
+        </div> 
+     </div>
+    <% end %>
+  </div>
 </div>
+
+<script> 
+$(function() {
+    $('.thumbnail').matchHeight(byRow);
+     }); 
+</script>

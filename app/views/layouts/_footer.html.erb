@@ -1,4 +1,38 @@
 <footer>
+	
+	<script>
+
+    jQuery(document).ready(function($) {
+  $('#gallery-1').royalSlider({
+    fullscreen: {
+      enabled: true,
+      nativeFS: true
+    },
+    controlNavigation: 'none',
+    autoScaleSlider: true, 
+    autoScaleSliderWidth: 960,     
+    autoScaleSliderHeight: 850,
+    imageScaleMode: 'fit-if-smaller',
+    navigateByClick: true,
+    numImagesToPreload:2,
+    arrowsNav:true,
+    arrowsNavAutoHide: true,
+    /* arrowsNavHideOnTouch: true, */
+    keyboardNavEnabled: true,
+    fadeinLoadedSlide: true,
+    globalCaption: false,
+    globalCaptionInside: false,
+    loop: true,
+    thumbs: {
+      appendSpan: true,
+      firstMargin: true,
+      paddingBottom: 4
+    } 
+  });
+});
+
+    </script>
+
 	<div class="container">
 		<div class="row">
 			

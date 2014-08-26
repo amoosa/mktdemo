@@ -28,42 +28,13 @@
  
   </div>
 
-  <script>
+  <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ashfaaq"></script>
 
-    jQuery(document).ready(function($) {
-  $('#gallery-1').royalSlider({
-    fullscreen: {
-      enabled: true,
-      nativeFS: true
-    },
-    controlNavigation: 'none',
-    autoScaleSlider: true, 
-    autoScaleSliderWidth: 960,     
-    autoScaleSliderHeight: 850,
-    imageScaleMode: 'fit-if-smaller',
-    navigateByClick: true,
-    numImagesToPreload:2,
-    arrowsNav:true,
-    arrowsNavAutoHide: true,
-    /* arrowsNavHideOnTouch: true, */
-    keyboardNavEnabled: true,
-    fadeinLoadedSlide: true,
-    globalCaption: false,
-    globalCaptionInside: false,
-    loop: true,
-    thumbs: {
-      appendSpan: true,
-      firstMargin: true,
-      paddingBottom: 4
-    } 
-  });
-});
-
-    </script>
 
   <div class="col-md-5"> 
-  	<h3><%= @listing.name %></h3>
-    <p><%= "Sold by #{@listing.user.name}. Ships in 1-2 business days." %></p>
+  	<h3><%= @listing.name.titleize %></h3>
+    <div class="addthis_sharing_toolbox"></div><br>   
     <p><%= number_to_currency(@listing.price) %></p>
   	<p><%= sanitize @listing.description, tags: %w(b p ul li) %></p>
     <br>
@@ -73,10 +44,13 @@
          <% end %>
 
         <% if @listing.inventory > 0 %>
+            <p><i><%= "Shipped direct from seller: #{@listing.user.name}. Ships in 1-2 business days." %></i></p>
             <%= link_to "Buy this item", new_listing_order_path(@listing), class: "btn btn-primary", data: { no_turbolink: true } %>
         <% else %>
           <br><p><b><font color="red">Sorry, we're sold out of this item. </font></b></p>
-        <% end %>         
+        <% end %>   
+        
+
 
   </div>
 </div>
