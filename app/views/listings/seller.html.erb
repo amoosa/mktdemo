@@ -19,7 +19,7 @@
       <td>
         <%= image_tag listing.image.url(:thumb) %>
       </td>
-      <td><%= listing.name.titleize %></td>
+      <td><%= listing.name.downcase.titleize %></td>
       <td><%= number_to_currency(listing.price) %></td>
       <td>
         <div class="btn-group">

@@ -35,6 +35,7 @@ gem "paperclip-dropbox", ">= 1.1.7"
 gem "figaro", '~>1.0.0.rc1'
 gem 'devise', '~>3.2.4'
 gem 'stripe', '~>1.14.0'
+gem 'jquery-turbolinks'
 
 
 group :production do

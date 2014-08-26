@@ -54,18 +54,30 @@
     <%= f.label :image %><i> (required)</i>
     <%= f.file_field :image, class:"form-control" %>
   </div>
+       <% if !@listing.image.url.include? "missing.jpg" %>
+          Current image: <%= image_tag(@listing.image.url(:thumb)) %>
+      <% end %>
   <div class="form-group">
     <%= f.label :image_2 %><i> (optional)</i>
     <%= f.file_field :image2, class:"form-control" %>
   </div>
+      <% if !@listing.image2.url.include? "missing.jpg" %>
+          Current image #2: <%= image_tag(@listing.image2.url(:thumb)) %>
+      <% end %>
   <div class="form-group">
     <%= f.label :image_3 %><i> (optional)</i>
     <%= f.file_field :image3, class:"form-control" %>
   </div>
+        <% if !@listing.image3.url.include? "missing.jpg" %>
+          Current image #3: <%= image_tag(@listing.image3.url(:thumb)) %>
+      <% end %>
   <div class="form-group">
     <%= f.label :image_4 %><i> (optional)</i>
     <%= f.file_field :image4, class:"form-control" %>
   </div>
+        <% if !@listing.image4.url.include? "missing.jpg" %>
+          Current image #4: <%= image_tag(@listing.image4.url(:thumb)) %>
+      <% end %>
    
 
     <br>

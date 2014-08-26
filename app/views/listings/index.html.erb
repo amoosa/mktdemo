@@ -11,12 +11,12 @@
 <div class="center">
   <div class="row">
     <% @listings.each do |listing| %>
-    <div class="col-md-3 col-xs-6">
+    <div class="col-md-3 col-sm-3 col-xs-6">
         <div class="thumbnail" > 
            <%= link_to image_tag(listing.image.url(:medium), class: "img-responsive"), listing %> 
         </div>
         <div class="caption">
-            <h3><%= listing.name.titleize %></h3>
+            <h3><%= link_to listing.name.downcase.titleize, listing %></h3>
             <p><%= number_to_currency(listing.price) %></p>
         </div> 
      </div>
@@ -24,10 +24,5 @@
   </div>
 </div>
 
-<script> 
-$(function() {
-    $('.thumbnail').matchHeight(byRow);
-     }); 
-</script>
 
 
