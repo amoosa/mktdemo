@@ -30,6 +30,32 @@
  
   </div>
 
+  <div class="col-md-5"> 
+  	<h3><%= @listing.name.downcase.titleize %></h3>
+    <div class="addthis_sharing_toolbox"></div><br>   
+    <p><%= number_to_currency(@listing.price) %></p>
+  	<p><%= sanitize @listing.description, tags: %w(b p ul li) %></p>
+    <br>
+
+         <% if @listing.inventory == 1 %>
+             <br><p><b><font color="red">Only 1 piece left. </font></b></p>
+         <% end %>
+
+        <% if @listing.inventory > 0 %>
+            <p><i><%= "Shipped direct from seller: #{@listing.user.name}. Ships in 1-2 business days." %></i></p>
+            <%= link_to "Buy this item", new_listing_order_path(@listing), class: "btn btn-primary buyit", data: { no_turbolink: true } %>
+        <% else %>
+          <br><p><b><font color="red">Sorry, we're sold out of this item. </font></b></p>
+        <% end %>   
+        
+  </div> 
+</div>
+<% end %>
+<br>
+
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ashfaaq"></script>
+
+  
     <script>
  
         jQuery(document).ready(function($) {
@@ -62,29 +88,3 @@
     });
 
     </script>
- <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ashfaaq"></script>
-
-  <div class="col-md-5"> 
-  	<h3><%= @listing.name.downcase.titleize %></h3>
-    <div class="addthis_sharing_toolbox"></div><br>   
-    <p><%= number_to_currency(@listing.price) %></p>
-  	<p><%= sanitize @listing.description, tags: %w(b p ul li) %></p>
-    <br>
-
-         <% if @listing.inventory == 1 %>
-             <br><p><b><font color="red">Only 1 piece left. </font></b></p>
-         <% end %>
-
-        <% if @listing.inventory > 0 %>
-            <p><i><%= "Shipped direct from seller: #{@listing.user.name}. Ships in 1-2 business days." %></i></p>
-            <%= link_to "Buy this item", new_listing_order_path(@listing), class: "btn btn-primary buyit", data: { no_turbolink: true } %>
-        <% else %>
-          <br><p><b><font color="red">Sorry, we're sold out of this item. </font></b></p>
-        <% end %>   
-        
-
-
-  </div>
-</div>
-<% end %>
-<br>
