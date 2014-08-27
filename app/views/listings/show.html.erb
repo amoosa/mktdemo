@@ -32,7 +32,7 @@
 
   <div class="col-md-5"> 
   	<h3><%= @listing.name.downcase.titleize %></h3>
-    <div class="addthis_sharing_toolbox"></div><br>   
+    <div class="addthis_sharing_toolbox"></div><br> 
     <p><%= number_to_currency(@listing.price) %></p>
   	<p><%= sanitize @listing.description, tags: %w(b p ul li) %></p>
     <br>
@@ -52,10 +52,12 @@
 </div>
 <% end %>
 <br>
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ashfaaq"></script>
 
-  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ashfaaq"></script>
+<%= render 'otherselleritems' %>
 
-  
+
     <script>
  
         jQuery(document).ready(function($) {

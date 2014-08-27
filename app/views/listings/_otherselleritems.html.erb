@@ -1,9 +1,9 @@
-<h4>Featured listings</h4>
+<h4>Other items from this seller...</h4>
 
 <div class="center">
   <div class="row">
-    <% @listings.where(:featured => true).order("random()").limit(8).each do |listing| %>
-        <div class="col-md-3 col-sm-3 col-xs-6">
+    <% Listing.where(:user_id => @listing.user).order("random()").limit(6).each do |listing| %>
+        <div class="col-md-2 col-sm-3 col-xs-6">
         <div class="thumbnail" > 
            <%= link_to image_tag(listing.image.url(:medium), class: "img-responsive"), listing, data: { no_turbolink: true } %> 
         </div>
@@ -15,4 +15,4 @@
     <% end %>
   </div>
 </div>
-
+<br>
