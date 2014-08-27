@@ -1,8 +1,8 @@
-<h4>Other items from this seller...</h4>
+<h4>Recent additions to the <font color=#428bca><%= @listing.category.downcase %></font> category...</h4>
 
 <div class="center">
   <div class="row">
-    <% Listing.where("user_id = ? AND id != ?", @listing.user, @listing.id).order("random()").limit(6).each do |listing| %>
+    <% Listing.where("category = ? AND id != ? AND created_at >= ?", @listing.category, @listing.id, 30.days.ago).order("random()").limit(6).each do |listing| %>
         <div class="col-md-2 col-sm-3 col-xs-6">
         <div class="thumbnail" > 
            <%= link_to image_tag(listing.image.url(:medium), class: "img-responsive"), listing, data: { no_turbolink: true } %> 
