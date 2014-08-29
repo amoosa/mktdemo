@@ -9,6 +9,10 @@ class OrdersController < ApplicationController
 
   def sales
     @orders = Order.where(seller: current_user).order("created_at DESC")
+         respond_to do |format|
+         format.html
+         format.csv { send_data @orders.to_csv(@orders) }  
+      end
   end
 
   def purchases

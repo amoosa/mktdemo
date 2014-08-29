@@ -3,24 +3,24 @@ class Listing < ActiveRecord::Base
 	if Rails.env.development?
 		has_attached_file :image, 
 						  :styles => { :medium => "200x200", :thumb => "100x100>" },
-						 						  :default_url => "missing.jpg"
+						 						  :default_url => ""
 		validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 		has_attached_file :image2, 
 						  :styles => { :medium => "200x200", :thumb => "100x100>" },
-						  :default_url => "missing.jpg"
+						  :default_url => ""
 		validates_attachment_content_type :image2, :content_type => /\Aimage\/.*\Z/
 		has_attached_file :image3, 
 						  :styles => { :medium => "200x200", :thumb => "100x100>" },
-						  :default_url => "missing.jpg"
+						  :default_url => ""
 		validates_attachment_content_type :image3, :content_type => /\Aimage\/.*\Z/
 		has_attached_file :image4, 
 						  :styles => { :medium => "200x200", :thumb => "100x100>" },
-						  :default_url => "missing.jpg"
+						  :default_url => ""
 		validates_attachment_content_type :image4, :content_type => /\Aimage\/.*\Z/
 	else
 		has_attached_file :image, 
 						  :styles => { :medium => "200x200", :thumb => "100x100>" }, 
-						  :default_url => "missing.jpg",
+						  :default_url => "",
 					      :storage => :dropbox,
 	    				  :dropbox_credentials => Rails.root.join("config/dropbox.yml"),
 	    				  :path => ":style/:id_:filename"
@@ -28,7 +28,7 @@ class Listing < ActiveRecord::Base
 		validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 		has_attached_file :image2, 
 						  :styles => { :medium => "200x", :thumb => "100x100>" }, 
-						  :default_url => "missing.jpg",					     
+						  :default_url => "",					     
 						  :storage => :dropbox,
 	    				  :dropbox_credentials => Rails.root.join("config/dropbox.yml"),
 	    				  :path => ":style/:id_:filename"
@@ -36,7 +36,7 @@ class Listing < ActiveRecord::Base
 		validates_attachment_content_type :image2, :content_type => /\Aimage\/.*\Z/
 		has_attached_file :image3, 
 						  :styles => { :medium => "200x", :thumb => "100x100>" }, 
-						  :default_url => "missing.jpg",
+						  :default_url => "",
 					      :storage => :dropbox,
 	    				  :dropbox_credentials => Rails.root.join("config/dropbox.yml"),
 	    				  :path => ":style/:id_:filename"
@@ -44,7 +44,7 @@ class Listing < ActiveRecord::Base
 		validates_attachment_content_type :image3, :content_type => /\Aimage\/.*\Z/
 		has_attached_file :image4, 
 						  :styles => { :medium => "200x", :thumb => "100x100>" }, 
-						  :default_url => "missing.jpg",
+						  :default_url => "",
 					      :storage => :dropbox,
 	    				  :dropbox_credentials => Rails.root.join("config/dropbox.yml"),
 	    				  :path => ":style/:id_:filename"
@@ -84,6 +84,20 @@ class Listing < ActiveRecord::Base
 		 
 		end # end CSV.foreach
 	end # end self.import(file)
+
+    # csv export code from railscasts
+	def self.to_csv(listings)
+	  wanted_columns = [:sku, :name, :description, :price, :inventory, :category]
+	  CSV.generate do |csv|
+	    csv << wanted_columns + [:image_file_name, :image2_file_name, :image3_file_name, :image4_file_name]
+	    listings.each do |listing|
+	      attrs = listing.attributes.with_indifferent_access.values_at(*wanted_columns)
+	      attrs.push(listing.image.url, listing.image2.try(:url), listing.image3.try(:url), listing.image4.try(:url)) 
+	      # if image is not always present, use `listing.image.try(:url)`
+	      csv << attrs
+	    end
+	  end
+    end
 
 	def self.not_expired
         where('updated_at >= ?', Date.current - 30.day)

@@ -8,10 +8,18 @@ class ListingsController < ApplicationController
 
   def seller
     @listings = Listing.where(user: current_user).order("created_at DESC")
+     respond_to do |format|
+         format.html
+         format.csv { send_data @listings.to_csv(@listings) }  
+      end
   end
 
   def index
-      @listings = Listing.not_expired.order("created_at DESC")     
+      @listings = Listing.not_expired.order("created_at DESC")  
+      respond_to do |format|
+         format.html
+         format.csv { send_data @listings.to_csv(@listings) }   
+       end
   end
 
   def admin

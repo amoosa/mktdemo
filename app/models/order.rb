@@ -14,4 +14,16 @@ class Order < ActiveRecord::Base
 	    self.listing.update_attribute("inventory", (listing.inventory - 1))
 	end
 
+def self.to_csv(orders)
+ wanted_columns = [:id, :shipname, :shipaddress, :shipcity, :shipstate, :shipzip]
+  CSV.generate do |csv|
+    csv << wanted_columns + [:item_name, :price]
+    orders.each do |order|
+	    attr = order.attributes.with_indifferent_access.values_at(*wanted_columns)
+	    attr.push(order.listing.name, order.listing.price)
+	    csv << attr
+   end
+  end
+ end
+
 end
