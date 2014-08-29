@@ -89,7 +89,7 @@ class Listing < ActiveRecord::Base
 	def self.to_csv(listings)
 	  wanted_columns = [:sku, :name, :description, :price, :inventory, :category]
 	  CSV.generate do |csv|
-	    csv << ['Product_id', 'Product title', 'Description', 'Price', 'Quantity in Stock', 'Category'] + [:image_file_name, :image2_file_name, :image3_file_name, :image4_file_name]
+	    csv << ['Product_id', 'Product title', 'Description', 'Price', 'Quantity in stock', 'Category'] + [:Image, :Image2, :Image3, :Image4]
 	    listings.each do |listing|
 	      attrs = listing.attributes.with_indifferent_access.values_at(*wanted_columns)
 	      attrs.push(listing.image.url, listing.image2.try(:url), listing.image3.try(:url), listing.image4.try(:url)) 
