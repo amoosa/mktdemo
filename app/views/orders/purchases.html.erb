@@ -1,5 +1,5 @@
 <div class="center">
-  <h2>Purchase History for <%= current_user.name %></h2>
+  <h3>Purchase History for <%= current_user.name %></h3>
 </div>
 
 <table class="table table-condensed">
@@ -9,8 +9,8 @@
     <th class="col-md-1">Price</th>
     <th class="col-md-2">Seller</th>
     <th class="col-md-2">Date Purchased</th>
-    <th class="col-md-1">Carrier</th>
-    <th class="col-md-2">Shipment Tracking #</th>
+    <th class="col-md-1"><font color="green">Carrier</font></th>
+    <th class="col-md-2"><font color="green">Shipment Tracking #</font</th>
   </tr>
 
   <% @orders.each do |order| %>
@@ -20,8 +20,8 @@
       <td><%= number_to_currency(order.listing.price) %></td>
       <td><%= order.seller.name %></td>
       <td><%= order.created_at.strftime("%B %-d, %Y") %></td>
-      <td><%= order.carrier %></td>
-      <td><%= order.tracking %></td>
+      <td><font color="green"><%= order.carrier %></font</td>
+      <td><font color="green"><%= order.tracking %></font</td>
     </tr>
   <% end %>
 </table>
