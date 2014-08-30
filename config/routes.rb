@@ -8,6 +8,9 @@ Mktdemo::Application.routes.draw do
     collection { post :import }
   end
 
+  get '/listings/s/:id' => 'listings#vendor', as: 'vendor'
+  get '/listings/c/:category' => 'listings#category', as: 'category'
+
   get "pages/about"
   get "pages/contact"
   get "pages/terms_conditions"

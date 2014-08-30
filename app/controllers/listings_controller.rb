@@ -22,12 +22,22 @@ class ListingsController < ApplicationController
        end
   end
 
+  def category
+    @category = params[:category]
+    @listings = Listing.not_expired.where(:category => @category)
+  end
+
   def admin
      if current_user.name == "admin admin"
         @listings = Listing.all.order("created_at DESC")
      else
         redirect_to root_url, notice: "Sorry, you are not authorized to view the admin page."
      end
+  end
+
+  def vendor
+    @user = User.find(params[:id])
+    @listings = Listing.not_expired.where(user: User.find(params[:id]))
   end
 
   def search
