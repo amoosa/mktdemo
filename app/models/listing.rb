@@ -65,7 +65,7 @@ class Listing < ActiveRecord::Base
           listing_hash = {:name => row['Product title'], 
           	              :description => row['Description'],
           				  :sku => row['Product_id'],
-  						  :price => row['Price'], :category => row['Category'.titleize], :inventory => row['Quantity in stock'],
+  						  :price => row['Price'], :category => row['Category'.downcase.titleize], :inventory => row['Quantity in stock'],
   						  :image => URI.parse(row['Image']),
   						  :user_id => user_id}.tap do |list_hash|
 						    list_hash[:image2] = URI.parse(row['Image2']) if row['Image2'] 

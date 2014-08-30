@@ -1,17 +1,13 @@
-<nav class="navbar navbar-default" role="navigation">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="/">outfit additions</a>
-    </div>
 
-        <!-- CATEGORY DROP DOWN -->
+<header role="banner" class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <button data-toggle="collapse-side" data-target=".side-collapse" data-target-2=".side-collapse-container" type="button" class="navbar-toggle pull-left"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+          <a class="navbar-brand" href="/">outfit additions</a>
+        </div>
+        <div class="navbar-inverse side-collapse in">
+          <nav role="navigation" class="navbar-collapse">
+            <!-- CATEGORY DROP DOWN -->
        <ul class="nav navbar-nav">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Category<b class="caret"></b></a>
@@ -24,11 +20,6 @@
          </li>
         </ul>
    <!-- END CATEGORY DROP DOWN -->
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-
 
     <!-- ACCOUNT LINKS -->
       <ul class="nav navbar-nav navbar-right">
@@ -61,7 +52,7 @@
               <% end %>
   <!-- END SEARCH BOX --> 
 
-    </div><!-- /.navbar-collapse -->  
-  </div><!-- /.container-fluid -->
-</nav>
-
+          </nav>
+        </div>
+      </div>
+    </header>
