@@ -1,13 +1,20 @@
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">outfit additions</a>
+    </div>
 
-<header role="banner" class="navbar navbar-fixed-top navbar-inverse">
-      <div class="container">
-        <div class="navbar-header">
-          <button data-toggle="collapse-side" data-target=".side-collapse" data-target-2=".side-collapse-container" type="button" class="navbar-toggle pull-left"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-          <a class="navbar-brand" href="/">outfit additions</a>
-        </div>
-        <div class="navbar-inverse side-collapse in">
-          <nav role="navigation" class="navbar-collapse">
-            <!-- CATEGORY DROP DOWN -->
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+    <!-- CATEGORY DROP DOWN -->
        <ul class="nav navbar-nav">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Category<b class="caret"></b></a>
@@ -25,17 +32,18 @@
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
           <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.name %><b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <% if current_user.name == "admin admin" %>
-              <li><%= link_to "Admin", admin_path, data: { no_turbolink: true }  %></li>
-            <% end %>
-            <li><%= link_to "Your Purchases", purchases_path  %></li>
-            <li><%= link_to "List Items for Sale", new_listing_path, data: { no_turbolink: true }  %></li>
-            <li><%= link_to "Manage Listings", seller_path  %></li>
-            <li><%= link_to "Sold Listings", sales_path  %></li>
-            <li><%= link_to "Profile Info", edit_user_registration_path  %></li>
-          </ul>
+           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.name %><b class="caret"></b></a>
+            <ul class="dropdown-menu">
+                    <% if current_user.name == "admin admin" %>
+                      <li><%= link_to "Admin", admin_path, data: { no_turbolink: true }  %></li>
+                    <% end %>
+                    <li><%= link_to "Edit Profile", edit_user_registration_path  %></li>
+                    <li><%= link_to "Past Orders", purchases_path  %></li>
+                    <li><%= link_to "Seller Profile", edit_user_path(current_user)  %></li>
+                    <li><%= link_to "Sell your designs", new_listing_path, data: { no_turbolink: true }  %></li>
+                    <li><%= link_to "Manage items you're selling", seller_path  %></li>
+                    <li><%= link_to "Items you've sold", sales_path  %></li>
+            </ul>            
           </li>
           <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete  %></li>
           <% else %>
@@ -52,7 +60,6 @@
               <% end %>
   <!-- END SEARCH BOX --> 
 
-          </nav>
-        </div>
-      </div>
-    </header>
+    </div><!-- /.navbar-collapse -->  
+  </div><!-- /.container-fluid -->
+</nav>

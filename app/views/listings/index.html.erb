@@ -7,7 +7,7 @@
 <%= render 'featured' %>
 
 <h4>New Additions</h4>
-
+<p><%= will_paginate @listings, renderer: BootstrapPagination::Rails %></p>
 <div class="center">
   <div class="row">
     <% @listings.each do |listing| %>
@@ -23,6 +23,7 @@
     <% end %>
   </div>
 </div>
+<p><%= will_paginate @listings, renderer: BootstrapPagination::Rails %></p>
 
 
 

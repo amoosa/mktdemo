@@ -3,6 +3,7 @@
 </div>
 
 <p><b>Download listings:</b> <%= link_to "CSV", listings_path(format: "csv") %></p>
+<p><%= will_paginate @listings, renderer: BootstrapPagination::Rails %></p>
 
 <table class="table table-condensed">
   <tr>
@@ -41,3 +42,4 @@
     </tr>
   <% end %>
 </table>
+<p><%= will_paginate @listings, renderer: BootstrapPagination::Rails %></p>

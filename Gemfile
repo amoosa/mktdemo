@@ -36,6 +36,8 @@ gem "figaro", '~>1.0.0.rc1'
 gem 'devise', '~>3.2.4'
 gem 'stripe', '~>1.14.0'
 gem 'jquery-turbolinks'
+gem 'will_paginate', '~> 3.0'
+gem 'will_paginate-bootstrap'
 
 
 group :production do

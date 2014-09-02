@@ -7,7 +7,7 @@ class ListingsController < ApplicationController
   # GET /listings.json
 
   def seller
-    @listings = Listing.where(user: current_user).order("created_at DESC")
+    @listings = Listing.where(user: current_user).order("created_at DESC").paginate(:page => params[:page], :per_page => 48)
      respond_to do |format|
          format.html
          format.csv { send_data @listings.to_csv(@listings) }  
@@ -15,7 +15,7 @@ class ListingsController < ApplicationController
   end
 
   def index
-      @listings = Listing.not_expired.order("created_at DESC")  
+      @listings = Listing.not_expired.order("created_at DESC").paginate(:page => params[:page], :per_page => 48)  
       respond_to do |format|
          format.html
          format.csv { send_data @listings.to_csv(@listings) }   
@@ -24,12 +24,12 @@ class ListingsController < ApplicationController
 
   def category
     @category = params[:category]
-    @listings = Listing.not_expired.where(:category => @category)
+    @listings = Listing.not_expired.where(:category => @category).paginate(:page => params[:page], :per_page => 48)
   end
 
   def admin
      if current_user.name == "admin admin"
-        @listings = Listing.all.order("created_at DESC")
+        @listings = Listing.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 48)
      else
         redirect_to root_url, notice: "Sorry, you are not authorized to view the admin page."
      end
@@ -37,11 +37,11 @@ class ListingsController < ApplicationController
 
   def vendor
     @user = User.find(params[:id])
-    @listings = Listing.not_expired.where(user: User.find(params[:id]))
+    @listings = Listing.not_expired.where(user: User.find(params[:id])).paginate(:page => params[:page], :per_page => 48)
   end
 
   def search
-    @listings = Listing.not_expired.search(params[:search]).order("created_at DESC")
+    @listings = Listing.not_expired.search(params[:search]).order("created_at DESC").paginate(:page => params[:page], :per_page => 48)
   end
 
   # GET /listings/1

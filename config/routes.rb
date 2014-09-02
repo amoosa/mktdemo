@@ -3,6 +3,8 @@ Mktdemo::Application.routes.draw do
 
   devise_for :users
 
+  resources :users, only: [:update, :edit]
+
   resources :listings do
     resources :orders, only: [:new, :create, :update]
     collection { post :import }

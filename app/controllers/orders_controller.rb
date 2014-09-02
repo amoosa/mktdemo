@@ -8,7 +8,7 @@ class OrdersController < ApplicationController
   # GET /orders.json
 
   def sales
-    @orders = Order.where(seller: current_user).order("created_at DESC")
+    @orders = Order.where(seller: current_user).order("created_at DESC").paginate(:page => params[:page], :per_page => 48)
          respond_to do |format|
          format.html
          format.csv { send_data @orders.to_csv(@orders) }  
@@ -16,7 +16,7 @@ class OrdersController < ApplicationController
   end
 
   def purchases
-    @orders = Order.where(buyer: current_user).order("created_at DESC")
+    @orders = Order.where(buyer: current_user).order("created_at DESC").paginate(:page => params[:page], :per_page => 48)
   end
 
   def thankyou
