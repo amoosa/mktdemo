@@ -74,28 +74,6 @@ border: 1px solid lightgray !important;
   text-align: left;
 }
 
-.thumbnail {
-  display: block;
-  width: 100%;
-  position: relative;
-  height: 0;
-  padding: 80% 0 0 0;
-  overflow: hidden;
-  border: none;
-}
- 
-.thumbnail img
-{
-  position: absolute;
-  display: block;
-  max-width: 100%;
-  max-height: 100%;
-  left: 0;
-  right: 0;
-  top: 3px;
-  bottom: 5px;
-}
-
 .caption {
 
   h3 {
@@ -110,11 +88,6 @@ border: 1px solid lightgray !important;
   font-size: 13px;
   margin: 4px;
   }
-
-position: relative;
-top: -7px;
-padding: 3px;
-background-color: #f0f0f0;
 
 }
 
