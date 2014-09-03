@@ -5,7 +5,6 @@
 <% if user_signed_in? %>
   <p><b>Download orders:</b> <%= link_to "CSV", sales_path(format: "csv") %></p>
 <% end %>
-<p><%= will_paginate @listings, renderer: BootstrapPagination::Rails %></p>
 <table class="table table-condensed">
   <tr>
     <th class="col-md-1">Order ID</th>
@@ -31,4 +30,4 @@
     </tr>
   <% end %>
 </table>
-<p><%= will_paginate @listings, renderer: BootstrapPagination::Rails %></p>
+<div class="center"><p><%= will_paginate @listings, renderer: BootstrapPagination::Rails %></p><div>

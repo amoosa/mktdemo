@@ -1,5 +1,4 @@
 <h4>Shop <font color="#428bca"><%= @category %></font> </h4>
-<p><%= will_paginate @listings, renderer: BootstrapPagination::Rails %></p>
 <div class="center">
   <div class="row">
     <% @listings.each do |listing| %>
@@ -14,6 +13,6 @@
      </div>
     <% end %>
   </div>
+  <p><%= will_paginate @listings, renderer: BootstrapPagination::Rails %></p>
 </div>
 <br>
-<p><%= will_paginate @listings, renderer: BootstrapPagination::Rails %></p>

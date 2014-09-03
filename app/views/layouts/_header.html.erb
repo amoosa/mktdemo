@@ -39,10 +39,10 @@
                     <% end %>
                     <li><%= link_to "Edit Profile", edit_user_registration_path  %></li>
                     <li><%= link_to "Past Orders", purchases_path  %></li>
-                    <li><%= link_to "Seller Profile", edit_user_path(current_user)  %></li>
-                    <li><%= link_to "Sell your designs", new_listing_path, data: { no_turbolink: true }  %></li>
-                    <li><%= link_to "Manage items you're selling", seller_path  %></li>
-                    <li><%= link_to "Items you've sold", sales_path  %></li>
+                    <li><%= link_to "List items to sell", new_listing_path, data: { no_turbolink: true }  %></li>
+                    <li><%= link_to "Manage your listings", seller_path  %></li>
+                    <li><%= link_to "Seller Payments", edit_user_path(current_user), data: { no_turbolink: true }  %></li>
+                    <li><%= link_to "Sold Items", sales_path  %></li>
             </ul>            
           </li>
           <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete  %></li>

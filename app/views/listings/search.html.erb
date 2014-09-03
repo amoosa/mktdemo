@@ -1,5 +1,4 @@
 <h3>Search results</h3>
-<p><%= will_paginate @listings, renderer: BootstrapPagination::Rails %></p>
 <div class="center">
   <div class="row">
     <% @listings.each do |listing| %>
@@ -14,8 +13,9 @@
      </div>
     <% end %>
   </div>
+  <p><%= will_paginate @listings, renderer: BootstrapPagination::Rails %></p>
 </div>
-<p><%= will_paginate @listings, renderer: BootstrapPagination::Rails %></p>
+
   <% if @listings.count == 0 %>
     <h5><font color="red">Sorry, there are no products matching your search.</font></h5>
   <% end %>

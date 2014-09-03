@@ -1,3 +1,4 @@
+<% if params[:page].nil? %>
 <div class="jumbotron">
   <h1>Handcrafted items from <br>
       around the world.</h1>
@@ -5,9 +6,22 @@
 </div>
 
 <%= render 'featured' %>
+<% end %>
 
 <h4>New Additions</h4>
-<p><%= will_paginate @listings, renderer: BootstrapPagination::Rails %></p>
+  <!-- CATEGORY DROP DOWN -->
+        <div class="btn-group">
+          <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown">
+            Category <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+             <li><%- Listing.uniq.pluck(:category).each do |category| %>
+               <%= link_to category, category_path(category: category) %> 
+              <% end %>
+             </li>
+          </ul>
+        </div>
+   <!-- END CATEGORY DROP DOWN -->
 <div class="center">
   <div class="row">
     <% @listings.each do |listing| %>
@@ -22,8 +36,9 @@
      </div>
     <% end %>
   </div>
+ <p><%= will_paginate @listings, renderer: BootstrapPagination::Rails %></p>
 </div>
-<p><%= will_paginate @listings, renderer: BootstrapPagination::Rails %></p>
+
 
 
 

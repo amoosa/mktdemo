@@ -6,7 +6,6 @@
   <p><b>Download listings:</b> <%= link_to "CSV", seller_path(format: "csv") %></p>
   <p><%= link_to 'Add New Listing', new_listing_path, data: { no_turbolink: true } %></p>
 <% end %>
-<p><%= will_paginate @listings, renderer: BootstrapPagination::Rails %></p>
 <table class="table table-condensed">
   <tr>
     <th class="col-md-2">Image</th>
@@ -39,4 +38,4 @@
     </tr>
   <% end %>
 </table>
-<p><%= will_paginate @listings, renderer: BootstrapPagination::Rails %></p>
+<div class="center"><p><%= will_paginate @listings, renderer: BootstrapPagination::Rails %></p></div>
