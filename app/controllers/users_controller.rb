@@ -3,8 +3,7 @@ class UsersController < ApplicationController
   before_filter :load_user
   before_filter :check_user, only: [:edit, :update]
 
-
- def update
+def update
     @user.attributes = user_params
     Stripe.api_key = ENV["STRIPE_API_KEY"]
       token = params[:stripeToken]
@@ -26,17 +25,9 @@ class UsersController < ApplicationController
     end
   end
 
-def sellerprofile
-    @user = User.find(params[:id])
-    @user.update(params[:user])
-      # respond_to do |format|
-      #   if @user.update(params[:profilestory])
-      #      format.html { redirect_to root_url, notice: 'Your profile was successfully updated.' }
-      #   else
-      #     format.html { render action: 'edit' }
-      #   end
-      # end
-end
+  def sellerprofile
+  end
+  
 
   private
 
