@@ -26,6 +26,18 @@ class UsersController < ApplicationController
     end
   end
 
+def sellerprofile
+    @user = User.find(params[:id])
+    @user.update(params[:user])
+      # respond_to do |format|
+      #   if @user.update(params[:profilestory])
+      #      format.html { redirect_to root_url, notice: 'Your profile was successfully updated.' }
+      #   else
+      #     format.html { render action: 'edit' }
+      #   end
+      # end
+end
+
   private
 
   def load_user
@@ -40,6 +52,6 @@ class UsersController < ApplicationController
 
 
   def user_params
-    params.require(:user).permit(:bankaccname)
+    params.require(:user).permit(:bankaccname, :profileimage, :profilestory)
   end
 end

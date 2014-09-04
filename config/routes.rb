@@ -5,13 +5,15 @@ Mktdemo::Application.routes.draw do
 
   resources :users, only: [:update, :edit]
 
-  resources :listings do
+   resources :listings do
     resources :orders, only: [:new, :create, :update]
     collection { post :import }
   end
 
   get '/listings/s/:id' => 'listings#vendor', as: 'vendor'
   get '/listings/c/:category' => 'listings#category', as: 'category'
+
+  match "/users/:id/sellerprofile", to: "users#sellerprofile", via: [:get, :put], as: :sellerprofile
 
   get "pages/about"
   get "pages/contact"
