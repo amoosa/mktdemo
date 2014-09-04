@@ -1,5 +1,5 @@
 class AutoNotifier < ActionMailer::Base
-  default from: "Outfit Additions"
+  default from: "ashfaaqmoosa@gmail.com"
 
   def orderconf_email(current_user, order)
   	    @buyer = current_user
