@@ -67,8 +67,8 @@ class OrdersController < ApplicationController
       if @order.save
         format.html { redirect_to thankyou_url }
         format.json { render action: 'show', status: :created, location: @order }
-        #AutoNotifier.orderconf_email(current_user, @order).deliver #activate after paid sub to heroku
-        #AutoNotifier.sellerconf_email(current_user, @seller, @order).deliver #activate after paid sub to heroku
+        AutoNotifier.orderconf_email(current_user, @order).deliver #activate after paid sub to heroku
+        AutoNotifier.sellerconf_email(current_user, @seller, @order).deliver #activate after paid sub to heroku
         #and adding sendgrid app to send email on heroku
       else
         format.html { render action: 'new' }
