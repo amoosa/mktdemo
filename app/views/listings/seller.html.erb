@@ -18,8 +18,8 @@
 
   <% @listings.each do |listing| %>
     <tr>
-      <td><%= image_tag listing.image.url(:thumb) %></td>
-      <td><%= listing.name.downcase.titleize %></td>
+      <td><%= link_to image_tag(listing.image.url(:thumb)), listing, data: { no_turbolink: true } %></td>
+      <td><%= link_to listing.name.downcase.titleize, listing, data: { no_turbolink: true } %></td>
       <td><%= number_to_currency(listing.price) %></td>
       <td><%= listing.inventory %></td>
       <td><%= listing.created_at.strftime("%B %-d, %Y") %></td>
