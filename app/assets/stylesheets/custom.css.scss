@@ -66,8 +66,6 @@ border: 1px solid lightgray !important;
   h3 {font-size: 30px;}
 }
 
-.tnail > img { border:1px solid gray; }
-
 /* note that id names begin with # and classes begin with . */
 
 .dropdown-menu > li > a {
@@ -97,5 +95,15 @@ border: 1px solid lightgray !important;
    }
 
   }
+
+  @media print {
+  footer {
+    display:none;
+   }
+  .pbtn {
+    display:none;
+   }
+
+}
 
 

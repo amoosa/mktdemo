@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   before_filter :load_user
-  before_filter :check_user, only: [:edit, :update]
+  before_filter :check_user, only: [:edit, :update, :sellerprofile]
 
 def update
     @user.attributes = user_params
@@ -26,6 +26,7 @@ def update
   end
 
   def sellerprofile
+
   end
   
 

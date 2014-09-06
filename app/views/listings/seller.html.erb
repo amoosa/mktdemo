@@ -1,6 +1,6 @@
-<div class="center">
+
   <h3>Manage your Listings</h3>
-</div>
+
 
 <% if user_signed_in? %>
   <p><b>Download listings:</b> <%= link_to "CSV", seller_path(format: "csv") %></p>
@@ -13,7 +13,7 @@
     <th class="col-md-2">Price</th>
     <th class="col-md-2">Current Inventory</th>
     <th class="col-md-2">Date Listed</th>
-    <th class="col-md-2">Action</th>
+    <th class="col-md-2"></th>
   </tr>
 
   <% @listings.each do |listing| %>

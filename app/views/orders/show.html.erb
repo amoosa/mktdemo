@@ -1,0 +1,30 @@
+      
+      <br><br><br>
+      <p><%= link_to 'Print Invoice', request.original_url, :onclick => 'window.print();return false;', class: "btn btn-sm btn-success pbtn"%></p>
+       <br>
+       <p><%= link_to image_tag("logo2014.jpg"), "http://www.outfitadditions.com" %></p> 
+
+       <p>
+         Dear <%= @order.cardname %>, <br><br>Thank you for your order at Outfit Additions. <br><br>
+         <b>Order Number:</b> <%= @order.id %><br>
+         <b>Order Date:</b> <%= @order.created_at.strftime("%B %-d, %Y") %><br>
+         <b>Item ordered:</b> <%= @order.listing.name %><br>
+         <b>Seller Name:</b> <%= @order.seller.name %><br>
+         <b>Total charged:</b> <%= number_to_currency(@order.listing.price) %>
+       </p>
+
+         <b>Billed to: </b><br>
+           <%= @order.cardname %><br>
+           <%= @order.address %><br>
+           <%= "#{@order.state}, #{@order.zip}" %><br>
+           <% if !@order.comments.blank? %>
+          <b>Comments:</b> <%= @order.comments %><br>
+          <% end %>
+          <br>
+          <b>Shipped to: </b><br>
+           <%= @order.shipname %><br>
+           <%= @order.shipaddress %><br>
+           <%= "#{@order.shipstate}, #{@order.shipzip}" %><br><br>
+
+       <p>Returns are accepted if item is returned within 21 days of the order date. Please email: <a href="mailto:service@outfitadditions.com">service@outfitadditions.com.</a> for return instructions. </p>
+       <p>--The Outfit Additions team</p>

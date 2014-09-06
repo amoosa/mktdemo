@@ -8,7 +8,7 @@ Mktdemo::Application.routes.draw do
   match "/seller/:id", to: "users#sellerprofile", via: [:get, :put], as: :sellerprofile
 
    resources :listings do
-    resources :orders, only: [:new, :create, :update]
+    resources :orders, only: [:new, :create, :update, :show]
     collection { post :import }
   end
 

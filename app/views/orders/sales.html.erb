@@ -1,6 +1,5 @@
-<div class="center">
-  <h3>Sales History for <%= current_user.name %></h3>
-</div>
+ <h3>Sales History for <%= current_user.name %></h3>
+
 
 <% if user_signed_in? %>
   <p><b>Download orders:</b> <%= link_to "CSV", sales_path(format: "csv") %></p>
@@ -13,7 +12,8 @@
     <th class="col-md-1">Item</th>
     <th class="col-md-1">Price</th>
     <th class="col-md-2">Shipping Details</th>
-    <th class="col-md-2">Carrier (UPS, USPS, etc.)</th>
+    <th class="col-md-1">Invoice</th>
+    <th class="col-md-1">Carrier (UPS, USPS, etc.)</th>
     <th class="col-md-3">Shipment Tracking #</th>
   </tr>
 
@@ -25,9 +25,11 @@
       <td><%= order.listing.name.downcase.titleize %></td>
       <td><%= number_to_currency(order.listing.price) %></td>
       <td><%= order.shipname %><br><%= order.shipaddress %><br><%= "#{order.shipcity}, #{order.shipstate} #{order.shipzip}" %></td>
+      <td><%= link_to "Get Invoice", listing_order_path(id: order.id, listing_id: order.listing_id), class: "btn btn-sm btn-success" %></td>
       <td><%= best_in_place order, :carrier, :type => :input, :url => listing_order_path(id: order.id, listing_id: order.listing_id) %> </td>
       <td><%= best_in_place order, :tracking, :type => :input, :url => listing_order_path(id: order.id, listing_id: order.listing_id) %> </td>
     </tr>
   <% end %>
 </table>
+
 <div class="center"><p><%= will_paginate @listings, renderer: BootstrapPagination::Rails %></p><div>

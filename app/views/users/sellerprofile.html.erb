@@ -1,4 +1,4 @@
-<%= form_for(@user, url: sellerprofile_path(@user), method: :put, html: { :multipart => true }) do |f| %>
+<%= form_for(@user, url: sellerprofile_path(@user), method: :put, html: { :class => 'edit_profile', :multipart => true }) do |f| %>
 
   <div class="form-group">
     <%= f.label :your_story %><i> (required)</i>
