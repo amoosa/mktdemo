@@ -16,7 +16,9 @@ Total: <%= number_to_currency(@order.listing.price) %>.
 
  Shipped to: 
  <%= @order.shipname %>.
- <%= @order.shipaddress %>.
+ <%= if !@order.shipcompany.blank? then @order.shipcompany end %>
+ <%= @order.shipaddress %><br>
+ <%= if !@order.shipaddress2.blank? then @order.shipaddress2 end %>
  <%= "#{@order.shipstate}, #{@order.shipzip}" %>.
 
 Your order will ship in 1-2 business days. To check your order details, please login at <%= @url %>.

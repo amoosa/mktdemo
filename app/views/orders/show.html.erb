@@ -16,6 +16,7 @@
          <b>Billed to: </b><br>
            <%= @order.cardname %><br>
            <%= @order.address %><br>
+           <%= if !@order.address2.blank? then @order.address2 end %><% if !@order.address2.blank? %><br><% end %>
            <%= "#{@order.state}, #{@order.zip}" %><br>
            <% if !@order.comments.blank? %>
           <b>Comments:</b> <%= @order.comments %><br>
@@ -23,7 +24,9 @@
           <br>
           <b>Shipped to: </b><br>
            <%= @order.shipname %><br>
+           <%= if !@order.shipcompany.blank? then @order.shipcompany end %><% if !@order.shipcompany.blank? %><br><% end %>
            <%= @order.shipaddress %><br>
+           <%= if !@order.shipaddress2.blank? then @order.shipaddress2 end %><% if !@order.shipaddress2.blank? %><br><% end %>
            <%= "#{@order.shipstate}, #{@order.shipzip}" %><br><br>
 
        <p>Returns are accepted if item is returned within 21 days of the order date. Please email: <a href="mailto:service@outfitadditions.com">service@outfitadditions.com.</a> for return instructions. </p>

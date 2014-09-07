@@ -14,7 +14,9 @@
 
           <b>Ship the item to: </b><br>
            <%= @order.shipname %><br>
+           <%= if !@order.shipcompany.blank? then @order.shipcompany end %><% if !@order.shipcompany.blank? %><br><% end %>
            <%= @order.shipaddress %><br>
+           <%= if !@order.shipaddress2.blank? then @order.shipaddress2 end %><% if !@order.shipaddress2.blank? %><br><% end %>
            <%= "#{@order.shipstate}, #{@order.shipzip}" %><br>
            Customer email: <%= @buyer.email %><br>
            <% if !@order.comments.blank? %>

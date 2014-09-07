@@ -5,7 +5,9 @@ Sold for: <%= number_to_currency(@order.listing.price) %>
 
 Ship the item to: 
 <%= @order.shipname %>
-<%= @order.shipaddress %>
+<%= if !@order.shipcompany.blank? then @order.shipcompany end %>
+<%= @order.shipaddress %><br>
+<%= if !@order.shipaddress2.blank? then @order.shipaddress2 end %>
 <%= "#{@order.shipstate}, #{@order.shipzip}" %>
 Customer email: <%= @buyer.email %>
 <% if !@order.comments.blank? %>

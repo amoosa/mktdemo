@@ -45,8 +45,10 @@
         <% if @listing.inventory > 0 %>
             <p><i>Shipped direct from seller: <%= link_to @listing.user.name, vendor_path(@listing.user) %>. Ships in 1-2 business days. US Shipping is FREE. No hassle 21 day returns. <a href="#shipreturns" role="link" data-toggle="modal"> Learn more.</a></i></p>
                 <%= render 'shipmodal' %>    
+  
+            <%= link_to new_listing_order_path(@listing), class: "btn btn-primary btn-xl", data: { no_turbolink: true } do %>BUY    <span class="glyphicon glyphicon-lock"></span>
+          <% end %>
 
-            <%= link_to new_listing_order_path(@listing), class: "btn btn-primary buyit", data: { no_turbolink: true } do %> <span class="glyphicon glyphicon-shopping-cart"></span>  Buy this item <% end %>
         <% else %>
           <br><p><b><font color="red">Sorry, we're sold out of this item. </font></b></p>
         <% end %>   

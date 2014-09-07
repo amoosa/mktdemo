@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140903181323) do
+ActiveRecord::Schema.define(version: 20140907105754) do
 
   create_table "listings", force: true do |t|
     t.string   "name"
@@ -59,8 +59,11 @@ ActiveRecord::Schema.define(version: 20140903181323) do
     t.string   "shipstate"
     t.string   "shipzip"
     t.text     "comments"
-    t.string   "tracking",    default: "None yet"
-    t.string   "carrier",     default: "None yet"
+    t.string   "tracking",     default: "None yet"
+    t.string   "carrier",      default: "None yet"
+    t.string   "shipcompany"
+    t.string   "shipaddress2"
+    t.string   "address2"
   end
 
   create_table "users", force: true do |t|

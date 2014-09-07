@@ -26,14 +26,23 @@
       </div>
 
   <h3>Place Order</h3>
+  <p><b><font color="green">Order Total: <%= number_to_currency(@listing.price) %></font></b></p>
   <h4><b>Shipping Details</b></h4>
   <div class="form-group">
     <%= f.label :name %>
     <%= f.text_field :shipname, class:"form-control" %>
   </div>
   <div class="form-group">
-    <%= f.label :address %>
+    <%= f.label :company %><i> (optional)</i>
+    <%= f.text_field :shipcompany, class:"form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :address %><i> (line 1)</i>
     <%= f.text_field :shipaddress, class:"form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :address %><i> (line 2)</i>
+    <%= f.text_field :shipaddress2, class:"form-control" %>
   </div>
 <div class="row">
   <div class = "col-md-4">
@@ -61,8 +70,12 @@
     <%= f.text_field :cardname, class:"form-control" %>
   </div>
   <div class="form-group">
-    <%= f.label :address %>
+    <%= f.label :address %><i> (line 1)</i>
     <%= f.text_field :address, class:"form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :address %><i> (line 2)</i>
+    <%= f.text_field :address2, class:"form-control" %>
   </div>
 
 <div class="row">

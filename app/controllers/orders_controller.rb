@@ -101,8 +101,8 @@ private
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:shipname, :shipaddress, :shipcity, :shipstate, :shipzip,
-                                    :cardname, :address, :city, :state, :zip, :comments,
+      params.require(:order).permit(:shipname, :shipcompany,:shipaddress, :shipaddress2, :shipcity, :shipstate, 
+                                    :shipzip, :cardname, :address, :address2, :city, :state, :zip, :comments,
                                      :tracking, :carrier)
     end
 
