@@ -26,7 +26,7 @@ class Listing < ActiveRecord::Base
 						  :convert_options => {:medium => '-background white -gravity center -extent 250x235',
 						                       :thumb => '-background white -gravity center -extent 100x100' },
 						  :storage => :s3, 
-                          :s3_credentials => "#{Rails.root}/config/application.yml"
+                          :s3_credentials => "#{Rails.root}/config/aws.yml"
 					      #:storage => :dropbox,
 	    				  #:dropbox_credentials => Rails.root.join("config/dropbox.yml"),
 	    				  #:path => ":style/:id_:filename"

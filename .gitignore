@@ -17,7 +17,6 @@
 
 # Ignore application configuration
 /config/application.yml
-/config/aws.yml
 
 # ignore images uploaded to localhost
 /public/system
