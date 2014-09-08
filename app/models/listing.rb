@@ -2,57 +2,57 @@ class Listing < ActiveRecord::Base
 
 	if Rails.env.development?
 		has_attached_file :image, 
-						  :styles => { :medium => "250x250", :thumb => "100x100" },
+						  :styles => { :medium => "250x235", :thumb => "100x100" },
 						  :default_url => "",
-						  :convert_options => {:medium => '-background white -gravity center -extent 250x250',
+						  :convert_options => {:medium => '-background white -gravity center -extent 250x235',
 						                       :thumb => '-background white -gravity center -extent 100x100' }
 		validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 		has_attached_file :image2, 
-						  :styles => { :medium => "200x200", :thumb => "100x100" },
+						  :styles => { :thumb => "100x100" },
 						  :default_url => ""
 		validates_attachment_content_type :image2, :content_type => /\Aimage\/.*\Z/
 		has_attached_file :image3, 
-						  :styles => { :medium => "200x200", :thumb => "100x100" },
+						  :styles => { :thumb => "100x100" },
 						  :default_url => ""
 		validates_attachment_content_type :image3, :content_type => /\Aimage\/.*\Z/
 		has_attached_file :image4, 
-						  :styles => { :medium => "200x200", :thumb => "100x100" },
+						  :styles => { :thumb => "100x100" },
 						  :default_url => ""
 		validates_attachment_content_type :image4, :content_type => /\Aimage\/.*\Z/
 	else
 		has_attached_file :image, 
-						  :styles => { :medium => "200x200", :thumb => "100x100" }, 
+						  :styles => { :medium => "250x235", :thumb => "100x100" }, 
 						  :default_url => "",
-						  :convert_options => {:medium => '-background white -gravity center -extent 200x200',
-						                       :thumb => '-background white -gravity center -extent 100x100' },
-					      :storage => :dropbox,
-	    				  :dropbox_credentials => Rails.root.join("config/dropbox.yml"),
-	    				  :path => ":style/:id_:filename"
-	    	             # :dropbox_options => {...}
+						  :convert_options => {:medium => '-background white -gravity center -extent 250x235',
+						                       :thumb => '-background white -gravity center -extent 100x100' }
+					      #:storage => :dropbox,
+	    				  #:dropbox_credentials => Rails.root.join("config/dropbox.yml"),
+	    				  #:path => ":style/:id_:filename"
+	    	              # :dropbox_options => {...}
 		validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 		has_attached_file :image2, 
-						  :styles => { :medium => "200x", :thumb => "100x100" }, 
-						  :default_url => "",					     
-						  :storage => :dropbox,
-	    				  :dropbox_credentials => Rails.root.join("config/dropbox.yml"),
-	    				  :path => ":style/:id_:filename"
-	    	             # :dropbox_options => {...}
+						  :styles => { :thumb => "100x100" }, 
+						  :default_url => ""					     
+						  #:storage => :dropbox,
+	    				  # :dropbox_credentials => Rails.root.join("config/dropbox.yml"),
+	    				  # :path => ":style/:id_:filename"
+	    	              # :dropbox_options => {...}
 		validates_attachment_content_type :image2, :content_type => /\Aimage\/.*\Z/
 		has_attached_file :image3, 
-						  :styles => { :medium => "200x", :thumb => "100x100" }, 
-						  :default_url => "",
-					      :storage => :dropbox,
-	    				  :dropbox_credentials => Rails.root.join("config/dropbox.yml"),
-	    				  :path => ":style/:id_:filename"
-	    	             # :dropbox_options => {...}
+						  :styles => { :thumb => "100x100" }, 
+						  :default_url => ""
+					      #:storage => :dropbox,
+	    				  # :dropbox_credentials => Rails.root.join("config/dropbox.yml"),
+	    				  # :path => ":style/:id_:filename"
+	    	              # :dropbox_options => {...}
 		validates_attachment_content_type :image3, :content_type => /\Aimage\/.*\Z/
 		has_attached_file :image4, 
-						  :styles => { :medium => "200x", :thumb => "100x100" }, 
-						  :default_url => "",
-					      :storage => :dropbox,
-	    				  :dropbox_credentials => Rails.root.join("config/dropbox.yml"),
-	    				  :path => ":style/:id_:filename"
-	    	             # :dropbox_options => {...}
+						  :styles => { :thumb => "100x100" }, 
+						  :default_url => ""
+					      #:storage => :dropbox,
+	    				  # :dropbox_credentials => Rails.root.join("config/dropbox.yml"),
+	    				  # :path => ":style/:id_:filename"
+	    	              # :dropbox_options => {...}
 		validates_attachment_content_type :image4, :content_type => /\Aimage\/.*\Z/
 	end
 
