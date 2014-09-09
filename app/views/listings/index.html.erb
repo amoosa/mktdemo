@@ -1,14 +1,28 @@
 <% if params[:page].nil? %>
 <div class="jumbotron">
-  <h1>Handcrafted items from <br>
-      around the world.</h1>
-  <h2>Discover one-of-a-kind items</h2>
+  <h1>test <br>
+      banner.</h1>
+  <h2>shop now.</h2>
 </div>
 
 <%= render 'featured' %>
 <% end %>
 
 <h4>New Additions</h4>
+
+<!--   <div class="dropdown">
+    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+            Sort<span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+      <li><%= link_to "Price", :sort => "price" %></li>
+      <li><%= link_to "Most Recent", :sort => "created_at" %></li>
+      <li><%= link_to "Alphabetical", :sort => "name" %></li>
+    </ul>
+  </div>
+  <br> -->
+
+
 <div class="center">
   <div class="row">
     <% @listings.each do |listing| %>

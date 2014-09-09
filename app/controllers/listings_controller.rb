@@ -24,7 +24,7 @@ class ListingsController < ApplicationController
 
   def category
     @category = params[:category]
-    @listings = Listing.not_expired.where(:category => @category).paginate(:page => params[:page], :per_page => 48)
+    @listings = Listing.not_expired.where(:category => @category).order("created_at DESC").paginate(:page => params[:page], :per_page => 48)
   end
 
   def admin
@@ -40,9 +40,9 @@ class ListingsController < ApplicationController
     @listings = Listing.not_expired.where(user: User.find(params[:id])).paginate(:page => params[:page], :per_page => 48)
   end
 
-  def search
-    @listings = Listing.not_expired.search(params[:search]).order("created_at DESC").paginate(:page => params[:page], :per_page => 48)
-  end
+   def search
+     @listings = Listing.not_expired.search(params[:search]).order("created_at DESC").paginate(:page => params[:page], :per_page => 48)
+   end
 
   # GET /listings/1
   # GET /listings/1.json
@@ -126,6 +126,7 @@ class ListingsController < ApplicationController
         redirect_to root_url, alert: "Sorry, this listing belongs to someone else"
       end
     end
+
 end
 
 

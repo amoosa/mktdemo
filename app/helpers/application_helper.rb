@@ -10,6 +10,16 @@ module ApplicationHelper
     end
   end
 
+  
+ def categories
+    [
+      ['Necklaces'],
+      ['Earrings'],
+      ['Bracelets'],
+      ['Rings'],
+      ['Other'],
+    ]
+ end
 
   def us_states
     [
@@ -68,14 +78,5 @@ module ApplicationHelper
     ]
  end
 
- def categories
-    [
-      ['Necklaces'],
-      ['Earrings'],
-      ['Bracelets'],
-      ['Rings'],
-      ['Other'],
-    ]
- end
 
 end

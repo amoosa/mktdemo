@@ -39,6 +39,8 @@ gem 'stripe', '~>1.14.0'
 gem 'jquery-turbolinks'
 gem 'will_paginate', '~> 3.0'
 gem 'will_paginate-bootstrap'
+gem 'ransack', '~> 1.3.0'
+gem 'searchkick', '~> 0.8.2'
 
 
 group :production do

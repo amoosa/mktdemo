@@ -1,20 +1,47 @@
 @import "bootstrap";
 
+/* NAVBAR CSS */
+
+/* navbar background color */
+.navbar-default {
+  background-color: #ff0066;
+}
+
+.navbar-default .navbar-nav > li > a {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  color: #FFFFFF;
+}
+
+/* navbar logo format */
+.navbar-default .navbar-brand {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  color: #FFFFFF; 
+  font-size: 30px;
+}
+
+.navbar-toggle {
+  background-color: #ffffff;
+ }
+
+/* END NAVBAR CSS */
+
 body { padding-top: 70px; }
 
 .images {
 position: relative;
 min-height: 1px;
-padding-left: 5px;
-padding-right: 5px;
+padding-left: 3px;
+padding-right: 3px;
 }
 
-
 footer {
-  background: #eee;
   color: #333;
   font-size: 11px;
   padding: 10px;
+  border-top: 1px solid gray;
 }
 
 ul.unstyled {
@@ -40,29 +67,10 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* navbar background color */
-.navbar-default {
-  background-color: #ffffff;
-}
-
 .orderthumb {
 border: 1px solid lightgray !important;
 }
 
-/* navbar logo format */
-.navbar-default .navbar-brand {
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: 400;
-  color: #000000; 
-  font-size: 30px;
-}
-
-.navbar-default .navbar-nav > li > a {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 14px;
-  font-weight: bold;
-  color: #0192B5;
-}
 
 .col-md-3:nth-child(4n+1) {
   clear: left;
@@ -96,8 +104,8 @@ border: 1px solid lightgray !important;
 }
 
 .btn-xl {
-    padding: 14px 40px;
-    font-size: 14px;
+    padding: 6px 40px;
+    font-size: 12px;
     border-radius: 8px;
     font-weight: bold;
     background-color: #440044;
