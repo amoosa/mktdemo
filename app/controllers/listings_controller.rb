@@ -40,9 +40,17 @@ class ListingsController < ApplicationController
     @listings = Listing.not_expired.where(user: User.find(params[:id])).paginate(:page => params[:page], :per_page => 48)
   end
 
-   def search
-     @listings = Listing.not_expired.search(params[:search]).order("created_at DESC").paginate(:page => params[:page], :per_page => 48)
-   end
+  def search
+    if params[:search].present?
+      @listings = Listing.not_expired.search(params[:search])
+    else
+      @listings = Listing.not_expired.order("created_at DESC").paginate(:page => params[:page], :per_page => 48)
+    end
+  end
+
+   # def search
+   #   @listings = Listing.not_expired.search(params[:search]).order("created_at DESC").paginate(:page => params[:page], :per_page => 48)
+   # end
 
   # GET /listings/1
   # GET /listings/1.json

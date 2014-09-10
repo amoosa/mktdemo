@@ -1,5 +1,7 @@
 class Listing < ActiveRecord::Base
 
+	searchkick
+
 	if Rails.env.development?
 		has_attached_file :image, 
 						  :styles => { :medium => "250x235", :thumb => "100x100" },
@@ -56,9 +58,9 @@ class Listing < ActiveRecord::Base
 		validates_attachment_content_type :image4, :content_type => /\Aimage\/.*\Z/
 	end
 
-	def self.search(query)
-	  where("description like ? or name like ?", "%#{query}%", "%#{query}%")
-	end
+	# def self.search(query)
+	#   where("description like ? or name like ?", "%#{query}%", "%#{query}%")
+	# end
 
 
 
@@ -68,10 +70,10 @@ class Listing < ActiveRecord::Base
 	def self.import(file, user_id)
 		CSV.foreach(file.path, headers: true, skip_blanks: true) do |row|
 
-          listing_hash = {:name => row['Product title'], 
+          listing_hash = {:name => row['Product_title'], 
           	              :description => row['Description'],
           				  :sku => row['Product_id'],
-  						  :price => row['Price'], :category => row['Category'].titleize, :inventory => row['Quantity in stock'],
+  						  :price => row['Price'], :category => row['Category'].titleize, :inventory => row['Quantity_in_stock'],
   						  :image => URI.parse(row['Image']),
   						  :user_id => user_id}.tap do |list_hash|
 						    list_hash[:image2] = URI.parse(row['Image2']) if row['Image2'] 
@@ -114,6 +116,8 @@ class Listing < ActiveRecord::Base
 	end
 
 	validates :name, :description, :price, :inventory, :category, :sku, presence: true
+	validates :name, length: { maximum: 56 }
+	validates :description, length: { maximum: 2001 }
 	validates :price, :inventory, numericality: {greater_than: 0}
 	validates_attachment_presence :image
 

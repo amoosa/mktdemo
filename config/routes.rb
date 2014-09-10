@@ -8,9 +8,12 @@ Mktdemo::Application.routes.draw do
   match "/seller/:id", to: "users#sellerprofile", via: [:get, :put], as: :sellerprofile
 
    resources :listings do
+        collection do
+          post 'import'
+          get 'search'
+        end
     resources :orders, only: [:new, :create, :update, :show]
-    collection { post :import }
-  end
+   end
 
   get '/listings/s/:id' => 'listings#vendor', as: 'vendor'
   get '/listings/c/:category' => 'listings#category', as: 'category'
@@ -26,7 +29,7 @@ Mktdemo::Application.routes.draw do
   get 'sales' => "orders#sales"
   get 'purchases' => "orders#purchases"
   get 'thankyou' => "orders#thankyou"
-  get 'search' => "listings#search"
+  #get 'search' => "listings#search"
   get 'admin' => "listings#admin"
   
   #get 'orderupdate' => "orders#update"
