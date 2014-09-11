@@ -27,6 +27,7 @@ Mktdemo::Application.routes.draw do
 
   get 'seller' => "listings#seller"
   get 'sales' => "orders#sales"
+  get 'shipconf' => "orders#shipconf"
   get 'purchases' => "orders#purchases"
   get 'thankyou' => "orders#thankyou"
   #get 'search' => "listings#search"

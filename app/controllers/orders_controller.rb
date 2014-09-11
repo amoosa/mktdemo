@@ -80,6 +80,11 @@ class OrdersController < ApplicationController
   end
 end
 
+  def shipconf
+      @order = Order.find(params[:id])
+      AutoNotifier.shipconf_email(@order).deliver
+  end
+
   def update
     respond_to do |format|
     if @order.update(order_params)

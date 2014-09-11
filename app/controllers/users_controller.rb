@@ -26,7 +26,7 @@ def update
   end
 
   def sellerprofile
-
+     @user.update_attributes(:profilestory => params[:profilestory], :profileimage => params[:profileimage])
   end
   
 

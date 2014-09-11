@@ -39,6 +39,19 @@ ul.nav a:hover { color: #e2e2e2 !important; }
     border: none;
 }
 
+.dropdown-menu > li > a {
+  text-align: left;
+}
+
+.dropdown-menu > li > a:hover {
+  background-color: #ffffff;
+}
+
+/* color on clicking on dropdown in navbar */
+.navbar-default .navbar-nav > .open > a:focus {
+  background-color:#440044;
+}
+
 /* END NAVBAR CSS */
 
 body { padding-top: 70px; }
@@ -96,10 +109,6 @@ border: 1px solid lightgray !important;
 }
 
 /* note that id names begin with # and classes begin with . */
-
-.dropdown-menu > li > a {
-  text-align: left;
-}
 
 .caption {
 
