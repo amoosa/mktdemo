@@ -1,0 +1,42 @@
+<h3> Seller Profile (optional) </h3>
+
+  <% if @user.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger alert-dismissable">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <h4><%= pluralize(@user.errors.count, "error") %> prohibited this update from being saved:</h4>
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="well"><p><font color="green"><b>Tell customers your story: </b></font>This form is optional but please take the time to write about who you are and your approach to design. What inspires you? What is your collection about? What materials do you use? Your background, education, if applicable, etc. Tell customers your story.</p>
+<p>Your profile info will be displayed in your seller page along with your collection. </p></div>
+
+<%= form_for @user, url: sellerprofile_path(id: current_user.id), method: :put, html: { :class => 'edit_profile', :multipart => true } do |f| %>
+
+  <div class="form-group">
+    <%= f.label :your_story %><i> (between 250-500 characters)</i>
+    <%= f.text_area :profilestory, class:"form-control" %>
+  </div>
+         <% if !@user.profilestory.blank? %>
+          <i>Current profile:</i> <%= @user.profilestory %>
+      <% end %>
+   <% if !@user.profilestory.blank? %><br><br><% end %>
+
+  <div class="form-group">
+    <%= f.label :profile_image %><i> (profile pic of the designer or a logo.)</i>
+    <%= f.file_field :profileimage, class:"form-control" %>
+  </div>
+       <% if !@user.profileimage.url.blank? %>
+          <i>Current image:</i> <%= image_tag(@user.profileimage.url(:p_thumb)) %>
+      <% end %>
+    <% if !@user.profileimage.url.blank? %><br><br><% end %>
+
+   <div class="form-group">
+        <%= f.submit "Update Profile", class:"btn btn-primary" %>
+   </div>
+
+ <% end %>

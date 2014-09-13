@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
    validates :name, presence: true, uniqueness: true
+   validates :profilestory, length: { in: 300..750 }
+   validates_with AttachmentSizeValidator, :attributes => :profileimage, :less_than => 2.megabytes
 
    has_many :listings, dependent: :destroy
    has_many :orders, class_name: "Order", foreign_key: "seller_id"
@@ -13,17 +15,22 @@ class User < ActiveRecord::Base
 
 	if Rails.env.development?
 		has_attached_file :profileimage, 
-						  :styles => { :profile => "200x200", :p_thumb => "100x100>" },
-						  :default_url => ""
-        validates_attachment_content_type :profileimage, :content_type => /\Aimage\/.*\Z/
+						  :styles => { :profile => "250x250", :p_thumb => "100x100" },
+						  :default_url => "",
+						  :convert_options => {:profile => '-background white -gravity center -extent 250x250',
+						                       :p_thumb => '-background white -gravity center -extent 100x100' }
+        validates_attachment_content_type :profileimage, :content_type => /\Aimage\/.*\Z/                                          
 	else
 		has_attached_file :profileimage, 
-						  :styles => { :profile => "200x200", :p_thumb => "100x100>" }, 
+						  :styles => { :profile => "250x250", :p_thumb => "100x100" }, 
 						  :default_url => "",
-					      :storage => :dropbox,
-	    				  :dropbox_credentials => Rails.root.join("config/dropbox.yml"),
-	    				  :path => ":style/:id_:filename" 
+						  :convert_options => {:profile => '-background white -gravity center -extent 250x250',
+						                       :p_thumb => '-background white -gravity center -extent 100x100' }
+					      # :storage => :dropbox,
+	    				  # :dropbox_credentials => Rails.root.join("config/dropbox.yml"),
+	    				  # :path => ":style/:id_:filename" 
 	    validates_attachment_content_type :profileimage, :content_type => /\Aimage\/.*\Z/
+	         
 	end
 
 end

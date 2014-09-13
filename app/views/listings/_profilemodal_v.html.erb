@@ -1,0 +1,16 @@
+<div class="modal fade" id="profilemodal_v">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content profilemodalcontent">
+      <div class="modal-header">
+        <button class="close" data-dismiss="modal">&times;</button>
+        
+        <h4 class="modal-title">Seller profile</h4>
+      </div><!-- end modal-header -->
+      <div class="modal-body">
+        <%= image_tag(@user.profileimage.url(:profile)) %>
+        <br><br><p><%= @user.profilestory %></p> 
+        
+       </div><!-- end modal-body -->
+    </div><!-- end modal-content -->
+  </div><!-- end modal-dialog -->
+</div><!-- end shipreturns --> 

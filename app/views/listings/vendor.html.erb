@@ -1,4 +1,9 @@
-<h4>Listings for <font color="#428bca"><%= @user.name %></font> </h4>
+<h3>Seller Page: <font color="#428bca"><%= @user.name %></font> </h3>
+
+      <% if !@user.profilestory.blank? %>
+        <a href="#profilemodal_v" role="link" data-toggle="modal"> View Seller Profile</a>
+        <%= render 'profilemodal_v' %> 
+      <% end %>
 
 <div class="center">
   <div class="row">
@@ -16,3 +21,19 @@
   </div>
   <p><%= will_paginate @listings, renderer: BootstrapPagination::Rails %></p>
 </div>
+
+<!-- <% if !@user.profilestory.blank? %>
+<div class="row">
+  <div class="col-md-4">
+    <div class="panel panel-warning center">
+      <div class="panel-heading">
+        <h3 class="panel-title"><b>Seller Profile</b></h3>
+      </div>
+      <div class="panel body profilecontent">
+         <%= image_tag(@user.profileimage.url(:profile)) %>
+         <br><br><p><%= @user.profilestory %></p> 
+      </div>
+    </div>
+  </div>
+</div>
+<% end %> -->

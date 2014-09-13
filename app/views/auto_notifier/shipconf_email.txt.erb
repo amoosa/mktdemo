@@ -1,1 +1,8 @@
-TEST MSG.
+Dear <%= @order.buyer.name %>, Your order of <%= @order.listing.name %> has shipped by the seller <%= @order.seller.name %>. You should recieve your item in the next 5-7 business days. 
+
+<% if !@order.tracking.include?("None yet") && !@order.carrier.include?("None yet") %>
+Carrier: <%= @order.carrier %>
+Tracking: <%= @order.tracking %>
+<% end %>
+
+If you have any questions, please email us at service@outfitadditions.com.

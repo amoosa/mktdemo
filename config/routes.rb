@@ -5,7 +5,13 @@ Mktdemo::Application.routes.draw do
 
   resources :users, only: [:update, :edit]
 
-  match "/seller/:id", to: "users#sellerprofile", via: [:get, :put], as: :sellerprofile
+  #match "/seller/:id", to: "users#sellerprofile", via: [:get, :put], as: :sellerprofile
+
+  #match "/seller/:id/profile", to: "users#sellerp", via: [:get], as: :sellerp
+  #match "/seller/:id", to: "users#sellerprofile", via: [:put], as: :sellerprofile
+
+  get '/seller/:id/profile' => "users#sellerp", as: :sellerp
+  put '/seller/:id' => "users#sellerprofile", as: :sellerprofile
 
    resources :listings do
         collection do

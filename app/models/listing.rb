@@ -117,9 +117,13 @@ class Listing < ActiveRecord::Base
 
 	validates :name, :description, :price, :inventory, :category, :sku, presence: true
 	validates :name, length: { maximum: 56 }
-	validates :description, length: { maximum: 2001 }
+	validates :description, length: { maximum: 2000 }
 	validates :price, :inventory, numericality: {greater_than: 0}
 	validates_attachment_presence :image
+	validates_with AttachmentSizeValidator, :attributes => :image, :less_than => 2.megabytes
+	validates_with AttachmentSizeValidator, :attributes => :image2, :less_than => 2.megabytes
+	validates_with AttachmentSizeValidator, :attributes => :image3, :less_than => 2.megabytes
+	validates_with AttachmentSizeValidator, :attributes => :image4, :less_than => 2.megabytes
 
 	belongs_to :user
 	has_many :orders
