@@ -40,3 +40,7 @@
 </table>
 
 <div class="center"><p><%= will_paginate @listings, renderer: BootstrapPagination::Rails %></p><div>
+
+  <% if @orders.count == 0 %>
+    <h5><font color="red">You do not have any past sales.</font></h5>
+  <% end %>

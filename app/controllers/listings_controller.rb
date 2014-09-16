@@ -14,6 +14,12 @@ class ListingsController < ApplicationController
       end
   end
 
+  def delete_all
+    Listing.where(user: current_user).delete_all
+    flash[:notice] = "You have deleted all your listings."
+    redirect_to seller_path
+  end
+
   def index
       @listings = Listing.not_expired.order("created_at DESC").paginate(:page => params[:page], :per_page => 48)  
       respond_to do |format|
@@ -88,8 +94,8 @@ class ListingsController < ApplicationController
       Listing.import(params[:file], params[:user_id])
       redirect_to seller_url, notice: "Products imported."
     rescue
-      redirect_to seller_url, notice: "Invalid CSV file format."
-    end
+       redirect_to seller_url, notice: "Invalid CSV file format."
+   end
   end
 
   # PATCH/PUT /listings/1

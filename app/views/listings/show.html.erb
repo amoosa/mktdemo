@@ -35,7 +35,7 @@
     
     <div class="addthis_sharing_toolbox"></div><br> 
     <p><%= number_to_currency(@listing.price) %></p>
-  	<p><%= sanitize @listing.description, tags: %w(b p ul li) %></p>
+  	<p><%= sanitize @listing.description, tags: %w(b p ul li), class: ".pre-scrollable" %></p>
     <br>
 
          <% if @listing.inventory == 1 %>
@@ -43,7 +43,7 @@
          <% end %>
 
         <% if @listing.inventory > 0 %>
-            <p><i>Shipped direct from seller: <i><%= link_to @listing.user.name, vendor_path(@listing.user) %></i> . Ships in 1-2 business days. US Shipping is FREE. No hassle 21 day returns. <a href="#shipreturns" role="link" data-toggle="modal"> Learn more.</a></i></p>
+           <div class="size12"> <p>Shipped direct from seller: <i><%= link_to @listing.user.name, vendor_path(@listing.user) %></i> . Ships in 1-2 business days. <br><strong>US Shipping is FREE.</strong> No hassle 21 day returns. <a href="#shipreturns" role="link" data-toggle="modal"> Learn more.</a></p></div>
 
                 <%= render 'shipmodal' %>                
 
@@ -58,10 +58,11 @@
 
             <% if !@listing.user.profilestory.blank? %>
               <div class="pthumbnail">
-                   <a href="#profilemodal" role="link" data-toggle="modal"> View Seller Profile</a>
+
+                  <%= image_tag(@listing.user.profileimage.url(:p_thumb), class: "pthumb pull-left") %>
+                  <div class="ptext line-clamp"><%= @listing.user.profilestory %></div>
+                   <a href="#profilemodal" role="link" data-toggle="modal" class="size12"> View Seller Profile</a>
                    <%= render 'profilemodal' %> 
-                  <%= image_tag(@listing.user.profileimage.url(:p_thumb), class: "thumbnail pull-left") %>
-                  <p><div class="ptext"><small><%= @listing.user.profilestory %></small></div></p>
               </div>
             <% end %>
       

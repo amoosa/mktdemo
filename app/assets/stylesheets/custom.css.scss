@@ -4,13 +4,13 @@
 
 /* navbar background color */
 .navbar-default {
-  background-color: #440044;
+  background-color: #000000;
 }
 
 .navbar-default .navbar-nav > li > a {
-  font-family: Arial, Helvetica, sans-serif;
+  /* font-family: Arial, Helvetica, sans-serif; */
+  font-family: 'Open Sans', sans-serif;
   font-size: 14px;
-  font-weight: bold;
   color: #FFFFFF;
 }
 
@@ -18,10 +18,10 @@ ul.nav a:hover { color: #e2e2e2 !important; }
 
 /* navbar logo format */
 .navbar-default .navbar-brand {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
   font-weight: 400;
   color: #FFFFFF; 
-  font-size: 30px;
+  font-size: 24px;
 }
 
 .navbar-default .navbar-brand:hover,
@@ -30,7 +30,7 @@ ul.nav a:hover { color: #e2e2e2 !important; }
 }
 
 .navbar-toggle {
-  background-color: #440044;
+  background-color: #000000;
   border: none;
  }
 
@@ -45,16 +45,16 @@ ul.nav a:hover { color: #e2e2e2 !important; }
 
 .dropdown-menu > li > a:hover {
   background-color: #ffffff;
+  color: #333333 !important;
 }
 
 /* color on clicking on dropdown in navbar */
 .navbar-default .navbar-nav > .open > a:focus {
-  background-color:#440044;
+  background-color: #000000;
+  color: #ffffff
 }
 
 /* END NAVBAR CSS */
-
-body { padding-top: 70px; }
 
 .images {
 position: relative;
@@ -65,17 +65,30 @@ padding-right: 3px;
 
 .thumbnail {border: none;}
 
-.pthumbnail {
-    border: 1px solid lightgray; 
-    padding: 10px;
-    height: 125px;
+/* profile show page widget container */
+.pthumbnail {                        
+    height: 122px;
+    border: 1px solid lightgray;
   }
 
+/* profile thumb img on show page */
+.pthumb {border: 1px solid lightgray; margin: 7px 7px 7px 7px;} 
+
+/* profile text on show page */
 .ptext {
     overflow: hidden;
-    text-overflow: ellipsis;
-    height: 70px;
+    height: 78px;
+    margin: 7px 7px 7px 7px;
+    font-size: 11px;
 }
+
+.line-clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;  
+}
+
+.size12 {font-size: 12px;}
 
 .profilecontent {padding: 5px;}
 
@@ -93,20 +106,19 @@ ul.unstyled {
 
 .jumbotron {
   /* background-image: url('https://dl.dropboxusercontent.com/s/odxszene0zw2j3q/belts640.jpg'); */
-  h1, h2 {
-    font-family: guardian-egyptt, georgia, serif;
-  }
 }
 
 .center {
   text-align: center;
 }
 
-
 body {
   background-color: #ffffff;
   color: #333333;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Open Sans', sans-serif;
+  padding-top: 70px; 
+
+h3 {font-weight:bold;}
 }
 
 .orderthumb {
@@ -127,11 +139,12 @@ border: 1px solid lightgray !important;
 .caption {
 
   h3 {
-  font-size: 15px;
+  font-size: 13px;
   margin: 2px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  font-weight: normal !important;
   }
 
   p {
@@ -139,22 +152,22 @@ border: 1px solid lightgray !important;
   margin: 4px;
   }
 
-   border-bottom: 1px solid purple;
+   border-bottom: 1px solid gray;
 
 }
 
 .btn-xl {
     padding: 12px 40px;
     width: 100%;
-    font-size: 12px;
+    font-size: 14px;
     border-radius: 8px;
     font-weight: bold;
-    background-color: #770077;
+    background-color: #00BBBB;
     color: #fff;
 }
 
 .btn-xl:hover {
-     background-color: #990099;
+     background-color: #00CCCC;
   }
 
 @media (max-width: 480px) {

@@ -19,7 +19,7 @@
 
   <div class="form-group">
     <%= f.label :your_story %><i> (between 250-500 characters)</i>
-    <%= f.text_area :profilestory, class:"form-control" %>
+    <%= f.text_area :profilestory, class:"form-control", :rows => 5 %>
   </div>
          <% if !@user.profilestory.blank? %>
           <i>Current profile:</i> <%= @user.profilestory %>

@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">outfit additions</a>
+      <a class="navbar-brand" href="/">OUTFIT ADDITIONS</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -17,7 +17,7 @@
     <!-- CATEGORY DROP DOWN -->
        <ul class="nav navbar-nav">
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Category<b class="caret"></b></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">CATEGORY<b class="caret"></b></a>
            <ul class="dropdown-menu">
              <li><%- Listing.uniq.pluck(:category).each do |category| %>
                <%= link_to category, category_path(category: category) %> 

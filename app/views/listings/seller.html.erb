@@ -3,8 +3,10 @@
 
 
 <% if user_signed_in? %>
-  <p><b>Download listings:</b> <%= link_to "CSV", seller_path(format: "csv") %></p>
-  <p><%= link_to 'Add New Listing', new_listing_path, data: { no_turbolink: true } %></p>
+  <p>
+    <font color="green"><b>Seller Links: </b></font><%= link_to "Download Listings (CSV)", seller_path(format: "csv") %> | <%= link_to 'Add New Listing', new_listing_path, data: { no_turbolink: true } %> | <%= link_to 'Delete All Listings', delete_all_listings_path, method: :get, data: { confirm: "Are you sure you want to delete all your listings?" } %>
+  </p>
+  
 <% end %>
 <table class="table table-condensed">
   <tr>
@@ -39,3 +41,7 @@
   <% end %>
 </table>
 <div class="center"><p><%= will_paginate @listings, renderer: BootstrapPagination::Rails %></p></div>
+
+  <% if @listings.count == 0 %>
+    <h5><font color="red">You do not have any active listings at this time.</font></h5>
+  <% end %>

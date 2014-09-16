@@ -17,6 +17,7 @@ Mktdemo::Application.routes.draw do
         collection do
           post 'import'
           get 'search'
+          get 'delete_all'
         end
     resources :orders, only: [:new, :create, :update, :show]
    end
@@ -29,6 +30,7 @@ Mktdemo::Application.routes.draw do
   get "pages/terms_conditions"
   get "pages/privacy_policy"
   get "pages/blogger_partnerships"
+  get "pages/sell"
 
 
   get 'seller' => "listings#seller"
