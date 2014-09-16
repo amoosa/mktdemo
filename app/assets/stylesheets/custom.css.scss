@@ -8,7 +8,6 @@
 }
 
 .navbar-default .navbar-nav > li > a {
-  /* font-family: Arial, Helvetica, sans-serif; */
   font-family: 'Open Sans', sans-serif;
   font-size: 14px;
   color: #FFFFFF;
@@ -22,6 +21,7 @@ ul.nav a:hover { color: #e2e2e2 !important; }
   font-weight: 400;
   color: #FFFFFF; 
   font-size: 24px;
+  vertical-align: middle;
 }
 
 .navbar-default .navbar-brand:hover,
@@ -67,7 +67,7 @@ padding-right: 3px;
 
 /* profile show page widget container */
 .pthumbnail {                        
-    height: 122px;
+    height: 123px;
     border: 1px solid lightgray;
   }
 
