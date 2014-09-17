@@ -17,7 +17,7 @@
     <!-- CATEGORY DROP DOWN -->
        <ul class="nav navbar-nav">
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">CATEGORY<b class="caret"></b></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Category<b class="caret"></b></a>
            <ul class="dropdown-menu">
              <li><%- Listing.uniq.pluck(:category).each do |category| %>
                <%= link_to category, category_path(category: category) %> 
@@ -41,10 +41,10 @@
                     <li><%= link_to "Past Orders", purchases_path  %></li>
                     <li role="presentation" class="divider"></li>
                     <li role="presentation" class="dropdown-header"><b>Seller links</b></li>
-                    <li><%= link_to "List items to sell", new_listing_path, data: { no_turbolink: true }  %></li>
-                    <li><%= link_to "Manage your listings", seller_path  %></li>
-                    <li><%= link_to "Seller Payments", edit_user_path(current_user), data: { no_turbolink: true }  %></li>
-                    <li><%= link_to "Manage Sold Items", sales_path  %></li>
+                    <li><%= link_to "List Items to Sell", new_listing_path, data: { no_turbolink: true }  %></li>
+                    <li><%= link_to "Manage Listings", seller_path  %></li>
+                    <li><%= link_to "Payment Settings", edit_user_path(current_user), data: { no_turbolink: true }  %></li>
+                    <li><%= link_to "Manage Sales", sales_path  %></li>
                     <li><%= link_to "Seller Profile", sellerp_path(current_user) %></li>
             </ul>            
           </li>
