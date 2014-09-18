@@ -43,7 +43,7 @@
          <% end %>
 
         <% if @listing.inventory > 0 %>
-           <div class="size12"> <p>Shipped direct from seller: <i><%= link_to @listing.user.name, vendor_path(@listing.user) %></i> . Ships in 1-2 business days. <br><strong>US Shipping is FREE.</strong> No hassle 21 day returns. <a href="#shipreturns" role="link" data-toggle="modal"> Learn more.</a></p></div>
+           <div class="size12"> <p>Shipped direct from seller: <%= link_to @listing.user.name, vendor_path(@listing.user) %> . Ships in 1-2 business days. <br><strong>US Shipping is FREE.</strong> No hassle 21 day returns. <a href="#shipreturns" role="link" data-toggle="modal"> Learn more.</a></p></div>
 
                 <%= render 'shipmodal' %>                
 

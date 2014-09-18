@@ -1,11 +1,11 @@
 <footer>
-
 	<div class="container">
-
+       
 		<div class="row">
 			<div class="col-sm-5">
-				<h6>About Us</h6>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				<h6><b>About Us</b></h6>
+				<p>Outfit Additions is a curated jewelry marketplace. We work hard to find exceptionally talented jewelry designers and boutique jewelry brands and make their lines available to buy. As part of our vetting process, we approve sellers based on the originality of their design, materials used and their attention to detail. We operate as a marketplace so sellers ship your order direct to you. <br><br>All US orders ship FREE + We require all sellers to offer a 14 day return policy.</p>
+
 			</div><!-- end col -->
 			
 			<div class="col-sm-2">
@@ -21,7 +21,7 @@
 				</ul>
 			</div><!-- end col -->
 			
-			<div class="col-sm-2">
+			<div class="col-sm-1">
 				<h6>Connect</h6>
 				<ul class="unstyled">
 					<li><%= link_to "Contact Us", pages_contact_path %></li>
@@ -31,13 +31,14 @@
 				</ul>
 			</div><!-- end col -->
 			
-			<div class="col-sm-3">
+			<div class="col-sm-4">
 			  <ul class="unstyled">
+			  	<li> <%= render 'mailchimp' %> </li>
 			  	<li> put ssl logo here </li>
-				<li>Designed & Coded with <span class="glyphicon glyphicon-heart"></span> in San Francisco.</li>
-				<li>Copyright &copy; 2014 Outfit Additions</li>
 			  </ul>
 			</div><!-- end col -->
 		</div><!-- end row -->
 	</div><!-- end container -->
-</footer>    
+			<div class="center">Designed & Coded with <span class="glyphicon glyphicon-heart"></span> in San Francisco. | Copyright &copy; 2014 Outfit Additions</div>
+</footer>  
+

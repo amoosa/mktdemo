@@ -40,6 +40,7 @@ gem 'jquery-turbolinks'
 gem 'will_paginate', '~> 3.0'
 gem 'will_paginate-bootstrap'
 gem 'searchkick', '~> 0.8.2'
+gem 'delayed_job_active_record', '~> 4.0.2'
 
 
 group :production do

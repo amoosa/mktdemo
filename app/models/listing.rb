@@ -62,13 +62,14 @@ class Listing < ActiveRecord::Base
 	#   where("description like ? or name like ?", "%#{query}%", "%#{query}%")
 	# end
 
-
-
+  # Those are two &lt; symbols (the blog is screwing them up)
   require 'csv'
   require 'open-uri'
 
-	def self.import(file, user_id)
-		CSV.foreach(file.path, headers: true, skip_blanks: true) do |row|
+  class << self
+
+	def importcsv(file_path, user_id)
+		CSV.foreach(file_path, headers: true, skip_blanks: true) do |row|
 
           listing_hash = {:name => row['Product_title'], 
           	              :description => row['Description'],
@@ -88,10 +89,26 @@ class Listing < ActiveRecord::Base
           else
             Listing.create!(listing_hash)
           end 
-
 		 
-		end # end CSV.foreach
-	end # end self.import(file)
+		end 
+	end 
+
+    handle_asynchronously :importcsv
+
+    def error(job,exception)
+      Listing.processed!(job,exception)
+    end 
+
+    def success(job)
+      Listing.processed!(job)
+    end
+
+  end
+
+  # My importer as a class method
+  def self.import(file, user_id)
+    Listing.importcsv(file, user_id)
+  end
 
     # csv export code from railscasts
 	def self.to_csv(listings)
@@ -130,3 +147,6 @@ class Listing < ActiveRecord::Base
 
  
 end
+
+
+

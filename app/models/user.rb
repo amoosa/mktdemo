@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
 						  :default_url => "",
 						  :convert_options => {:profile => '-background white -gravity center -extent 250x250',
 						                       :p_thumb => '-background white -gravity center -extent 105x105' }
-        validates_attachment_content_type :profileimage, :content_type => /\Aimage\/.*\Z/                                          
+        validates_attachment_content_type :profileimage, :content_type => /\Aimage\/.*\Z/                                   
 	else
 		has_attached_file :profileimage, 
 						  :styles => { :profile => "250x250", :p_thumb => "100x100" }, 

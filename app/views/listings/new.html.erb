@@ -3,7 +3,7 @@
   <%= form_tag import_listings_path, multipart: true do %>
     <div class="row">
       <div class = "col-md-4">
-        <div class="form-group"> <%= file_field_tag :file, class:"form-control" %> </div>
+        <div class="form-group"> <%= file_field_tag :my_file, :accept => "text/csv", class:"form-control" %> </div>
         <%= hidden_field_tag :user_id, current_user.id %>
       </div>
       <div class = "col-md-3">
@@ -12,7 +12,7 @@
     </div>
   <% end %>
 
-  <font color="Red"><b>Important:</b></font> Before listing items, please fill out your <%= link_to "bank account information", edit_user_url(current_user) %> so we can transfer your payments.
+  <font color="Red"><b>Important:</b></font> Before listing items, please fill out your <b><%= link_to "bank account information", edit_user_url(current_user) %></b> so we can transfer your payments.
   
 <h3>Option 2: List New Items Manually</h3>
 

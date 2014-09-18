@@ -89,13 +89,27 @@ class ListingsController < ApplicationController
     end
   end
 
+require 'fileutils'
+
   def import
-    begin
-      Listing.import(params[:file], params[:user_id])
-      redirect_to seller_url, notice: "Products imported."
-    rescue
-       redirect_to seller_url, notice: "Invalid CSV file format."
-   end
+  begin
+    tmp = params[:my_file].tempfile
+    #filename = File.basename(params[:my_file].original_filename, ".csv") + params[:user_id] 
+               # + File.extname(params[:my_file].original_filename)
+    #file = File.join("public", filename)
+    file = File.join("public", params[:my_file].original_filename) + params[:user_id]
+    FileUtils.cp tmp.path, file
+    Listing.import(file, params[:user_id])
+    redirect_to seller_url, notice: "Your listings are being imported. Please check back in a few minutes."
+  rescue
+    redirect_to seller_url, notice: "Invalid CSV file format."
+  end
+  #begin
+      # Listing.import(params[:file], params[:user_id])
+      # redirect_to seller_url, notice: "Products imported."
+   #  rescue
+   #     redirect_to seller_url, notice: "Invalid CSV file format."
+   # end
   end
 
   # PATCH/PUT /listings/1
@@ -117,7 +131,7 @@ class ListingsController < ApplicationController
   def destroy
     @listing.destroy
     respond_to do |format|
-      format.html { redirect_to listings_url, notice: 'Listing was successfully deleted.' }
+      format.html { redirect_to seller_url, notice: 'Listing was successfully deleted.' }
       format.json { head :no_content }
     end
   end
