@@ -95,13 +95,13 @@ class Listing < ActiveRecord::Base
 
     handle_asynchronously :importcsv
 
-    def error(job,exception)
-      Listing.processed!(job,exception)
-    end 
+    # def error(job,exception)
+    #   Listing.processed!(job,exception)
+    # end 
 
-    def success(job)
-      Listing.processed!(job)
-    end
+    # def success(job)
+    #   Listing.processed!(job)
+    # end
 
   end
 

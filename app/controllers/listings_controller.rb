@@ -92,7 +92,6 @@ class ListingsController < ApplicationController
 require 'fileutils'
 
   def import
-  begin
     tmp = params[:my_file].tempfile
     #filename = File.basename(params[:my_file].original_filename, ".csv") + params[:user_id] 
                # + File.extname(params[:my_file].original_filename)
@@ -101,9 +100,6 @@ require 'fileutils'
     FileUtils.cp tmp.path, file
     Listing.import(file, params[:user_id])
     redirect_to seller_url, notice: "Your listings are being imported. Please check back in a few minutes."
-  rescue
-    redirect_to seller_url, notice: "Invalid CSV file format."
-  end
   #begin
       # Listing.import(params[:file], params[:user_id])
       # redirect_to seller_url, notice: "Products imported."
