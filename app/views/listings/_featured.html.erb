@@ -2,8 +2,8 @@
 
 <div class="center">
   <div class="row">
-    <% @listings.where(:featured => true).order("random()").limit(8).each do |listing| %>
-        <div class="col-md-3 col-sm-3 col-xs-6 images">
+    <% @listings.where(:featured => true).order("random()").limit(12).each do |listing| %>
+        <div class="col-md-2 col-sm-3 col-xs-6 images">
         <div class="thumbnail">
           <%= link_to image_tag(listing.image.url(:medium), class: "img-responsive"), listing, data: { no_turbolink: true } %>
           <div class="caption">

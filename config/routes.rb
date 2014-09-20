@@ -13,14 +13,14 @@ Mktdemo::Application.routes.draw do
   get '/seller/:id/profile' => "users#sellerp", as: :sellerp
   put '/seller/:id' => "users#sellerprofile", as: :sellerprofile
 
-   resources :listings do
+  resources :listings do
         collection do
           post 'import'
           get 'search'
           get 'delete_all'
         end
-    resources :orders, only: [:new, :create, :update, :show]
-   end
+   resources :orders, only: [:new, :create, :update, :show]
+  end
 
   get '/listings/s/:id' => 'listings#vendor', as: 'vendor'
   get '/listings/c/:category' => 'listings#category', as: 'category'

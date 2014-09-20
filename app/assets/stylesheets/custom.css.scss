@@ -88,8 +88,19 @@ padding-right: 3px;
   -webkit-box-orient: vertical;  
 }
 
-.size12 {font-size: 12px;}
+.dthumbnail {border: 1px solid lightgray !important;}
+.dtext {
+    overflow: hidden;
+    height: 78px;
+    font-size: 11px;
+    text-align: left;
+}
 
+.dcaption { border: none !important;}
+.dbutton {position:relative; margin-top: -4px; margin-bottom: 2px;}
+
+
+.size12 {font-size: 12px;}
 .profilecontent {padding: 5px;}
 
 footer {

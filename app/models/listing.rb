@@ -90,10 +90,11 @@ class Listing < ActiveRecord::Base
             Listing.create!(listing_hash)
           end 
 		 
-		end 
+		end
 	end 
 
     handle_asynchronously :importcsv
+
 
     # def error(job,exception)
     #   Listing.processed!(job,exception)
