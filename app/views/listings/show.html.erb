@@ -61,7 +61,7 @@
 
                   <%= image_tag(@listing.user.profileimage.url(:p_thumb), class: "pthumb pull-left") %>
                   <div class="ptext line-clamp"><%= @listing.user.profilestory %></div>
-                   <a href="#profilemodal" role="link" data-toggle="modal" class="size12"> View Seller Profile</a>
+                   <a href="#profilemodal" role="link" data-toggle="modal"> View Seller Profile</a>
                    <%= render 'profilemodal' %> 
               </div>
             <% end %>
@@ -78,6 +78,7 @@
 
 <%= render 'otherselleritems' %>
 <%= render 'othercategoryitems' %>
+<%= render 'designers' %>
 
 
     <script>

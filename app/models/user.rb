@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
    validates :name, presence: true, uniqueness: true
-   validates :profilestory, length: { in: 300..750 }, if: "!profilestory.blank?"
+   validates :profilestory, length: { in: 250..750 }, if: "!profilestory.blank?"
    validates_with AttachmentSizeValidator, :attributes => :profileimage, :less_than => 2.megabytes
 
    has_many :listings, dependent: :destroy
