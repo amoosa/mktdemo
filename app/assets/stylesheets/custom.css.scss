@@ -77,21 +77,21 @@ padding-right: 3px;
 /* profile text on show page */
 .ptext {
     overflow: hidden;
-    height: 78px;
+    height: 76px;
     margin: 7px 7px 7px 7px;
-    font-size: 11px;
+    font-size: 13px;
 }
 
 .line-clamp {
   display: -webkit-box;
-  -webkit-line-clamp: 5;
+  -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;  
 }
 
 .dthumbnail {border: 1px solid lightgray !important;}
 .dtext {
     overflow: hidden;
-    height: 78px;
+    height: 63px;
     font-size: 11px;
     text-align: left;
 }

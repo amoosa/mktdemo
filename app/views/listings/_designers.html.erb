@@ -10,7 +10,7 @@
             <h3><%= user.name.downcase.titleize %></h3>
            <div class="dtext line-clamp"><%= user.profilestory %></div>
           </div>
-          <%= link_to "View Collection", vendor_path(id: user.id), class: "btn btn-sm btn-primary dbutton" %><br>
+          <%= link_to "View Collection", vendor_path(id: user.id), class: "btn btn-xs btn-primary dbutton" %><br>
         </div>
      </div>
     <% end %>

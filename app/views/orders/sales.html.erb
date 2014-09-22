@@ -2,7 +2,7 @@
 
 
 <% if user_signed_in? %>
-  <p><b>Download orders:</b> <%= link_to "CSV", sales_path(format: "csv") %></p>
+  <p><%= link_to "Download orders (CSV)", sales_path(format: "csv"), class: "btn btn-xs btn-primary" %></p>
 <% end %>
 <table class="table table-condensed table-responsive">
   <tr>
