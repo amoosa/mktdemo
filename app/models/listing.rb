@@ -69,7 +69,8 @@ class Listing < ActiveRecord::Base
   class << self
 
 	def importcsv(file_path, user_id)
-		CSV.foreach(file_path, headers: true, skip_blanks: true) do |row|
+    open(file_path) do |f|
+		    CSV.parse(f.read) do |row|
 
           listing_hash = {:name => row['Product_title'], 
           	              :description => row['Description'],
@@ -89,8 +90,9 @@ class Listing < ActiveRecord::Base
           else
             Listing.create!(listing_hash)
           end 
-		 
-		end
+
+      end
+    end
 	end 
 
     handle_asynchronously :importcsv
