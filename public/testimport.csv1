@@ -1,0 +1,3 @@
+Product_title,Description,Price,Category,Quantity_in_stock,Product_id,Image,Image2,Image3,Image4
+Delay Import Test,"testing, <b>change99</b><ul><li>bullet 1</li><li>bullet 2</li></ul>",12,necklaces,3,1100,http://www.outfitadditions.com/product_images/s/641/gold-ruby-crystal-bangle__27653.jpg,http://www.outfitadditions.com/product_images/i/373/teardrop-heart-chandelier__62346.jpg,,
+Delay Import Test 2,"testing, <b>change99</b><ul><li>bullet 1</li><li>bullet 2</li></ul>",36,necklaces,3,223344,http://www.outfitadditions.com/product_images/s/475/belt11a__93355.jpg,http://www.outfitadditions.com/product_images/l/612/horseshoe-tigereye-bead-dro__60049.jpg,,
