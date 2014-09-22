@@ -96,9 +96,13 @@ require 'fileutils'
     #filename = File.basename(params[:my_file].original_filename, ".csv") + params[:user_id] 
                # + File.extname(params[:my_file].original_filename)
     #file = File.join("public", filename)
-    file = File.join(Rails.root.join('tmp'), params[:my_file].original_filename) + params[:user_id]
-    FileUtils.cp tmp.path, file
-    Listing.import(file, params[:user_id])
+    user = User.find(:user_id)
+
+    userListing = UserListing.create(file: tmp, user: user)
+    userListing.save!
+    #file = File.join(Rails.root.join('tmp'), params[:my_file].original_filename) + params[:user_id]
+    #FileUtils.cp tmp.path, file
+    Listing.import(userListing.file, params[:user_id])
     redirect_to seller_url, notice: "Your listings are being imported. Please check back in a few minutes."
   #begin
       # Listing.import(params[:file], params[:user_id])
