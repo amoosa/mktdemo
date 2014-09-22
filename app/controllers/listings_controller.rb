@@ -96,9 +96,8 @@ require 'fileutils'
     #filename = File.basename(params[:my_file].original_filename, ".csv") + params[:user_id] 
                # + File.extname(params[:my_file].original_filename)
     #file = File.join("public", filename)
-    user = User.find(:user_id)
 
-    userListing = UserListing.create(file: tmp, user: user)
+    userListing = UserListing.create(file: tmp, user: current_user)
     userListing.save!
     #file = File.join(Rails.root.join('tmp'), params[:my_file].original_filename) + params[:user_id]
     #FileUtils.cp tmp.path, file
