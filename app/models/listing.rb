@@ -70,7 +70,7 @@ class Listing < ActiveRecord::Base
 
 	def importcsv(file_path, user_id)
     open(file_path) do |f|
-		    CSV.parse(f.read) do |row|
+		    CSV.parse(f.read , headers: true, skip_blanks: true) do |row|
 
           listing_hash = {:name => row['Product_title'], 
           	              :description => row['Description'],
