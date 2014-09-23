@@ -24,6 +24,11 @@ class UserListing < ActiveRecord::Base
     self.save!
   end
 
+  def listed!
+    self.process_status = 4
+    self.save!
+  end
+
   def is_processed?
     self.process_status == 2
     self.save!
