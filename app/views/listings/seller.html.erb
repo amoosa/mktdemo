@@ -3,7 +3,7 @@
       $.ajax({
           url: '<%= check_listing_status_url %>',
           success: function (status) {
-              if (status != '') {
+              if (status != -1) {
                   if (status == 0 || status == 1) {
                       setTimeout(refreshText, 1000);
                       show_info("Your listings are being imported. please wait until it finished or check again in few minutes");
