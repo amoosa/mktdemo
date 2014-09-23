@@ -4,12 +4,12 @@
           url: '<%= check_listing_status_url %>',
           success: function (status) {
               if (status != '') {
-                  if (status == '0' || status == '1') {
+                  if (status == 0 || status == 1) {
                       setTimeout(refreshText, 1000);
                       show_info("Your listings are being imported. please wait until it finished or check again in few minutes");
-                  } else if (status == '2') {
+                  } else if (status == 2) {
                       location.reload();
-                  } else if (status == '3') {
+                  } else if (status == 3) {
                       show_error("There was an error");
                   }
 
