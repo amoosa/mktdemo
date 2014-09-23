@@ -106,7 +106,8 @@ require 'fileutils'
       userListing.file = tmp
     end
 
-    userListing.save!
+    userListing.ready!
+
 
     #FSOTO: Now userListng.file.url has a valid file on S3, that can be access from your job.
     Listing.import(userListing.file.url , params[:user_id])

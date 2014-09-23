@@ -74,7 +74,7 @@ class Listing < ActiveRecord::Base
     begin
     open(file_path) do |f|
 		    CSV.parse(f.read , headers: true, skip_blanks: true) do |row|
-            user_listing.tomato = 12
+
           listing_hash = {:name => row['Product_title'], 
           	              :description => row['Description'],
           				  :sku => row['Product_id'],
