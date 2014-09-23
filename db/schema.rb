@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140922180414) do
+ActiveRecord::Schema.define(version: 20140924114404) do
 
   create_table "delayed_jobs", force: true do |t|
     t.integer  "priority",   default: 0, null: false
@@ -90,6 +90,7 @@ ActiveRecord::Schema.define(version: 20140922180414) do
     t.string   "file_content_type"
     t.integer  "file_file_size"
     t.datetime "file_updated_at"
+    t.integer  "process_status",    default: 0
   end
 
   add_index "user_listings", ["user_id"], name: "index_user_listings_on_user_id"

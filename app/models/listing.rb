@@ -69,6 +69,9 @@ class Listing < ActiveRecord::Base
   class << self
 
 	def importcsv(file_path, user_id)
+    user_listing = UserListing.find_by(:user_id => user_id)
+    user_listing.started!
+    begin
     open(file_path) do |f|
 		    CSV.parse(f.read , headers: true, skip_blanks: true) do |row|
 
@@ -93,6 +96,10 @@ class Listing < ActiveRecord::Base
 
       end
     end
+    rescue
+      user_listing.failed!
+    end
+    user_listing.processed!
 	end 
 
     handle_asynchronously :importcsv
