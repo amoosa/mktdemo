@@ -95,7 +95,7 @@ class ListingsController < ApplicationController
     render :json => '' if user_listing.nil?
     unless user_listing.nil?
       render :json => user_listing.process_status
-      user_listing.listed! if user_listing.processed?
+      user_listing.listed! if user_listing.is_processed?
     end
 
 
