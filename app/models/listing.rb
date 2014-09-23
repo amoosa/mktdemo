@@ -96,10 +96,11 @@ class Listing < ActiveRecord::Base
 
       end
     end
+    user_listing.processed!
     rescue
       user_listing.failed!
     end
-    user_listing.processed!
+
 	end 
 
     handle_asynchronously :importcsv
