@@ -98,7 +98,14 @@ require 'fileutils'
     #file = File.join("public", filename)
 
     #FSOTO: I created a new model that has your csv as a attachment and are related to your current_user
-    userListing = UserListing.create(file: tmp, user: current_user)
+    userListing = UserListing.find_by(user:current_user)
+
+    if (userListing.nil?)
+      userListing = UserListing.create(file: tmp, user: current_user)
+    else
+      userListing.file = tmp
+    end
+
     userListing.save!
 
     #FSOTO: Now userListng.file.url has a valid file on S3, that can be access from your job.
