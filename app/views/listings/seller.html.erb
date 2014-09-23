@@ -1,4 +1,15 @@
-
+<javascript>
+  function refreshText(){
+        $.ajax({
+            url:<%= check_listing_status_url %>,
+            success:function(result){
+                if (result != '') {
+                    alert(result);
+                    setTimeout(refreshText, 5000);
+                }
+        }
+  });
+</javascript>
   <h3>Manage your Listings</h3>
 
 
