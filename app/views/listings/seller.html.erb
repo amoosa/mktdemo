@@ -5,7 +5,7 @@
           success: function (status) {
               if (status != -1) {
                   if (status == 0 || status == 1) {
-                      setTimeout(refreshText, 1000);
+                      setTimeout(refreshText, 5000);
                       show_info("Your listings are being imported. please wait until it finished or check again in few minutes");
                   } else if (status == 2) {
                       location.reload();

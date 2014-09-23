@@ -125,7 +125,7 @@ require 'fileutils'
 
     #FSOTO: Now userListng.file.url has a valid file on S3, that can be access from your job.
     Listing.import(userListing.file.url , params[:user_id])
-    redirect_to seller_url, notice: "Your listings are being imported. Please check back in a few minutes."
+    redirect_to seller_url
   #begin
       # Listing.import(params[:file], params[:user_id])
       # redirect_to seller_url, notice: "Products imported."
