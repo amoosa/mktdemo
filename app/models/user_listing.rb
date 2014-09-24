@@ -31,11 +31,9 @@ class UserListing < ActiveRecord::Base
 
   def is_processed?
     self.process_status == 2
-    self.save!
   end
 
   def is_failed?
     self.process_status == 3
-    self.save!
   end
 end
