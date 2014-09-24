@@ -97,10 +97,7 @@ class ListingsController < ApplicationController
       @process_status = user_listing.process_status + 1
       render :json => @process_status - 1
 
-      if user_listing.is_processed?
-        puts user_listing.process_status
-        user_listing.listed!
-      end
+      user_listing.listed! if user_listing.is_processed?
 
     end
 
