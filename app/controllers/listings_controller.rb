@@ -96,9 +96,13 @@ require 'fileutils'
     #filename = File.basename(params[:my_file].original_filename, ".csv") + params[:user_id] 
                # + File.extname(params[:my_file].original_filename)
     #file = File.join("public", filename)
-    file = File.join("public", params[:my_file].original_filename) + params[:user_id]
-    FileUtils.cp tmp.path, file
-    Listing.import(file, params[:user_id])
+
+    #FSOTO: I created a new model that has your csv as a attachment and are related to your current_user
+    userListing = UserListing.create(file: tmp, user: current_user)
+    userListing.save!
+
+    #FSOTO: Now userListng.file.url has a valid file on S3, that can be access from your job.
+    Listing.import(userListing.file.url , params[:user_id])
     redirect_to seller_url, notice: "Your listings are being imported. Please check back in a few minutes."
   #begin
       # Listing.import(params[:file], params[:user_id])

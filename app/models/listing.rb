@@ -69,12 +69,13 @@ class Listing < ActiveRecord::Base
   class << self
 
 	def importcsv(file_path, user_id)
-		CSV.foreach(file_path, headers: true, skip_blanks: true) do |row|
+    open(file_path) do |f|
+		    CSV.parse(f.read , headers: true, skip_blanks: true) do |row|
 
           listing_hash = {:name => row['Product_title'], 
           	              :description => row['Description'],
           				  :sku => row['Product_id'],
-  						  :price => row['Price'], :category => row['Category'].titleize, :inventory => row['Quantity_in_stock'],
+  						  :price => row['Price'].to_i, :category => row['Category'].titleize, :inventory => row['Quantity_in_stock'].to_i,
   						  :image => URI.parse(row['Image']),
   						  :user_id => user_id}.tap do |list_hash|
 						    list_hash[:image2] = URI.parse(row['Image2']) if row['Image2'] 
@@ -89,8 +90,9 @@ class Listing < ActiveRecord::Base
           else
             Listing.create!(listing_hash)
           end 
-		 
-		end
+
+      end
+    end
 	end 
 
     handle_asynchronously :importcsv
