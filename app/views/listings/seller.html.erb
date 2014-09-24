@@ -1,6 +1,37 @@
+<script>
+  function refreshText() {
+      $.ajax({
+          url: '<%= check_listing_status_url %>',
+          success: function (status) {
+              if (status != -1) {
+                  if (status == 0 || status == 1) {
+                      setTimeout(refreshText, 5000);
+                      show_info("Your listings are being imported. please wait until it finished or check again in few minutes");
+                  } else if (status == 2) {
+                      location.reload();
+                  } else if (status == 3) {
+                      show_error("There was an error");
+                  }
 
+              }
+          }
+      });
+  }
+  refreshText();
+
+  function show_info(msg) {
+      $("#ajax_message").addClass('alert').addClass('alert-info');
+      $("#ajax_message").text(msg);
+  }
+
+  function show_error(msg) {
+      $("#ajax_message").addClass('alert').addClass('alert-warning');
+      $("#ajax_message").text(msg);
+  }
+</script>
   <h3>Manage your Listings</h3>
 
+<div id="ajax_message"></div>
 
 <% if user_signed_in? %>
   <p>

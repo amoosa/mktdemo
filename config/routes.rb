@@ -34,6 +34,7 @@ Mktdemo::Application.routes.draw do
 
 
   get 'seller' => "listings#seller"
+  get 'check_listing_status' => "listings#check_listing_status"
   get 'sales' => "orders#sales"
   get 'shipconf' => "orders#shipconf"
   get 'purchases' => "orders#purchases"

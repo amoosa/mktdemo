@@ -89,6 +89,20 @@ class ListingsController < ApplicationController
     end
   end
 
+  def check_listing_status
+
+    user_listing = UserListing.find_by(user:current_user)
+    render :json => -1 if user_listing.nil?
+    unless user_listing.nil?
+      @process_status = user_listing.process_status + 1
+      render :json => @process_status - 1
+      user_listing.listed! if user_listing.is_processed?
+    end
+
+
+
+  end
+
 require 'fileutils'
 
   def import
@@ -96,10 +110,22 @@ require 'fileutils'
     #filename = File.basename(params[:my_file].original_filename, ".csv") + params[:user_id] 
                # + File.extname(params[:my_file].original_filename)
     #file = File.join("public", filename)
-    file = File.join("public", params[:my_file].original_filename) + params[:user_id]
-    FileUtils.cp tmp.path, file
-    Listing.import(file, params[:user_id])
-    redirect_to seller_url, notice: "Your listings are being imported. Please check back in a few minutes."
+
+    #FSOTO: I created a new model that has your csv as a attachment and are related to your current_user
+    userListing = UserListing.find_by(user:current_user)
+
+    if (userListing.nil?)
+      userListing = UserListing.create(file: tmp, user: current_user)
+    else
+      userListing.file = tmp
+    end
+
+    userListing.ready!
+
+
+    #FSOTO: Now userListng.file.url has a valid file on S3, that can be access from your job.
+    Listing.import(userListing.file.url , params[:user_id])
+    redirect_to seller_url
   #begin
       # Listing.import(params[:file], params[:user_id])
       # redirect_to seller_url, notice: "Products imported."
