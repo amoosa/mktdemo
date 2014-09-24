@@ -1,6 +1,6 @@
 class UserListing < ActiveRecord::Base
   belongs_to :user
-  has_attached_file :file, :content_type => 'text/csv'
+  has_attached_file :file, :content_type => 'text/plain'
 
 
   def started!
