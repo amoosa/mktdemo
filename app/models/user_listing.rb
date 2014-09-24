@@ -1,7 +1,7 @@
 class UserListing < ActiveRecord::Base
   belongs_to :user
   has_attached_file :file
-  validates_attachment_file_name :file, :matches => [/csv\Z/]
+  validates_attachment :file, content_type: { content_type: 'text/plain' }
 
 
   def started!
