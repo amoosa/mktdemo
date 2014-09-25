@@ -27,7 +27,7 @@
   function show_error(msg) {
       $("#ajax_message").addClass('alert').addClass('alert-danger').addClass("alert-dismissible");
       var message = $("#ajax_message");
-      var closeBut = $('<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true"></span><span class="sr-only">Close</span></button>');
+      var closeBut = $('<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>');
       message.text(msg);
       message.append(closeBut);
   }
