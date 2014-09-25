@@ -58,8 +58,6 @@ class ListingsController < ApplicationController
    #   @listings = Listing.not_expired.search(params[:search]).order("created_at DESC").paginate(:page => params[:page], :per_page => 48)
    # end
 
-  # GET /listings/1
-  # GET /listings/1.json
   def show
   end
 
@@ -99,7 +97,7 @@ class ListingsController < ApplicationController
 
       user_listing.listed! if user_listing.is_processed?
 
-    end
+   end
 
 
 

@@ -1,8 +1,7 @@
 class UserListing < ActiveRecord::Base
   belongs_to :user
   has_attached_file :file
-  validates_attachment_content_type :file, :content_type =>  %w('text/plain','text/csv','application/vnd.ms-excel')
-  #validates_attachment_content_type :file, :content_type => %w(application/zip application/msword application/vnd.ms-office application/vnd.ms-excel application/vnd.openxmlformats-officedocument.spreadsheetml.sheet)
+  validates_attachment :file, :content_type => { content_type: ['text/plain','text/csv'] }
 
 
   def started!
