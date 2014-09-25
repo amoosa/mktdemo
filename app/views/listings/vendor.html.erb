@@ -1,7 +1,7 @@
-<h3>Seller Page: <font color="#428bca"><%= @user.name %></font> </h3>
+<h3>Seller Page: <%= @user.name.downcase.titleize %> </h3>
 
       <% if !@user.profilestory.blank? %>
-        <a href="#profilemodal_v" role="link" data-toggle="modal"> View Seller Profile</a>
+        <a href="#profilemodal_v" role="link" data-toggle="modal" class="btn btn-xs btn-primary"> View Seller Profile</a>
         <%= render 'profilemodal_v' %> 
       <% end %>
 
