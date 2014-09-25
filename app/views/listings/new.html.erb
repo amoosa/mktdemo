@@ -1,3 +1,9 @@
+<div class="well">
+    <font color="green"><span class="glyphicon glyphicon-star"></span> <b>Listing Tip: </b></font>If you opt to use the import option, first start by uploading 1-2 products to test it out. Once you're happy with how your listings look, upload your full product file. <br><br>
+    <p><font color="Red"><span class="glyphicon glyphicon-ok"></span> <b>Important:</b></font> Before listing items, please fill out your <b><%= link_to "bank account information", edit_user_url(current_user) %></b> so we can transfer your payments. Optional: fill out your <%= link_to "seller profile", sellerp_path(id: current_user.id) %>
+      , which will show up in your product pages. </p>
+</div>
+
 <h3>Option 1: Import a CSV File</h3>
 
   <%= form_tag import_listings_path, multipart: true do %>
@@ -11,8 +17,6 @@
       </div>
     </div>
   <% end %>
-
-  <font color="Red"><b>Important:</b></font> Before listing items, please fill out your <b><%= link_to "bank account information", edit_user_url(current_user) %></b> so we can transfer your payments.
   
 <h3>Option 2: List New Items Manually</h3>
 
