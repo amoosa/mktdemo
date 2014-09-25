@@ -26,9 +26,10 @@
 
   function show_error(msg) {
       $("#ajax_message").addClass('alert').addClass('alert-danger').addClass("alert-dismissible");
-      button = $('<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>');
-      $("#ajax_message").append(button);
-      $("#ajax_message").text(msg);
+      var message = $("#ajax_message");
+      var closeBut = $('<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true"></span><span class="sr-only">Close</span></button>');
+      message.text(msg);
+      message.append(closeBut);
   }
 </script>
   <h3>Manage your Listings</h3>
