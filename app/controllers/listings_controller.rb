@@ -6,6 +6,14 @@ class ListingsController < ApplicationController
   # GET /listings
   # GET /listings.json
 
+  def index
+      @listings = Listing.not_expired.order("created_at DESC").paginate(:page => params[:page], :per_page => 48)  
+      respond_to do |format|
+         format.html
+         format.csv { send_data @listings.to_csv(@listings) }   
+       end
+  end
+
   def seller
     @listings = Listing.where(user: current_user).order("created_at DESC").paginate(:page => params[:page], :per_page => 48)
      respond_to do |format|
@@ -18,14 +26,6 @@ class ListingsController < ApplicationController
     Listing.where(user: current_user).delete_all
     flash[:notice] = "You have deleted all your listings."
     redirect_to seller_path
-  end
-
-  def index
-      @listings = Listing.not_expired.order("created_at DESC").paginate(:page => params[:page], :per_page => 48)  
-      respond_to do |format|
-         format.html
-         format.csv { send_data @listings.to_csv(@listings) }   
-       end
   end
 
   def category
@@ -107,9 +107,8 @@ require 'fileutils'
 
   def import
     tmp = params[:my_file].tempfile
-    #filename = File.basename(params[:my_file].original_filename, ".csv") + params[:user_id] 
-               # + File.extname(params[:my_file].original_filename)
-    #file = File.join("public", filename)
+
+    #file = File.join("public", tmp)
 
     #FSOTO: I created a new model that has your csv as a attachment and are related to your current_user
     userListing = UserListing.find_by(user:current_user)

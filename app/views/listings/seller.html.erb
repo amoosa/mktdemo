@@ -6,11 +6,11 @@
               if (status != -1) {
                   if (status == 0 || status == 1) {
                       setTimeout(refreshText, 5000);
-                      show_info("Your listings are being imported. please wait until it finished or check again in few minutes");
+                      show_info("Your listings are being imported. Depending on the number of listings in your file, this may take a few minutes to an hour. Please come back this page to check if your import completed.");
                   } else if (status == 2) {
                       location.reload();
                   } else if (status == 3) {
-                      show_error("There was an error");
+                      show_error("Oops! We ran into an error. Please refresh this page to check if some of your listings have loaded. If none of your listings loaded, check the column names and if you have all the required columns in the file. If some of your listings have loaded, the next listing in the list did not load because of an error. Please check the format of your listings at this link...and reload your file. After you make changes, you can upload your entire file again. Listings will not be duplicated.");
                   }
 
               }
@@ -20,7 +20,7 @@
   refreshText();
 
   function show_info(msg) {
-      $("#ajax_message").addClass('alert').addClass('alert-info');
+      $("#ajax_message").addClass('alert').addClass('alert-warning');
       $("#ajax_message").text(msg);
   }
 
@@ -32,6 +32,7 @@
       message.append(closeBut);
   }
 </script>
+
   <h3>Manage your Listings</h3>
 
 <div id="ajax_message"></div>
