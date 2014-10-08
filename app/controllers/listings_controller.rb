@@ -92,48 +92,24 @@ class ListingsController < ApplicationController
 
   def search
     if params[:search].present?
-        case (params[:sort])
-        when  "- Price - Low to High"
-          @listings = Listing.not_expired.search(params[:search]).order("price ASC").paginate(:page => params[:page], :per_page => 48)
-        when "- Price - High to Low"
-          @listings = Listing.not_expired.search(params[:search]).order("price DESC").paginate(:page => params[:page], :per_page => 48)
-        when "- New Arrivals"
-          @listings = Listing.not_expired.search(params[:search]).order("created_at DESC").paginate(:page => params[:page], :per_page => 48)
-        when "- Random Shuffle"
-          @listings = Listing.not_expired.search(params[:search]).order("random()").paginate(:page => params[:page], :per_page => 48)
-        else
-          @listings = Listing.not_expired.search(params[:search]).order("random()").paginate(:page => params[:page], :per_page => 48)
-        end
+      @listings = Listing.not_expired.search(params[:search])
+        # case (params[:sort])
+        # when  "- Price - Low to High"
+        #   @listings = Listing.not_expired.search(params[:search]), order: {"price": :asc}, page: params[:page], per_page: 48
+        # when "- Price - High to Low"
+        #   @listings = Listing.not_expired.search(params[:search]), order: {_price: :desc}, page: params[:page], per_page: 48
+        # when "- New Arrivals"
+        #   @listings = Listing.not_expired.search(params[:search]), order: {_created_at: :desc}, page: params[:page], per_page: 48
+        # when "- Random Shuffle"
+        #   @listings = Listing.not_expired.search(params[:search]), order: {_created_at: :desc}, page: params[:page], per_page: 48
+        # else
+        #   @listings = Listing.not_expired.search(params[:search]), order: {_created_at: :desc}, page: params[:page], per_page: 48
+        # end
     else
-      flash[:notice] = "Please enter one or more search terms e.g. blue shirt."
+      flash[:alert] = "Please enter one or more search terms e.g. blue shirt."
       @listings = Listing.not_expired.search(params[:search])
     end
   end
-
-  #   if params[:search].present?
-
-  #     #@listings = Listing.not_expired.search(params[:search])
-  #     if params[:sort] == "- Price - Low to High"
-  #       @listings = Listing.not_expired.search(params[:search]).order("price ASC").paginate(:page => params[:page], :per_page => 48)
-  #     elsif params[:sort] == "- Price - High to Low"
-  #       @listings = Listing.not_expired.search(params[:search]).order("price DESC").paginate(:page => params[:page], :per_page => 48)
-  #     elsif params[:sort] == "- New Arrivals"
-  #       @listings = Listing.not_expired.search(params[:search]).order("created_at DESC").paginate(:page => params[:page], :per_page => 48)
-  #     elsif params[:sort] == "- Random Shuffle"
-  #       @listings = Listing.not_expired.search(params[:search]).order("random()").paginate(:page => params[:page], :per_page => 48)
-  #     else
-  #       @listings = Listing.not_expired.search(params[:search]).order("random()").paginate(:page => params[:page], :per_page => 48)
-  #     end
-
-  #   else
-  #     flash[:notice] = "Please enter one or more search terms e.g red necklace."
-  #     #@listings = Listing.not_expired.order("created_at DESC").paginate(:page => params[:page], :per_page => 48)
-  #   end
-  # end
-
-   # def search
-   #   @listings = Listing.not_expired.search(params[:search]).order("created_at DESC").paginate(:page => params[:page], :per_page => 48)
-   # end
 
   def show
   end
