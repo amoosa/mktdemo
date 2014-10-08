@@ -92,7 +92,7 @@ class ListingsController < ApplicationController
 
   def search
     if params[:search].present?
-      @listings = Listing.not_expired.search(params[:search]).paginate(:page => params[:page], :per_page => 48)
+      @listings = Listing.not_expired.search(params[:search])
         # case (params[:sort])
         # when  "- Price - Low to High"
         #   @listings = Listing.not_expired.search(params[:search]), order: {"price": :asc}, page: params[:page], per_page: 48
@@ -105,9 +105,6 @@ class ListingsController < ApplicationController
         # else
         #   @listings = Listing.not_expired.search(params[:search]), order: {_created_at: :desc}, page: params[:page], per_page: 48
         # end
-    else
-      @listings = Listing.not_expired.order("created_at DESC")
-    end
   end
 
   def show
