@@ -43,9 +43,11 @@ gem 'searchkick', '~> 0.8.2'
 gem 'delayed_job_active_record', '~> 4.0.2'
 
 
+
 group :production do
 	gem 'pg'
 	gem 'rails_12factor'
+	gem 'hirefire', '~> 0.1.4'
 end
 
 group :development, :test do
