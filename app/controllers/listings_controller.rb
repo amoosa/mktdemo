@@ -106,8 +106,7 @@ class ListingsController < ApplicationController
         #   @listings = Listing.not_expired.search(params[:search]), order: {_created_at: :desc}, page: params[:page], per_page: 48
         # end
     else
-      flash[:alert] = "Please enter one or more search terms."
-      #@listings = Listing.not_expired.order("created_at DESC")
+      @listings = Listing.not_expired.order("created_at DESC")
     end
   end
 
