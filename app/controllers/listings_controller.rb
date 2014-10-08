@@ -107,6 +107,7 @@ class ListingsController < ApplicationController
         end
     else
       flash[:notice] = "Please enter one or more search terms e.g. blue shirt."
+      @listings = Listing.not_expired.search(params[:search])
     end
   end
 
