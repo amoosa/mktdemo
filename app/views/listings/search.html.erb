@@ -1,4 +1,19 @@
 <h3>Search results</h3>
+
+ <div class="dropdown">
+    <button class="btn btn-default btn-xs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+            Sort <%= params[:sort] %> <b class="caret"></b> </button>
+
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+      <li><%= link_to "New Arrivals", category_path(:sort => "- New Arrivals")  %></li>
+      <li><%= link_to "Price - Low to High", category_path(:sort => "- Price - Low to High") %></li>
+      <li><%= link_to "Price - High to Low", category_path(:sort => "- Price - High to Low")  %></li>
+      <li><%= link_to "Discover - Random Shuffle", category_path(:sort => "- Random Shuffle")  %></li>
+    </ul>
+
+</div>
+  <br>
+  
 <div class="center">
   <div class="row">
     <% @listings.each do |listing| %>

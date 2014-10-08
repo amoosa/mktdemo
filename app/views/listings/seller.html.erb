@@ -10,7 +10,7 @@
                   } else if (status == 2) {
                       location.reload();
                   } else if (status == 3) {
-                      show_error("Oops! We ran into an error. Please refresh this page to check if some of your listings have loaded. If none of your listings loaded, check the column names and if you have all the required columns in the file. If some of your listings have loaded, the next listing in the list did not load because of an error. Please check the format of your listings at this link...and reload your file. After you make changes, you can upload your entire file again. Listings will not be duplicated.");
+                      show_error("Oops! We ran into an error. <br><br>Please refresh this page to check if some of your listings have loaded. If none of your listings loaded, check if your column names are as specified and check if you have all the required columns in the file. If some of your listings have loaded, then it means that the next listing in the file did not load because of an error in that row. <br><br>Please check the format of your listings at this link...and reload your file. After you make changes, you can upload your entire file again. Listings will not be duplicated.");
                   }
 
               }
@@ -28,7 +28,7 @@
       $("#ajax_message").addClass('alert').addClass('alert-danger').addClass("alert-dismissible");
       var message = $("#ajax_message");
       var closeBut = $('<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>');
-      message.text(msg);
+      message.html(msg);
       message.append(closeBut);
   }
 </script>

@@ -17,7 +17,7 @@
     <!-- CATEGORY DROP DOWN -->
        <ul class="nav navbar-nav">
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Category<b class="caret"></b></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Category <b class="caret"></b></a>
            <ul class="dropdown-menu">
              <li><%- Listing.uniq.pluck(:category).each do |category| %>
                <%= link_to category, category_path(category: category) %> 

@@ -7,11 +7,29 @@ class ListingsController < ApplicationController
   # GET /listings.json
 
   def index
-      @listings = Listing.not_expired.order("created_at DESC").paginate(:page => params[:page], :per_page => 48)  
-      respond_to do |format|
+      # @listings = Listing.not_expired.order("created_at DESC").paginate(:page => params[:page], :per_page => 48)  
+      # respond_to do |format|
+      #    format.html
+      #    format.csv { send_data @listings.to_csv(@listings) }   
+      #  end
+
+      if params[:sort] == "- Price - Low to High"
+        @listings = Listing.not_expired.order("price ASC").paginate(:page => params[:page], :per_page => 48)
+      elsif params[:sort] == "- Price - High to Low"
+        @listings = Listing.not_expired.order("price DESC").paginate(:page => params[:page], :per_page => 48)
+      elsif params[:sort] == "- New Arrivals"
+        @listings = Listing.not_expired.order("created_at DESC").paginate(:page => params[:page], :per_page => 48)
+      elsif params[:sort] == "- Random Shuffle"
+        @listings = Listing.not_expired.order("random()").paginate(:page => params[:page], :per_page => 48)
+      else
+        @listings = Listing.not_expired.order("random()").paginate(:page => params[:page], :per_page => 48)
+      end
+
+       respond_to do |format|
          format.html
          format.csv { send_data @listings.to_csv(@listings) }   
        end
+        
   end
 
   def seller
@@ -30,7 +48,20 @@ class ListingsController < ApplicationController
 
   def category
     @category = params[:category]
-    @listings = Listing.not_expired.where(:category => @category).order("created_at DESC").paginate(:page => params[:page], :per_page => 48)
+    #@listings = Listing.not_expired.where(:category => @category).order("created_at DESC").paginate(:page => params[:page], :per_page => 48)
+
+      if params[:sort] == "- Price - Low to High"
+        @listings = Listing.not_expired.where(:category => @category).order("price ASC").paginate(:page => params[:page], :per_page => 48)
+      elsif params[:sort] == "- Price - High to Low"
+        @listings = Listing.not_expired.where(:category => @category).order("price DESC").paginate(:page => params[:page], :per_page => 48)
+      elsif params[:sort] == "- New Arrivals"
+        @listings = Listing.not_expired.where(:category => @category).order("created_at DESC").paginate(:page => params[:page], :per_page => 48)
+      elsif params[:sort] == "- Random Shuffle"
+        @listings = Listing.not_expired.where(:category => @category).order("random()").paginate(:page => params[:page], :per_page => 48)
+      else
+        @listings = Listing.not_expired.where(:category => @category).order("random()").paginate(:page => params[:page], :per_page => 48)
+      end
+
   end
 
   def admin
@@ -43,14 +74,41 @@ class ListingsController < ApplicationController
 
   def vendor
     @user = User.find(params[:id])
-    @listings = Listing.not_expired.where(user: User.find(params[:id])).paginate(:page => params[:page], :per_page => 48)
+    #@listings = Listing.not_expired.where(user: User.find(params[:id])).paginate(:page => params[:page], :per_page => 48)
+
+      if params[:sort] == "- Price - Low to High"
+        @listings = Listing.not_expired.where(user: User.find(params[:id])).order("price ASC").paginate(:page => params[:page], :per_page => 48)
+      elsif params[:sort] == "- Price - High to Low"
+        @listings = Listing.not_expired.where(user: User.find(params[:id])).order("price DESC").paginate(:page => params[:page], :per_page => 48)
+      elsif params[:sort] == "- New Arrivals"
+        @listings = Listing.not_expired.where(user: User.find(params[:id])).order("created_at DESC").paginate(:page => params[:page], :per_page => 48)
+      elsif params[:sort] == "- Random Shuffle"
+        @listings = Listing.not_expired.where(user: User.find(params[:id])).order("random()").paginate(:page => params[:page], :per_page => 48)
+      else
+        @listings = Listing.not_expired.where(user: User.find(params[:id])).order("random()").paginate(:page => params[:page], :per_page => 48)
+      end
+
   end
 
   def search
     if params[:search].present?
-      @listings = Listing.not_expired.search(params[:search])
+
+      #@listings = Listing.not_expired.search(params[:search])
+       if params[:sort] == "- Price - Low to High"
+        @listings = Listing.not_expired.search(params[:search]).order("price ASC").paginate(:page => params[:page], :per_page => 48)
+      elsif params[:sort] == "- Price - High to Low"
+        @listings = Listing.not_expired.search(params[:search]).order("price DESC").paginate(:page => params[:page], :per_page => 48)
+      elsif params[:sort] == "- New Arrivals"
+        @listings = Listing.not_expired.search(params[:search]).order("created_at DESC").paginate(:page => params[:page], :per_page => 48)
+      elsif params[:sort] == "- Random Shuffle"
+        @listings = Listing.not_expired.search(params[:search]).order("random()").paginate(:page => params[:page], :per_page => 48)
+      else
+        @listings = Listing.not_expired.search(params[:search]).order("random()").paginate(:page => params[:page], :per_page => 48)
+      end
+
     else
-      @listings = Listing.not_expired.order("created_at DESC").paginate(:page => params[:page], :per_page => 48)
+      flash[:notice] = "Please enter one or more search terms e.g red necklace."
+      #@listings = Listing.not_expired.order("created_at DESC").paginate(:page => params[:page], :per_page => 48)
     end
   end
 

@@ -10,22 +10,21 @@
 
 <% end %>
 
-<h4>New Additions</h4>
+<h4>Browse Collection</h4>
 
-<!--   <div class="dropdown">
-    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-            Sort<span class="caret"></span>
-    </button>
+ <div class="dropdown">
+    <button class="btn btn-default btn-xs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+            Sort <%= params[:sort] %> <b class="caret"></b> </button>
+
     <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-      <li><%= link_to "Price", :sort => "price" %></li>
-      <li><%= link_to "Most Recent", :sort => "created_at" %></li>
-      <li><%= link_to "Alphabetical", :sort => "name" %></li>
+      <li><%= link_to "New Arrivals", listings_path(:sort => "- New Arrivals")  %></li>
+      <li><%= link_to "Price - Low to High", listings_path(:sort => "- Price - Low to High") %></li>
+      <li><%= link_to "Price - High to Low", listings_path(:sort => "- Price - High to Low")  %></li>
+      <li><%= link_to "Discover - Random Shuffle", listings_path(:sort => "- Random Shuffle")  %></li>
     </ul>
-  </div>
-  <br> -->
 
-
-
+</div>
+  <br>
 
 <div class="center">
   <div class="row">
