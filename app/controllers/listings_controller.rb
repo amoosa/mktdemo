@@ -107,7 +107,7 @@ class ListingsController < ApplicationController
         # end
     else
       flash[:alert] = "Please enter one or more search terms e.g. blue shirt."
-      @listings = Listing.not_expired.search(params[:search])
+      @listings = Listing.not_expired.order("created_at DESC").paginate(:page => params[:page], :per_page => 48)
     end
   end
 
