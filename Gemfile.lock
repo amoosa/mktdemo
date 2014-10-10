@@ -209,7 +209,7 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   jquery-turbolinks
-  newrelic_rpm
+  newrelic_rpm (~> 3.9.5.251)
   paperclip (~> 4.1)
   paperclip-dropbox (>= 1.1.7)
   pg
