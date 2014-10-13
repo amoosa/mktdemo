@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140924114404) do
+ActiveRecord::Schema.define(version: 20141013123411) do
 
   create_table "delayed_jobs", force: true do |t|
     t.integer  "priority",   default: 0, null: false
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 20140924114404) do
     t.string   "shipcompany"
     t.string   "shipaddress2"
     t.string   "address2"
+    t.boolean  "mail_status",  default: false
   end
 
   create_table "user_listings", force: true do |t|
