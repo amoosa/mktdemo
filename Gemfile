@@ -48,6 +48,7 @@ gem 'newrelic_rpm', '~> 3.9.5.251'
 group :production do
 	gem 'pg'
 	gem 'rails_12factor'
+  gem 'workless', '~> 1.2.2'
 end
 
 group :development, :test do
