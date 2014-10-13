@@ -82,7 +82,7 @@ end
 
   def shipconf
       @order = Order.find(params[:id])
-      #AutoNotifier.shipconf_email(@order).deliver
+      AutoNotifier.shipconf_email(@order).deliver
       @order.mail_status = true
       @order.save
   end
