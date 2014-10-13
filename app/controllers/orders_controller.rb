@@ -85,7 +85,7 @@ end
       AutoNotifier.shipconf_email(@order).deliver
       #We send an email, so you cannot send another one for this order
       @order.mail_status = true
-      @order.save
+      @order.save!
   end
 
   def update
