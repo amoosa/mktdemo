@@ -34,7 +34,7 @@
       <td><%= link_to "Get Invoice", listing_order_path(id: order.id, listing_id: order.listing_id), class: "btn btn-sm btn-success" %></td>
       <td><%= best_in_place order, :carrier, :type => :input, :url => listing_order_path(id: order.id, listing_id: order.listing_id) %> </td>
       <td><%= best_in_place order, :tracking, :type => :input, :url => listing_order_path(id: order.id, listing_id: order.listing_id) %> </td>
-      <td><%= link_to "Send Customer Email", shipconf_path(id: order.id), class: "btn btn-sm btn-primary shipconf", html_options:{disabled:order.mail_status, disabled_with:'Email sent'} %></td>
+      <td><%= link_to "Send Customer Email", shipconf_path(id: order.id), class: "btn btn-sm btn-primary shipconf", {disabled:order.mail_status, disabled_with:'Email sent'} %></td>
     </tr>
   <% end %>
 </table>
