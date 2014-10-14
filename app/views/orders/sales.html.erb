@@ -12,10 +12,10 @@
     <th class="col-md-1">Item</th>
     <th class="col-md-1">Price</th>
     <th class="col-md-2">Shipping Details</th>
-    <th class="col-md-1">Invoice</th>
+    <!-- <th class="col-md-1">Invoice</th> -->
     <th class="col-md-1">Carrier (click below to enter)</th>
     <th class="col-md-2">Tracking # (click below to enter)</th>
-    <th class="col-md-1">Shipping Confirmation Email</th>
+    <th class="col-md-2">Ship Order</th>
   </tr>
 
   <% @orders.each do |order| %>
@@ -31,10 +31,9 @@
           <%= if !order.shipaddress2.blank? then order.shipaddress2 end %><% if !order.shipaddress2.blank? %><br><% end %>
           <%= "#{order.shipcity}, #{order.shipstate} #{order.shipzip}" %>
       </td>
-      <td><%= link_to "Get Invoice", listing_order_path(id: order.id, listing_id: order.listing_id), class: "btn btn-sm btn-success" %></td>
       <td><%= best_in_place order, :carrier, :type => :input, :url => listing_order_path(id: order.id, listing_id: order.listing_id) %> </td>
       <td><%= best_in_place order, :tracking, :type => :input, :url => listing_order_path(id: order.id, listing_id: order.listing_id) %> </td>
-      <td><%= link_to order.mail_status ? "Email sent":"Send Customer Email", shipconf_path(id: order.id), class: "btn btn-sm btn-primary shipconf", disabled:order.mail_status %></td>
+      <td><p><%= link_to "Get Invoice", listing_order_path(id: order.id, listing_id: order.listing_id), class: "btn btn-xs btn-success shipconf" %></p><%= link_to order.mail_status ? "Shipment Confirmed":"Confirm Shipment", shipconf_path(id: order.id), class: "btn btn-xs btn-success shipconf", disabled:order.mail_status %></td>
     </tr>
   <% end %>
 </table>
