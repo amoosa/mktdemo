@@ -23,7 +23,13 @@
       <td><%= image_tag listing.image.url(:thumb) %></td>
       <td><%= listing.user_id %></td>
       <td><%= listing.name.downcase.titleize %></td>
-      <td><%= number_to_currency(listing.price) %></td>
+      <td><% if listing.saleprice.blank? %>
+          <%= number_to_currency(listing.price) %>
+        <% else %>
+          <del><%= number_to_currency(listing.price) %></del>  
+          <%= number_to_currency(listing.saleprice) %>
+        <% end %>
+     </td>
       <td><%= listing.inventory %></td>
       <td><%= listing.created_at.strftime("%B %-d, %Y") %></td>
 

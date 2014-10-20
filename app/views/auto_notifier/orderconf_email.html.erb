@@ -8,7 +8,8 @@
        <p>
          Dear <%= @buyer.name %>, <br><br>Thank you for your order at Outfit Additions. <br><br>
          <b>Item ordered:</b> <%= @order.listing.name %><br>
-         <b>Total:</b> <%= number_to_currency(@order.listing.price) %>
+         <b>Total:</b> <% if @order.listing.saleprice.blank? %><%= number_to_currency(@order.listing.price) %><% else %>
+         <%= number_to_currency(@order.listing.saleprice) %><% end %>
        </p>
 
          <b>Billed to: </b><br>

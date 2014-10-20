@@ -3,7 +3,8 @@ Dear <%= @buyer.name %>,
 Thank you for your order at Outfit Additions. 
 
 Item ordered: <%= @order.listing.name %>.
-Total: <%= number_to_currency(@order.listing.price) %>.
+Total: <% if @order.listing.saleprice.blank? %><%= number_to_currency(@order.listing.price) %><% else %>
+         <%= number_to_currency(@order.listing.saleprice) %><% end %>.
 
 
  Billed to:

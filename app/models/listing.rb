@@ -123,9 +123,9 @@ class Listing < ActiveRecord::Base
 
     # csv export code from railscasts
 	def self.to_csv(listings)
-	  wanted_columns = [:sku, :name, :description, :price, :inventory, :category]
+	  wanted_columns = [:sku, :name, :designer_or_brand, :description, :price, :saleprice, :inventory, :category]
 	  CSV.generate do |csv|
-	    csv << ['Product_id', 'Product title', 'Description', 'Price', 'Quantity in stock', 'Category'] + [:Image, :Image2, :Image3, :Image4]
+	    csv << ['Product_id', 'Product title', 'Designer_or_Brand', 'Description', 'Price', 'SalePrice' 'Quantity in stock', 'Category'] + [:Image, :Image2, :Image3, :Image4]
 	    listings.each do |listing|
 	      attrs = listing.attributes.with_indifferent_access.values_at(*wanted_columns)
 	      attrs.push(listing.image.url, listing.image2.try(:url), listing.image3.try(:url), listing.image4.try(:url)) 
@@ -144,9 +144,10 @@ class Listing < ActiveRecord::Base
 	end
 
 	validates :name, :description, :price, :inventory, :category, :sku, presence: true
-	validates :name, length: { maximum: 56 }
+	validates :name, :designer_or_brand, length: { maximum: 56 }
+	validates :designer_or_brand, length: { maximum: 35 }
 	validates :description, length: { maximum: 1200 }
-	validates :price, :inventory, numericality: {greater_than: 0}
+	validates :price, :saleprice, :inventory, numericality: {greater_than: 0}
 	validates_attachment_presence :image
 	validates_with AttachmentSizeValidator, :attributes => :image, :less_than => 2.megabytes
 	validates_with AttachmentSizeValidator, :attributes => :image2, :less_than => 2.megabytes

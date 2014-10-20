@@ -1,60 +1,29 @@
 @import "bootstrap";
 
-/* NAVBAR CSS */
-
-/* navbar background color */
-.navbar-default {
-  background-color: #000000;
+.navbar-inverse .navbar-brand {
+  font-family: 'Josefin Sans', sans-serif;
+  color: #FFFFFF; 
+  font-size: 28px;
+  vertical-align: middle;
 }
 
-.navbar-default .navbar-nav > li > a {
+.navbar-inverse .navbar-nav > li > a {
   font-family: 'Open Sans', sans-serif;
   font-size: 14px;
   color: #FFFFFF;
 }
 
-ul.nav a:hover { color: #e2e2e2 !important; }
-
-/* navbar logo format */
-.navbar-default .navbar-brand {
+.navbar-inverse .navbar-brand {
   font-family: 'Josefin Sans', sans-serif;
-  font-weight: 400;
+  font-weight: bold;
   color: #FFFFFF; 
-  font-size: 24px;
+  font-size: 22px;
   vertical-align: middle;
 }
 
-.navbar-default .navbar-brand:hover,
-.navbar-default .navbar-brand:focus {
-     color: #e2e2e2;
-}
+.glyphicon-user {font-size: 12px; padding-right:2px;}
+.glyphicon-filter {font-size: 12px;}
 
-.navbar-toggle {
-  background-color: #000000;
-  border: none;
- }
-
- .navbar-default .navbar-toggle .icon-bar {
-    background-color: #ffffff;
-    border: none;
-}
-
-.dropdown-menu > li > a {
-  text-align: left;
-}
-
-.dropdown-menu > li > a:hover {
-  background-color: #ffffff;
-  color: #333333 !important;
-}
-
-/* color on clicking on dropdown in navbar */
-.navbar-default .navbar-nav > .open > a:focus {
-  background-color: #000000;
-  color: #ffffff
-}
-
-/* END NAVBAR CSS */
 
 .images {
 position: relative;

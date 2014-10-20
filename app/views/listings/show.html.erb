@@ -32,9 +32,18 @@
 
   <div class="col-md-5"> 
   	<h3><%= @listing.name.downcase.titleize %></h3>
-    
+    <% if !@listing.designer_or_brand.blank? %><b>Designer / Brand: </b><%= @listing.designer_or_brand %><br><% end %>
     <div class="addthis_sharing_toolbox"></div><br> 
-    <p><%= number_to_currency(@listing.price) %></p>
+    <p>
+      <% if @listing.saleprice.blank? %>
+          <%= number_to_currency(@listing.price) %>
+      <% else %>
+          <del><%= number_to_currency(@listing.price) %></del>  
+          <%= number_to_currency(@listing.saleprice) %>
+      <% end %>
+    </p>
+
+
   	<p><%= sanitize @listing.description, tags: %w(b p ul li), class: ".pre-scrollable" %></p>
     <br>
 

@@ -47,6 +47,8 @@ class OrdersController < ApplicationController
     Stripe.api_key = ENV["STRIPE_API_KEY"]
     token = params[:stripeToken]
 
+
+  if @listing.saleprice.blank?
     begin
       charge = Stripe::Charge.create(
         :amount => (@listing.price * 100).floor,
@@ -67,6 +69,28 @@ class OrdersController < ApplicationController
           :description => "Transfer from OutfitAdditions"
           )
     end
+  else
+    begin
+      charge = Stripe::Charge.create(
+        :amount => (@listing.saleprice * 100).floor,
+        :currency => "usd",
+        :card => token,
+        :description => "Charge from OutfitAdditions"
+        )
+      #flash[:notice] = "Thank you for your order!"
+    rescue Stripe::CardError => e
+      flash[:danger] = e.message
+    end
+
+    if !@seller.recipient.blank?
+      transfer = Stripe::Transfer.create(
+          :amount => (@listing.saleprice * 80).floor, #converting to cents per stripe requirement. 80 percent in cents goes to seller.
+          :currency => "usd",
+          :recipient => @seller.recipient,
+          :description => "Transfer from OutfitAdditions"
+          )
+    end
+  end
 
     respond_to do |format|
       if @order.save

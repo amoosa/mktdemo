@@ -1,6 +1,7 @@
 Dear <%= @order.seller.name %>, You have a new order at Outfit Additions. 
 Item ordered: <%= @order.listing.name %>
-Sold for: <%= number_to_currency(@order.listing.price) %>
+Sold for: <% if @order.listing.saleprice.blank? %><%= number_to_currency(@order.listing.price) %><% else %>
+         <%= number_to_currency(@order.listing.saleprice) %><% end %>
 
 
 Ship the item to: 

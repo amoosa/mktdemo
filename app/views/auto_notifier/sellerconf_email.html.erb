@@ -9,7 +9,8 @@
          Dear <%= @order.seller.name %>, <br><br>You have a new order at Outfit Additions. <br><br>
          <b>Product ID:</b> <%= @order.listing.sku %><br>
          <b>Product name:</b> <%= @order.listing.name %><br>
-         <b>Sold for:</b> <%= number_to_currency(@order.listing.price) %>
+         <b>Sold for:</b> <% if @order.listing.saleprice.blank? %><%= number_to_currency(@order.listing.price) %><% else %>
+         <%= number_to_currency(@order.listing.saleprice) %><% end %>
        </p>
 
           <b>Ship the item to: </b><br>
