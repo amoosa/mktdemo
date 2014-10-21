@@ -76,9 +76,11 @@ class Listing < ActiveRecord::Base
 		    CSV.parse(f.read , headers: true, skip_blanks: true) do |row|
 
           listing_hash = {:name => row['Product_title'], 
+          	              :designer_or_brand => row['Designer_or_Brand'], 
           	              :description => row['Description'],
-          				  :sku => row['Product_id'],
-  						  :price => row['Price'].to_i, :category => row['Category'].titleize, :inventory => row['Quantity_in_stock'].to_i,
+          				  :sku => row['Product_ID'],
+  						  :price => row['Price'].to_i, :saleprice => row['SalePrice'].to_i,
+  						  :category => row['Category'].titleize, :inventory => row['Quantity_in_stock'].to_i,
   						  :image => URI.parse(row['Image']),
   						  :user_id => user_id}.tap do |list_hash|
 						    list_hash[:image2] = URI.parse(row['Image2']) if row['Image2'] 
@@ -105,15 +107,6 @@ class Listing < ActiveRecord::Base
 
     handle_asynchronously :importcsv
 
-
-    # def error(job,exception)
-    #   Listing.processed!(job,exception)
-    # end 
-
-    # def success(job)
-    #   Listing.processed!(job)
-    # end
-
   end
 
   # My importer as a class method
@@ -125,7 +118,7 @@ class Listing < ActiveRecord::Base
 	def self.to_csv(listings)
 	  wanted_columns = [:sku, :name, :designer_or_brand, :description, :price, :saleprice, :inventory, :category]
 	  CSV.generate do |csv|
-	    csv << ['Product_id', 'Product title', 'Designer_or_Brand', 'Description', 'Price', 'SalePrice' 'Quantity in stock', 'Category'] + [:Image, :Image2, :Image3, :Image4]
+	    csv << ['Product_ID', 'Product_title', 'Designer_or_Brand', 'Description', 'Price', 'SalePrice', 'Quantity_in_stock', 'Category'] + [:Image, :Image2, :Image3, :Image4]
 	    listings.each do |listing|
 	      attrs = listing.attributes.with_indifferent_access.values_at(*wanted_columns)
 	      attrs.push(listing.image.url, listing.image2.try(:url), listing.image3.try(:url), listing.image4.try(:url)) 
@@ -144,7 +137,7 @@ class Listing < ActiveRecord::Base
 	end
 
 	validates :name, :description, :price, :inventory, :category, :sku, presence: true
-	validates :name, :designer_or_brand, length: { maximum: 56 }
+	validates :name, length: { maximum: 56 }
 	validates :designer_or_brand, length: { maximum: 35 }
 	validates :description, length: { maximum: 1200 }
 	validates :price, :saleprice, :inventory, numericality: {greater_than: 0}

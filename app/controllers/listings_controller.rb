@@ -140,7 +140,6 @@ class ListingsController < ApplicationController
   end
 
   def check_listing_status
-
     user_listing = UserListing.find_by(user:current_user)
     render :json => -1 if user_listing.nil?
     unless user_listing.nil?
@@ -148,7 +147,6 @@ class ListingsController < ApplicationController
       render :json => @process_status - 1
 
       user_listing.listed! if user_listing.is_processed? or user_listing.is_failed?
-
    end
 
 
