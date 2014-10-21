@@ -32,20 +32,20 @@
 
   <div class="col-md-5"> 
   	<h3><%= @listing.name.downcase.titleize %></h3>
-    <p><% if !@listing.designer_or_brand.blank? %><b>Designer / Brand: </b><%= @listing.designer_or_brand %><br><% end %></p>
-    <div class="addthis_sharing_toolbox"></div><br> 
+    <div class="addthis_sharing_toolbox"></div><br>
     <p>
       <% if @listing.saleprice.blank? %>
-          <%= number_to_currency(@listing.price) %>
+          <font size="6px"><%= number_to_currency @listing.price %></font>
       <% else %>
-          <del><%= number_to_currency(@listing.price) %></del>  
-          <%= number_to_currency(@listing.saleprice) %>
+          <font size="6px"><del><%= number_to_currency(@listing.price) %></del>  
+          <%= number_to_currency(@listing.saleprice) %></font>
       <% end %>
     </p>
 
-
   	<p><%= sanitize @listing.description, tags: %w(b p ul li), class: ".pre-scrollable" %></p>
     <br>
+
+            <font size="2px"><% if !@listing.designer_or_brand.blank? %><b>Designer / Brand: </b><%= @listing.designer_or_brand %><br><% end %></font>
 
          <% if @listing.inventory == 1 %>
              <br><p><b><font color="red">Only 1 piece left. </font></b></p>
@@ -61,9 +61,9 @@
 
         <% else %>
           <br><p><b><font color="red">Sorry, we're sold out of this item. </font></b></p>
-        <% end %>   
+        <% end %>  
 
-        <br><br>
+        <br><br>   
 
             <% if !@listing.user.profilestory.blank? %>
               <div class="pthumbnail">
@@ -73,17 +73,15 @@
                    <a href="#profilemodal" role="link" data-toggle="modal"> View Seller Profile</a>
                    <%= render 'profilemodal' %> 
               </div>
-            <% end %>
-      
+            <% end %> 
 
-
-        
+           
   </div> 
 </div>
 <% end %>
 <br>
 <!-- Go to www.addthis.com/dashboard to customize your tools -->
-<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ashfaaq"></script>
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ashfaaq"></script> 
 
 <%= render 'otherselleritems' %>
 <%= render 'othercategoryitems' %>

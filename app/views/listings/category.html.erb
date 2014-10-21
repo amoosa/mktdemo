@@ -26,8 +26,8 @@
               <% if listing.saleprice.blank? %>
                 <%= number_to_currency(listing.price) %>
               <% else %>
-                <del><%= number_to_currency(listing.price) %></del>  
-                <%= number_to_currency(listing.saleprice) %>
+                <font color="red"><del><%= number_to_currency(listing.price) %></del>  
+                <%= number_to_currency(listing.saleprice) %></font>
               <% end %>
             </p>
           </div>

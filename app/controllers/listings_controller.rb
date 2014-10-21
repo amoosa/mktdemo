@@ -7,12 +7,6 @@ class ListingsController < ApplicationController
   # GET /listings.json
 
   def index
-      # @listings = Listing.not_expired.order("created_at DESC").paginate(:page => params[:page], :per_page => 48)  
-      # respond_to do |format|
-      #    format.html
-      #    format.csv { send_data @listings.to_csv(@listings) }   
-      #  end
-
       if params[:sort] == "- Price - Low to High"
         @listings = Listing.not_expired.order("price ASC").paginate(:page => params[:page], :per_page => 48)
       elsif params[:sort] == "- Price - High to Low"
@@ -29,6 +23,12 @@ class ListingsController < ApplicationController
          format.html
          format.csv { send_data @listings.to_csv(@listings) }   
        end
+
+      # @listings = Listing.not_expired.order("created_at DESC").paginate(:page => params[:page], :per_page => 48)  
+      # respond_to do |format|
+      #    format.html
+      #    format.csv { send_data @listings.to_csv(@listings) }   
+      #  end
         
   end
 
@@ -93,19 +93,7 @@ class ListingsController < ApplicationController
   def search
     if params[:search].present?
       @listings = Listing.not_expired.search(params[:search])
-        # case (params[:sort])
-        # when  "- Price - Low to High"
-        #   @listings = Listing.not_expired.search(params[:search]), order: {"price": :asc}, page: params[:page], per_page: 48
-        # when "- Price - High to Low"
-        #   @listings = Listing.not_expired.search(params[:search]), order: {_price: :desc}, page: params[:page], per_page: 48
-        # when "- New Arrivals"
-        #   @listings = Listing.not_expired.search(params[:search]), order: {_created_at: :desc}, page: params[:page], per_page: 48
-        # when "- Random Shuffle"
-        #   @listings = Listing.not_expired.search(params[:search]), order: {_created_at: :desc}, page: params[:page], per_page: 48
-        # else
-        #   @listings = Listing.not_expired.search(params[:search]), order: {_created_at: :desc}, page: params[:page], per_page: 48
-        # end
-    else
+     else
       @listings = Listing.not_expired.order("created_at DESC")
     end
   end
@@ -158,8 +146,6 @@ require 'fileutils'
   def import
     tmp = params[:my_file].tempfile
 
-    #file = File.join("public", tmp)
-
     #FSOTO: I created a new model that has your csv as a attachment and are related to your current_user
     userListing = UserListing.find_by(user:current_user)
 
@@ -171,20 +157,11 @@ require 'fileutils'
 
     userListing.ready!
 
-
     #FSOTO: Now userListng.file.url has a valid file on S3, that can be access from your job.
     Listing.import(userListing.file.url , params[:user_id])
     redirect_to seller_url
-  #begin
-      # Listing.import(params[:file], params[:user_id])
-      # redirect_to seller_url, notice: "Products imported."
-   #  rescue
-   #     redirect_to seller_url, notice: "Invalid CSV file format."
-   # end
   end
 
-  # PATCH/PUT /listings/1
-  # PATCH/PUT /listings/1.json
   def update
     respond_to do |format|
       if @listing.update(listing_params)
@@ -197,8 +174,6 @@ require 'fileutils'
     end
   end
 
-  # DELETE /listings/1
-  # DELETE /listings/1.json
   def destroy
     @listing.destroy
     respond_to do |format|
