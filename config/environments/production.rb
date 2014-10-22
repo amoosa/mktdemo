@@ -14,6 +14,8 @@ Mktdemo::Application.configure do
   # Code is not reloaded between requests.
   config.cache_classes = true
 
+  config.action_controller.asset_host = "//s3.amazonaws.com/#{ENV['S3_BUCKET_NAME']}"
+
   config.paperclip_defaults = {
   :storage => :s3,
   :s3_credentials => {
