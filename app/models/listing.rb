@@ -76,13 +76,14 @@ class Listing < ActiveRecord::Base
 		    CSV.parse(f.read , headers: true, skip_blanks: true) do |row|
 
           listing_hash = {:name => row['Product_title'], 
-          	              :designer_or_brand => row['Designer_or_Brand'], 
           	              :description => row['Description'],
           				  :sku => row['Product_ID'],
-  						  :price => row['Price'].to_i, :saleprice => row['SalePrice'].to_i,
+  						  :price => row['Price'].to_i,
   						  :category => row['Category'].titleize, :inventory => row['Quantity_in_stock'].to_i,
   						  :image => URI.parse(row['Image']),
   						  :user_id => user_id}.tap do |list_hash|
+  						  	list_hash[:designer_or_brand] = row['Designer_or_Brand'] if row['Designer_or_Brand'] 
+  						  	list_hash[:saleprice] = row['SalePrice'].to_i if row['SalePrice'] 
 						    list_hash[:image2] = URI.parse(row['Image2']) if row['Image2'] 
 						    list_hash[:image3] = URI.parse(row['Image3']) if row['Image3'] 
 						    list_hash[:image4] = URI.parse(row['Image4']) if row['Image4'] 
@@ -138,10 +139,10 @@ class Listing < ActiveRecord::Base
 
 	validates :name, :description, :price, :inventory, :category, :sku, presence: true
 	validates :name, length: { maximum: 56 }
-	validates :designer_or_brand, length: { maximum: 35 }, allow_blank: true
+	validates :designer_or_brand, length: { maximum: 35 }, :allow_blank => true
 	validates :description, length: { maximum: 1200 }
 	validates :price, :inventory, numericality: {greater_than: 0}
-	validates :saleprice, numericality: {greater_than: 0}, allow_blank: true
+	validates :saleprice, numericality: {greater_than: 0}, :allow_blank => true
 	validates_attachment_presence :image
 	validates_with AttachmentSizeValidator, :attributes => :image, :less_than => 2.megabytes
 	validates_with AttachmentSizeValidator, :attributes => :image2, :less_than => 2.megabytes

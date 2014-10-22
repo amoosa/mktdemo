@@ -2,7 +2,10 @@
 
 <div class="center">
   <div class="row">
-    <% User.where("profileimage_file_name != ? AND profilestory != ?", "", "").order("random()").limit(12).each do |user| %>
+    <% User.where("profileimage_file_name != ? AND profilestory != ?", "", "").
+                joins(:listings).
+                where('listings.updated_at >= ?', Date.current - 30.day).
+                order("random()").limit(12).each do |user| %>
         <div class="col-md-2 col-sm-3 col-xs-6 images">
         <div class="thumbnail images">
           <%= link_to image_tag(user.profileimage.url(:profile), class: "img-responsive dthumbnail"), vendor_path(user) %>
