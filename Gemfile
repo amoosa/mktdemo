@@ -45,11 +45,14 @@ gem 'newrelic_rpm', '~> 3.9.5.251'
 gem 'asset_sync', '~> 1.1.0'
 
 
+platforms :ruby do # linux
+  gem 'unicorn'
+end
 
 group :production do
 	gem 'pg'
 	gem 'rails_12factor'
-  gem 'workless', '~> 1.2.3'
+    gem 'workless', '~> 1.2.3'
 end
 
 group :development, :test do
