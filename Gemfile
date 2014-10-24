@@ -47,6 +47,7 @@ gem 'asset_sync', '~> 1.1.0'
 
 platforms :ruby do # linux
   gem 'unicorn', '~> 4.8.3'
+  gem 'rack-timeout'
 end
 
 group :production do
