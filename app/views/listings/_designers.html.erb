@@ -2,7 +2,8 @@
 
 <div class="center">
   <div class="row">
-    <% User.where("profileimage_file_name != ? AND profilestory != ?", "", "").
+    <% User.select('user.*, RANDOM()').
+                where("profileimage_file_name != ? AND profilestory != ?", "", "").
                 joins(:listings).
                 where('listings.updated_at >= ?', Date.current - 30.day).
                 order("random()").uniq.limit(12).each do |user| %>
