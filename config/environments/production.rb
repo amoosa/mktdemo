@@ -16,6 +16,9 @@ Mktdemo::Application.configure do
 
   config.action_controller.asset_host = "//s3.amazonaws.com/#{ENV['S3_BUCKET_NAME']}"
 
+  # (Heroku requires that this be false) - added based on stackoverflow
+  config.assets.initialize_on_precompile = false
+
   config.paperclip_defaults = {
   :storage => :s3,
   :s3_credentials => {
@@ -48,7 +51,7 @@ Mktdemo::Application.configure do
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = true
+  config.assets.compile = false
 
   # Generate digests for assets URLs.
   config.assets.digest = true
