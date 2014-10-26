@@ -14,10 +14,10 @@ Mktdemo::Application.configure do
   # Code is not reloaded between requests.
   config.cache_classes = true
 
-  config.action_controller.asset_host = "//s3.amazonaws.com/#{ENV['S3_BUCKET_NAME']}"
+  #config.action_controller.asset_host = "//s3.amazonaws.com/#{ENV['S3_BUCKET_NAME']}"
 
   # (Heroku requires that this be false) - added based on stackoverflow
-  config.assets.initialize_on_precompile = false
+  # config.assets.initialize_on_precompile = false
 
   config.paperclip_defaults = {
   :storage => :s3,
@@ -56,7 +56,7 @@ Mktdemo::Application.configure do
   # Generate digests for assets URLs.
   config.assets.digest = true
 
-  config.assets.enabled = true
+  # config.assets.enabled = true
 
   # Version of your assets, change this if you want to expire all your assets.
   config.assets.version = '1.0'
