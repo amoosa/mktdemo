@@ -3,13 +3,11 @@
 .navbar-inverse .navbar-brand {
   font-family: 'Josefin Sans', sans-serif;
   color: #FFFFFF; 
-  font-size: 18px;
   vertical-align: middle;
 }
 
 .navbar-inverse .navbar-nav > li > a {
   font-family: 'Open Sans', sans-serif;
-  font-size: 14px;
   color: #FFFFFF;
 }
 
@@ -17,12 +15,11 @@
   font-family: 'Josefin Sans', sans-serif;
   font-weight: bold;
   color: #FFFFFF; 
-  font-size: 22px;
-  vertical-align: middle;
 }
 
 .glyphicon-user {font-size: 13px; padding-right:2px;}
 .glyphicon-filter {font-size: 12px;}
+.glyphicon-chevron-down {font-size: 12px;}
 
 
 .images {
@@ -35,6 +32,7 @@ padding-right: 3px;
 .thumbnail {border: none;}
 
 .shipconf {width: 100%;}
+.salelink {margin-right: 8px;}
 
 /* profile show page widget container */
 .pthumbnail {                        

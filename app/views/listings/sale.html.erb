@@ -1,0 +1,40 @@
+<h4><b>Sale!</b></h4>
+
+ <div class="dropdown">
+    <button class="btn btn-default btn-xs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+            Sort <%= params[:sort] %> <b class="caret"></b> </button>
+
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+      <li><%= link_to "New Arrivals", sale_path(:sort => "- New Arrivals")  %></li>
+      <li><%= link_to "Price - Low to High", sale_path(:sort => "- Price - Low to High") %></li>
+      <li><%= link_to "Price - High to Low", sale_path(:sort => "- Price - High to Low")  %></li>
+      <li><%= link_to "Discover - Random Shuffle", sale_path(:sort => "- Random Shuffle")  %></li>
+    </ul>
+
+</div>
+  <br>
+
+<div class="center">
+  <div class="row">
+    <% @listings.each do |listing| %>
+        <div class="col-md-2 col-sm-3 col-xs-6 images">
+        <div class="thumbnail">
+          <%= link_to image_tag(listing.image.url(:medium), class: "img-responsive"), listing, data: { no_turbolink: true } %>
+          <div class="caption">
+            <h3><%= link_to listing.name.downcase.titleize, listing, data: { no_turbolink: true } %></h3>
+            <p>      
+              <% if listing.saleprice.blank? %>
+                <%= number_to_currency(listing.price) %>
+              <% else %>
+                <font color="red"><del><%= number_to_currency(listing.price) %></del>  
+                <%= number_to_currency(listing.saleprice) %></font>
+              <% end %>
+            </p>
+          </div>
+        </div>
+     </div>
+    <% end %>
+  </div>
+  <p><%= will_paginate @listings, renderer: BootstrapPagination::Rails %></p>
+</div>
+<br>

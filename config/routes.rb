@@ -24,6 +24,7 @@ Mktdemo::Application.routes.draw do
 
   get '/listings/s/:id' => 'listings#vendor', as: 'vendor'
   get '/listings/c/:category' => 'listings#category', as: 'category'
+  get '/listings/p/sale' => 'listings#sale', as:'sale'
 
   get "pages/about"
   get "pages/contact"

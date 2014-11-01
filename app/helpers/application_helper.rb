@@ -17,6 +17,8 @@ module ApplicationHelper
       ['Earrings'],
       ['Bracelets'],
       ['Rings'],
+      ['Belts'],
+      ['Wallets'],
       ['Other'],
     ]
  end

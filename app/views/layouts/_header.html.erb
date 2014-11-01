@@ -50,10 +50,10 @@
 
         <!-- END SEARCH BOX --> 
 
-      <!-- CATEGORY DROP DOWN -->
+     <!-- CATEGORY DROP DOWN -->
        <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-filter"></span> Category <b class="caret"></b></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Category <span class="glyphicon glyphicon-chevron-down"></span></a>
            <ul class="dropdown-menu">
              <li><%- Listing.uniq.pluck(:category).each do |category| %>
                <%= link_to category, category_path(category: category) %> 
@@ -63,6 +63,12 @@
          </li>
         </ul>
    <!-- END CATEGORY DROP DOWN -->
+    
+   <!-- SALE LINK -->
+       <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to "Sale", sale_path, class: "salelink" %> </li>
+       </ul>
+       <!-- END SALE LINK -->
 
 
     </div><!-- /.navbar-collapse -->  

@@ -2,7 +2,7 @@
   <h3>Admin area: All Listings</h3>
 
 
-<p><b>Download listings:</b> <%= link_to "CSV", listings_path(format: "csv") %></p>
+<p><%= link_to "Download Listings (CSV)", listings_path(format: "csv"), class: "btn btn-xs btn-primary" %></p>
 <p><%= will_paginate @listings, renderer: BootstrapPagination::Rails %></p>
 
 <table class="table table-condensed">

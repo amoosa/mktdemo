@@ -119,11 +119,12 @@ class Listing < ActiveRecord::Base
 	def self.to_csv(listings)
 	  wanted_columns = [:sku, :name, :designer_or_brand, :description, :price, :saleprice, :inventory, :category]
 	  CSV.generate do |csv|
-	    csv << ['Product_ID', 'Product_title', 'Designer_or_Brand', 'Description', 'Price', 'SalePrice', 'Quantity_in_stock', 'Category'] + [:Image, :Image2, :Image3, :Image4]
+	    csv << ['Product_ID', 'Product_title', 'Designer_or_Brand', 'Description', 'Price', 'SalePrice', 
+	    	'Quantity_in_stock', 'Category'] + [:Image, :Image2, :Image3, :Image4] + ['url']
 	    listings.each do |listing|
 	      attrs = listing.attributes.with_indifferent_access.values_at(*wanted_columns)
-	      attrs.push(listing.image.url, listing.image2.try(:url), listing.image3.try(:url), listing.image4.try(:url)) 
-	      # if image is not always present, use `listing.image.try(:url)`
+	      attrs.push(listing.image.url, listing.image2.try(:url), listing.image3.try(:url), listing.image4.try(:url),
+	      	Rails.application.routes.url_helpers.listing_url(listing.id, :host => 'www.outfitadditions.com'))
 	      csv << attrs
 	    end
 	  end

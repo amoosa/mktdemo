@@ -64,6 +64,20 @@ class ListingsController < ApplicationController
 
   end
 
+   def sale
+      if params[:sort] == "- Price - Low to High"
+        @listings = Listing.not_expired.where("saleprice > ?", 0).order("price ASC").paginate(:page => params[:page], :per_page => 48)
+      elsif params[:sort] == "- Price - High to Low"
+        @listings = Listing.not_expired.where("saleprice > ?", 0).order("price DESC").paginate(:page => params[:page], :per_page => 48)
+      elsif params[:sort] == "- New Arrivals"
+        @listings = Listing.not_expired.where("saleprice > ?", 0).order("created_at DESC").paginate(:page => params[:page], :per_page => 48)
+      elsif params[:sort] == "- Random Shuffle"
+        @listings = Listing.not_expired.where("saleprice > ?", 0).order("random()").paginate(:page => params[:page], :per_page => 48)
+      else
+        @listings = Listing.not_expired.where("saleprice > ?", 0).order("random()").paginate(:page => params[:page], :per_page => 48)
+      end
+  end
+
   def admin
      if current_user.name == "admin admin"
         @listings = Listing.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 48)
