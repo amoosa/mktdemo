@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141020151302) do
+ActiveRecord::Schema.define(version: 20141103202458) do
 
   create_table "delayed_jobs", force: true do |t|
     t.integer  "priority",   default: 0, null: false
@@ -58,7 +58,10 @@ ActiveRecord::Schema.define(version: 20141020151302) do
     t.boolean  "featured",            default: false
     t.integer  "saleprice"
     t.string   "designer_or_brand"
+    t.string   "slug"
   end
+
+  add_index "listings", ["slug"], name: "index_listings_on_slug", unique: true
 
   create_table "orders", force: true do |t|
     t.string   "address"

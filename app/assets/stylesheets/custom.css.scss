@@ -1,9 +1,9 @@
 @import "bootstrap";
 
+.navbar-inverse {background: #000;}
+
 .navbar-inverse .navbar-brand {
-  font-family: 'Josefin Sans', sans-serif;
   color: #FFFFFF; 
-  vertical-align: middle;
 }
 
 .navbar-inverse .navbar-nav > li > a {
@@ -11,11 +11,11 @@
   color: #FFFFFF;
 }
 
-.navbar-inverse .navbar-brand {
+/* .navbar-inverse .navbar-brand {
   font-family: 'Josefin Sans', sans-serif;
   font-weight: bold;
   color: #FFFFFF; 
-}
+} */
 
 .glyphicon-user {font-size: 13px; padding-right:2px;}
 .glyphicon-filter {font-size: 12px;}
