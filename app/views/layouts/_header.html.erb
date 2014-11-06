@@ -25,7 +25,7 @@
                   <% end %>
                     <li><%= link_to "Edit Profile", edit_user_registration_path  %></li>
                     <li><%= link_to "Past Orders", purchases_path  %></li>
-                  <% if ["admin admin", "outfit additions"].include? current_user.name %>
+                  <% if ["admin admin", "Outfit Additions"].include? current_user.name %>
                     <li role="presentation" class="divider"></li>
                     <li role="presentation" class="dropdown-header"><b>Seller links</b></li>
                     <li><%= link_to "List Items to Sell", new_listing_path, data: { no_turbolink: true }  %></li>
