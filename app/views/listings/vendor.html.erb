@@ -1,3 +1,4 @@
+<% provide(:title, @user.name.downcase.titleize) %>
 <h3>Seller Page: <%= @user.name.downcase.titleize %> </h3>
 
       <% if !@user.profilestory.blank? %>
