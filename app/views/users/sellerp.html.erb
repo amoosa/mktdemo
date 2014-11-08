@@ -12,8 +12,8 @@
     </div>
   <% end %>
 
-<div class="well"><p><font color="green"><b>Tell customers your story: </b></font>This form is optional but please take the time to write about who you are and your approach to design. What inspires you? What is your collection about? What materials do you use? Your background, education, if applicable, etc. Tell customers your story.</p>
-<p>Your profile info will be displayed in your seller page along with your collection. </p></div>
+<div class="well"><p><font color="green"><b>Tell customers your story: </b></font> If you're a designer, tell customers your approach to design and your background. If you're a boutique, talk about your collection and the types of designers you work it.</p>
+<p><font color="green"><span class="glyphicon glyphicon-ok"></span></font> Your profile info will be displayed on all your product pages. </p></div>
 
 <%= form_for @user, url: sellerprofile_path(id: current_user.id), method: :put, html: { :class => 'edit_profile', :multipart => true } do |f| %>
 
@@ -36,7 +36,7 @@
     <% if !@user.profileimage.url.blank? %><br><br><% end %>
 
    <div class="form-group">
-        <%= f.submit "Update Profile", class:"btn btn-primary" %>
+        <%= f.submit "Update", class:"btn btn-primary" %>
    </div>
 
  <% end %>
