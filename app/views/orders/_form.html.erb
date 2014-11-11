@@ -16,21 +16,6 @@
   <div class="col-md-8">
 
 <%= form_for([@listing, @order]) do |f| %>
-  <% if @order.errors.any? %>
-    <div id="error_explanation" class="alert alert-danger alert-dismissable">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <h4><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h4>
-      <ul>
-      <% @order.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-<div id="stripe_error" class="alert alert-danger" style="display:none">
-        <noscript>JavaScript is not enabled and is required for this form. Please enable it in your web browser settings.</noscript>
-      </div>
 
   <h3>Place Order</h3>
   <p><b><font color="green">Order Total: 
@@ -67,7 +52,7 @@
   <div class = "col-md-4">
     <div class="form-group">
         <%= f.label :state %>
-        <%= f.select(:shipstate, options_for_select(us_states), {prompt: "Select"}, {class: "form-control"}) %>
+        <%= f.select(:shipstate, options_for_select(us_states, f.object.state), {prompt: "Select"}, {class: "form-control"}) %>
     </div>  
   </div>
   <div class = "col-md-4">
@@ -101,13 +86,13 @@
   <div class = "col-md-4">
       <div class="form-group">
         <%= f.label :state %>
-        <%= f.select(:state, options_for_select(us_states), {prompt: "Select"}, {class: "form-control"}) %>
+        <%= f.select(:state, options_for_select(us_states, f.object.state), {prompt: "Select"}, {class: "form-control"}) %>
       </div>
   </div>
   <div class = "col-md-4">
       <div class="form-group">
         <%= f.label :zip %>
-        <%= f.text_field :zip, class:"form-control" %>
+        <%= f.text_field :zip, { :name => nil, :'data-stripe' => "address_zip", class: "form-control" } %>
       </div>
   </div>
 </div>
@@ -147,6 +132,23 @@
            <% end %>
         </font></b></p>
       </div>
+
+  <% if @order.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger alert-dismissable">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <h4><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h4>
+      <ul>
+      <% @order.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div id="stripe_error" class="alert alert-danger" style="display:none">
+        <noscript>JavaScript is not enabled and is required for this form. Please enable it in your web browser settings.</noscript>
+  </div>
+
 
   <div class="actions">
     <%= f.submit "Confirm Order", class:"btn btn-success" %>
