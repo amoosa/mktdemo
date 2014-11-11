@@ -12,7 +12,7 @@
     </div>
   <% end %>
 
-<div class="well"><p><font color="green"><b>Tell customers your story: </b></font> If you're a designer, tell customers your approach to design and your background. If you're a boutique, talk about your collection and the types of designers you work it.</p>
+<div class="well"><p><font color="green"><b>Tell customers your story: </b></font> If you're a designer, tell customers your approach to design and your background. If you're a boutique, talk about your collection and the types of designers you work with.</p>
 <p><font color="green"><span class="glyphicon glyphicon-ok"></span></font> Your profile info will be displayed on all your product pages. </p></div>
 
 <%= form_for @user, url: sellerprofile_path(id: current_user.id), method: :put, html: { :class => 'edit_profile', :multipart => true } do |f| %>

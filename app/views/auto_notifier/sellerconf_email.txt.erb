@@ -2,6 +2,11 @@ Dear <%= @order.seller.name %>, You have a new order at Outfit Additions.
 Item ordered: <%= @order.listing.name %>
 Sold for: <% if @order.listing.saleprice.blank? %><%= number_to_currency(@order.listing.price) %><% else %>
          <%= number_to_currency(@order.listing.saleprice) %><% end %>
+Seller Price (after fees): <% if order.listing.saleprice.blank? %>
+ <%= number_to_currency((order.listing.price * 0.971 - 0.3) * 0.80)  %>
+<% else %> 
+ <%= number_to_currency((order.listing.saleprice * 0.971 - 0.3) * 0.80)  %>
+<% end %>
 
 
 Ship the item to: 
@@ -15,7 +20,7 @@ Customer email: <%= @buyer.email %>
 Customer comments: <%= @order.comments %>
 <% end %>
 
-Please ship this order within 1-2 business days. After the item is shipped, please email the customer at the above email address with the tracking number.
+Please ship this order within 1-2 business days. Print the customer invoice on your <%= link_to "Manage Sales", sales_path %> page. After shipment, please enter your carrier and tracking information against the order row on the same page. Then click on the confirm shipment button to confirm your shipment. When you click on confirm shipment button, tracking information and a shipping conformation email will automatically be sent to the customer.
 
 To check sales details and manage your account, please login at <%= @url %>.</p>
 

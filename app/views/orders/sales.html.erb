@@ -10,12 +10,13 @@
     <th class="col-md-1">Date Sold</th>
     <th class="col-md-1">Image</th>
     <th class="col-md-1">Item</th>
-    <th class="col-md-1">Price</th>
+    <th class="col-md-1">Selling Price</th>
+    <th class="col-md-1">Seller Payment (after fees)</th>
     <th class="col-md-2">Shipping Details</th>
     <!-- <th class="col-md-1">Invoice</th> -->
     <th class="col-md-1">Carrier (click below to enter)</th>
     <th class="col-md-2">Tracking # (click below to enter)</th>
-    <th class="col-md-2">Ship Order</th>
+    <th class="col-md-1">Ship Order</th>
   </tr>
 
   <% @orders.each do |order| %>
@@ -31,6 +32,12 @@
              <%= number_to_currency(order.listing.saleprice) %>
            <% end %>
      </td>
+     <td><% if order.listing.saleprice.blank? %>
+             <%= number_to_currency((order.listing.price * 0.971 - 0.3) * 0.80)  %>
+           <% else %> 
+             <%= number_to_currency((order.listing.saleprice * 0.971 - 0.3) * 0.80)  %>
+           <% end %>
+      </td>
       <td><%= order.shipname %><br>
           <%= if !order.shipcompany.blank? then order.shipcompany end %><% if !order.shipcompany.blank? %><br><% end %>
           <%= order.shipaddress %><br>
