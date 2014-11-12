@@ -92,6 +92,8 @@ class OrdersController < ApplicationController
     end
   end
 
+
+
     respond_to do |format|
       if @order.save
         format.html { redirect_to thankyou_url }
