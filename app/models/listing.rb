@@ -65,9 +65,9 @@ class Listing < ActiveRecord::Base
 		validates_attachment_content_type :image4, :content_type => /\Aimage\/.*\Z/
 	end
 
-	# def self.search(query)
-	#   where("description like ? or name like ?", "%#{query}%", "%#{query}%")
-	# end
+	def self.ownsearch(query)
+	  where("name like ?", "%#{query}%")
+    end
 
   # Those are two &lt; symbols (the blog is screwing them up)
   require 'csv'
@@ -145,12 +145,20 @@ class Listing < ActiveRecord::Base
 	 self.updated_at <= (Date.current - 30.day)
 	end
 
+	def saleprice_lower_than_price
+	  if (saleprice != nil && saleprice > (price - (price * 0.05)))
+	    errors.add(:saleprice, "should be at least 5% less than the regular price")
+	  end
+	end
+
+
 	validates :name, :description, :price, :inventory, :category, :sku, presence: true
 	validates :name, length: { maximum: 56 }
 	validates :designer_or_brand, length: { maximum: 35 }, :allow_blank => true
 	validates :description, length: { maximum: 1800 }
 	validates :price, :inventory, numericality: {greater_than: 0}
-	validates :saleprice, numericality: {greater_than: 0}, :allow_blank => true
+	#validates :saleprice, numericality: {greater_than: 0}, :allow_blank => true
+	validate :saleprice_lower_than_price
 	validates_attachment_presence :image
 	validates_with AttachmentSizeValidator, :attributes => :image, :less_than => 2.megabytes
 	validates_with AttachmentSizeValidator, :attributes => :image2, :less_than => 2.megabytes

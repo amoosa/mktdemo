@@ -112,6 +112,14 @@ class ListingsController < ApplicationController
     end
   end
 
+  def ownsearch
+    if params[:search].present?
+      @listings = Listing.where(user: current_user).ownsearch(params[:search])
+     else
+      @listings = Listing.where(user: current_user).order("created_at DESC")
+    end
+  end
+
   def show
   end
 

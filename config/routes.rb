@@ -17,6 +17,7 @@ Mktdemo::Application.routes.draw do
         collection do
           post 'import'
           get 'search'
+          get 'ownsearch'
           get 'delete_all'
         end
    resources :orders, only: [:new, :create, :update, :show]
