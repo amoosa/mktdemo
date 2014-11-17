@@ -55,6 +55,8 @@ group :production do
 	gem 'pg'
 	gem 'rails_12factor'
     gem 'workless', '~> 1.2.3'
+    gem 'memcachier'
+    gem 'dalli'
 end
 
 group :development, :test do

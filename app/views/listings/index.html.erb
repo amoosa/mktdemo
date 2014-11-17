@@ -1,3 +1,5 @@
+<% cache 'homepage', skip_digest: true do %>
+
 <% if params[:page].nil? %>
 
 <%= render 'featured' %>
@@ -44,6 +46,8 @@
   </div>
   <p><%= will_paginate @listings, renderer: BootstrapPagination::Rails %></p>
 </div>
+
+<% end %>
 
 
 

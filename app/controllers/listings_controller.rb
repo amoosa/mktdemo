@@ -40,12 +40,6 @@ class ListingsController < ApplicationController
       end
   end
 
-  def delete_all
-    Listing.where(user: current_user).delete_all
-    flash[:notice] = "You have deleted all your listings."
-    redirect_to seller_path
-  end
-
   def category
     @category = params[:category]
     #@listings = Listing.not_expired.where(:category => @category).order("created_at DESC").paginate(:page => params[:page], :per_page => 48)
@@ -130,6 +124,7 @@ class ListingsController < ApplicationController
 
   # GET /listings/1/edit
   def edit
+    ActionController::Base.new.expire_fragment('homepage', options = nil)
   end
 
   # POST /listings
@@ -147,6 +142,9 @@ class ListingsController < ApplicationController
         format.json { render json: @listing.errors, status: :unprocessable_entity }
       end
     end
+
+   ActionController::Base.new.expire_fragment('homepage', options = nil)
+
   end
 
   def check_listing_status
@@ -163,7 +161,7 @@ class ListingsController < ApplicationController
 
   end
 
-require 'fileutils'
+# require 'fileutils'
 
   def import
     tmp = params[:my_file].tempfile
@@ -194,6 +192,9 @@ require 'fileutils'
         format.json { render json: @listing.errors, status: :unprocessable_entity }
       end
     end
+
+    ActionController::Base.new.expire_fragment('homepage', options = nil)
+
   end
 
   def destroy
@@ -202,6 +203,18 @@ require 'fileutils'
       format.html { redirect_to seller_url, notice: 'Listing was successfully deleted.' }
       format.json { head :no_content }
     end
+
+   ActionController::Base.new.expire_fragment('homepage', options = nil)
+
+  end
+
+  def delete_all
+    Listing.where(user: current_user).delete_all
+    flash[:notice] = "You have deleted all your listings."
+    redirect_to seller_path
+
+    ActionController::Base.new.expire_fragment('homepage', options = nil)
+
   end
 
 
