@@ -69,6 +69,10 @@ class OrdersController < ApplicationController
           :description => "Transfer from OutfitAdditions"
           )
     end
+
+     @order.price_sold = @listing.price
+     @order.seller_payment = (((@listing.price * 97.1) - 30) * 0.008) #.008 to convert back to dollars
+
   else
     begin
       charge = Stripe::Charge.create(
@@ -90,6 +94,10 @@ class OrdersController < ApplicationController
           :description => "Transfer from OutfitAdditions"
           )
     end
+
+     @order.price_sold = @listing.saleprice
+     @order.seller_payment = (((@listing.saleprice * 97.1) - 30) * 0.008) #.008 to convert back to dollars
+
   end
 
 
