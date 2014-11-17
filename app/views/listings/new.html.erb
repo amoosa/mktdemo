@@ -1,10 +1,11 @@
 <div class="well">
-    <font color="green"><span class="glyphicon glyphicon-star"></span> <b>Listing Tip: </b></font>If you opt to use the import option, first start by uploading 1-2 products to test it out. Once you're happy with how your listings look, upload your full product file. <br><br>
-    <p><font color="Red"><span class="glyphicon glyphicon-ok"></span> <b>Important:</b></font> Before listing items, please fill out your <b><%= link_to "bank account information", edit_user_url(current_user) %></b> so we can transfer your payments. Optional: fill out your <%= link_to "seller profile", sellerp_path(id: current_user.id) %>
-      , which will show up in your product pages. </p>
+    <font color="Red"><span class="glyphicon glyphicon-ok"></span> <b>Important:</b></font> Before listing items, please fill out your <b><%= link_to "bank account information", edit_user_url(current_user) %></b> so we can transfer your payments. Optional: fill out your <%= link_to "seller profile", sellerp_path(id: current_user.id) %> to tell customers about your brand and story. Your profile will show up in your product pages.
 </div>
 
 <h3>Option 1: Import a CSV File</h3>
+<div class="well">
+<font color="green"> <b>Import Instructions: </b></font>If you opt to use the import option, please read the <b><%= link_to 'Import Instructions', pages_csvimport_path %></b>. Once you prepare your file, try uploading a file with 2-3 products to test it out. If your listings load correctly, you can upload your full product file.
+</div>
 
   <%= form_tag import_listings_path, multipart: true do %>
     <div class="row">
@@ -13,7 +14,7 @@
         <%= hidden_field_tag :user_id, current_user.id %>
       </div>
       <div class = "col-md-3">
-          <div class="form-group"> <%= submit_tag "Import CSV", class:"btn btn-primary" %> </div>
+          <div class="form-group"> <%= submit_tag "Import CSV", class:"btn btn-primary" %> </div> 
       </div>
     </div>
   <% end %>

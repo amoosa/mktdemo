@@ -34,6 +34,7 @@ Mktdemo::Application.routes.draw do
   get "pages/blogger_partnerships"
   get "pages/sell"
   get "pages/sellerfaqs"
+  get "pages/csvimport"
   get "pages/returns"
 
 

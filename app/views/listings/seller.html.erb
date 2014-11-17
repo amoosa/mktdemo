@@ -10,7 +10,7 @@
                   } else if (status == 2) {
                       location.reload();
                   } else if (status == 3) {
-                      show_error("Oops! We ran into an error. <br><br>Please refresh this page to check if some of your listings have loaded. If none of your listings loaded, check if your column names are as specified and check if you have all the required columns in the file. If some of your listings have loaded, then it means that the next listing in the file did not load because of an error in that row. <br><br>Please check the format of your listings at this link...and reload your file. After you make changes, you can upload your entire file again. Listings will not be duplicated.<br><br>If you need help, please send us your file to <b>service@outfitadditions.com</b>.");
+                      show_error("Oops! We ran into an error. <br><br>Please refresh this page to check if some of your listings have loaded. If none of your listings loaded, check if your column names are as specified and check if you have all the required columns in the file. If some of your listings have loaded, then it means that the next listing in the file did not load because of an error in that row. <br><br>Please check the format of your listings at this link...and reload your file. After you make changes, you can upload your entire file again. Listings will not be duplicated.<br><br>If you need help, please review the <b><%= link_to 'Import Instructions', pages_csvimport_path %></b> again or send us your file to <b>service@outfitadditions.com</b>.");
                   }
 
               }

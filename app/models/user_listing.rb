@@ -4,6 +4,12 @@ class UserListing < ActiveRecord::Base
   do_not_validate_attachment_file_type :file
   #validates_attachment :file, :content_type => { content_type: ['text/plain','text/csv'] }
 
+  #validates_attachment_content_type :file, 
+                                   # :content_type => %w(application/vnd.ms-office 
+                                    #  application/vnd.ms-excel 
+                                    #  application/vnd.openxmlformats-officedocument.spreadsheetml.sheet)
+                                      
+
 
   def started!
     self.process_status = 1
