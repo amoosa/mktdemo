@@ -1,7 +1,9 @@
 <% if params[:page].nil? %>
 
-<%= render 'featured' %>
-<!-- <%= render 'designers' %> -->
+    <% if params[:sort].nil? %>
+       <%= render 'featured' %>
+       <!-- <%= render 'designers' %> -->
+    <% end %>
 
 <% end %>
 
@@ -25,7 +27,7 @@
 
 <div class="center">
 
-<% cache 'homepage_p#{params[:page]}', skip_digest: true, expires_in: 10.minutes do %>
+<% cache "homepage_p#{params[:page]}", skip_digest: true, expires_in: 10.minutes do %>
   <div class="row">
     <% @listings.each do |listing| %>
       <div class="col-md-2 col-sm-3 col-xs-6 images">
