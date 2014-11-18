@@ -124,7 +124,7 @@ class ListingsController < ApplicationController
 
   # GET /listings/1/edit
   def edit
-    ActionController::Base.new.expire_fragment('homepage', options = nil)
+    ActionController::Base.new.expire_fragment('homepage_p#{params[:page]}', options = nil)
   end
 
   # POST /listings
@@ -143,7 +143,7 @@ class ListingsController < ApplicationController
       end
     end
 
-   ActionController::Base.new.expire_fragment('homepage', options = nil)
+   ActionController::Base.new.expire_fragment('homepage_p#{params[:page]}', options = nil)
 
   end
 
@@ -193,7 +193,7 @@ class ListingsController < ApplicationController
       end
     end
 
-    ActionController::Base.new.expire_fragment('homepage', options = nil)
+    ActionController::Base.new.expire_fragment('homepage_p#{params[:page]}', options = nil)
 
   end
 
@@ -204,7 +204,7 @@ class ListingsController < ApplicationController
       format.json { head :no_content }
     end
 
-   ActionController::Base.new.expire_fragment('homepage', options = nil)
+   ActionController::Base.new.expire_fragment('homepage_p#{params[:page]}', options = nil)
 
   end
 
@@ -213,7 +213,7 @@ class ListingsController < ApplicationController
     flash[:notice] = "You have deleted all your listings."
     redirect_to seller_path
 
-    ActionController::Base.new.expire_fragment('homepage', options = nil)
+    ActionController::Base.new.expire_fragment('homepage_p#{params[:page]}', options = nil)
 
   end
 
