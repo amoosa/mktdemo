@@ -5,7 +5,7 @@
 
 <% end %>
 
-<% cache 'homepage_p#{params[:page]}', skip_digest: true, expires_in: 10.minutes do %>
+
 <h4><b>Browse Collection</b></h4>
 
  <div class="dropdown">
@@ -21,7 +21,8 @@
 
 </div>
   <br>
-
+  
+<% cache 'homepage_p#{params[:page]}', skip_digest: true, expires_in: 10.minutes do %>
 <div class="center">
   <div class="row">
     <% @listings.each do |listing| %>
@@ -43,9 +44,9 @@
       </div>
     <% end %>
   </div>
-  <% end %> <!-- end cache block-->
   <p><%= will_paginate @listings, renderer: BootstrapPagination::Rails %></p>
 </div>
+ <% end %> <!-- end cache block-->
 
 
 
