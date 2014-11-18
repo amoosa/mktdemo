@@ -27,7 +27,7 @@
 
 <div class="center">
 
-<% cache "homepage_p#{params[:page]}", skip_digest: true, expires_in: 10.minutes do %>
+<% cache "homepage_p#{params[:page]}_s_#{params[:sort]}", skip_digest: true, expires_in: 60.minutes do %>
   <div class="row">
     <% @listings.each do |listing| %>
       <div class="col-md-2 col-sm-3 col-xs-6 images">
