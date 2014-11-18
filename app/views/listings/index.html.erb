@@ -5,7 +5,7 @@
 
 <% end %>
 
-<% cache 'homepage', skip_digest: true do %>
+<% cache 'homepage_p#{params[:page]}', skip_digest: true, expires_in: 10.minutes do %>
 <h4><b>Browse Collection</b></h4>
 
  <div class="dropdown">
