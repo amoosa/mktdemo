@@ -21,9 +21,11 @@
 
 </div>
   <br>
-  
-<% cache 'homepage_p#{params[:page]}', skip_digest: true, expires_in: 10.minutes do %>
+
+
 <div class="center">
+
+<% cache 'homepage_p#{params[:page]}', skip_digest: true, expires_in: 10.minutes do %>
   <div class="row">
     <% @listings.each do |listing| %>
       <div class="col-md-2 col-sm-3 col-xs-6 images">
@@ -44,9 +46,11 @@
       </div>
     <% end %>
   </div>
+<% end %> <!-- end cache block-->
+
   <p><%= will_paginate @listings, renderer: BootstrapPagination::Rails %></p>
 </div>
- <% end %> <!-- end cache block-->
+
 
 
 
