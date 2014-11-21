@@ -1,6 +1,8 @@
 <h3> Seller Profile (optional) </h3>
 
+<!-- User.where(:user => current_user).recipient -->
 
+User.where(user: current_user).recipient
 
   <% if @user.errors.any? %>
     <div id="error_explanation" class="alert alert-danger alert-dismissable">

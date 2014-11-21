@@ -33,7 +33,8 @@
                     <li><%= link_to "Manage Listings", seller_path  %></li>
                     <li><%= link_to "Payment Settings", edit_user_path(current_user), data: { no_turbolink: true }  %></li>
                     <li><%= link_to "Manage Sales", sales_path  %></li>
-                    <li><%= link_to "Seller Settings", sellerp_path(current_user) %></li>
+                    <li><%= link_to "Seller Profile", sellerp_path(current_user) %></li>
+                    <li><%= link_to "Seller FAQ's", pages_sellerfaqs_path %></li>
                   <% end %>
             </ul>            
           </li>
