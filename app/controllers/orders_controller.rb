@@ -61,7 +61,7 @@ class OrdersController < ApplicationController
       flash[:danger] = e.message
     end
 
-    if !@seller.recipient.blank?
+    if !@seller.recipient.blank? and @seller.name != "Outfit Additions"
       transfer = Stripe::Transfer.create(
           :amount => (((@listing.price * 97.1) - 30) * 0.8).floor, #converting to cents per stripe requirement. 80 percent in cents goes to seller.
           :currency => "usd",
@@ -86,7 +86,7 @@ class OrdersController < ApplicationController
       flash[:danger] = e.message
     end
 
-    if !@seller.recipient.blank?
+    if !@seller.recipient.blank? and @seller.name != "Outfit Additions"
       transfer = Stripe::Transfer.create(
           :amount => (((@listing.saleprice * 97.1) - 30) * 0.8).floor, #converting to cents per stripe requirement. 80 percent in cents goes to seller.
           :currency => "usd",

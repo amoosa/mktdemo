@@ -4,7 +4,7 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-       <p><a href="http://www.outfitadditions.com"><img src"https://s3.amazonaws.com/oamktplace/2014logo.jpg"></a></p>
+       <p><img src="https://s3.amazonaws.com/oamktplace/2014logo.jpg"></p>
        <p>
          Dear <%= @order.seller.name %>, <br><br>You have a new order at Outfit Additions. <br><br>
          <b>Product ID:</b> <%= @order.listing.sku %><br>
@@ -28,7 +28,12 @@
               <b>Customer comments:</b> <%= @order.comments %><br>
           <% end %>
 
-       <p><b>Shipping process: </b>Please ship this order within 1-2 business days. Print the customer invoice on your <%= link_to "Manage Sales", sales_path %> page. After shipment, please enter your carrier and tracking information against the order row on the same page. Then click on the confirm shipment button to confirm your shipment. When you click on confirm shipment button, tracking information and a shipping conformation email will automatically be sent to the customer.</p>
+       <p><b>Shipping process: </b>Please ship this order within 1-2 business days. 
+        <ul>
+          <li>Go to your <%= link_to "Manage Sales", sales_path %> page and print the invoice.</li>
+          <li>After shipping the item, please enter your carrier and tracking information against the order row on the same page. 
+          <li>Then click on the confirm shipment button to confirm your shipment.</li>
+        </ul>
 
        <p>To check sales details and manage your account, please login at <%= @url %>. If you have any questions, please email us at service@outfitadditions.com.</p>
 
