@@ -66,7 +66,7 @@ class Listing < ActiveRecord::Base
 	end
 
 	def self.ownsearch(query)
-	  where("name like ?", "%#{query}%")
+	  where("description like ? or name like ?", "%#{query}%", "%#{query}%")
     end
 
   # Those are two &lt; symbols (the blog is screwing them up)
@@ -138,7 +138,7 @@ class Listing < ActiveRecord::Base
     end
 
 	def self.not_expired
-        where('updated_at >= ? and user_id != ? and inventory = ?', Date.current - 1.day, "24", "0")
+        where('updated_at >= ? and user_id != ? and inventory = ?', Date.current - 1.day, 24, 0)
     end
 
 	def expired?
@@ -156,7 +156,8 @@ class Listing < ActiveRecord::Base
 	validates :name, length: { maximum: 56 }
 	validates :designer_or_brand, length: { maximum: 35 }, :allow_blank => true
 	validates :description, length: { maximum: 1800 }
-	validates :price, :inventory, numericality: {greater_than: 0}
+	validates :price, numericality: {greater_than: 0}
+	validates :inventory, numericality: {greater_than_or_equal_to: 1}
 	#validates :saleprice, numericality: {greater_than: 0}, :allow_blank => true
 	validate :saleprice_lower_than_price
 	validates_attachment_presence :image

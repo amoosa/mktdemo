@@ -1,41 +1,4 @@
-<script>
-  function refreshText() {
-      $.ajax({
-          url: '<%= check_listing_status_url %>',
-          success: function (status) {
-              if (status != -1) {
-                  if (status == 0 || status == 1) {
-                      setTimeout(refreshText, 5000);
-                      show_info("Your listings are being imported. Depending on the number of listings in your file, this may take a few minutes to an hour. Please come back this page to check if your import completed.");
-                  } else if (status == 2) {
-                      location.reload();
-                  } else if (status == 3) {
-                      show_error("Oops! We ran into an error. <br><br>Please refresh this page to check if some of your listings have loaded. If none of your listings loaded, check if your column names are as specified and check if you have all the required columns in the file. If some of your listings have loaded, then it means that the next listing in the file did not load because of an error in that row. <br><br>Please check the format of your listings at this link...and reload your file. After you make changes, you can upload your entire file again. Listings will not be duplicated.<br><br>If you need help, please send us your file to <b>service@outfitadditions.com</b>.");
-                  }
-
-              }
-          }
-      });
-  }
-  refreshText();
-
-  function show_info(msg) {
-      $("#ajax_message").addClass('alert').addClass('alert-warning');
-      $("#ajax_message").text(msg);
-  }
-
-  function show_error(msg) {
-      $("#ajax_message").addClass('alert').addClass('alert-danger').addClass("alert-dismissible");
-      var message = $("#ajax_message");
-      var closeBut = $('<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>');
-      message.html(msg);
-      message.append(closeBut);
-  }
-</script>
-
-  <h3>Manage your Listings</h3>
-
-<div id="ajax_message"></div>
+<h3>Manage your Listings</h3>
 
 <% if user_signed_in? %>
   <p>
