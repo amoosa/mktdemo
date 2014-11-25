@@ -35,63 +35,63 @@
     <%= f.text_field :shipcompany, class:"form-control" %>
   </div>
   <div class="form-group">
-    <%= f.label :address %><i> (line 1)</i>
+    <%= f.label :shipaddress, "Shipping Address" %><i> (line 1)</i>
     <%= f.text_field :shipaddress, class:"form-control" %>
   </div>
   <div class="form-group">
-    <%= f.label :address %><i> (line 2)</i>
+    <%= f.label :shipaddress2, "Shipping Address" %><i> (line 2)</i>
     <%= f.text_field :shipaddress2, class:"form-control" %>
   </div>
 <div class="row">
   <div class = "col-md-4">
       <div class="form-group">
-        <%= f.label :city %>
+        <%= f.label :shipcity, "Shipping City" %>
         <%= f.text_field :shipcity, class:"form-control" %>
       </div>
   </div>
   <div class = "col-md-4">
     <div class="form-group">
-        <%= f.label :state %>
-        <%= f.select(:shipstate, options_for_select(us_states, f.object.state), {prompt: "Select"}, {class: "form-control"}) %>
+        <%= f.label :shipstate, "Shipping State" %>
+        <%= f.select(:shipstate, options_for_select(us_states, f.object.shipstate), {prompt: "Select"}, {class: "form-control"}) %>
     </div>  
   </div>
   <div class = "col-md-4">
       <div class="form-group">
-        <%= f.label :zip %>
+        <%= f.label :shipzip, "Shipping Zip" %>
         <%= f.text_field :shipzip, class:"form-control" %>
       </div>
   </div>
 </div>
   <h4><b>Billing Details</b></h4>
   <div class="form-group">
-    <%= f.label :name %><i> (as shown on credit card)</i>
+    <%= f.label :cardname, "Name" %><i> (as shown on credit card)</i>
     <%= f.text_field :cardname, class:"form-control" %>
   </div>
   <div class="form-group">
-    <%= f.label :address %><i> (line 1)</i>
+    <%= f.label :address, "Billing Address" %><i> (line 1)</i>
     <%= f.text_field :address, class:"form-control" %>
   </div>
   <div class="form-group">
-    <%= f.label :address %><i> (line 2)</i>
+    <%= f.label :address2, "Billing Address" %><i> (line 2)</i>
     <%= f.text_field :address2, class:"form-control" %>
   </div>
 
 <div class="row">
   <div class = "col-md-4">
       <div class="form-group">
-        <%= f.label :city %>
+        <%= f.label :city, "Billing City" %>
         <%= f.text_field :city, class:"form-control" %>
       </div>
   </div>
   <div class = "col-md-4">
       <div class="form-group">
-        <%= f.label :state %>
+        <%= f.label :state, "Billing State" %>
         <%= f.select(:state, options_for_select(us_states, f.object.state), {prompt: "Select"}, {class: "form-control"}) %>
       </div>
   </div>
   <div class = "col-md-4">
       <div class="form-group">
-        <%= f.label :zip %>
+        <%= f.label :zip, "Billing Zip" %>
         <%= f.text_field :zip, class: "form-control" %>
       </div>
   </div>
