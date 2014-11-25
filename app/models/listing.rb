@@ -138,11 +138,11 @@ class Listing < ActiveRecord::Base
     end
 
 	def self.not_expired
-        where('updated_at >= ?', Date.current - 30.day)
+        where('updated_at >= ? and user_id != ? and inventory = ?', Date.current - 1.day, "24", "0")
     end
 
 	def expired?
-	 self.updated_at <= (Date.current - 30.day)
+	 self.updated_at <= (Date.current - 1.day) and self.user.name != "Outfit Additions"
 	end
 
 	def saleprice_lower_than_price

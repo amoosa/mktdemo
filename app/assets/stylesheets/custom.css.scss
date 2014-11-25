@@ -4,11 +4,16 @@
 
 .navbar-inverse .navbar-brand {
   color: #FFFFFF; 
+  font-family: 'Philosopher', sans-serif;
 }
 
 .navbar-inverse .navbar-nav > li > a {
   font-family: 'Open Sans', sans-serif;
   color: #FFFFFF;
+}
+
+.navbar-inverse .navbar-toggle {
+border: none;
 }
 
 .glyphicon-user {font-size: 13px; padding-right:2px;}

@@ -49,7 +49,7 @@
       <div class = "col-md-3">
         <div class="form-group">
           <%= f.label :category %><i> (required)</i>
-          <%= f.select(:category, options_for_select(categories), {prompt: "Select"}, {class: "form-control"}) %>
+          <%= f.select(:category, options_for_select(categories, f.object.category), {prompt: "Select"}, {class: "form-control"}) %>
         </div>  
       </div>
     <div class = "col-md-3">
