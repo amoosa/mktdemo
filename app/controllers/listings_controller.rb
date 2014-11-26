@@ -100,7 +100,7 @@ class ListingsController < ApplicationController
 
   def search
     if params[:search].present?
-      @listings = Listing.search(params[:search]).not_expired
+      @listings = Listing.not_expired.search(params[:search])
      else
       @listings = Listing.not_expired.order("created_at DESC")
     end
