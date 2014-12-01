@@ -2,6 +2,14 @@ class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user! 
   before_action :check_user, only: [:edit, :update, :show]
+  before_action :check_buyer, only: [:thankyou]
+  before_filter :set_cache_buster
+
+  def set_cache_buster
+    response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
+  end
  
   
   # GET /orders
@@ -17,9 +25,6 @@ class OrdersController < ApplicationController
 
   def purchases
     @orders = Order.where(buyer: current_user).order("created_at DESC").paginate(:page => params[:page], :per_page => 48)
-  end
-
-  def thankyou
   end
 
   def show
@@ -104,7 +109,7 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       if @order.save
-        format.html { redirect_to thankyou_url }
+        format.html { redirect_to thankyou_path(:id => @order.id) }
         format.json { render action: 'show', status: :created, location: @order }
         AutoNotifier.orderconf_email(current_user, @order).deliver #activate after paid sub to heroku
         AutoNotifier.sellerconf_email(current_user, @seller, @order).deliver #activate after paid sub to heroku
@@ -115,6 +120,10 @@ class OrdersController < ApplicationController
       end
   end
 end
+
+  def thankyou
+    @order = Order.find(params[:id])
+  end
 
   def shipconf
       @order = Order.find(params[:id])
@@ -152,7 +161,14 @@ private
 
     def check_user
       if current_user.id != @order.seller_id && current_user.name != "admin admin"
-        redirect_to root_url, alert: "Sorry, you are not the seller of this listing"
+        redirect_to root_url, alert: "Sorry, you are not authorized to view this page because you are not the seller of this listing."
+      end
+    end
+
+    def check_buyer
+      @order = Order.find(params[:id])
+      if current_user.id != @order.buyer_id
+        redirect_to root_url, alert: "Sorry, you are not authorized to view that order."
       end
     end
 

@@ -1,2 +1,12 @@
 <% provide(:title, 'Order Confirmation') %>
 <h3>Thank you for your order.</h3>
+ <div class = "row">
+	<div class = "col-md-4">
+		<%= "Order ID: #{@order.id}" %><br>
+		<%= "Item: #{@order.listing.name.downcase.titleize}" %><br>
+		<%= "Price: #{number_to_currency @order.price_sold}" %><br>
+		<%= image_tag(@order.listing.image.url(:medium))  %><br><br>
+	</div>
+ </div>
+
+
