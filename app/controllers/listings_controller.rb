@@ -53,7 +53,7 @@ class ListingsController < ApplicationController
       elsif params[:sort] == "- Random Shuffle"
         @listings = Listing.not_expired.where(:category => @category).order("random()").paginate(:page => params[:page], :per_page => 48)
       else
-        @listings = Listing.not_expired.where(:category => @category).order("random()").paginate(:page => params[:page], :per_page => 48)
+        @listings = Listing.not_expired.where(:category => @category).order("created_at DESC").paginate(:page => params[:page], :per_page => 48)
       end
 
   end
@@ -68,7 +68,7 @@ class ListingsController < ApplicationController
       elsif params[:sort] == "- Random Shuffle"
         @listings = Listing.not_expired.where("saleprice > ?", 0).order("random()").paginate(:page => params[:page], :per_page => 48)
       else
-        @listings = Listing.not_expired.where("saleprice > ?", 0).order("random()").paginate(:page => params[:page], :per_page => 48)
+        @listings = Listing.not_expired.where("saleprice > ?", 0).order("created_at DESC").paginate(:page => params[:page], :per_page => 48)
       end
   end
 
@@ -93,7 +93,7 @@ class ListingsController < ApplicationController
       elsif params[:sort] == "- Random Shuffle"
         @listings = Listing.not_expired.where(user: User.find(params[:id])).order("random()").paginate(:page => params[:page], :per_page => 48)
       else
-        @listings = Listing.not_expired.where(user: User.find(params[:id])).order("random()").paginate(:page => params[:page], :per_page => 48)
+        @listings = Listing.not_expired.where(user: User.find(params[:id])).order("created_at DESC").paginate(:page => params[:page], :per_page => 48)
       end
 
   end
