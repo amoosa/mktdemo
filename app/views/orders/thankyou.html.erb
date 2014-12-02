@@ -1,5 +1,7 @@
 <% provide(:title, 'Order Confirmation') %>
 <h3>Thank you for your order.</h3>
+An email confirmation has been sent to you with your order details. You will recieve an email in 1-2 business days when your item ships. You may visit your <a href="http://www.outfitadditions.com/purchases">purchases</a> page at any time to view your order details.
+<b>Order Confirmation<b>
  <div class = "row">
 	<div class = "col-md-4">
 		<%= "Order ID: #{@order.id}" %><br>
@@ -8,7 +10,8 @@
 		<%= image_tag(@order.listing.image.url(:medium))  %><br><br>
 	</div>
  </div>
+ <br>
 
- <img src="https://shareasale.com/sale.cfm?amount=%%<% @order.price_sold %>%%&tracking=%%<% @order.id %>%%&transtype=sale&merchantID=44392" width="1" height="1">
+
 
 
