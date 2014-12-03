@@ -95,6 +95,9 @@ Mktdemo::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
 # required for devise install.remember to change url to actual domain
-  config.action_mailer.default_url_options = { host: 'mktdemo.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: 'outfitadditions.com' }
+
+# ssl
+  config.force_ssl = true
 
 end

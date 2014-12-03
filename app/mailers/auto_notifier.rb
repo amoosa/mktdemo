@@ -12,13 +12,13 @@ class AutoNotifier < ActionMailer::Base
   	    @seller = seller
   	    @order =  order
   	    @buyer = current_user
-	    @url  = 'http://www.outfitadditions.com/users/sign_up'
+	    @url  = 'http://www.outfitadditions.com/users/sign_in'
 	    mail(to: @order.seller.email, bcc: "ashfaaqmoosa@gmail.com", subject: 'You have a new order at Outfit Additions.')
   end
 
   def shipconf_email(order)
       @order =  order
-      @url  = 'http://www.outfitadditions.com/users/sign_up'
+      @url  = 'http://www.outfitadditions.com/users/sign_in'
       mail(to: @order.buyer.email, bcc: "ashfaaqmoosa@gmail.com", subject: 'Your order has been shipped.')
   end
 

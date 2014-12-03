@@ -10,7 +10,7 @@
          Dear <%= @order.buyer.name %>, <br><br>Your order of <b><%= @order.listing.name %> </b> has been shipped by the seller <i><%= @order.seller.name %></i>. You should recieve your item in the next 5-7 business days. <br>
         </p>
        <% if !@order.tracking.include?("None yet") && !@order.carrier.include?("None yet") %>
-         <b>Carrier:</b> <%= @order.carrier %>
+         <b>Carrier:</b> <%= @order.carrier %><br>
          <b>Tracking:</b> <%= @order.tracking %><br> 
        <% end %>
       <br>
