@@ -42,7 +42,7 @@
     <%= link_to "Download Listings (CSV)", seller_path(format: "csv"), class: "btn btn-xs btn-primary" %> <%= link_to 'Add New Listings', new_listing_path, data: { no_turbolink: true }, class: "btn btn-xs btn-primary" %> <%= link_to 'Delete All Listings', delete_all_listings_path, method: :get, data: { confirm: "Are you sure you want to delete all your listings?" }, class: "btn btn-xs btn-danger" %>
   </p>
   
-  <!-- <div class="center"><p><%= will_paginate @listings, renderer: BootstrapPagination::Rails %></p></div> -->
+  <!-- pagitnation code here -->
 
   <!-- SEARCH BOX -->
            <%= form_tag(ownsearch_listings_path, :method => "get", id: "search-form", class:"navbar-form navbar-right") do %>
@@ -91,7 +91,7 @@
     </tr>
   <% end %>
 </table>
-<!-- <div class="center"><p><%= will_paginate @listings, renderer: BootstrapPagination::Rails %></p></div> -->
+<!-- pagination code here -->
 
   <% if @listings.count == 0 %>
     <h5><font color="red">You do not have any active listings at this time.</font></h5>
