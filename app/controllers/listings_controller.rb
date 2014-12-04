@@ -115,6 +115,9 @@ class ListingsController < ApplicationController
   end
 
   def show
+    if request.path != listing_path(@listing)
+      redirect_to @listing, status: :moved_permanently
+    end
   end
 
   # GET /listings/new
@@ -183,6 +186,7 @@ class ListingsController < ApplicationController
   end
 
   def update
+    @listing.slug = nil
     respond_to do |format|
       if @listing.update(listing_params)
         format.html { redirect_to @listing, notice: 'Listing was successfully updated.' }
