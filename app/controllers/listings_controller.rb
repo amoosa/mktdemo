@@ -33,7 +33,7 @@ class ListingsController < ApplicationController
   end
 
   def seller
-    @listings = Listing.where(user: current_user).order("created_at DESC").paginate(:page => params[:page], :per_page => 48)
+    @listings = Listing.where(user: current_user).order("created_at DESC") #.paginate(:page => params[:page], :per_page => 48)
      respond_to do |format|
          format.html
          format.csv { send_data @listings.to_csv(@listings) }  
