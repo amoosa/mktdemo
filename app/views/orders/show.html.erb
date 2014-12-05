@@ -10,7 +10,8 @@
          <b>Order Date:</b> <%= @order.created_at.strftime("%B %-d, %Y") %><br>
          <b>Item ordered:</b> <%= @order.listing.name %><br>
          <b>Seller Name:</b> <%= @order.seller.name %><br>
-         <b>Total charged:</b> <%= number_to_currency(@order.listing.price) %>
+         <b>Total charged:</b> <% if @order.listing.saleprice.blank? %><%= number_to_currency(@order.listing.price) %><% else %>
+         <%= number_to_currency(@order.listing.saleprice) %><% end %>
        </p>
 
          <b>Billed to: </b><br>
