@@ -13,6 +13,9 @@ You will recieve an email in 1-2 business days when your item ships. You may vis
  </div>
  <br>
 
-
+<script type="text/javascript">
+var _AvantMetrics = _AvantMetrics || [];
+_AvantMetrics.push(['order',{ order_id:<%= @order.id %>, amount:<%= @order.price_sold %> }]);
+</script>
 
 <script>mixpanel.track("Order confirmation")</script>
