@@ -3,6 +3,7 @@ class OrdersController < ApplicationController
   before_action :authenticate_user! 
   before_action :check_user, only: [:edit, :update, :show]
   before_action :check_buyer, only: [:thankyou]
+  protect_from_forgery, except: [:swh]
   # before_filter :set_cache_buster
 
   # def set_cache_buster
