@@ -23,6 +23,8 @@ Mktdemo::Application.routes.draw do
    resources :orders, only: [:new, :create, :update, :show]
   end
 
+  get 'swh' => 'orders#swh' #stripe webhooks
+
   get '/listings/s/:id' => 'listings#vendor', as: 'vendor'
   get '/listings/c/:category' => 'listings#category', as: 'category'
   get '/listings/p/sale' => 'listings#sale', as:'sale'

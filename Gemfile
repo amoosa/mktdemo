@@ -1,4 +1,4 @@
-source 'https://code.stripe.com'
+source 'http://code.stripe.com'
 source 'https://rubygems.org'
 
 ruby "2.0.0"
@@ -61,6 +61,7 @@ end
 
 group :development, :test do
 	gem 'sqlite3'
+  gem 'ultrahook'
 end
 
 group :doc do

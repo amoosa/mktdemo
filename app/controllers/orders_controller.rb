@@ -3,13 +3,13 @@ class OrdersController < ApplicationController
   before_action :authenticate_user! 
   before_action :check_user, only: [:edit, :update, :show]
   before_action :check_buyer, only: [:thankyou]
-  before_filter :set_cache_buster
+  # before_filter :set_cache_buster
 
-  def set_cache_buster
-    response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
-    response.headers["Pragma"] = "no-cache"
-    response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
-  end
+  # def set_cache_buster
+  #   response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
+  #   response.headers["Pragma"] = "no-cache"
+  #   response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
+  # end
  
   
   # GET /orders
@@ -86,7 +86,7 @@ class OrdersController < ApplicationController
         :card => token,
         :description => "Charge from OutfitAdditions"
         )
-      #flash[:notice] = "Thank you for your order!"
+
     rescue Stripe::CardError => e
       flash[:danger] = e.message
     end
@@ -105,8 +105,6 @@ class OrdersController < ApplicationController
 
   end
 
-
-
     respond_to do |format|
       if @order.save
         format.html { redirect_to thankyou_path(:id => @order.id) }
@@ -121,6 +119,9 @@ class OrdersController < ApplicationController
   end
   ActionController::Base.new.expire_fragment("homepage_p#{params[:page]}_s_#{params[:sort]}", options = nil)
 end
+
+  def swh
+  end
 
   def thankyou
     @order = Order.find(params[:id])
