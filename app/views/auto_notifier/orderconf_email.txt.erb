@@ -10,6 +10,8 @@ Total: <% if @order.listing.saleprice.blank? %><%= number_to_currency(@order.lis
  Billed to:
  <%= @order.cardname %>.
  <%= @order.address %>.
+  <%= if !@order.address2.blank? then @order.address2 end %>
+ <%= @order.city %>.
  <%= "#{@order.state}, #{@order.zip}" %>.
  <% if !@order.comments.blank? %>
  Comments: <%= @order.comments %>
@@ -20,6 +22,7 @@ Total: <% if @order.listing.saleprice.blank? %><%= number_to_currency(@order.lis
  <%= if !@order.shipcompany.blank? then @order.shipcompany end %>
  <%= @order.shipaddress %><br>
  <%= if !@order.shipaddress2.blank? then @order.shipaddress2 end %>
+  <%= @order.shipcity %><br>
  <%= "#{@order.shipstate}, #{@order.shipzip}" %>.
 
 Your order will ship in 1-2 business days. To check your order details, please login at <%= @url %>.
