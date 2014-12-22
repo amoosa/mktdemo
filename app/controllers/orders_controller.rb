@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user! 
+  before_action :authenticate_user!, except: [:swh]
   before_action :check_user, only: [:edit, :update, :show]
   before_action :check_buyer, only: [:thankyou]
   # before_filter :set_cache_buster
