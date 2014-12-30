@@ -42,8 +42,6 @@
       <% end %>
     </p>
 
-     <p><font color="red" size="3px">Shipping Delay: We are on vacation. Your order will ship on 1/20. </font></p>
-
     <p><font size="2px"><% if !@listing.designer_or_brand.blank? %><b>Designer / Brand: </b><%= @listing.designer_or_brand %><br><% end %></font></p>
 
     <p><%= sanitize @listing.description, tags: %w(b p ul li), class: ".pre-scrollable" %></p>
