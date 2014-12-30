@@ -18,7 +18,7 @@
            <%= @order.cardname %><br>
            <%= @order.address %><br>
            <%= if !@order.address2.blank? then @order.address2 end %><% if !@order.address2.blank? %><br><% end %>
-           <%= "#{@order.state}, #{@order.zip}" %><br>
+           <%= "#{@order.city}, {@order.state} #{@order.zip}" %><br>
            <% if !@order.comments.blank? %>
           <b>Comments:</b> <%= @order.comments %><br>
           <% end %>
@@ -28,7 +28,7 @@
            <%= if !@order.shipcompany.blank? then @order.shipcompany end %><% if !@order.shipcompany.blank? %><br><% end %>
            <%= @order.shipaddress %><br>
            <%= if !@order.shipaddress2.blank? then @order.shipaddress2 end %><% if !@order.shipaddress2.blank? %><br><% end %>
-           <%= "#{@order.shipstate}, #{@order.shipzip}" %><br><br>
+           <%= "#{@order.shipcity}, {@order.shipstate} #{@order.shipzip}" %><br><br>
 
        <p>Returns are accepted if item is returned within 30 days of the order date. Please email service@outfitadditions.com for return instructions. </p>
        <p>--The Outfit Additions team</p>

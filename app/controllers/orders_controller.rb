@@ -61,22 +61,35 @@ class OrdersController < ApplicationController
         :card => token,
         :description => "Charge from OutfitAdditions"
         )
-      #flash[:notice] = "Thank you for your order!"
-    rescue Stripe::CardError => e
-      flash[:danger] = e.message
-    end
 
-    if !@seller.recipient.blank? and @seller.name != "Outfit Additions"
+    @order.price_sold = @listing.price
+    @order.seller_payment = (((@listing.price * 97.1) - 30) * 0.008) #.008 to convert back to dollars
+
+    respond_to do |format|
+      if @order.save
+        format.html { redirect_to thankyou_path(:id => @order.id) }
+        format.json { render action: 'show', status: :created, location: @order }
+        AutoNotifier.orderconf_email(current_user, @order).deliver 
+        AutoNotifier.sellerconf_email(current_user, @seller, @order).deliver 
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @order.errors, status: :unprocessable_entity }
+      end
+     end #end respond_to
+
+     if !@seller.recipient.blank? and @seller.name != "Outfit Additions"
       transfer = Stripe::Transfer.create(
           :amount => (((@listing.price * 97.1) - 30) * 0.8).floor, #converting to cents per stripe requirement. 80 percent in cents goes to seller.
           :currency => "usd",
           :recipient => @seller.recipient,
           :description => "Transfer from OutfitAdditions"
           )
-    end
+    end #end transfer
 
-     @order.price_sold = @listing.price
-     @order.seller_payment = (((@listing.price * 97.1) - 30) * 0.008) #.008 to convert back to dollars
+    rescue Stripe::CardError => e
+      #flash[:danger] = 'Your card was declined.'
+      flash[:danger] = e.message
+    end #end rescue
 
   else
     begin
@@ -87,36 +100,37 @@ class OrdersController < ApplicationController
         :description => "Charge from OutfitAdditions"
         )
 
-    rescue Stripe::CardError => e
-      flash[:danger] = e.message
-    end
+    @order.price_sold = @listing.saleprice
+    @order.seller_payment = (((@listing.saleprice * 97.1) - 30) * 0.008) #.008 to convert back to dollars
 
-    if !@seller.recipient.blank? and @seller.name != "Outfit Additions"
+    respond_to do |format|
+      if @order.save
+        format.html { redirect_to thankyou_path(:id => @order.id) }
+        format.json { render action: 'show', status: :created, location: @order }
+        AutoNotifier.orderconf_email(current_user, @order).deliver 
+        AutoNotifier.sellerconf_email(current_user, @seller, @order).deliver 
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @order.errors, status: :unprocessable_entity }
+      end
+     end #end respond_to
+
+     if !@seller.recipient.blank? and @seller.name != "Outfit Additions"
       transfer = Stripe::Transfer.create(
           :amount => (((@listing.saleprice * 97.1) - 30) * 0.8).floor, #converting to cents per stripe requirement. 80 percent in cents goes to seller.
           :currency => "usd",
           :recipient => @seller.recipient,
           :description => "Transfer from OutfitAdditions"
           )
-    end
+    end #end transfer
 
-     @order.price_sold = @listing.saleprice
-     @order.seller_payment = (((@listing.saleprice * 97.1) - 30) * 0.008) #.008 to convert back to dollars
+    rescue Stripe::CardError => e
+      #flash[:danger] = 'Your card was declined.'
+      flash[:danger] = e.message
+    end #end rescue
 
   end
 
-    respond_to do |format|
-      if @order.save
-        format.html { redirect_to thankyou_path(:id => @order.id) }
-        format.json { render action: 'show', status: :created, location: @order }
-        AutoNotifier.orderconf_email(current_user, @order).deliver #activate after paid sub to heroku
-        AutoNotifier.sellerconf_email(current_user, @seller, @order).deliver #activate after paid sub to heroku
-        #and adding sendgrid app to send email on heroku
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
-      end
-  end
   ActionController::Base.new.expire_fragment("homepage_p#{params[:page]}_s_#{params[:sort]}", options = nil)
 end
 
