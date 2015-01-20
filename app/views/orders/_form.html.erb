@@ -27,7 +27,7 @@
            <% end %>
          </font></b></p>
 
-  <p><font color="red" size="3px">Shipping Delay: We are on vacation. Your order will ship on 1/20. </font></p>
+  <!-- <p><font color="red" size="3px">Shipping Delay: We are on vacation. Your order will ship on 1/20. </font></p> -->
 
   <h4><b>Shipping Details</b></h4>
   <div class="form-group">
@@ -128,13 +128,20 @@
             <%= select_year nil, { start_year: Date.today.year, end_year: Date.today.year+10 }, { :name => nil, :'data-stripe' => "exp-year", class: "form-control" } %>
           </div>
         </div>
-        <br><p><b><font color="green">You will be charged: 
+        <br>
+      <!--   <p>
+            <%= f.check_box :subscribe, :checked => true %>
+            <%= f.label :subscribe, "Sign up for Outfit Additions email." %>
+        </p> -->
+
+        <p><b><font color="green">You will be charged: 
            <% if @listing.saleprice.blank? %>
             <%= number_to_currency(@listing.price) %>
            <% else %>
              <%= number_to_currency(@listing.saleprice) %>
            <% end %>
         </font></b></p>
+
       </div>
 
   <% if @order.errors.any? %>
@@ -152,11 +159,6 @@
   <div id="stripe_error" class="alert alert-danger" style="display:none">
         <noscript>JavaScript is not enabled and is required for this form. Please enable it in your web browser settings.</noscript>
   </div>
- 
-<!-- <p>
-    <%= f.check_box :id, :checked => true %>
-    <%= f.label :id, "Sign up for Outfit Additions email." %>
-</p> -->
 
   <div class="actions">
     <%= f.submit "Pay for Order", class:"btn btn-success" %>
