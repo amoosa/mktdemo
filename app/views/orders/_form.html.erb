@@ -129,10 +129,10 @@
           </div>
         </div>
         <br>
-      <!--   <p>
-            <%= f.check_box :subscribe, :checked => true %>
-            <%= f.label :subscribe, "Sign up for Outfit Additions email." %>
-        </p> -->
+        <p>
+            <%= f.check_box :emailsub, :collection => ["true", "false"], :checked => true %>
+            <%= f.label :emailsub, "Sign up for email - deals, new arrivals, contests & more." %>
+        </p>
 
         <p><b><font color="green">You will be charged: 
            <% if @listing.saleprice.blank? %>

@@ -172,7 +172,7 @@ private
     def order_params
       params.require(:order).permit(:shipname, :shipcompany,:shipaddress, :shipaddress2, :shipcity, :shipstate, 
                                     :shipzip, :cardname, :address, :address2, :city, :state, :zip, :comments,
-                                     :tracking, :carrier)
+                                     :tracking, :carrier, :emailsub)
     end
 
     def check_user

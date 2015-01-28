@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141204073537) do
+ActiveRecord::Schema.define(version: 20150128204626) do
 
   create_table "delayed_jobs", force: true do |t|
     t.integer  "priority",   default: 0, null: false
@@ -101,6 +101,7 @@ ActiveRecord::Schema.define(version: 20141204073537) do
     t.boolean  "mail_status",                            default: false
     t.decimal  "price_sold",     precision: 8, scale: 2
     t.decimal  "seller_payment", precision: 8, scale: 2
+    t.boolean  "emailsub",                               default: false
   end
 
   create_table "user_listings", force: true do |t|
