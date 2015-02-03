@@ -40,8 +40,10 @@ class OrdersController < ApplicationController
 
    # POST /orders
   # POST /orders.json
-  def create
-    @order = Order.new(order_params)
+def create
+  @order = Order.new(order_params)
+  charge_error = nil
+
     @listing = Listing.friendly.find(params[:listing_id])
     @seller = @listing.user
 
@@ -52,87 +54,78 @@ class OrdersController < ApplicationController
     Stripe.api_key = ENV["STRIPE_API_KEY"]
     token = params[:stripeToken]
 
+  if @order.valid?
+    if @listing.saleprice.blank? #price
+        @order.price_sold = @listing.price
+        @order.seller_payment = (((@listing.price * 97.1) - 30) * 0.008) #.008 to convert back to dollars
 
-  if @listing.saleprice.blank?
-    begin
-      charge = Stripe::Charge.create(
-        :amount => (@listing.price * 100).floor,
-        :currency => "usd",
-        :card => token,
-        :description => "Charge from OutfitAdditions"
-        )
+        begin
+          charge = Stripe::Charge.create(
+            :amount => (@listing.price * 100).floor,
+            :currency => "usd",
+            :card => token,
+            :description => "Charge from OutfitAdditions"
+            )
 
-    @order.price_sold = @listing.price
-    @order.seller_payment = (((@listing.price * 97.1) - 30) * 0.008) #.008 to convert back to dollars
+        rescue Stripe::CardError => e
+          charge_error = e.message
+        end
+        if charge_error
+          flash[:error] = charge_error
+          render :new
+        else
+          @order.save
+          redirect_to thankyou_path(:id => @order.id)
+          AutoNotifier.orderconf_email(current_user, @order).deliver 
+          AutoNotifier.sellerconf_email(current_user, @seller, @order).deliver 
+               if !@seller.recipient.blank? and @seller.name != "Outfit Additions"
+                   transfer = Stripe::Transfer.create(
+                  :amount => (((@listing.price * 97.1) - 30) * 0.8).floor, #converting to cents per stripe requirement. 80 percent in cents goes to seller.
+                  :currency => "usd",
+                  :recipient => @seller.recipient,
+                  :description => "Transfer from OutfitAdditions"
+                  )
+               end #end transfer if saleprice is blank
+        end 
+    else #saleprice
+        @order.price_sold = @listing.saleprice
+        @order.seller_payment = (((@listing.saleprice * 97.1) - 30) * 0.008) #.008 to convert back to dollars
 
-    respond_to do |format|
-      if @order.save
-        format.html { redirect_to thankyou_path(:id => @order.id) }
-        format.json { render action: 'show', status: :created, location: @order }
-        AutoNotifier.orderconf_email(current_user, @order).deliver 
-        AutoNotifier.sellerconf_email(current_user, @seller, @order).deliver 
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
-      end
-     end #end respond_to
+        begin
+          charge = Stripe::Charge.create(
+            :amount => (@listing.saleprice * 100).floor,
+            :currency => "usd",
+            :card => token,
+            :description => "Charge from OutfitAdditions"
+            )
 
-     if !@seller.recipient.blank? and @seller.name != "Outfit Additions"
-      transfer = Stripe::Transfer.create(
-          :amount => (((@listing.price * 97.1) - 30) * 0.8).floor, #converting to cents per stripe requirement. 80 percent in cents goes to seller.
-          :currency => "usd",
-          :recipient => @seller.recipient,
-          :description => "Transfer from OutfitAdditions"
-          )
-    end #end transfer
-
-    rescue Stripe::CardError => e
-      #flash[:danger] = 'Your card was declined.'
-      flash[:danger] = e.message
-    end #end rescue
-
+        rescue Stripe::CardError => e
+          charge_error = e.message
+        end
+        if charge_error
+          flash[:error] = charge_error
+          render :new
+        else
+          @order.save
+          redirect_to thankyou_path(:id => @order.id)
+          AutoNotifier.orderconf_email(current_user, @order).deliver 
+          AutoNotifier.sellerconf_email(current_user, @seller, @order).deliver 
+               if !@seller.recipient.blank? and @seller.name != "Outfit Additions"
+                   transfer = Stripe::Transfer.create(
+                  :amount => (((@listing.saleprice * 97.1) - 30) * 0.8).floor, #converting to cents per stripe requirement. 80 percent in cents goes to seller.
+                  :currency => "usd",
+                  :recipient => @seller.recipient,
+                  :description => "Transfer from OutfitAdditions"
+                  )
+               end #end transfer if saleprice is blank
+        end
+    end #if @listing.saleprice.blank
   else
-    begin
-      charge = Stripe::Charge.create(
-        :amount => (@listing.saleprice * 100).floor,
-        :currency => "usd",
-        :card => token,
-        :description => "Charge from OutfitAdditions"
-        )
-
-    @order.price_sold = @listing.saleprice
-    @order.seller_payment = (((@listing.saleprice * 97.1) - 30) * 0.008) #.008 to convert back to dollars
-
-    respond_to do |format|
-      if @order.save
-        format.html { redirect_to thankyou_path(:id => @order.id) }
-        format.json { render action: 'show', status: :created, location: @order }
-        AutoNotifier.orderconf_email(current_user, @order).deliver 
-        AutoNotifier.sellerconf_email(current_user, @seller, @order).deliver 
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
-      end
-     end #end respond_to
-
-     if !@seller.recipient.blank? and @seller.name != "Outfit Additions"
-      transfer = Stripe::Transfer.create(
-          :amount => (((@listing.saleprice * 97.1) - 30) * 0.8).floor, #converting to cents per stripe requirement. 80 percent in cents goes to seller.
-          :currency => "usd",
-          :recipient => @seller.recipient,
-          :description => "Transfer from OutfitAdditions"
-          )
-    end #end transfer
-
-    rescue Stripe::CardError => e
-      #flash[:danger] = 'Your card was declined.'
-      flash[:danger] = e.message
-    end #end rescue
-
-  end
+          render :new
+  end # end order.valid
 
   ActionController::Base.new.expire_fragment("homepage_p#{params[:page]}_s_#{params[:sort]}", options = nil)
-end
+end # end create
 
   def swh
   end

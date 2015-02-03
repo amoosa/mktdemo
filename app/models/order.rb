@@ -17,10 +17,10 @@ class Order < ActiveRecord::Base
 def self.to_csv(orders)
  wanted_columns = [:id, :shipname, :shipcompany, :shipaddress, :shipaddress2, :shipcity, :shipstate, :shipzip]
   CSV.generate do |csv|
-    csv << wanted_columns + [:item_name, :price]
+    csv << wanted_columns + [:item_name, :price, :saleprice] 
     orders.each do |order|
 	    attr = order.attributes.with_indifferent_access.values_at(*wanted_columns)
-	    attr.push(order.listing.name, order.listing.price)
+	    attr.push(order.listing.name, order.listing.price, order.listing.saleprice)
 	    csv << attr
    end
   end
