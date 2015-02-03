@@ -6,7 +6,7 @@
   <tr>
     <th class="col-md-2">Image</th>
     <th class="col-md-2">Item</th>
-    <th class="col-md-1">Price</th>
+    <th class="col-md-1">Price paid</th>
     <th class="col-md-2">Seller</th>
     <th class="col-md-2">Date Purchased</th>
     <th class="col-md-1"><font color="green">Carrier</font></th>
@@ -17,13 +17,7 @@
     <tr>
       <td><%= link_to image_tag(order.listing.image.url(:thumb)), order.listing, data: { no_turbolink: true } %></td>
       <td><%= link_to order.listing.name.downcase.titleize, order.listing, data: { no_turbolink: true } %></td>
-      <td>    <% if order.listing.saleprice.blank? %>
-          <%= number_to_currency(order.listing.price) %>
-        <% else %>
-          <del><%= number_to_currency(order.listing.price) %></del>  
-          <%= number_to_currency(order.listing.saleprice) %>
-        <% end %>
-     </td>
+      <td><%= number_to_currency(order.price_sold) %></td>
       <td><%= order.seller.name %></td>
       <td><%= order.created_at.strftime("%B %-d, %Y") %></td>
       <td><font color="green"><%= order.carrier %></font</td>

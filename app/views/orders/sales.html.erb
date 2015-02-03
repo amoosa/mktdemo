@@ -10,7 +10,7 @@
     <th class="col-md-1">Date Sold</th>
     <th class="col-md-1">Image</th>
     <th class="col-md-1">Item</th>
-    <th class="col-md-1">Selling Price</th>
+    <th class="col-md-1">Price Sold</th>
     <th class="col-md-1">Seller Payment (after fees)</th>
     <th class="col-md-2">Shipping Details</th>
     <!-- <th class="col-md-1">Invoice</th> -->
@@ -25,13 +25,7 @@
       <td><%= order.created_at.strftime("%B %-d, %Y") %></td>
       <td><%= link_to image_tag(order.listing.image.url(:thumb)), order.listing, data: { no_turbolink: true } %></td>
       <td><%= link_to order.listing.name.downcase.titleize, order.listing, data: { no_turbolink: true } %></td>
-      <td> <% if order.listing.saleprice.blank? %>
-             <%= number_to_currency(order.listing.price) %>
-           <% else %>
-             <del><%= number_to_currency(order.listing.price) %></del>  
-             <%= number_to_currency(order.listing.saleprice) %>
-           <% end %>
-     </td>
+      <td><%= number_to_currency(order.price_sold) %></td>
      <td><% if order.listing.saleprice.blank? %>
              <%= number_to_currency((order.listing.price * 0.971 - 0.3) * 0.80)  %>
            <% else %> 
