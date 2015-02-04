@@ -15,7 +15,7 @@ class Order < ActiveRecord::Base
 	end
 
 def self.to_csv(orders)
- wanted_columns = [:id, :shipname, :shipcompany, :shipaddress, :shipaddress2, :shipcity, :shipstate, :shipzip]
+ wanted_columns = [:id, :shipname, :created_at, :shipcompany, :shipaddress, :shipaddress2, :shipcity, :shipstate, :shipzip]
   CSV.generate do |csv|
     csv << wanted_columns + [:item_name, :price, :saleprice] 
     orders.each do |order|

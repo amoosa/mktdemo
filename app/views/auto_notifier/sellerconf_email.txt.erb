@@ -1,12 +1,7 @@
 Dear <%= @order.seller.name %>, You have a new order at Outfit Additions. 
 Item ordered: <%= @order.listing.name %>
-Sold for: <% if @order.listing.saleprice.blank? %><%= number_to_currency(@order.listing.price) %><% else %>
-         <%= number_to_currency(@order.listing.saleprice) %><% end %>
-Seller Price (after fees): <% if order.listing.saleprice.blank? %>
- <%= number_to_currency((order.listing.price * 0.971 - 0.3) * 0.80)  %>
-<% else %> 
- <%= number_to_currency((order.listing.saleprice * 0.971 - 0.3) * 0.80)  %>
-<% end %>
+Sold for:  <%= number_to_currency(@order.price_sold)  %>
+Seller Price (after fees): <%= number_to_currency((@order.price_sold * 0.971 - 0.3) * 0.80)  %>
 
 
 Ship the item to: 
