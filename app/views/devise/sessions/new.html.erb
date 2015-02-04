@@ -1,4 +1,6 @@
-<h3>Sign in</h3> (no account yet? <%= link_to "sign up here", new_user_registration_path %>)
+<h3>Sign in</h3>
+
+<p><%= link_to "New user? Quick Sign up!", new_user_registration_path %></p>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="form-group">
