@@ -25,7 +25,7 @@
       <td><%= link_to image_tag(order.listing.image.url(:thumb)), order.listing, data: { no_turbolink: true } %></td>
       <td><%= link_to order.listing.name.downcase.titleize, order.listing, data: { no_turbolink: true } %></td>
       <td><%= number_to_currency(order.price_sold) %></td>
-      <td><%= number_to_currency((order.price_sold * 0.971 - 0.3) * 0.80)  %></td>
+      <td><%= number_to_currency(order.seller_payment)  %></td>
       <td><%= order.shipname %><br>
           <%= if !order.shipcompany.blank? then order.shipcompany end %><% if !order.shipcompany.blank? %><br><% end %>
           <%= order.shipaddress %><br>

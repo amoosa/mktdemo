@@ -10,7 +10,7 @@
          <b>Product ID:</b> <%= @order.listing.sku %><br>
          <b>Product name:</b> <%= @order.listing.name %><br>
          <b>Sold for:</b>  <%= number_to_currency(@order.price_sold)  %><br>
-         <b>Seller Price (after fees):</b><%= number_to_currency((@order.price_sold * 0.971 - 0.3) * 0.80)  %>
+         <b>Seller Price (after fees):</b><%= number_to_currency(@order.seller_payment) %>
        </p>
 
           <b>Ship the item to: </b><br>

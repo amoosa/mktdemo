@@ -1,7 +1,7 @@
 Dear <%= @order.seller.name %>, You have a new order at Outfit Additions. 
 Item ordered: <%= @order.listing.name %>
 Sold for:  <%= number_to_currency(@order.price_sold)  %>
-Seller Price (after fees): <%= number_to_currency((@order.price_sold * 0.971 - 0.3) * 0.80)  %>
+Seller Price (after fees): <%= number_to_currency(@order.seller_payment)  %>
 
 
 Ship the item to: 
