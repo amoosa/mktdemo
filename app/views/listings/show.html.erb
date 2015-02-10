@@ -1,3 +1,4 @@
+
 <% provide(:title, @listing.name) %>
 
 <% if @listing.expired? %>
@@ -97,10 +98,10 @@
         jQuery(document).ready(function($) {
       $('#gallery-1').royalSlider({
         fullscreen: {
-          enabled: true,
+          enabled: false, /* change to true if fullscreen needed */
           nativeFS: true
         },
-        controlNavigation: 'none',
+        controlNavigation: 'bullets', /* 'none' to go back to arrows */
         autoScaleSlider: true, 
         autoScaleSliderWidth: 960,     
         autoScaleSliderHeight: 850,
@@ -109,7 +110,7 @@
         numImagesToPreload:4,
         arrowsNav:true,
         arrowsNavAutoHide: true,
-        /* arrowsNavHideOnTouch: true, */
+        arrowsNavHideOnTouch: true, /* change this to false or comment out if I remove bullets */
         keyboardNavEnabled: true,
         fadeinLoadedSlide: true,
         globalCaption: false,
