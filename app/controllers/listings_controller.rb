@@ -206,7 +206,7 @@ class ListingsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to seller_url, notice: 'Listing was successfully deleted.' }
       format.json { head :no_content }
-    end
+  end
 
    ActionController::Base.new.expire_fragment("homepage_p#{params[:page]}_s_#{params[:sort]}", options = nil)
 

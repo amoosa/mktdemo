@@ -105,7 +105,7 @@
 	background: #fff; /* was rgba(0,0,0,0.75) */
 
 	text-align: center;
-	line-height: 32px; /* was 8px */
+	line-height: 16px; /* was 8px */
 	overflow: hidden;
 }
 .rsDefault .rsBullet {
@@ -121,7 +121,7 @@
 	width: 8px;
 	height: 8px;
 	border-radius: 50%;
-	/* background: #666666; was #777 */
+	/* background: #777; */
 	background: #333333; /* was rgba(255,255,255,0.5) */
 }
 .rsDefault .rsBullet.rsNavSelected span {
