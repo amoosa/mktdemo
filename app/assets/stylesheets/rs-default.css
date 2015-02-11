@@ -104,7 +104,7 @@
 	/* background: #000; */
 	/* background: #fff;  was rgba(0,0,0,0.75) */
 
-	text-align: center;
+	text-align: right; /* change to center if i want to center bullets */
 	line-height: 16px; /* was 8px */
 	overflow: hidden; 
 }
