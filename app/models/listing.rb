@@ -1,5 +1,10 @@
 class Listing < ActiveRecord::Base
 
+  attr_accessor :delete_image2, :delete_image3, :delete_image4 
+  before_validation { image2.clear if delete_image2 == "1" }
+  before_validation { image3.clear if delete_image3 == "1" }
+  before_validation { image4.clear if delete_image4 == "1" }
+
   extend FriendlyId
   friendly_id :name, :use => [:slugged, :history]
 
@@ -64,6 +69,27 @@ class Listing < ActiveRecord::Base
 	    	              # :dropbox_options => {...}
 		validates_attachment_content_type :image4, :content_type => /\Aimage\/.*\Z/
 	end
+
+module DeletableAttachment
+  extend ActiveSupport::Concern
+
+  included do
+    attachment_definitions.keys.each do |name|
+
+      attr_accessor :"delete_#{name}"
+
+      before_validation { send(name).clear if send("delete_#{name}") == '1' }
+
+      define_method :"delete_#{name}=" do |value|
+        instance_variable_set :"@delete_#{name}", value
+        send("#{name}_1")
+      end
+
+    end
+  end
+
+end
+
 
 	def self.ownsearch(query)
 	  where("description like ? or name like ?", "%#{query}%", "%#{query}%")

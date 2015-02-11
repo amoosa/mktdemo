@@ -73,6 +73,7 @@
   </div>
       <% if !@listing.image2.url.blank? %>
           Current image #2: <%= image_tag(@listing.image2.url(:thumb)) %>
+          Delete image? <%= f.check_box :delete_image2 %>
       <% end %>
   <div class="form-group">
     <%= f.label :image_3 %><i> (optional)</i>
@@ -80,6 +81,7 @@
   </div>
         <% if !@listing.image3.url.blank? %>
           Current image #3: <%= image_tag(@listing.image3.url(:thumb)) %>
+          Delete image? <%= f.check_box :delete_image3 %>
       <% end %>
   <div class="form-group">
     <%= f.label :image_4 %><i> (optional)</i>
@@ -87,6 +89,7 @@
   </div>
         <% if !@listing.image4.url.blank? %>
           Current image #4: <%= image_tag(@listing.image4.url(:thumb)) %>
+          Delete image? <%= f.check_box :delete_image4 %>
       <% end %>
    
 
