@@ -53,6 +53,6 @@ def update
     end
 
   def user_params
-    params.require(:user).permit(:bankaccname, :profileimage, :profilestory)
+    params.require(:user).permit(:bankaccname, :profileimage, :profilestory, :tweet)
   end
 end

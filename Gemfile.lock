@@ -1,5 +1,13 @@
+GIT
+  remote: git://github.com/bernat/best_in_place.git
+  revision: fd40a44656ef01425799d7e34e848057887c324e
+  specs:
+    best_in_place (3.0.3)
+      actionpack (>= 3.2)
+      railties (>= 3.2)
+
 GEM
-  remote: http://code.stripe.com/
+  remote: https://code.stripe.com/
   remote: https://rubygems.org/
   specs:
     actionmailer (4.0.0)
@@ -33,9 +41,6 @@ GEM
       json (~> 1.4)
       nokogiri (>= 1.4.4)
     bcrypt (3.1.7-x86-mingw32)
-    best_in_place (3.0.3)
-      actionpack (>= 3.2)
-      railties (>= 3.2)
     bootstrap-sass (3.1.1.1)
       sass (~> 3.2)
     builder (3.1.4)
@@ -205,7 +210,7 @@ PLATFORMS
 
 DEPENDENCIES
   aws-sdk (~> 1.52)
-  best_in_place (~> 3.0.1)
+  best_in_place!
   bootstrap-sass (~> 3.1.1)
   coffee-rails (~> 4.0.0)
   dalli (~> 2.7.2)

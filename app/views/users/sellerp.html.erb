@@ -18,7 +18,15 @@
 <%= form_for @user, url: sellerprofile_path(id: current_user.id), method: :put, html: { :class => 'edit_profile', :multipart => true } do |f| %>
 
   <div class="form-group">
-    <%= f.label :your_story %><i> (between 250-500 characters)</i>
+    <%= f.label :tweet, "Describe your collection in a tweet." %><i> (140 characters or less)</i>
+    <%= f.text_field :tweet, class:"form-control", :rows => 5 %>
+  </div>
+      <% if !@user.tweet.blank? %>
+          <i>Current:</i> <%= @user.tweet %>
+      <% end %>
+   <% if !@user.tweet.blank? %><br><br><% end %>
+  <div class="form-group">
+    <%= f.label :profilestory, "Your story: Give customers some background on your brand and style." %><i> (between 250-1500 characters)</i>
     <%= f.text_area :profilestory, class:"form-control", :rows => 5 %>
   </div>
          <% if !@user.profilestory.blank? %>

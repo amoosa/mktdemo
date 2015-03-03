@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 
    validates :name, presence: true, uniqueness: true
    validates :profilestory, length: { in: 250..1500 }, if: "!profilestory.blank?"
+   validates :tweet, length: { in: 20..140 }, if: "!tweet.blank?"
    validates_with AttachmentSizeValidator, :attributes => :profileimage, :less_than => 2.megabytes
 
    has_many :listings, dependent: :destroy
