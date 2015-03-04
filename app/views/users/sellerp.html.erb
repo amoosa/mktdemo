@@ -21,7 +21,7 @@
     <%= f.label :tweet, "Describe your collection in a tweet." %><i> (140 characters or less)</i>
     <%= f.text_field :tweet, class:"form-control", :rows => 5 %>
   </div>
-      <% if !@user.tweet.blank? %>
+       <% if !@user.tweet.blank? %>
           <i>Current:</i> <%= @user.tweet %>
       <% end %>
    <% if !@user.tweet.blank? %><br><br><% end %>
@@ -43,7 +43,10 @@
       <% end %>
     <% if !@user.profileimage.url.blank? %><br><br><% end %>
 
-       
+         <p>
+            <%= f.check_box :hidelistings, :collection => ["true", "false"] %>
+            <%= f.label :hidelistings, "Hide Listings" %><i> (Checking this box will take your listings off our site. To activate listings, please uncheck this box.)</i>
+        </p>
 
    <div class="form-group">
         <%= f.submit "Update", class:"btn btn-primary" %>
