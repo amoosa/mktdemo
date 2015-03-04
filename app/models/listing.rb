@@ -168,7 +168,7 @@ end
     end
 
 	def expired?
-	 (self.updated_at <= (Date.current - 30.day) and self.user.name != "Outfit Additions") or self.user.hidelistings = true
+	 (self.updated_at <= (Date.current - 30.day) and self.user.name != "Outfit Additions") #or self.user.hidelistings = true
 	end
 
 	def saleprice_lower_than_price
