@@ -100,7 +100,7 @@ class ListingsController < ApplicationController
 
   def search
     if params[:search].present?
-      @listings = Listing.search(params[:search])
+      @listings = Listing.search(params[:search]), where: {:inventory > 0}
      else
       @listings = Listing.order("created_at DESC")
     end
