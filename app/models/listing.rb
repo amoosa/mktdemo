@@ -164,8 +164,7 @@ end
     end
 
 	def self.not_expired
-        #where('(updated_at >= ? or user_id = ?) and inventory > ?', Date.current - 30.day, 24, 0)
-        where(' inventory > ?', 0)
+        where('(updated_at >= ? or user_id = ?) and inventory > ?', Date.current - 30.day, 24, 0)
     end
 
 	def expired?
