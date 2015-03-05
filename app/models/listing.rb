@@ -163,12 +163,14 @@ end
 	  end
     end
 
-	def self.not_expired
+	def self.not_expired #criteria for what shows in category pages etc.
         where('(updated_at >= ? or user_id = ?) and inventory > ?', Date.current - 30.day, 24, 0)
+        #Listing.joins(:user).where((self.updated_at > (Date.current - 2.day) or self.user.name = "Outfit Additions") 
+         #  and inventory > 0 and self.user.hidelistings == "f")
     end
 
-	def expired?
-	 (self.updated_at <= (Date.current - 30.day) and self.user.name != "Outfit Additions") #or self.user.hidelistings = true
+	def expired? #criteria for listing show pages
+	 (self.updated_at <= (Date.current - 30.day) and self.user.name != "Outfit Additions") || self.user.hidelistings == "t"
 	end
 
 	def saleprice_lower_than_price
