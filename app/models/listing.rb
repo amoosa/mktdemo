@@ -170,7 +170,7 @@ end
     end
 
 	def expired? #criteria for listing show pages
-	 (self.updated_at <= (Date.current - 30.day) and self.user.name != "Outfit Additions") || self.user.hidelistings == "t"
+	 (self.updated_at <= (Date.current - 30.day) and self.user.name != "Outfit Additions") || self.user.hidelistings == true
 	end
 
 	def saleprice_lower_than_price
