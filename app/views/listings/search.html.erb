@@ -16,7 +16,7 @@
   <br> -->
     <div class="center">
       <div class="row">
-        <% @listings.each do |listing| %>
+        <% @listings.not_expired.each do |listing| %>
                 <div class="col-md-3 col-sm-3 col-xs-6 images">
                 <div class="thumbnail">
                   <%= link_to image_tag(listing.image.url(:medium), class: "img-responsive"), listing, data: { no_turbolink: true } %>

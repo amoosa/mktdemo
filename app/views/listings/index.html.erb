@@ -34,7 +34,7 @@
 
 <% cache "homepage_p#{params[:page]}_s_#{params[:sort]}", skip_digest: true, expires_in: 1.days do %>
   <div class="row">
-    <% @listings.each do |listing| %>
+    <% @listings.not_expired.each do |listing| %>
       <div class="col-md-2 col-sm-3 col-xs-6 images">
         <div class="thumbnail">
           <%= link_to image_tag(listing.image.url(:medium), class: "img-responsive"), listing, data: { no_turbolink: true } %>
