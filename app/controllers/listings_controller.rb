@@ -101,13 +101,12 @@ class ListingsController < ApplicationController
   def search
     if params[:search].present?
 
-      @listings = Listing.search(params[:search], where: { inventory: {gt: 0},
+      @listings = listable.search(params[:search], where: { inventory: {gt: 0},
                                            or: [
                                                  [{updated_at: {gte: (Date.current - 30.day)}}, {user_id: 24}]
                                                ] })
 
-     # @listings = Listing.search(params[:search], where: { inventory: {gt: 0}, updated_at: {gte: (Date.current - 30.day)},
-      #                                     or: [ [{inventory: {gt: 0}}, user_id: {not: 24}] ] })
+     # @listings = Listing.search(params[:search], where: { inventory: {gt: 0} })
      else
       @listings = Listing.order("created_at DESC")
     end
