@@ -18,7 +18,7 @@
 <%= form_for @user, url: sellerprofile_path(id: current_user.id), method: :put, html: { :class => 'edit_profile', :multipart => true } do |f| %>
 
   <div class="form-group">
-    <%= f.label :tweet, "Describe your collection in a tweet." %><i> (140 characters or less)</i>
+    <%= f.label :tweet, "Describe your collection in a tweet." %> (140 characters or less)
     <%= f.text_field :tweet, class:"form-control", :rows => 5 %>
   </div>
        <% if !@user.tweet.blank? %>
@@ -26,7 +26,7 @@
       <% end %>
    <% if !@user.tweet.blank? %><br><br><% end %>
   <div class="form-group">
-    <%= f.label :profilestory, "Your story: Give customers some background on your brand and style." %><i> (between 250-1500 characters)</i>
+    <%= f.label :profilestory, "Your story: Give customers some background on your brand and style." %> (between 250-1500 characters)
     <%= f.text_area :profilestory, class:"form-control", :rows => 5 %>
   </div>
          <% if !@user.profilestory.blank? %>
@@ -35,7 +35,7 @@
    <% if !@user.profilestory.blank? %><br><br><% end %>
 
   <div class="form-group">
-    <%= f.label :profile_image %><i> (profile pic of the designer or a logo.)</i>
+    <%= f.label :profile_image %> (profile pic of the designer or a logo.)
     <%= f.file_field :profileimage, class:"form-control" %>
   </div>
        <% if !@user.profileimage.url.blank? %>
@@ -45,7 +45,7 @@
 
          <p>
             <%= f.check_box :hidelistings, :collection => ["true", "false"] %>
-            <%= f.label :hidelistings, "Hide Listings" %><i> (Checking this box will take your listings off our site. To activate listings, please uncheck this box.)</i>
+            <%= f.label :hidelistings, "Hide Listings" %> (Checking this box will take your listings off our site. To activate listings, please uncheck this box.)
         </p>
 
    <div class="form-group">

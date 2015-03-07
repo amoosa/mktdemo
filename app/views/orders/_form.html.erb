@@ -35,15 +35,15 @@
     <%= f.text_field :shipname, class:"form-control" %>
   </div>
   <div class="form-group">
-    <%= f.label :company %><i> (optional)</i>
+    <%= f.label :company %> (optional)
     <%= f.text_field :shipcompany, class:"form-control" %>
   </div>
   <div class="form-group">
-    <%= f.label :shipaddress, "Shipping Address" %><i> (line 1)</i>
+    <%= f.label :shipaddress, "Shipping Address" %> (line 1)
     <%= f.text_field :shipaddress, class:"form-control" %>
   </div>
   <div class="form-group">
-    <%= f.label :shipaddress2, "Shipping Address" %><i> (line 2)</i>
+    <%= f.label :shipaddress2, "Shipping Address" %> (line 2)
     <%= f.text_field :shipaddress2, class:"form-control" %>
   </div>
 <div class="row">
@@ -72,11 +72,11 @@
     <%= f.text_field :cardname, class:"form-control" %>
   </div>
   <div class="form-group">
-    <%= f.label :address, "Billing Address" %><i> (line 1)</i>
+    <%= f.label :address, "Billing Address" %> (line 1)
     <%= f.text_field :address, class:"form-control" %>
   </div>
   <div class="form-group">
-    <%= f.label :address2, "Billing Address" %><i> (line 2)</i>
+    <%= f.label :address2, "Billing Address" %> (line 2)
     <%= f.text_field :address2, class:"form-control" %>
   </div>
 
@@ -102,7 +102,7 @@
 </div>
 
       <div class="form-group">
-        <%= f.label :Order_Comments %><i> (if any)</i>
+        <%= f.label :Order_Comments %> (if any)
         <%= f.text_area :comments, class:"form-control" %>
       </div>
 
@@ -130,8 +130,7 @@
         </div>
         <br>
         <p>
-            <%= f.check_box :emailsub, :collection => ["true", "false"], :checked => true %>
-            <%= f.label :emailsub, "Sign up for email - deals, new arrivals, contests & more." %>
+            <%= f.check_box :emailsub, :collection => ["true", "false"], :checked => true %> Sign up for email - deals, new arrivals, contests & more.
         </p>
 
         <p><b><font color="green">You will be charged: 

@@ -1,9 +1,9 @@
-<% if !Listing.not_expired.where("user_id = ? AND id != ?", @listing.user, @listing.id).blank? %>
+<% if !Listing.not_expired.where("listings.user_id = ? AND listings.id != ?", @listing.user, @listing.id).blank? %>
 <h4><b>Other items from this <%= link_to "seller", vendor_path(@listing.user) %>...</b></h4>
 
 <div class="center">
   <div class="row">
-    <% Listing.not_expired.where("user_id = ? AND id != ?", @listing.user, @listing.id).order("random()").limit(6).each do |listing| %>
+    <% Listing.not_expired.where("listings.user_id = ? AND listings.id != ?", @listing.user, @listing.id).order("random()").limit(6).each do |listing| %>
         <div class="col-md-2 col-sm-3 col-xs-6 images">
         <div class="thumbnail">
           <%= link_to image_tag(listing.image.url(:medium), class: "img-responsive"), listing, data: { no_turbolink: true } %>

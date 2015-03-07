@@ -16,59 +16,59 @@
       <noscript>JavaScript is not enabled and is required for this form. Please enable it in your web browser settings.</noscript>
   </div>
   <div class="form-group">
-    <%= f.label :product_title %><i> (required, max 55 characters)</i>
+    <%= f.label :product_title %> (required, max 55 characters)
     <%= f.text_field :name, class:"form-control" %>
   </div>
   <div class="form-group">
-    <%= f.label :designer_or_brand, "Designer / Brand" %><i> (optional, max 35 characters)</i>
+    <%= f.label :designer_or_brand, "Designer / Brand" %> (optional, max 35 characters)
     <%= f.text_field :designer_or_brand, class:"form-control" %>
   </div>
   <div class="form-group">
-    <%= f.label :description %><i> (required)</i>
+    <%= f.label :description %> (required)
     <%= f.text_area :description, class:"form-control", :rows => 5 %>
   </div>
   <div class="row">
     <div class = "col-md-2">
         <div class="form-group">
-          <%= f.label :Product_ID %><i> (required)</i>
+          <%= f.label :Product_ID %> (required)
           <%= f.text_field :sku, class:"form-control" %>
         </div>
     </div>
       <div class = "col-md-2">
         <div class="form-group">
-          <%= f.label :price %><i> (required)</i>
+          <%= f.label :price %> (required)
           <%= f.text_field :price, class:"form-control" %>
         </div>
       </div>
       <div class = "col-md-2">
         <div class="form-group">
-          <%= f.label :saleprice, "SalePrice" %><i> (optional)</i>
+          <%= f.label :saleprice, "SalePrice" %> (optional)
           <%= f.text_field :saleprice, class:"form-control" %>
         </div>
       </div>
       <div class = "col-md-3">
         <div class="form-group">
-          <%= f.label :category %><i> (required)</i>
+          <%= f.label :category %> (required)
           <%= f.select(:category, options_for_select(categories, f.object.category), {prompt: "Select"}, {class: "form-control"}) %>
         </div>  
       </div>
     <div class = "col-md-3">
         <div class="form-group">
-          <%= f.label :quantity_in_stock %><i> (required)</i>
+          <%= f.label :quantity_in_stock %> (required)
           <%= f.text_field :inventory, class:"form-control" %>
         </div>
     </div>
 
   </div>
   <div class="form-group">
-    <%= f.label :image %><i> (required)</i>
+    <%= f.label :image %> (required)
     <%= f.file_field :image, class:"form-control" %>
   </div>
        <% if !@listing.image.url.blank? %>
           Current image: <%= image_tag(@listing.image.url(:thumb)) %>
       <% end %>
   <div class="form-group">
-    <%= f.label :image_2 %><i> (optional)</i>
+    <%= f.label :image_2 %> (optional)
     <%= f.file_field :image2, class:"form-control" %>
   </div>
       <% if !@listing.image2.url.blank? %>
@@ -76,7 +76,7 @@
           Delete image? <%= f.check_box :delete_image2 %>
       <% end %>
   <div class="form-group">
-    <%= f.label :image_3 %><i> (optional)</i>
+    <%= f.label :image_3 %> (optional)
     <%= f.file_field :image3, class:"form-control" %>
   </div>
         <% if !@listing.image3.url.blank? %>
@@ -84,7 +84,7 @@
           Delete image? <%= f.check_box :delete_image3 %>
       <% end %>
   <div class="form-group">
-    <%= f.label :image_4 %><i> (optional)</i>
+    <%= f.label :image_4 %> (optional)
     <%= f.file_field :image4, class:"form-control" %>
   </div>
         <% if !@listing.image4.url.blank? %>

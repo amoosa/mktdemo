@@ -1,5 +1,10 @@
 class Listing < ActiveRecord::Base
 
+	scope :listable, -> { 
+    joins("INNER JOIN users
+           ON users.id = listings.user_id
+           AND users. hidelistings = 'f'") }
+
   attr_accessor :delete_image2, :delete_image3, :delete_image4 
   before_validation { image2.clear if delete_image2 == "1" }
   before_validation { image3.clear if delete_image3 == "1" }
@@ -164,7 +169,7 @@ end
     end
 
 	def self.not_expired #criteria for what shows in category pages etc.
-        where('(updated_at >= ? or user_id = ?) and inventory > ?', Date.current - 30.day, 24, 0)
+        listable.where('(listings.updated_at >= ? or user_id = ?) and inventory > ?', Date.current - 30.day, 24, 0)
         #Listing.joins(:user).where((self.updated_at > (Date.current - 2.day) or self.user.name = "Outfit Additions") 
          #  and inventory > 0 and self.user.hidelistings == "f")
     end
