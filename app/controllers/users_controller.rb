@@ -36,6 +36,7 @@ def update
         format.html { render action: 'sellerp' }
       end
     end
+    ActionController::Base.new.expire_fragment("homepage_p#{params[:page]}_s_#{params[:sort]}", options = nil)
   end
   
 
