@@ -74,7 +74,7 @@ class ListingsController < ApplicationController
 
   def admin
      if current_user.name == "admin admin"
-        @listings = Listing.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 48)
+        @listings = Listing.not_expired.order("created_at DESC").paginate(:page => params[:page], :per_page => 48)
      else
         redirect_to root_url, notice: "Sorry, you are not authorized to view the admin page."
      end
