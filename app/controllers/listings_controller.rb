@@ -103,7 +103,7 @@ class ListingsController < ApplicationController
 
       @listings = Listing.search(params[:search], where: { inventory: {gt: 0},
                                            or: [
-                                                 [{updated_at: {gte: (Date.current - 30.day)}}, {user_id: {not: 24}}]
+                                                 [{updated_at: {gte: (Date.current - 30.day)}}, {user_id: 24}]
                                                ] })
 
      # @listings = Listing.search(params[:search], where: { inventory: {gt: 0}, updated_at: {gte: (Date.current - 30.day)},
