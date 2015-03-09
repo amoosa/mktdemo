@@ -20,9 +20,7 @@ class Listing < ActiveRecord::Base
 	searchkick
 
 	def should_index?
-         joins("INNER JOIN users
-           ON users.id = listings.user_id
-           AND users.hidelistings = 'f'")
+        not_expired
     end
 
 	if Rails.env.development?
