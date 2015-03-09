@@ -19,6 +19,12 @@ class Listing < ActiveRecord::Base
 
 	searchkick
 
+	def should_index?
+         joins("INNER JOIN users
+           ON users.id = listings.user_id
+           AND users.hidelistings = 'f'")
+    end
+
 	if Rails.env.development?
 		has_attached_file :image, 
 						  :styles => { :medium => "250x235", :thumb => "100x100" },
