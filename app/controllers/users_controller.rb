@@ -37,6 +37,11 @@ def update
       end
     end
     ActionController::Base.new.expire_fragment("homepage_p#{params[:page]}_s_#{params[:sort]}", options = nil)
+
+     if Rails.env.production?
+        Listing.reindex
+     end
+
   end
   
 
