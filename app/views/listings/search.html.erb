@@ -17,7 +17,6 @@
     <div class="center">
       <div class="row">
         <% @listings.each do |listing| %>
-           <% if listing.user.hidelistings = false %>
                 <div class="col-md-3 col-sm-3 col-xs-6 images">
                 <div class="thumbnail">
                   <%= link_to image_tag(listing.image.url(:medium), class: "img-responsive"), listing, data: { no_turbolink: true } %>
@@ -34,7 +33,6 @@
                   </div>
                 </div> 
              </div>
-          <% end %>
       <% end %>
       </div>
       <p><%= will_paginate @listings, renderer: BootstrapPagination::Rails %></p>
