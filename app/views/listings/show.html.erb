@@ -54,6 +54,8 @@
 
         <% if @listing.inventory > 0 %>
 
+       <!-- <p><span class="glyphicon glyphicon-ok-sign"></span> FREE Shipping. No Hassle Returns.</p> -->
+
         <% if @listing.user.name == "Outfit Additions" %>
            <div class="size12"> <p>Shipped by: <%= link_to @listing.user.name, vendor_path(@listing.user) %> . Ships in 1-2 business days. <strong>US Shipping is FREE.</strong> No hassle returns. <a href="#shipreturns" role="link" data-toggle="modal"> Learn more.</a></p></div>
         <% else %>
