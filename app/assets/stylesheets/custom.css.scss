@@ -8,7 +8,7 @@
 }
 
 .navbar-inverse .navbar-nav > li > a {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   color: #FFFFFF;
 }
 
@@ -17,7 +17,8 @@ border: none;
 }
 
 .hpwell {
-   font-family: 'Roboto Slab', serif;
+  /* font-family: 'Roboto Slab', serif; */
+   font-family: 'Montserrat', sans-serif;
   font-size: 24px;
   text-align:center;
   margin-top: -7px;
@@ -104,6 +105,12 @@ ul.unstyled {
   text-align: center;
 }
 
+.icons {
+  border: 1px solid lightgray;
+  background-color: #f0f0f0;
+  color: #000;
+}
+
 
 body {
   background-color: #ffffff;
@@ -111,15 +118,24 @@ body {
   font-family: 'Open Sans', sans-serif;
   padding-top: 70px; 
 
+   h1 {font-family: 'Montserrat', sans-serif;}
+   h2 {font-family: 'Montserrat', sans-serif;}
+   h3 {font-family: 'Montserrat', sans-serif;}
+   h4 {font-family: 'Montserrat', sans-serif;}
+   h5 {font-family: 'Montserrat', sans-serif;}
+   h6 {font-family: 'Montserrat', sans-serif;}
 
  }
+
+
 
 .orderthumb {
 border: 1px solid lightgray !important;
 }
 
 
-.col-md-3:nth-child(4n+1) .col-md-2:nth-child(6n+1) {
+.col-md-3:nth-child(4n+1) .col-md-2:nth-child(6n+1) .col-xs-6:nth-child(2n+1)
+ {
   clear: left;
 }
 
@@ -170,7 +186,7 @@ border: 1px solid lightgray !important;
       font-size: 14px;
    }
 
-     .search-form { 
+  .search-form { 
       width: 80%;
    }
 

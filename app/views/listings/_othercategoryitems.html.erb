@@ -1,6 +1,6 @@
 <% if !Listing.not_expired.where("listings.category = ? AND listings.id != ?", @listing.category, @listing.id).blank? %>
 
-<h4><b>Recent additions to the <%= link_to @listing.category.downcase, category_path(category: @listing.category) %> category...</b></h4>
+<h4>Recent additions to the <%= link_to @listing.category.downcase, category_path(category: @listing.category) %> category...</h4>
 
 <div class="center">
   <div class="row">

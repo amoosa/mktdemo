@@ -1,5 +1,5 @@
 <% if !Listing.not_expired.where("listings.user_id = ? AND listings.id != ?", @listing.user, @listing.id).blank? %>
-<h4><b>Other items from this <%= link_to "seller", vendor_path(@listing.user) %>...</b></h4>
+<h4>Other items from this <%= link_to "seller", vendor_path(@listing.user) %>...</h4>
 
 <div class="center">
   <div class="row">
