@@ -170,7 +170,7 @@ class ListingsController < ApplicationController
 
   end
 
-# require 'fileutils'
+ require 'fileutils'
 
   def import
     tmp = params[:my_file].tempfile
