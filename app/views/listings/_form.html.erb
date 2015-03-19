@@ -15,18 +15,30 @@
   <div id="stripe_error" class="alert alert-danger" style="display:none">
       <noscript>JavaScript is not enabled and is required for this form. Please enable it in your web browser settings.</noscript>
   </div>
-  <div class="form-group">
-    <%= f.label :product_title %> (required, max 55 characters)
-    <%= f.text_field :name, class:"form-control" %>
+<div class="row">
+   <div class="col-md-6">
+      <div class="form-group">
+        <%= f.label :product_title %> (required, max 55 characters)
+        <%= f.text_field :name, class:"form-control" %>
+      </div>
   </div>
-  <div class="form-group">
-    <%= f.label :designer_or_brand, "Designer / Brand" %> (optional, max 35 characters)
-    <%= f.text_field :designer_or_brand, class:"form-control" %>
+  <div class="col-md-2">
+    <div class="form-group">
+      <%= f.label :made_to_order, "Made to order?" %>
+      <%= f.select(:made_to_order, options_for_select(made_to_order, f.object.made_to_order), {prompt: "Select"}, {class: "form-control"}) %>
+    </div>
   </div>
-  <div class="form-group">
-    <%= f.label :description %> (required)
-    <%= f.text_area :description, class:"form-control", :rows => 5 %>
+  <div class="col-md-4">
+      <div class="form-group">
+        <%= f.label :designer_or_brand, "Designer / Brand" %> (optional, max 35 characters)
+        <%= f.text_field :designer_or_brand, class:"form-control" %>
+      </div>
   </div>
+</div>
+      <div class="form-group">
+        <%= f.label :description %> (required)
+        <%= f.text_area :description, class:"form-control", :rows => 5 %>
+      </div>
   <div class="row">
     <div class = "col-md-2">
         <div class="form-group">

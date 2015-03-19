@@ -16,7 +16,7 @@ Customer email: <%= @buyer.email %>
 Customer comments: <%= @order.comments %>
 <% end %>
 
-Please ship this order within 1-2 business days. Print the customer invoice on your <%= link_to "Manage Sales", sales_path %> page. After shipment, please enter your carrier and tracking information against the order row on the same page. Then click on the confirm shipment button to confirm your shipment. When you click on confirm shipment button, tracking information and a shipping conformation email will automatically be sent to the customer.
+If the item is in stock, please ship this order within 1-2 business days. If you marked the item as 'made to order', please ship within the timeframe you mentioned in the listing. Print the customer invoice on your <%= link_to "Manage Sales", sales_path %> page. After shipment, please enter your carrier and tracking information against the order row on the same page. Then click on the confirm shipment button to confirm your shipment. When you click on confirm shipment button, tracking information and a shipping conformation email will automatically be sent to the customer.
 
 To check sales details and manage your account, please login at <%= @url %>.</p>
 

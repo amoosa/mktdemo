@@ -19,7 +19,14 @@ module ApplicationHelper
       ['Rings'],
       ['Belts'],
       ['Wallets'],
-      ['Other'],
+      ['Other']
+    ]
+ end
+
+  def made_to_order
+    [
+      ['Yes'],
+      ['No']
     ]
  end
 

@@ -8,11 +8,11 @@
 
     <% if @order.seller.name != "Outfit Additions" %>
         <p>
-         Dear <%= @order.buyer.name %>, <br><br>Your order of <b><%= @order.listing.name %> </b> has been shipped by the seller <i><%= @order.seller.name %></i>. You should recieve your item in the next 5-7 business days. <br>
+         Dear <%= @order.buyer.name %>, <br><br>Your order of <b><%= @order.listing.name %> </b> has been shipped by the seller <i><%= @order.seller.name %></i>. You should recieve your item in the next 4-7 business days. <br>
         </p>
     <% else %>
     <p>
-         Dear <%= @order.buyer.name %>, <br><br>Your order of <b><%= @order.listing.name %> </b> has been shipped. You should recieve your item in the next 5-7 business days. <br>
+         Dear <%= @order.buyer.name %>, <br><br>Your order of <b><%= @order.listing.name %> </b> has been shipped. You should recieve your item in the next 4-7 business days. <br>
         </p>
     <% end %>
        <% if !@order.tracking.include?("None yet") && !@order.carrier.include?("None yet") %>

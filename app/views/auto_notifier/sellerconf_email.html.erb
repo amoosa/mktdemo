@@ -25,11 +25,11 @@
               <b>Customer comments:</b> <%= @order.comments %><br>
           <% end %>
 
-       <p><b>Shipping process: </b>Please ship this order within 1-2 business days. 
+       <p><b>Shipping process: </b>If the item is in stock, please ship this order within 1-2 business days. If you marked the item as 'made to order', please ship within the timeframe you mentioned in the listing. 
         <ul>
           <li>Go to your <%= link_to "Manage Sales", sales_path %> page and print the invoice.</li>
           <li>After shipping the item, please enter your carrier and tracking information against the order row on the same page. 
-          <li>Then click on the confirm shipment button to confirm your shipment.</li>
+          <li>Then click on the confirm shipment button to confirm your shipment. This sends an email to the customer confirming shipment and includes the tracking info that was entered.</li>
         </ul>
 
        <p>To check sales details and manage your account, please login at <%= @url %>. If you have any questions, please email us at service@outfitadditions.com.</p>

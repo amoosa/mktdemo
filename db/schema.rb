@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150304194117) do
+ActiveRecord::Schema.define(version: 20150318223236) do
 
   create_table "delayed_jobs", force: true do |t|
     t.integer  "priority",   default: 0, null: false
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 20150304194117) do
     t.integer  "saleprice"
     t.string   "designer_or_brand"
     t.string   "slug"
+    t.string   "made_to_order"
   end
 
   add_index "listings", ["slug"], name: "index_listings_on_slug", unique: true

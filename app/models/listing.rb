@@ -94,6 +94,7 @@ class Listing < ActiveRecord::Base
 		    CSV.parse(f.read , headers: true, skip_blanks: true) do |row|
 
           listing_hash = {:name => row['Product_title'], 
+          	              :made_to_order => row['Made_to_order'],
           	              :description => row['Description'],
           				  :sku => row['Product_ID'],
   						  :price => row['Price'].to_i,
@@ -135,9 +136,9 @@ class Listing < ActiveRecord::Base
 
     # csv export code from railscasts
 	def self.to_csv(listings)
-	  wanted_columns = [:sku, :name, :designer_or_brand, :description, :price, :saleprice, :inventory, :category]
+	  wanted_columns = [:sku, :name, :made_to_order, :designer_or_brand, :description, :price, :saleprice, :inventory, :category]
 	  CSV.generate do |csv|
-	    csv << ['Product_ID', 'Product_title', 'Designer_or_Brand', 'Description', 'Price', 'SalePrice', 
+	    csv << ['Product_ID','Product_title', 'Made_to_order', 'Designer_or_Brand', 'Description', 'Price', 'SalePrice', 
 	    	'Quantity_in_stock', 'Category'] + [:Image, :Image2, :Image3, :Image4] + ['url']
 	    listings.each do |listing|
 	      attrs = listing.attributes.with_indifferent_access.values_at(*wanted_columns)
@@ -163,7 +164,7 @@ class Listing < ActiveRecord::Base
 	end
 
 
-	validates :name, :description, :price, :inventory, :category, :sku, presence: true
+	validates :name, :description, :price, :inventory, :category, :sku, :made_to_order, presence: true
 	validates :name, length: { maximum: 56 }
 	validates :designer_or_brand, length: { maximum: 35 }, :allow_blank => true
 	validates :description, length: { maximum: 1800 }
