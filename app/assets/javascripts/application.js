@@ -18,6 +18,10 @@
 //= require bootstrap
 //= require turbolinks
 //= require jquery.royalslider.min
+//= require jquery.hammer
+//= require jquery.mousewheel
+//= require TweenMax
+//= require jquery.pinchzoomer
 //= require_tree .
 
 $('.best_in_place').best_in_place()

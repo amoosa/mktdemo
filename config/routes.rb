@@ -40,6 +40,7 @@ Mktdemo::Application.routes.draw do
   get "pages/csvimport"
   get "pages/returns"
   get "pages/feedback"
+  get "pages/testpic"
 
 
   get 'seller' => "listings#seller"

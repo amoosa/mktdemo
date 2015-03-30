@@ -1,11 +1,10 @@
 
+
 <% provide(:title, @listing.name) %>
 
 <% if @listing.expired? %>
  <br><p><font color="red">Sorry, this listing has expired. </font></p>
  <% else %>
-
-
 
 <div class="row">
   <div class="col-md-7"> 
@@ -86,6 +85,11 @@
             <% end %> 
 
            
+
+         
+           
+            
+           
   </div> 
 </div>
 <% end %>
@@ -131,5 +135,7 @@
       
 
   </script>
+
+
 
     <script>mixpanel.track("Product page views")</script>
