@@ -12,8 +12,8 @@
 .container > .navbar-header, .container > .navbar-collapse, .container-fluid > .navbar-header, .container-fluid > .navbar-collapse {
   margin-right: 0px; 
   margin-left: 0px;
-  padding-right: 0px; 
-  padding-left: 0px;
+  padding-right: 3px; 
+  padding-left: 3px;
 }
 
 .navbar-inverse {background: #000;}
@@ -26,15 +26,20 @@
 .navbar-inverse .navbar-nav > li > a {
   font-family: 'Montserrat', sans-serif;
   color: #fff;
+  padding-left: 25px;
 }
 
 .navbar-inverse .navbar-toggle {
 border: none;
 }
 
+#search-form {
+    margin: 3px;
+  }
+
 .hpwell {
   font-family: 'Montserrat', sans-serif;
-  font-size: 24px;
+  font-size: 22px;
   text-align:center;
   margin-top: -7px; 
   margin-bottom: 14px;
