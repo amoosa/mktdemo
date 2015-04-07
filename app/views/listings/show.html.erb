@@ -8,10 +8,39 @@
 
 <div class="row">
   <div class="col-md-7"> 
+
+    <div class="easyzoom easyzoom--overlay easyzoom--with-thumbnails">
+        <%= link_to image_tag(@listing.image.url, class: "img-responsive eimg"), @listing.image.url %>
+    </div> 
+
+    <% if !@listing.image2.url.blank? || !@listing.image3.url.blank? || !@listing.image4.url.blank? %>
+      <ul class="thumbnails"> 
+                   
+        <div class="row">
+          <div class="col-xs-3">
+           <%= link_to image_tag(@listing.image.url, class: "img-responsive"), @listing.image.url, data: {standard: @listing.image.url} %>   </div>
+
+           <div class="col-xs-3"><% if !@listing.image2.url.blank? %>
+             <%= link_to image_tag(@listing.image2.url, class: "img-responsive"), @listing.image2.url, data: {standard: @listing.image2.url}  %> 
+            <% end %> </div>
+               
+            <div class="col-xs-3"><% if !@listing.image3.url.blank? %>
+             <%= link_to image_tag(@listing.image3.url, class: "img-responsive"), @listing.image3.url, data: {standard: @listing.image3.url}  %> 
+            <% end %></div>
+             
+            <div class="col-xs-3"><% if !@listing.image4.url.blank? %>
+              <%= link_to image_tag(@listing.image4.url, class: "img-responsive"), @listing.image4.url, data: {standard: @listing.image4.url} %> 
+            <% end %></div>
+          </div>
+       
+       </ul>
+    <% end %>
+
+  </div>
   
-      <div id="gallery-1" class="royalSlider rsDefault">
+    <!--   <div id="gallery-1" class="royalSlider rsDefault">
          
-            <%= link_to image_tag(@listing.image.url, class: "rsTmb img-responsive"), @listing.image.url, class: "rsImg" %> 
+            <%= link_to image_tag(@listing.image.url, class: "rsTmb img-responsive", data: {elem: 'pinchzoomer'}), @listing.image.url, class: "rsImg" %> 
                    
             <% if !@listing.image2.url.blank? %>
               <%= link_to image_tag(@listing.image2.url, class: "rsTmb img-responsive"), @listing.image2.url, class: "rsImg" %>
@@ -26,9 +55,12 @@
             <% end %>
        
       
-    </div>
+       </div>
+
+      
+    </div> -->
  
-  </div>
+
 
   <div class="col-md-5"> 
     <h2><%= @listing.name.downcase.titleize %></h2>
@@ -83,12 +115,6 @@
                    <%= render 'profilemodal' %> 
               </div>
             <% end %> 
-
-           
-
-         
-           
-            
            
   </div> 
 </div>
@@ -107,15 +133,15 @@
         jQuery(document).ready(function($) {
       $('#gallery-1').royalSlider({
         fullscreen: {
-          enabled: true, /* change to true if fullscreen needed */
-          nativeFS: true
+          enabled: false, /* change to true if fullscreen needed */
+          nativeFS: false
         },
         controlNavigation: 'bullets', /* 'none' to go back to arrows */
         autoScaleSlider: true, 
         autoScaleSliderWidth: 960,     
         autoScaleSliderHeight: 850,
         imageScaleMode: 'fit-if-smaller',
-        navigateByClick: true,
+        navigateByClick: false,
         numImagesToPreload:4,
         arrowsNav:true,
         arrowsNavAutoHide: true,
@@ -139,3 +165,21 @@
 
 
     <script>mixpanel.track("Product page views")</script>
+
+<script>
+    // Instantiate EasyZoom instances
+    var $easyzoom = $('.easyzoom').easyZoom();
+
+    // Get an instance API
+    var api = $easyzoom.filter('.easyzoom--with-thumbnails').data('easyZoom');
+
+    // Setup thumbnails example
+    $(".thumbnails").on("click", "a", function(e) {
+      var $this = $(this);
+
+      e.preventDefault();
+
+      // Use EasyZoom's `swap` method
+      api.swap($this.data("standard"), $this.attr("href"));
+    });
+  </script>

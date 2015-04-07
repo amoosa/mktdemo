@@ -2,14 +2,14 @@
 <% if params[:page].nil? %>
 
     <% if params[:sort].nil? %>
-       <div class="well hpwell">
+       <!-- <div class="well hpwell">
         <%= image_tag("mobile-logo.gif") %><br>Shop accessories from talented artisans and boutique brands.
         <br><span class="glyphicon glyphicon-chevron-down"></span>
-       </div>
+       </div> -->
 
     <div class="center">
       <div class="row">
-        <div class="col-md-2 col-sm-4 col-xs-6 icons"><h4><p><font color="#000"><span class="glyphicon glyphicon-gift"></span></font></p>Free Shipping</h4></div>
+       <div class="col-md-2 col-sm-4 col-xs-6 icons"><h4><p><font color="#000"><span class="glyphicon glyphicon-gift"></span></font></p>Free Shipping</h4></div>
         <div class="col-md-2 col-sm-4 col-xs-6 icons"><h4><p><font color="#000"><span class="glyphicon glyphicon-bullhorn"></span></font></p></p>Easy Returns</h4></div>
         <div class="col-md-2 col-sm-4 col-xs-6 icons"><h4><p>Necklaces</p><%= link_to category_path(category: "Necklaces"), class: "btn btn-default btn-xs", data: { no_turbolink: true } do %>Browse    <span class="glyphicon glyphicon-play"></span><% end %></h4></div>
         <div class="col-md-2 col-sm-4 col-xs-6 icons"><h4><p>Earrings</p><%= link_to category_path(category: "Earrings"), class: "btn btn-default btn-xs", data: { no_turbolink: true } do %>Browse    <span class="glyphicon glyphicon-play"></span><% end %></h4></div>
@@ -21,7 +21,6 @@
      <br>
 
     <!-- CATEGORY DROP DOWN
-
           <div class="dropdown center">
               <button class="btn btn-xl dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
                       Shop by Category <%= params[:category] %> <b class="caret"></b> </button>
@@ -88,7 +87,3 @@
 </div>
 
 <script>mixpanel.track("Homepage views")</script>
-
-
-
-

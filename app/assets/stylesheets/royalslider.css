@@ -3,7 +3,7 @@
 .royalSlider {
 	width: 640px; /* in application.html i have some <style> code. that overrides this */
 	height: 450px; /* the slider size just fits in the width now */
-	position: relative;
+	position: relative; 
 	direction: ltr;
 }
 .royalSlider > * {

@@ -2,16 +2,28 @@
 
 /* note that id names begin with # and classes begin with . */
 
+.wide {
+  width:100%;
+  height:200px;
+  background-image:url('/assets/bg8.jpg');
+  background-size:cover;
+}
+
+.container > .navbar-header, .container > .navbar-collapse, .container-fluid > .navbar-header, .container-fluid > .navbar-collapse {
+  margin-right: 0px; 
+  margin-left: 0px; 
+}
+
 .navbar-inverse {background: #000;}
 
 .navbar-inverse .navbar-brand {
-  color: #ffffff; 
+  color: #fff; 
   font-family: 'Roboto Slab', serif;
 }
 
 .navbar-inverse .navbar-nav > li > a {
   font-family: 'Montserrat', sans-serif;
-  color: #FFFFFF;
+  color: #fff;
 }
 
 .navbar-inverse .navbar-toggle {
@@ -19,12 +31,11 @@ border: none;
 }
 
 .hpwell {
-  /* font-family: 'Roboto Slab', serif; */
-   font-family: 'Montserrat', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 24px;
   text-align:center;
-  margin-top: -7px;
-  margin-bottom: 5px;
+  margin-top: -7px; 
+  margin-bottom: 14px;
   color: #333333; 
   background-color: #ffffff;
   border: none;
@@ -34,6 +45,18 @@ border: none;
 .glyphicon-filter {font-size: 12px;}
 .glyphicon-chevron-down {font-size: 12px;}
 
+.easyzoom {
+    display: inline-block;
+
+}
+.easyzoom img {
+    vertical-align: bottom;
+}
+
+.eimg { /*note: mobile version of this class below */
+  width: 100%; height: 450px; 
+  object-fit: contain;
+}
 
 .images {
 position: relative;
@@ -146,6 +169,7 @@ border: 1px solid lightgray !important;
 }
 
 
+
 .caption {
 
   h3 {
@@ -161,7 +185,8 @@ border: 1px solid lightgray !important;
   font-size: 13px;
   margin: 4px;
   }
-
+   position: relative !important;
+   font-family: 'Open Sans', sans-serif !important;
    border-bottom: 1px solid gray;
 
 }
@@ -191,6 +216,11 @@ border: 1px solid lightgray !important;
       width: 80%;
    }
 
+   .eimg {
+      width: 100%; height: 300px;
+      object-fit: contain;
+    }
+
   }
 
 
@@ -203,6 +233,3 @@ border: 1px solid lightgray !important;
    }
 
 }
-
-
-

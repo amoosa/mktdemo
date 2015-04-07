@@ -1,0 +1,280 @@
+.sliderHolder
+{
+	width:100%;
+	min-height:100%;
+	height:100%;
+	position:relative;
+	overflow:hidden;
+	-ms-touch-action:none; 
+	touch-action:none;
+}
+
+.slider
+{
+	overflow:hidden;
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:100%;
+	min-height:100%;
+	background:#EEE;
+	opacity:.99;
+}
+
+.sliderBg 
+{
+	width:100%;
+	min-height:100%;
+	height:100%;
+	position:absolute;
+	left:0px;
+	top:0px;
+}
+
+.slides, .thumbs 
+{
+	width:100%;
+	min-height:100%;
+	overflow:hidden;
+	position:absolute;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	cursor:pointer;
+}
+
+.thumbs 
+{
+	min-height:0%;
+	bottom:25px;
+}
+
+.thumbsHolder 
+{
+	width:100%;
+	height:104px;
+	bottom:30px;
+	position:absolute;
+	overflow:hidden;
+}
+
+.captionHolder
+{
+	width:100%;
+	min-height:20px;
+	position:absolute;
+	overflow:hidden;
+	padding-top:5px;
+	padding-bottom:5px;
+}
+
+.caption 
+{
+	width:100%;
+	min-height:20px;
+	color:#EEE;
+	top:0px;
+	text-align:center;
+	padding-top:5px;
+	padding-bottom:5px;
+	position:absolute;
+	font-family:Arial, Helvetica, sans-serif;
+}
+
+
+.touchColor
+{
+	color:#414042;
+}
+
+.touchLightColor
+{
+	color:#CCCCCC;
+}
+
+
+.nColor
+{
+	color:#2AACE3;
+}
+
+.swipeColor
+{
+	color:#939598;	
+}
+
+.headerColor
+{
+	color:#58595B;	
+}
+
+.footerLink, .footerLink a
+{
+	font-size:12px;
+	text-decoration:none;
+	color:#666;
+	cursor:pointer;
+	font-weight:bold; 
+}
+
+.footerLink:hover
+{
+	color:#414042;
+	text-decoration:none;
+}
+
+.footerCopyright
+{
+	font-size:10px;
+}
+
+.infobox
+{
+	background:#EEE;
+	border:1px solid #AAA;
+	margin:15px auto 10px auto;
+	padding:10px;
+}
+
+.blackBg 
+{
+	background:#000000;
+}
+
+.darkGray 
+{
+	background:#101010;
+}
+
+.blackBgAlpha60 
+{
+	background: rgb(0, 0, 0);
+	background: rgba(0, 0, 0, 0.6);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+}
+
+.blackBgAlpha90 
+{
+	background: rgb(0, 0, 0);
+	background: rgba(0, 0, 0, 0.9);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#EE000000, endColorstr=#EE000000);
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#EE000000, endColorstr=#EE000000)";
+}
+
+.lightGrayBg
+{
+	background:#CCC;	
+}
+
+.controlHolder 
+{
+	width:100%;
+	height:30px;
+	background:url(../assets/control_bg.png) repeat-x;
+	position:absolute;
+	bottom:0px;
+	overflow:hidden;
+}
+
+.autoPlayIcon, .nextIcon, .prevIcon, .zoomInIcon, .zoomOutIcon, .captionOnIcon, .captionOffIcon, .thumbsOnIcon, .thumbsOffIcon, .closeIcon 
+{
+	width:21px;
+	height:30px;
+	cursor: pointer;
+	cursor: hand;
+	margin-left:-10px;
+	background:url(../assets/control_sheet.png) 0px 0px no-repeat;
+}
+
+.autoPlayIcon 
+{
+	background-position:0px 0px;
+}
+
+.prevIcon 
+{
+	background-position:-50px 0px;
+}
+
+.nextIcon 
+{
+	background-position:-75px 0px;
+}
+
+.zoomOutIcon 
+{
+	background-position:-100px 0px;
+}
+
+.zoomInIcon 
+{
+	background-position:-125px 0px;
+}
+
+.captionOnIcon 
+{
+	background-position:-150px 0px;
+}
+
+.captionOffIcon 
+{
+	background-position:-175px 0px;
+}
+
+.thumbsOnIcon 
+{
+	background-position:-200px 0px;
+}
+
+.thumbsOffIcon 
+{
+	background-position:-225px 0px;
+}
+
+.closeIcon 
+{
+	background-position:-250px 0px;
+}
+
+.controlPos1, .controlPos2, .controlPos3, .controlPos4, .controlPos5, .controlPos6, .controlPos7
+{
+	position:absolute;
+}
+.controlPos1
+{
+	left:12.5%;
+}
+
+.controlPos2 
+{
+	left:25%;
+}
+
+.controlPos3
+{
+	left:37.5%;
+}
+
+.controlPos4 
+{
+	left:50%;
+}
+
+.controlPos5 
+{
+	left:62.5%;
+}
+
+.controlPos6 
+{
+	left:75%;
+}
+
+.controlPos7 
+{
+	left:87.5%;
+}

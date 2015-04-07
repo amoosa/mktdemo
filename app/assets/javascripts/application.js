@@ -21,7 +21,10 @@
 //= require jquery.hammer
 //= require jquery.mousewheel
 //= require TweenMax
+//= require modernizr
 //= require jquery.pinchzoomer
+//= require easyzoom
+//= require TouchNSwipe
 //= require_tree .
 
 $('.best_in_place').best_in_place()
