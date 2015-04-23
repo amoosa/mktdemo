@@ -48,6 +48,9 @@ def create
     @seller = @listing.user
 
     @order.listing_id = @listing.id
+    @order.listingsku = @listing.sku
+    @order.listingimage = @listing.image.url(:thumb)
+    @order.listingname = @listing.name
     @order.buyer_id = current_user.id
     @order.seller_id = @seller.id
 
@@ -57,7 +60,7 @@ def create
   if @order.valid?
     if @listing.saleprice.blank? #price
         @order.price_sold = @listing.price
-        @order.seller_payment = (((@listing.price * 97.1) - 30) * 0.008) #.008 to convert back to dollars
+        @order.seller_payment = (((@listing.price * 97.1) - 30) * (@seller.sellershare * 0.0001)) #.008 to convert back to dollars
 
         begin
           charge = Stripe::Charge.create(
@@ -80,7 +83,7 @@ def create
           AutoNotifier.sellerconf_email(current_user, @seller, @order).deliver 
                if !@seller.recipient.blank? and @seller.name != "Outfit Additions"
                    transfer = Stripe::Transfer.create(
-                  :amount => (((@listing.price * 97.1) - 30) * 0.8).floor, #converting to cents per stripe requirement. 80 percent in cents goes to seller.
+                  :amount => (((@listing.price * 97.1) - 30) * (@seller.sellershare * 0.01)).floor, # 0.8 to convert to cents per stripe requirement. 80 percent in cents goes to seller.
                   :currency => "usd",
                   :recipient => @seller.recipient,
                   :description => "Transfer from OutfitAdditions"
@@ -89,7 +92,7 @@ def create
         end 
     else #saleprice
         @order.price_sold = @listing.saleprice
-        @order.seller_payment = (((@listing.saleprice * 97.1) - 30) * 0.008) #.008 to convert back to dollars
+        @order.seller_payment = (((@listing.saleprice * 97.1) - 30) * (@seller.sellershare * 0.0001)) #.008 to convert back to dollars
 
         begin
           charge = Stripe::Charge.create(
@@ -112,7 +115,7 @@ def create
           AutoNotifier.sellerconf_email(current_user, @seller, @order).deliver 
                if !@seller.recipient.blank? and @seller.name != "Outfit Additions"
                    transfer = Stripe::Transfer.create(
-                  :amount => (((@listing.saleprice * 97.1) - 30) * 0.8).floor, #converting to cents per stripe requirement. 80 percent in cents goes to seller.
+                  :amount => (((@listing.saleprice * 97.1) - 30) * (@seller.sellershare * 0.01)).floor, #0.8 to convert to cents per stripe requirement. 80 percent in cents goes to seller.
                   :currency => "usd",
                   :recipient => @seller.recipient,
                   :description => "Transfer from OutfitAdditions"
@@ -165,7 +168,7 @@ private
     def order_params
       params.require(:order).permit(:shipname, :shipcompany,:shipaddress, :shipaddress2, :shipcity, :shipstate, 
                                     :shipzip, :cardname, :address, :address2, :city, :state, :zip, :comments,
-                                     :tracking, :carrier, :emailsub)
+                                     :tracking, :carrier, :emailsub, :listingimage, :listingname, :listingsku)
     end
 
     def check_user

@@ -7,8 +7,8 @@
        <p><a href="https://www.outfitadditions.com"><img src="https://s3.amazonaws.com/oamktplace/2014logo.jpg"></a></p>
        <p>
          Dear <%= @order.seller.name %>, <br><br>You have a new order at Outfit Additions. <br><br>
-         <b>Product ID:</b> <%= @order.listing.sku %><br>
-         <b>Product name:</b> <%= @order.listing.name %><br>
+         <b>Product ID:</b> <%= @order.listingsku %><br>
+         <b>Product name:</b> <%= @order.listingname %><br>
          <b>Sold for:</b>  <%= number_to_currency(@order.price_sold)  %><br>
          <b>Seller Price (after fees):</b><%= number_to_currency(@order.seller_payment) %>
        </p>

@@ -1,7 +1,7 @@
     <% if @order.seller.name != "Outfit Additions" %>
-         Dear <%= @order.buyer.name %>, Your order of <%= @order.listing.name %> has been shipped by the seller <i><%= @order.seller.name %></i>. You should recieve your item in the next 4-7 business days. 
+         Dear <%= @order.buyer.name %>, Your order of <%= @order.listingname %> has been shipped by the seller <i><%= @order.seller.name %></i>. You should recieve your item in the next 4-7 business days. 
     <% else %>
-         Dear <%= @order.buyer.name %>, Your order of <%= @order.listing.name %>  has been shipped. You should recieve your item in the next 4-7 business days. 
+         Dear <%= @order.buyer.name %>, Your order of <%= @order.listingname %>  has been shipped. You should recieve your item in the next 4-7 business days. 
     <% end %>
 
 <% if !@order.tracking.include?("None yet") && !@order.carrier.include?("None yet") %>

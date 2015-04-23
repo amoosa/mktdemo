@@ -1,5 +1,6 @@
 Dear <%= @order.seller.name %>, You have a new order at Outfit Additions. 
-Item ordered: <%= @order.listing.name %>
+Product ID: <%= @order.listingsku %><br>
+Item ordered: <%= @order.listingname %>
 Sold for:  <%= number_to_currency(@order.price_sold)  %>
 Seller Price (after fees): <%= number_to_currency(@order.seller_payment)  %>
 

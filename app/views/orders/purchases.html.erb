@@ -15,8 +15,8 @@
 
   <% @orders.each do |order| %>
     <tr>
-      <td><%= link_to image_tag(order.listing.image.url(:thumb)), order.listing, data: { no_turbolink: true } %></td>
-      <td><%= link_to order.listing.name.downcase.titleize, order.listing, data: { no_turbolink: true } %></td>
+      <td><%= link_to image_tag(order.listingimage), order.listing, data: { no_turbolink: true } %></td>
+      <td><%= link_to order.listingname, order.listing, data: { no_turbolink: true } %></td>
       <td><%= number_to_currency(order.price_sold) %></td>
       <td><%= order.seller.name %></td>
       <td><%= order.created_at.strftime("%B %-d, %Y") %></td>

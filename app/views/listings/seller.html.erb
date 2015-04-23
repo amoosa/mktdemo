@@ -6,7 +6,7 @@
               if (status != -1) {
                   if (status == 0 || status == 1) {
                       setTimeout(refreshText, 5000);
-                      show_info("Your listings are being imported. Depending on the number of listings in your file, this may take a few minutes to an hour. Please come back this page to check if your import completed.");
+                      show_info("Your listings are being imported. Depending on the number of listings in your file, this may take a few minutes to an hour. Please come back to this page to check if your import completed.");
                   } else if (status == 2) {
                       location.reload();
                   } else if (status == 3) {

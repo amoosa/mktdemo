@@ -1,6 +1,5 @@
  <h3>Sales History for <%= current_user.name %></h3>
 
-
 <% if user_signed_in? %>
   <p><%= link_to "Download orders (CSV)", sales_path(format: "csv"), class: "btn btn-xs btn-primary" %></p>
 <% end %>
@@ -18,12 +17,12 @@
     <th class="col-md-1">Ship Order</th>
   </tr>
 
-  <% @orders.each do |order| %>
+  <% @orders.each do |order| %> 
     <tr>
       <td><%= order.id %></td>
       <td><%= order.created_at.strftime("%B %-d, %Y") %></td>
-      <td><%= link_to image_tag(order.listing.image.url(:thumb)), order.listing, data: { no_turbolink: true } %></td>
-      <td><%= link_to order.listing.name.downcase.titleize, order.listing, data: { no_turbolink: true } %></td>
+      <td><%= link_to image_tag(order.listingimage), order.listing, data: { no_turbolink: true } %></td>
+      <td><%= link_to order.listingname, order.listing, data: { no_turbolink: true } %></td>
       <td><%= number_to_currency(order.price_sold) %></td>
       <td><%= number_to_currency(order.seller_payment)  %></td>
       <td><%= order.shipname %><br>

@@ -23,6 +23,7 @@ class Listing < ActiveRecord::Base
 		has_attached_file :image, 
 						  :styles => { :medium => "250x235", :thumb => "100x100" },
 						  :default_url => "",
+						  :preserve_files => true,
 						  :convert_options => {:medium => '-background white -gravity center -extent 250x235',
 						                       :thumb => '-background white -gravity center -extent 100x100' }
 		validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
@@ -42,6 +43,7 @@ class Listing < ActiveRecord::Base
 		has_attached_file :image, 
 						  :styles => { :medium => "250x235", :thumb => "100x100" }, 
 						  :default_url => "",
+						  :preserve_files => true,
 						  :convert_options => {:medium => '-background white -gravity center -extent 250x235',
 						                       :thumb => '-background white -gravity center -extent 100x100' }
 					      #:storage => :dropbox,
@@ -171,7 +173,7 @@ class Listing < ActiveRecord::Base
 	validates :price, numericality: {greater_than: 0}
 	validates :inventory, numericality: {greater_than_or_equal_to: 0}
 	#validates :saleprice, numericality: {greater_than: 0}, :allow_blank => true
-	validate :saleprice_lower_than_price
+	validate :saleprice_lower_than_price, :allow_blank => true
 	validates_attachment_presence :image
 	validates_with AttachmentSizeValidator, :attributes => :image, :less_than => 2.megabytes
 	validates_with AttachmentSizeValidator, :attributes => :image2, :less_than => 2.megabytes
