@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <script src="//cdn.optimizely.com/js/2798530582.js"></script>
   <title><%= full_title(yield(:title)) %></title>
   <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
@@ -28,11 +29,11 @@
     <!-- sumome 
     <script src="//load.sumome.com/" data-sumo-site-id="69f99888544a936d93961dc09d5686eaa0bc06c2371a31ad43abb3c52028a7d2" async></script> 
      end code for sumome -->
-   <% if Rails.env.production? %>   
-     <%= render 'analyticstracking' %>
-   <% end %>
 </head>
 <body>
+   <% if Rails.env.production? %>  
+        <%= render 'googletagmanager' %>
+   <% end %>
 	<%= render 'layouts/header' %>
 	<div class="container">
 
