@@ -23,8 +23,8 @@ _AvantMetrics.push(['order',{ order_id:<%= @order.id %>, amount:<%= @order.price
 <!-- Optimizely tracking -->
 <script>
     window.optimizely = window.optimizely || [];
-    window.optimizely.push(['trackEvent', 'orderNumber', {'orderNumber': <%= @order.id %>}]);
     window.optimizely.push(['trackEvent', 'order_confirmation', {'revenue': <%= @order.price_sold * 100 %>}]);
+    window.optimizely.push(['trackEvent', 'orderNumber', {'orderNumber': <%= @order.id %>}]);
 </script>
 <!-- End Optimizely tracking -->
 
