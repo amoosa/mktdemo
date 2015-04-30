@@ -20,6 +20,14 @@ _AvantMetrics.push(['order',{ order_id:<%= @order.id %>, amount:<%= @order.price
 </script>
 <!-- End Avantlink tracking -->
 
+<!-- Optimizely tracking -->
+<script>
+    window.optimizely = window.optimizely || [];
+    window.optimizely.push(['trackEvent', 'order_id', {'revenue': <%= @order.id %>}]);
+    window.optimizely.push(['trackEvent', 'order_confirmation', {'revenue': <%= @order.price_sold * 100 %>}]);
+</script>
+<!-- End Optimizely tracking -->
+
 <!-- End Mixpanel tracking -->
 <script>mixpanel.track("Order confirmation")</script>
 <!-- End Mixpanel tracking -->
