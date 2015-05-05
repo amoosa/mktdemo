@@ -7,33 +7,6 @@
         <br><span class="glyphicon glyphicon-chevron-down"></span>
        </div> -->
 
-    <div class="center">
-      <div class="row">
-       <div class="col-md-2 col-sm-4 col-xs-6 icons"><h4><p><font color="#000"><span class="glyphicon glyphicon-gift"></span></font></p>Free Shipping</h4></div>
-        <div class="col-md-2 col-sm-4 col-xs-6 icons"><h4><p><font color="#000"><span class="glyphicon glyphicon-bullhorn"></span></font></p></p>Easy Returns</h4></div>
-        <div class="col-md-2 col-sm-4 col-xs-6 icons"><h4><p>Necklaces</p><%= link_to category_path(category: "Necklaces"), class: "btn btn-default btn-xs", data: { no_turbolink: true } do %>Browse    <span class="glyphicon glyphicon-play"></span><% end %></h4></div>
-        <div class="col-md-2 col-sm-4 col-xs-6 icons"><h4><p>Earrings</p><%= link_to category_path(category: "Earrings"), class: "btn btn-default btn-xs", data: { no_turbolink: true } do %>Browse    <span class="glyphicon glyphicon-play"></span><% end %></h4></div>
-        <div class="col-md-2 col-sm-4 col-xs-6 icons"><h4><p>Bracelets</p><%= link_to category_path(category: "Bracelets"), class: "btn btn-default btn-xs", data: { no_turbolink: true } do %>Browse    <span class="glyphicon glyphicon-play"></span><% end %></h4></div>
-        <div class="col-md-2 col-sm-4 col-xs-6 icons"><h4><p>Belts</p><%= link_to category_path(category: "Belts"), class: "btn btn-default btn-xs", data: { no_turbolink: true } do %>Browse    <span class="glyphicon glyphicon-play"></span><% end %></h4>
-        </div>
-      </div>
-    </div>
-     <br>
-
-    <!-- CATEGORY DROP DOWN
-          <div class="dropdown center">
-              <button class="btn btn-xl dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-                      Shop by Category <%= params[:category] %> <b class="caret"></b> </button>
-              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                <li><%- Listing.uniq.pluck(:category).each do |category| %>
-                         <%= link_to category, category_path(category: category) %> 
-                        <% end %>
-                </li>
-              </ul>
-          </div>
-    END CATEGORY DROP DOWN -->
-
-
        <%= render 'featured' %>
        <!-- <%= render 'designers' %> -->
     <% end %>
@@ -41,7 +14,7 @@
 <% end %>
 
 
-<h4>Browse Collection</h4>
+<!-- <h4>Browse Collection</h4>
 
  <div class="dropdown">
     <button class="btn btn-default btn-xs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
@@ -81,9 +54,20 @@
       </div>
     <% end %>
   </div>
-<% end %> <!-- end cache block-->
+<% end %> <!-- end cache block--> 
 
-  <p><%= will_paginate @listings, renderer: BootstrapPagination::Rails %></p>
-</div>
+<!--  <p><%= will_paginate @listings, renderer: BootstrapPagination::Rails %></p>
+</div> -->
+
+<div class="center">
+      <div class="row">
+        <div class="col-md-3 cbtn"><h4><%= link_to category_path(category: "Necklaces"), class: "clink", data: { no_turbolink: true } do %>Shop Necklaces    <span class="glyphicon glyphicon-chevron-right"></span><% end %></h4></div>
+        <div class="col-md-3 cbtn"><h4><%= link_to category_path(category: "Earrings"), class: "clink", data: { no_turbolink: true } do %>Shop Earrings    <span class="glyphicon glyphicon-chevron-right"></span><% end %></h4></div>
+        <div class="col-md-3 cbtn"><h4><%= link_to category_path(category: "Bracelets"), class: "clink", data: { no_turbolink: true } do %>Shop Bracelets    <span class="glyphicon glyphicon-chevron-right"></span><% end %></h4></div>
+        <div class="col-md-3 cbtn"><h4><%= link_to category_path(category: "Belts"), class: "clink", data: { no_turbolink: true } do %>Shop Belts    <span class="glyphicon glyphicon-chevron-right"></span><% end %></h4></div>
+      </div>
+    </div>
+
+     <br>
 
 <script>mixpanel.track("Homepage views")</script>
