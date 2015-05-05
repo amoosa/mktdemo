@@ -100,8 +100,16 @@
 <div class="jumbotron hpwell">
   <div class="container">
         <%= image_tag("mobile80.gif") %><br>Shop accessories from talented artisans & boutique brands.
-        <br>Free shipping. Easy Returns.
+        <br><font color="orange">Free shipping. Easy Returns.</font>
         <br><span class="glyphicon glyphicon-chevron-down"></span>
+            <div class="center">
+              <div class="row">
+                <div class="col-md-3 cbtn"><h4><%= link_to category_path(category: "Necklaces"), class: "clink", data: { no_turbolink: true } do %>Shop Necklaces    <span class="glyphicon glyphicon-chevron-right"></span><% end %></h4></div>
+                <div class="col-md-3 cbtn"><h4><%= link_to category_path(category: "Earrings"), class: "clink", data: { no_turbolink: true } do %>Shop Earrings    <span class="glyphicon glyphicon-chevron-right"></span><% end %></h4></div>
+                <div class="col-md-3 cbtn"><h4><%= link_to category_path(category: "Bracelets"), class: "clink", data: { no_turbolink: true } do %>Shop Bracelets    <span class="glyphicon glyphicon-chevron-right"></span><% end %></h4></div>
+                <div class="col-md-3 cbtn"><h4><%= link_to category_path(category: "Belts"), class: "clink", data: { no_turbolink: true } do %>Shop Belts    <span class="glyphicon glyphicon-chevron-right"></span><% end %></h4></div>
+              </div>
+            </div>
   </div>
 </div>
 
