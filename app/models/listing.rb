@@ -103,10 +103,10 @@ class Listing < ActiveRecord::Base
   						  :category => row['Category'].titleize, 
   						  :inventory => row['Quantity_in_stock'].to_i,
   						  :image => URI.parse(row['Image']),
-  						  :saleprice => row['SalePrice'].to_i,
+  						  #:saleprice => row['SalePrice'].to_i,
   						  :user_id => user_id}.tap do |list_hash|
   						  	list_hash[:designer_or_brand] = row['Designer_or_Brand'] if row['Designer_or_Brand'] 
-  						  	#list_hash[:saleprice] = row['SalePrice'].to_i if row['SalePrice'] 
+  						  	list_hash[:saleprice] = row['SalePrice'].to_i if row['SalePrice'] 
 						    list_hash[:image2] = URI.parse(row['Image2']) if row['Image2'] 
 						    list_hash[:image3] = URI.parse(row['Image3']) if row['Image3'] 
 						    list_hash[:image4] = URI.parse(row['Image4']) if row['Image4'] 
