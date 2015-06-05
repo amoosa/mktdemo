@@ -74,27 +74,25 @@
       <% end %>
     </p>
 
-                <p><% if @listing.made_to_order == "Yes" %>
-                     <div class="size12"><font color="9933cc" size="3px"><span class="glyphicon glyphicon-pushpin"> </span></font> <font color="9933cc"><b>This item is made to order. Ships out in a few days. See description for more detail.</b></font></div> <br>
-                <% end %></p>
 
     <p><font size="2px"><% if !@listing.designer_or_brand.blank? %><b>Designer / Brand: </b><%= @listing.designer_or_brand %><br><% end %></font></p>
 
     <p><%= sanitize @listing.description, tags: %w(b p ul li), class: ".pre-scrollable" %></p>
-    <br>
+
+                <p><% if @listing.made_to_order == "Yes" %>
+                     <div class="size12"><font color="orange" size="2.5px"><span class="glyphicon glyphicon-play">  </span></font> This item is made to order. Ships out in a few days. See description for more detail.</div> <br>
+                <% end %></p>
 
          <% if @listing.inventory == 1 %>
-             <br><p><b><font color="red">Only 1 piece left. </font></b></p>
+             <p><b><font color="red">Only 1 piece left. </font></b></p>
          <% end %>
 
         <% if @listing.inventory > 0 %>
 
-       <!-- <p><span class="glyphicon glyphicon-ok-sign"></span> FREE Shipping. No Hassle Returns.</p> -->
-
         <% if @listing.user.name == "Outfit Additions" %>
-           <div class="size12"> <p>Shipped by: <%= link_to @listing.user.name, vendor_path(@listing.user) %>. Ships in 1-2 business days. <strong>US Shipping is FREE.</strong> No hassle returns. <a href="#shipreturns" role="link" data-toggle="modal"> Learn more.</a></p></div>
+           <div class="size12"> <p>Shipped by: <%= link_to @listing.user.name, vendor_path(@listing.user) %>. Ships in 1-2 business days. <br><strong>US Shipping is FREE. Easy Returns. </strong><a href="#shipreturns" role="link" data-toggle="modal"> Learn more.</a></p></div>
         <% else %>
-           <div class="size12"> <p>Shipped direct from seller: <%= link_to @listing.user.name, vendor_path(@listing.user) %>. <strong>US Shipping is FREE.</strong> No hassle returns. <a href="#shipreturns" role="link" data-toggle="modal"> Learn more.</a></p></div>
+           <div class="size12"> <p>Shipped direct from seller: <%= link_to @listing.user.name, vendor_path(@listing.user) %>. <br><strong>US Shipping is FREE.  Easy Returns. </strong><a href="#shipreturns" role="link" data-toggle="modal"> Learn more.</a></p></div>
         <% end %>
              <%= render 'shipmodal' %>                
             <%= link_to new_listing_order_path(@listing), class: "btn btn-primary btn-xl", data: { no_turbolink: true } do %>BUY    <span class="glyphicon glyphicon-lock"></span>
