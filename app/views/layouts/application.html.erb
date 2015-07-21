@@ -14,6 +14,14 @@
   <link href='https://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 
+
+ <% if current_page?(listings_path) %>
+      <meta property="og:title" content= <%= @listing.name %> />
+      <meta property="og:type" content="product" />
+      <meta property="og:price:amount" content=<%= @listing.price %> />
+      <meta property="og:price:currency" content="USD" />
+  <% end %>
+
     <!-- this is for the royalslider plugin  -->
 		 <style>
 		      #gallery-1 {
